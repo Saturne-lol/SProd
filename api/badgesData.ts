@@ -5,9 +5,14 @@ export default [
         image: "owner.png"
     },
     {
-        id: "verified",
-        name: "Verified",
-        image: "verified.png"
+        id: "early",
+        name: "Early Supporter",
+        image: "early.png"
+    },
+    {
+        id: "dev",
+        name: "Developer",
+        image: "dev.png"
     },
     {
         id: "premium2",
@@ -20,8 +25,8 @@ export default [
         image: "premium1.png"
     },
     {
-        id: "user",
-        name: "User",
-        image: "owner.png"
+        id: "member",
+        name: "Member",
+        image: "member.png"
     }
 ]

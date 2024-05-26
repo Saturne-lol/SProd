@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     if (plan === 2) badgesRes.push({badgeid: "premium2"})
     if (plan === 1) badgesRes.push({badgeid: "premium1"})
 
-    badgesRes.push({badgeid: "user"})
+    badgesRes.push({badgeid: "member"})
 
     return badgesRes.map(({badgeid}) => badgeid)
         .map(badgeid => badgesData.find(badge => badge.id === badgeid))
