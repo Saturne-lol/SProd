@@ -36,7 +36,6 @@ function smoothClearQuote() {
 }
 
 function smoothNewQuote() {
-  console.log("New quote")
   const quoteToWrite = profile.value.quotes[currentQuoteIndex.value];
   let index = 0;
   const interval = setInterval(() => {
@@ -76,12 +75,10 @@ if (process.client) {
         <Badges username="cleboost"/>
       </div>
       <div class="quote">
-        <h3 v-if="!pending">{{ quote }}</h3>
-        <h3 v-if="pending">Loading...</h3>
+        <h3>{{ pending ? "Loading..." : quote }}</h3>
       </div>
       <div class="description">
-        <h5 v-if="!pending">{{ profile.bio }}</h5>
-        <h5 v-if="pending">Loading...</h5>
+        <h5>{{ pending ? "Loading..." : profile.bio }}</h5>
       </div>
     </div>
   </div>
