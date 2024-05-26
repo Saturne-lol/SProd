@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <h1>404 Profileeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</h1>
+    <h1>404 Profile</h1>
   </div>
 </template>
 
