@@ -18,10 +18,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.version }}
-          release_name: release ${{ env.version }}
+          tag_name: ${{ github.run_id }}
+          release_name: release ${{ github.run_id }}
           draft: false
-          prerelease: ${{ contains(env.version, 'beta') || contains(env.version, 'alpha') }}
+          prerelease: false
 
   build-launcher:
     runs-on: ubuntu-latest
