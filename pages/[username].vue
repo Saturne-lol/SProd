@@ -55,7 +55,7 @@ function clickToEnter() {
     <!--    <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
     <!--    <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
     <button id="mute">
-      <Icon name="ph:speaker-simple-slash-fill" @click=""/>
+      <Icon name="ph:speaker-simple-slash-fill" />
       <!--      <p>Coucous</p>-->
     </button>
   </div>
@@ -67,7 +67,7 @@ function clickToEnter() {
       <DiscordBox :username="url"/>
 
       <div class="view">
-        <Icon name="ic:sharp-remove-red-eye"/> - 130k
+        <h3><Icon name="ic:sharp-remove-red-eye"/> - 130k</h3>
         <h5>views</h5>
       </div>
     </div>
@@ -370,6 +370,12 @@ body {
   grid-column: 1 / 2;
   position: relative;
   font-size: 80%;
+  
+}
+
+.content .view h3{
+  font-weight: 300;
+  
 }
 
 .content .view h5 {
