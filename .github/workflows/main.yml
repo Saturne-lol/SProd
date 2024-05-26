@@ -1,5 +1,5 @@
 # module du helios launcher
-name: Launcher Build
+name: Saturne Build
 on: workflow_dispatch
 
 jobs:
@@ -8,9 +8,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Get version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
@@ -24,6 +21,7 @@ jobs:
           prerelease: false
 
   build-launcher:
+    needs: create-release
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
