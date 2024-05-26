@@ -1,0 +1,47 @@
+import bdd from "~/api/bdd";
+import badgesData from "~/api/badgesData";
+import createBot from "~/api/bot";
+import {da} from "cronstrue/dist/i18n/locales/da";
+import axios from "axios";
+
+export default defineEventHandler(async (event) => {
+    const url = new URLSearchParams(event.req.url).get("/api/profile/get-profile?username")
+    const discordClient = await createBot()
+
+    const settings = (await bdd`SELECT username, description, account FROM settings WHERE url = ${url}`)[0]
+    const plan = (await bdd`SELECT plan FROM accounts WHERE id_discord = ${settings.account}`)[0].plan
+    const quote = (await bdd`SELECT text FROM quotes WHERE account = ${settings?.account}`)
+    const badgesRes = await bdd`SELECT badgeid FROM badges WHERE account = ${settings?.account}`
+    const discordBox = await bdd`SELECT * FROM discord WHERE account = ${settings?.account}`
+    const social = await bdd`SELECT * FROM social WHERE account = ${settings?.account}`
+
+
+    if (plan === 2) badgesRes.push({badgeid: "premium2"})
+    if (plan === 1) badgesRes.push({badgeid: "premium1"})
+
+    const userDiscord = await discordClient.users.fetch(settings.account)
+
+    await discordClient.destroy()
+
+    return {
+        username: settings?.username || "Invalid username",
+        bio: settings?.description || "No bio",
+        discord: {
+            avatar: userDiscord.avatarURL(),
+            username: userDiscord.displayName,
+            status: (await (await discordClient.guilds.fetch("1129015826410901556")).members.fetch(settings.account)).presence?.activities[0].state || null
+        },
+        box: await Promise.all(discordBox.map(async ({invite}) => {
+            const data = await axios.get(`https://discord.com/api/v9/invites/${invite}?with_counts=true`).then(({data}) => data).catch(() => null)
+            return {
+                name: data?.guild.name || "Invalid invite",
+                total: data?.approximate_member_count || 0,
+                online: data?.approximate_presence_count || 0,
+                image: `https://cdn.discordapp.com/icons/${data?.guild.id}/${data?.guild.icon}.png` || null,
+                invite: invite || "saturnelol"
+            }
+        })),
+        quotes: quote.map(({text}) => text).sort(() => Math.random() - 0.5),
+        socials: social.map(({type, username, link, index}) => ({type, username, link, index})).sort((a, b) => a.index - b.index)
+    }
+})
