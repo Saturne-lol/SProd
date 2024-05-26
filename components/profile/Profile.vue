@@ -72,7 +72,7 @@ if (process.client) {
           <h1>{{ pending ? "Loading..." : profile.username }}</h1>
         </div>
         <!-- BADGES -->
-        <Badges username="cleboost"/>
+        <Badges :username="username.username"/>
       </div>
       <div class="quote">
         <h3>{{ pending ? "Loading..." : quote }}</h3>

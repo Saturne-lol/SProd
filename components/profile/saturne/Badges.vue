@@ -2,7 +2,7 @@
 import type {Ref} from "vue";
 
 const username = defineProps<{
-  username: string
+  username: string | string[]
 }>()
 
 const {pending, data: badges} = await useFetch(`/api/profile/get-badges`, {query: {username: username.username}, lazy: true}) as {
@@ -12,6 +12,7 @@ const {pending, data: badges} = await useFetch(`/api/profile/get-badges`, {query
     image: string
   }]>
 }
+
 </script>
 
 <template>
