@@ -23,7 +23,7 @@
     "nuxt-icon": "^0.6.10",
     "nuxt-obfuscator": "^2.0.1",
     "prisma": "^5.14.0",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "vue-tsc": "^1.8.27"
   }
 }
