@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Set up Node
         uses: actions/setup-node@v3
@@ -34,12 +34,24 @@ jobs:
         run: zip -r build.zip .output
         shell: bash
 
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: build.zip
+
   create-release:
     needs: build-saturne
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: .
 
       - name: Create Release
         uses: ncipollo/release-action@v1
@@ -49,4 +61,4 @@ jobs:
           artifacts: build.zip
           name: ${{ github.run_id }}
           tag: ${{ github.run_id }}
-          token: '${{ secrets.TOKEN }}'
+          token: ${{ secrets.TOKEN }}
