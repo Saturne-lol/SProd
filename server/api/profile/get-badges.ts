@@ -18,6 +18,6 @@ export default defineEventHandler(async (event) => {
     return badgesRes.map(({badgeid}) => badgeid)
         .map(badgeid => badgesData.find(badge => badge.id === badgeid))
         .filter(badge => badge !== undefined)
-        .map(badge => ({image: badge!.image, name: badge!.name, index: badgesData.indexOf(badge!)}))
+        .map(badge => ({image: badge!.id+".png", name: badge!.name, index: badgesData.indexOf(badge!)}))
         .sort((a, b) => a.index - b.index)
 })
