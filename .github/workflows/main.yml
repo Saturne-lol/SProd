@@ -58,4 +58,4 @@ jobs:
           artifacts: build.zip
           name: Deployment ${{ github.run_id }}
           tag: deployment-${{ github.run_id }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN }}
