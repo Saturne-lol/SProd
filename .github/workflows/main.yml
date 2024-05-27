@@ -44,7 +44,7 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           artifacts: build.zip
           name: ${{ github.run_id }}
