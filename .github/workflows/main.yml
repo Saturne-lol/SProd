@@ -29,12 +29,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build
         shell: bash
-        
+
       - name: Archive build
-        uses: actions/upload-artifact@v2
-        with:
-          name: .output
-          path: build.zip
+        run: zip -r build.zip .output
+        shell: bash
 
   create-release:
     needs: build-saturne
@@ -48,5 +46,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          artifact: build.zip
+          artifacts: build.zip
           name: ${{ github.run_id }}
