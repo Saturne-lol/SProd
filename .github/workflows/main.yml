@@ -49,3 +49,4 @@ jobs:
           artifacts: build.zip
           name: ${{ github.run_id }}
           tag: ${{ github.run_id }}
+          token: '${{ secrets.TOKEN }}'
