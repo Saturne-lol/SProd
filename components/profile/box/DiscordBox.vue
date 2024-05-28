@@ -1,23 +1,14 @@
 <script setup lang="ts">
-import type {Ref} from "vue";
-
-const username = defineProps<{
-  username: string | string[]
-}>()
-
-const {pending, data: discord} = await useFetch(`/api/profile/get-box-discord`, {
-  query: {username: username.username},
-  lazy: true
-}) as {
-  pending: Ref<boolean>,
-  data: Ref<[{
+const data = defineProps<{
+  pending: boolean,
+  discord: {
     name: string,
-    total: number,
-    online: number,
     image: string | null,
-    invite: string,
-  }]>
-}
+    online: number,
+    total: number,
+    invite: string
+  }[] | null
+}>()
 
 function formatNumber(value: number) {
   if (value >= 1000000000) {
@@ -33,11 +24,11 @@ function formatNumber(value: number) {
 </script>
 
 <template>
-  <div class="boxServer" v-for="server in discord" v-if="!pending">
+  <div class="boxServer" v-for="server in data.discord" v-if="!data.pending">
     <div class="ppServ">
       <img v-if="server.image" :src="server.image" alt="">
     </div>
-    <div class="infoServ" v-once>
+    <div class="infoServ">
       <h4>{{ server.name.slice(0, 20) }}</h4> <!-- 20 characters max -->
       <div class="memberServ" v-if="server.image">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="14" viewBox="0 0 24 24">

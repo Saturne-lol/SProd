@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type {Ref} from "vue";
-import Profile from "~/components/profile/Profile.vue";
-import UserBox from "~/components/profile/box/UserBox.vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
+import UserBox from "~/components/profile/box/UserBox.vue";
 
 definePageMeta({
   middleware: async (to) => {
@@ -35,12 +34,63 @@ useSeoMeta({
 // const videoElement = ref<HTMLVideoElement | null>(null)
 const isEnter = ref(false)
 
+const {pending: discordPending, data: discordData} = useFetch(`/api/profile/get-box-discord`, {
+  query: {username: url},
+  lazy: true,
+  server: false
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<[{
+    name: string,
+    total: number,
+    online: number,
+    image: string | null,
+    invite: string,
+  }]>
+}
 
-function clickToEnter() {
+const {pending: profilePending, data: profileData} = useFetch(`/api/profile/get-profile`, {
+  query: {username: url},
+  lazy: true,
+  server: false
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<{
+    username: string,
+    bio: string,
+    avatar: string,
+    quotes: Array<string>,
+  }>
+}
+
+const {pending: badgesPending, data: badgesData} = useFetch(`/api/profile/get-badges`, {
+  query: {username: url},
+  lazy: true,
+  server: false
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<[{
+    name: string,
+    image: string
+  }]>
+}
+
+const {pending: dcProfilePending, data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
+  query: {username: url},
+  lazy: true,
+  server: false
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<{
+    username: string,
+    avatar: string,
+    status: string,
+  }>
+}
+
+function clickToEnter(): any {
+  if (profilePending.value || badgesPending.value || discordPending.value, dcProfilePending.value) return setTimeout(clickToEnter, 100)
   isEnter.value = true
-  // if (videoElement.value) {
-  //   videoElement.value.play()
-  // }
 }
 </script>
 
@@ -48,26 +98,29 @@ function clickToEnter() {
   <div id="tempBackground" v-if="!isEnter">
     <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
   </div>
-<!--  <video id="background" loop ref="videoElement">-->
-<!--    <source src="/video/background.mp4" type="video/mp4">-->
-<!--  </video>-->
+  <!--  <video id="background" loop ref="videoElement">-->
+  <!--    <source src="/video/background.mp4" type="video/mp4">-->
+  <!--  </video>-->
   <img src="/img/background.jpg" alt="background" id="background">
-<!--  <div class="volume">-->
-<!--        <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
-<!--        <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
-<!--    <button id="mute">-->
-<!--      <Icon name="ph:speaker-simple-slash-fill" />-->
-<!--    </button>-->
-<!--  </div>-->
+  <!--  <div class="volume">-->
+  <!--        <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
+  <!--        <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
+  <!--    <button id="mute">-->
+  <!--      <Icon name="ph:speaker-simple-slash-fill" />-->
+  <!--    </button>-->
+  <!--  </div>-->
   <div class="center" v-if="isEnter">
     <div class="content" id="content">
-      <Profile :username="url"/>
+      <Profile :profile="profileData" :badges="badgesData"/>
 
-      <UserBox :username="url"/>
-      <DiscordBox :username="url"/>
+      <UserBox :discord="dcProfileData"/>
+      <DiscordBox :discord="discordData" :pending="discordPending"/>
 
       <div class="view">
-        <h3><Icon name="ic:sharp-remove-red-eye"/> - 130k</h3>
+        <h3>
+          <Icon name="ic:sharp-remove-red-eye"/>
+          - In development
+        </h3>
         <h5>views</h5>
       </div>
     </div>
@@ -370,12 +423,12 @@ body {
   grid-column: 1 / 2;
   position: relative;
   font-size: 80%;
-  
+
 }
 
-.content .view h3{
+.content .view h3 {
   font-weight: 300;
-  
+
 }
 
 .content .view h5 {

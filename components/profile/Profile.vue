@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import type {Ref} from "vue";
 import Badges from "~/components/profile/saturne/Badges.vue";
 
-const username = defineProps<{
-  username: string | string[]
-}>()
-
-const {pending, data: profile} = await useFetch(`/api/profile/get-profile`, {query: {username: username.username}, lazy: true}) as {
-  pending: Ref<boolean>,
-  data: Ref<{
+const data = defineProps<{
+  profile: {
     username: string,
     bio: string,
     avatar: string,
     quotes: Array<string>,
+  },
+  badges: Array<{
+    name: string,
+    image: string
   }>
-}
+}>()
 
 const quote = ref("")
 const currentQuoteIndex = ref(0)
@@ -28,7 +26,7 @@ function smoothClearQuote() {
     } else {
       clearInterval(interval);
       setTimeout(() => {
-        currentQuoteIndex.value = (currentQuoteIndex.value + 1) % profile.value.quotes.length;
+        currentQuoteIndex.value = (currentQuoteIndex.value + 1) % data.profile.quotes.length;
         smoothNewQuote();
       }, 400);
     }
@@ -36,7 +34,7 @@ function smoothClearQuote() {
 }
 
 function smoothNewQuote() {
-  const quoteToWrite = profile.value.quotes[currentQuoteIndex.value];
+  const quoteToWrite = data.profile.quotes[currentQuoteIndex.value];
   let index = 0;
   const interval = setInterval(() => {
     if (index < quoteToWrite.length) {
@@ -51,34 +49,28 @@ function smoothNewQuote() {
   }, 150);
 }
 
-if (process.client) {
-  watch(pending, (value) => {
-    if (!value) {
-      smoothNewQuote();
-    }
-  });
-}
+smoothNewQuote()
 </script>
 
 <template>
   <div class="profil">
     <div class="ppUser">
-      <img :src="pending ? '' : profile.avatar" alt="">
+      <img :src="data.profile.avatar" alt="">
     </div>
     <div class="infoUser">
       <div class="nameBadges">
         <!-- NAME SATURNE -->
         <div class="name">
-          <h1>{{ pending ? "Loading..." : profile.username }}</h1>
+          <h1>{{ data.profile.username }}</h1>
         </div>
         <!-- BADGES -->
-        <Badges :username="username.username"/>
+        <Badges :badges="data.badges"/>
       </div>
       <div class="quote">
-        <h3>{{ pending ? "Loading..." : quote }}</h3>
+        <h3>{{ quote }}</h3>
       </div>
       <div class="description">
-        <h5>{{ pending ? "Loading..." : profile.bio }}</h5>
+        <h5>{{ data.profile.bio }}</h5>
       </div>
     </div>
   </div>

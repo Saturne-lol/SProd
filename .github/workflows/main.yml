@@ -50,6 +50,16 @@ jobs:
           name: build
           path: build.zip
 
+  release:
+    runs-on: ubuntu-latest
+    needs: deploy
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+
       - name: Create Release
         uses: ncipollo/release-action@v1
         env:
@@ -59,3 +69,22 @@ jobs:
           name: Deployment ${{ github.run_id }}
           tag: deployment-${{ github.run_id }}
           token: ${{ secrets.TOKEN }}
+
+  upload_sftp:
+    runs-on: ubuntu-latest
+    needs: deploy
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+
+      - name: Upload to SFTP
+        uses: atmoz/sftp@v1
+        with:
+          args: "upload -i /path/to/private-key build.zip remote/path/"
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
