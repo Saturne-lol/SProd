@@ -17,12 +17,9 @@ export default defineEventHandler(async (event) => {
     })
 
 
-    // const social = await bdd`SELECT id_discord FROM accounts WHERE id_discord = ${resDsc.data.id}`
-
-
     return !!(await prisma.account.findUnique({
         where: {
-            id: resDsc.data.id
+            id: resDsc?.data.id
         }
     })) || false
 })

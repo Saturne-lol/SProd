@@ -17,14 +17,14 @@ export default defineEventHandler(async (event) => {
 
     if (!await prisma.account.findUnique({
         where: {
-            id: resDsc.data.id
+            id: resDsc?.data.id
         }
     })) {
         await prisma.account.create({
             data: {
-                id: resDsc.data.id as string,
+                id: resDsc?.data.id as string,
             }
         })
     }
-    return {username: resDsc.data.username, id: resDsc.data.id, avatar: resDsc.data.avatar}
+    return {username: resDsc?.data.username, id: resDsc?.data.id, avatar: resDsc?.data.avatar}
 })
