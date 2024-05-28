@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import type {Ref} from "vue";
 
-const {pending, data: username} = useFetch(`/api/account/getUser`, {lazy: true}) as {pending: Ref<boolean>, data: Ref<{username: string, id: number, avatar: string}>};
+const {pending, data: username} = useFetch(`/api/account/getUser`, {lazy: true}) as {
+  pending: Ref<boolean>,
+  data: Ref<{ username: string, id: number, avatar: string, other: object }>
+};
 
 function createAccountIfNotExists() {
-  const {data: exist} = useFetch(`/api/account/is-exist`, {lazy: true}) as {data: Ref<boolean>}
+  const {data: exist} = useFetch(`/api/account/is-exist`, {lazy: true}) as { data: Ref<boolean> }
   if (!exist.value) useFetch(`/api/account/create`)
 }
 
@@ -16,11 +19,14 @@ createAccountIfNotExists();
     <h1>Loading...</h1>
   </div>
   <div v-else>
-    <h1>Welcome, {{username.username}} ({{username.id}})</h1>
+    <h1>Welcome, {{ username.username }} ({{ username.id }})</h1>
     <img :src="'https://cdn.discordapp.com/avatars/' + username.id + '/' + username.avatar + '.png'" alt="avatar">
+    <p>{{username.other}}</p>
   </div>
 </template>
 
 <style scoped>
-
+  h1, p {
+    color: black;
+  }
 </style>
