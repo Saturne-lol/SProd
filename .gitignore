@@ -3,3 +3,4 @@ node_modules/
 archives/
 .nuxt/
 .output/
+prisma/migrations/

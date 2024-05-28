@@ -1,7 +1,10 @@
-import bdd from "~/api/bdd";
+import {PrismaClient} from "@prisma/client";
+
+const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
     const url = new URLSearchParams(event.req.url)
-    if ((await bdd`SELECT * FROM settings WHERE url = ${url.get("/api/profile/is-exist?username")}`).length === 0) return {code: false}
+    if (!getQuery(event)?.username) return {code: false}
+    if (!await prisma.setting.findFirst({where: {url: getQuery(event)?.username as string}})) return {code: false}
     return {code: true}
 })

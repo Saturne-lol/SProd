@@ -14,7 +14,7 @@ const {pending, data: discord} = await useFetch(`/api/profile/get-box-discord`, 
     name: string,
     total: number,
     online: number,
-    image: string,
+    image: string | null,
     invite: string,
   }]>
 }

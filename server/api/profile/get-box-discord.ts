@@ -1,11 +1,23 @@
 import bdd from "~/api/bdd";
 import axios from "axios";
+import {PlanEnum, PrismaClient} from "@prisma/client";
+
+const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-    const url = new URLSearchParams(event.req.url).get("/api/profile/get-box-discord?username")
+    if (!getQuery(event).username) return []
 
-    const settings = (await bdd`SELECT username, description, account FROM settings WHERE url = ${url}`)[0]
-    const discordBox = await bdd`SELECT * FROM discord WHERE account = ${settings?.account}`
+    const discordBox = await prisma.discord.findMany({
+        where: {
+            account: {
+                Setting: {
+                    some: {
+                        url: getQuery(event).username as string
+                    }
+                }
+            }
+        }
+    })
 
     return await Promise.all(discordBox.map(async ({invite}) => {
         const data = await axios.get(`https://discord.com/api/v9/invites/${invite}?with_counts=true`).then(({data}) => data).catch(() => null)
