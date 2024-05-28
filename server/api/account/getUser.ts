@@ -11,5 +11,5 @@ export default defineEventHandler(async (event) => {
         return sendRedirect(event, '/auth/login')
     })
 
-    return {username: resDsc?.data.username, id: resDsc?.data.id, avatar: resDsc?.data.avatar}
+    return {username: resDsc?.data.username, id: resDsc?.data.id, avatar: resDsc?.data.avatar, other: resDsc?.data}
 })
