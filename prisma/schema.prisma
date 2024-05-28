@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:heb5HHGBe!4u2N@212.227.179.23:3306/saturne"
+}
+
+model Account {
+  id          String    @id @default(cuid())
+  create_date DateTime  @default(now())
+  plan        PlanEnum  @default(FREE)
+  blacklisted Boolean   @default(false)
+  last_login  DateTime  @default(now())
+  last_ip     String?
+  expires     DateTime  @default(now())
+  Setting     Setting[]
+  Discord     Discord[]
+  Social      Social[]
+  Quotes      Quotes[]
+  View        View[]
+  Badges      Badges[]
+}
+
+model Setting {
+  id         String  @id @default(cuid())
+  account_id String
+  account    Account @relation(fields: [account_id], references: [id])
+  url        String  @unique @default(cuid())
+  username   String  @unique @default(cuid())
+  bio        String  @default("No bio")
+  avatar     Boolean @default(false)
+  background String  @default("https://i.imgur.com/3v3J9v6.jpg")
+  View       View[]
+}
+
+model Discord {
+  id         String  @id @default(cuid())
+  account_id String
+  account    Account @relation(fields: [account_id], references: [id])
+  invite     String
+  index      Int     @default(0)
+}
+
+model Social {
+  id         String  @id @default(cuid())
+  account_id String
+  account    Account @relation(fields: [account_id], references: [id])
+  type       String
+  url        String
+  index      Int     @default(0)
+}
+
+model Quotes {
+  id         String  @id @default(cuid())
+  account_id String
+  account    Account @relation(fields: [account_id], references: [id])
+  text       String
+
+  @@unique([account_id, text])
+}
+
+model View {
+  id         String   @id @default(cuid())
+  ip         String
+  date       DateTime @default(now())
+  profile_id String
+  profile    Setting  @relation(fields: [profile_id], references: [url])
+  account_id String
+  account    Account  @relation(fields: [account_id], references: [id])
+}
+
+model Badges {
+  id         String  @id @default(cuid())
+  account_id String
+  account    Account @relation(fields: [account_id], references: [id])
+  badge      String
+}
+
+enum PlanEnum {
+  FREE
+  PREMIUM
+  PREMIUM_PLUS
+}

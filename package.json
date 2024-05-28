@@ -4,12 +4,13 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "prisma generate && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@prisma/client": "^5.14.0",
     "axios": "^1.7.2",
     "discord.js": "^14.15.2",
     "nuxt": "^3.11.2",

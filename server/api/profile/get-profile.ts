@@ -1,19 +1,34 @@
-import bdd from "~/api/bdd";
-import badgesData from "~/api/badgesData";
-import createBot from "~/api/bot";
-import {da} from "cronstrue/dist/i18n/locales/da";
-import axios from "axios";
+import {PrismaClient} from "@prisma/client";
+
+const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-    const url = new URLSearchParams(event.req.url).get("/api/profile/get-profile?username")
-
-    const settings = (await bdd`SELECT username, description, account, avatar FROM settings WHERE url = ${url}`)[0]
-    const quote = (await bdd`SELECT text FROM quotes WHERE account = ${settings?.account}`)
+    if (!getQuery(event).username) return {error: "No username provided"}
+    
+    const settings = await prisma.setting.findFirst({
+        where: {
+            url: getQuery(event).username as string
+        },
+        select: {
+            username: true,
+            bio: true,
+            avatar: true,
+            account: true,
+        }
+    })
+    const quote = await prisma.quotes.findMany({
+        where: {
+            account: settings?.account
+        },
+        select: {
+            text: true
+        }
+    })
 
     return {
         username: settings?.username || "Invalid username",
-        bio: settings?.description || "No bio",
-        avatar: `https://cdn.saturne.lol/${settings.avatar ? settings.account : "default"}.png`,
+        bio: settings?.bio || "No bio",
+        avatar: `https://cdn.saturne.lol/${settings?.avatar ? settings.account : "default"}.png`,
         quotes: quote.map(({text}) => text).sort(() => Math.random() - 0.5),
     }
 })
