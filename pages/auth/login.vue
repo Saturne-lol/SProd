@@ -6,7 +6,7 @@ if (process.client) {
   }
   const host = window.location.origin;
   console.log(host);
-  window.location.href = `https://discord.com/oauth2/authorize?client_id=1199385328784506931&response_type=code&redirect_uri=${host}/auth/callback&scope=identify+email`;
+  window.location.href = `https://discord.com/oauth2/authorize?client_id=1199385328784506931&response_type=code&redirect_uri=${host}/auth/callback&scope=identify`;
 }
 </script>
 
