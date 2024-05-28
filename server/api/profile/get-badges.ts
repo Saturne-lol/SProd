@@ -1,23 +1,38 @@
-import bdd from "~/api/bdd";
 import badgesData from "~/api/badgesData";
+import {PlanEnum, PrismaClient} from "@prisma/client";
+
+const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-    const username = new URLSearchParams(event.req.url).get("/api/profile/get-badges?username")
-    if (!username) return []
+    if (!getQuery(event).username) return []
 
-    const settings = (await bdd`SELECT username, description, account FROM settings WHERE url = ${username}`)[0]
-    const plan = (await bdd`SELECT plan FROM accounts WHERE id_discord = ${settings.account}`)[0].plan
-    const badgesRes = await bdd`SELECT badgeid FROM badges WHERE account = ${settings?.account}`
+    const plan = await prisma.account.findFirst({
+        where: {
+            Setting: {
+                some: {
+                    url: getQuery(event).username as string
+                }
+            }
+        },
+        select: {
+            plan: true,
+            id: true
+        }
+    })
+    const badges = (await prisma.badges.findMany({
+        where: {
+            account_id: plan?.id
+        },
+        select: {
+            badge: true
+        }
+    })).map(({badge}) => badge)
+    badges.push("member")
 
+    if (plan?.plan === PlanEnum.PREMIUM) badges.push("premium1")
+    if (plan?.plan === PlanEnum.PREMIUM_PLUS) badges.push("premium2")
+    badges.filter(badges => badges !== undefined)
+    badges.sort((a, b) => badgesData.findIndex(badge => badge.id === a) - badgesData.findIndex(badge => badge.id === b))
 
-    if (plan === 2) badgesRes.push({badgeid: "premium2"})
-    if (plan === 1) badgesRes.push({badgeid: "premium1"})
-
-    badgesRes.push({badgeid: "member"})
-
-    return badgesRes.map(({badgeid}) => badgeid)
-        .map(badgeid => badgesData.find(badge => badge.id === badgeid))
-        .filter(badge => badge !== undefined)
-        .map(badge => ({image: badge!.id+".png", name: badge!.name, index: badgesData.indexOf(badge!)}))
-        .sort((a, b) => a.index - b.index)
+    return badges.map(badge => ({image: badge + ".png", name: badgesData.find(b => b.id === badge)?.name}))
 })

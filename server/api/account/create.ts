@@ -1,23 +1,30 @@
 import axios from "axios"
-import bdd from "~/api/bdd";
+import {PrismaClient} from "@prisma/client";
+const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-    const token = event.req.headers?.cookie?.split("token=")[1]
-    if (!token) {
+    if (!getCookie(event, 'token')) {
         return sendRedirect(event, '/auth/login')
     }
 
     const resDsc = await axios.get("https://discord.com/api/users/@me", {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${getCookie(event, 'token')}`
         }
     }).catch(() => {
         return sendRedirect(event, '/auth/login')
     })
 
-    const isExist = await bdd`SELECT * FROM accounts WHERE id_discord = ${resDsc.data.id}`
-    if (isExist.length > 0) return sendRedirect(event, '/auth/login')
-    await bdd`INSERT INTO accounts (id_discord) VALUES (${resDsc.data.id})`
-
+    if (!await prisma.account.findUnique({
+        where: {
+            id: resDsc.data.id
+        }
+    })) {
+        await prisma.account.create({
+            data: {
+                id: resDsc.data.id as string,
+            }
+        })
+    }
     return {username: resDsc.data.username, id: resDsc.data.id, avatar: resDsc.data.avatar}
 })
