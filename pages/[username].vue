@@ -31,16 +31,16 @@ useSeoMeta({
   twitterCard: 'summary'
 })
 
-const videoMuted = ref(false)
-const videoElement = ref<HTMLVideoElement | null>(null)
+// const videoMuted = ref(false)
+// const videoElement = ref<HTMLVideoElement | null>(null)
 const isEnter = ref(false)
 
 
 function clickToEnter() {
   isEnter.value = true
-  if (videoElement.value) {
-    videoElement.value.play()
-  }
+  // if (videoElement.value) {
+  //   videoElement.value.play()
+  // }
 }
 </script>
 
@@ -48,17 +48,17 @@ function clickToEnter() {
   <div id="tempBackground" v-if="!isEnter">
     <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
   </div>
-  <video id="background" loop :muted="videoMuted" ref="videoElement">
-    <source src="/video/background.mp4" type="video/mp4">
-  </video>
-  <div class="volume">
-    <!--    <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
-    <!--    <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
-    <button id="mute">
-      <Icon name="ph:speaker-simple-slash-fill" />
-      <!--      <p>Coucous</p>-->
-    </button>
-  </div>
+<!--  <video id="background" loop ref="videoElement">-->
+<!--    <source src="/video/background.mp4" type="video/mp4">-->
+<!--  </video>-->
+  <img src="/img/background.jpg" alt="background" id="background">
+<!--  <div class="volume">-->
+<!--        <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
+<!--        <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
+<!--    <button id="mute">-->
+<!--      <Icon name="ph:speaker-simple-slash-fill" />-->
+<!--    </button>-->
+<!--  </div>-->
   <div class="center" v-if="isEnter">
     <div class="content" id="content">
       <Profile :username="url"/>
@@ -82,7 +82,6 @@ function clickToEnter() {
 
 <style>
 
-
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 * {
@@ -94,6 +93,7 @@ function clickToEnter() {
   color: #fff;
   font-family: 'Fira Code', monospace;
 }
+
 
 body {
   overflow-x: hidden;
