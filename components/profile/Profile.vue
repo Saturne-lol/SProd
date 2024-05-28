@@ -55,7 +55,8 @@ smoothNewQuote()
 <template>
   <div class="profil">
     <div class="ppUser">
-      <img :src="data.profile.avatar" alt="">
+      <img :src="data.profile.avatar" alt="" id="ppDisc">
+      <img src="~/public/img/avatardeco2.png" alt="" id="ppDeco" style="display: none;">
     </div>
     <div class="infoUser">
       <div class="nameBadges">
