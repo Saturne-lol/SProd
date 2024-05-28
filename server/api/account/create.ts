@@ -11,6 +11,8 @@ export default defineEventHandler(async (event) => {
         headers: {
             Authorization: `Bearer ${token}`
         }
+    }).catch(() => {
+        return sendRedirect(event, '/auth/login')
     })
 
     const isExist = await bdd`SELECT * FROM accounts WHERE id_discord = ${resDsc.data.id}`

@@ -10,7 +10,9 @@ export default defineEventHandler(async (event) => {
         headers: {
             Authorization: `Bearer ${token}`
         }
+    }).catch(() => {
+        return sendRedirect(event, '/auth/login')
     })
 
-    return {username: resDsc.data.username, id: resDsc.data.id, avatar: resDsc.data.avatar}
+    return {username: resDsc?.data.username, id: resDsc?.data.id, avatar: resDsc?.data.avatar}
 })
