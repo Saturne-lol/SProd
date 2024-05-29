@@ -4,6 +4,14 @@ export default [
         name: "Owner",
     },
     {
+        id: "beta",
+        name: "Beta Tester",
+    },
+    {
+        id: "priosial",
+        name: "Priosial",
+    },
+    {
         id: "early",
         name: "Early Supporter",
     },

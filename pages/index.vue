@@ -14,312 +14,306 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="nav">
-    <div class="sidemenu">
-      <div class="navbar">
-        <img src="/img/saturne.png" alt="">
-        <h1>SATURNE.LOL</h1>
-        <div class="links">
-          <a href="#home">
-            <h5>Home</h5>
-          </a>
-          <a href="#about">
-            <h5>About</h5>
-          </a>
-          <a href="#premium">
-            <h5>Premium</h5>
-          </a>
-          <a href="#vouches">
-            <h5>Vouches</h5>
-          </a>
+  <main>
+    <div class="nav">
+      <div class="sidemenu">
+        <div class="navbar">
+          <img src="/img/saturne.png" alt="">
+          <h1>SATURNE.LOL</h1>
+          <div class="links">
+            <a href="#home">
+              <h5>Home</h5>
+            </a>
+            <a href="#about">
+              <h5>About</h5>
+            </a>
+            <a href="#premium">
+              <h5>Premium</h5>
+            </a>
+            <a href="#vouches">
+              <h5>Vouches</h5>
+            </a>
+          </div>
+        </div>
+        <div class="btn">
+          <div class="login">
+            <a href="/auth/login">Login</a>
+          </div>
+          <div class="started">
+            <a href="/auth/login">Get Started</a>
+          </div>
         </div>
       </div>
+    </div>
+
+    <!-- ------------------------ - END NAV BAR - ------------------------ -->
+
+    <!-- ------------------------ - START HOME - ------------------------ -->
+    <div class="home" id="home">
+      <h1>Create your e-profile easily !</h1>
+      <h3><span>Saturne.lol</span> makes it easy to create a modern profile</h3>
       <div class="btn">
-        <div class="login">
-          <a href="/auth/login">Login</a>
-        </div>
         <div class="started">
           <a href="/auth/login">Get Started</a>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ------------------------ - END NAV BAR - ------------------------ -->
-
-  <!-- ------------------------ - START HOME - ------------------------ -->
-  <div class="home" id="home">
-    <h1>Create your e-profile easily !</h1>
-    <h3><span>Saturne.lol</span> makes it easy to create a modern profile</h3>
-    <div class="btn">
-      <div class="started">
-        <a href="/auth/login">Get Started</a>
-      </div>
-      <div class="ReadMore">
-        <a href="/auth/login">Read More</a>
-      </div>
-    </div>
-    <video autoplay loop muted>
-      <source src="/video/adsglt.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <!-- ------------------------ - END HOME - ------------------------ -->
-  <div class="wave1" id="about">
-    <!--    <img src="@/assets/img/wave.png" alt="">-->
-  </div>
-  <!-- ------------------------ - START ABOUT - ------------------------ -->
-  <div class="titleAboutAndVouch">
-    <h1>Why choose Saturne</h1>
-  </div>
-  <div class="about">
-    <div class="box">
-      <Icon name="mdi:wand" class="icon" />
-      <h3>FULLY CUSTOMIZABLE</h3>
-      <h5>
-        Express yourself in a unique way and create a modern,
-        personalized e-profile effortlessly with our many options.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="material-symbols:shield" class="icon"/>
-      <h3>INSURED PROTECTION</h3>
-      <h5>
-        Enjoy peace of mind with Saturne.lol's insured protection.
-        Your data and profile are safeguarded, ensuring a secure and worry-free experience.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="pepicons-pop:code" class="icon"/>
-      <h3>DEVELOPMENT</h3>
-      <h5>
-        Explore Saturne.lol and experience tShe result of meticulous development.
-        Our platform is crafted with precision, ensuring a seamless and efficient user experience for you.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="icon-park-outline:code-laptop" class="icon"/>
-      <h3>RESPONSIVE</h3>
-      <h5>
-        Experience seamless accessibility on any device with Saturne.lol's responsive design.
-        Your profile adapts effortlessly, providing an optimal viewing experience for everyone.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="material-symbols:globe" class="icon"/>
-      <h3>COMMUNITY APPROVAL</h3>
-      <h5>
-        Find out why Saturn.lol is so popular with our community.
-        Join us and experience the positive feedback and approval that sets us apart.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="bi:phone" class="icon"/>
-      <h3>SUPPORT 24/7</h3>
-      <h5>
-        Saturne provides 24/7 support to ensure that our customers receive
-        timely assistance wherever and whenever they need it.
-      </h5>
-    </div>
-  </div>
-
-
-  <!-- ------------------------ - END ABOUT - ------------------------ -->
-  <div class="wave2" id="premium">
-    <img src="/img/wave.png" alt="">
-  </div>
-  <!-- ------------------------ - START PLAN - ------------------------ -->
-  <div class="titlePlan">
-    <h1>Choose your plan</h1><br>
-  </div>
-  <div class="plan">
-    <div class="box">
-      <div class="flex">
-        <i class="fa-solid fa-seedling"></i>
-        <div class="texts">
-          <h1>Classic Plan</h1>
-          <h3>0.00€ - Lifetime</h3>
+        <div class="ReadMore">
+          <a href="/auth/login">Read More</a>
         </div>
       </div>
-      <h5>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Host 24/7<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Static images and bio<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Static images and bio<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        3 Linked Social Network<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Number of box available: 2<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Show amount of profil viewer<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Special Discord role on our serveur<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Image Background<br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        Premium Badge<br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        Cursor Effect <br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        Customizable font<br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        Video background<br>
-      </h5>
-      <a href="/login" id="btnPlan1">Get Started</a>
+      <video autoplay loop muted>
+        <source src="/video/adsglt.mp4" type="video/mp4">
+      </video>
     </div>
-    <div class="box">
-      <div class="flex">
-        <i class="fa-solid fa-star"></i>
-        <div class="texts">
-          <h1>Advanced Plan</h1>
-          <h3>1.00€/month</h3>
-        </div>
-      </div>
-      <h5>
-<!--        <font-awesome-icon :icon="['solid', 'info']" class="icon" id="info"/>-->
-        All previous functions<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Dynamique images and bio<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Number of box available: 4<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Premium Badge<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Cursor Effect <br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Customizable font<br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        4K Video background<br>
-      </h5>
-      <a href="" id="btnPlan2">Buy Now</a>
-    </div>
-    <div class="box">
-      <div class="flex">
-        <i class="fa-solid fa-gem"></i>
-        <div class="texts">
-          <h1>Premium Plan</h1>
-          <h3>2.50€/month</h3>
-        </div>
-      </div>
-      <h5>
-<!--        <font-awesome-icon :icon="['solid', 'info']" class="icon" id="info"/>-->
-        All previous functions<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Dynamique images and bio<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Number of box available: 6<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Premium Badge<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Cursor Effect <br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Customizable font<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        4K Video background<br>
-      </h5>
-      <a href="" id="btnPlan3">Buy Now</a>
-    </div>
-  </div>
-  <!-- ------------------------ - END PLAN - ------------------------ -->
-  <div class="wave3" id="vouches">
-    <img src="/img/wave.png" alt="">
-  </div>
-  <!-- ------------------------ - START VOUCHES - ------------------------ -->
-  <div class="titleAboutAndVouch">
-    <h1>Trusted by the community</h1>
-  </div>
-  <div class="vouches">
-    <div class="box">
-      <div class="flex">
-        <img src="/img/LL123.gif" alt="">
-        <div class="texts">
-          <h1>!"' LL123™</h1>
-          <h3>Owner du serveur NTM</h3>
-        </div>
-      </div>
-      <h5>
-        <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-        at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-        Libero, accusamus.
-        <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
-      </h5>
-    </div>
-    <div class="box">
-      <div class="flex">
-        <img src="/img/LL123.gif" alt="">
-        <div class="texts">
-          <h1>!"' LL123™</h1>
-          <h3>Owner du serveur NTM</h3>
-        </div>
-      </div>
-      <h5>
-        <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-        at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-        Libero, accusamus.
-        <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
-      </h5>
-    </div>
-    <div class="box">
-      <div class="flex">
-        <img src="/img/LL123.gif" alt="">
-        <div class="texts">
-          <h1>!"' LL123™</h1>
-          <h3>Owner du serveur NTM</h3>
-        </div>
-      </div>
-      <h5>
-        <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
-        <!--        <font-awesome-icon icon="fa-sold fa-quote-left" class="icon" id="quote-left"/>-->
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-        at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-        Libero, accusamus.
-        <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
-        <!--        <font-awesome-icon icon="fa-sold fa-quote-right" class="icon" id="quote-left"/>-->
-        <!--        <font-awesome-icon :icon="['fas', 'quote-left']" />-->
-<!--        <font-awesome-icon :icon="['fas', 'quote-left']"/>-->
-<!--        <font-awesome-icon :icon="['fab', 'twitter']" class="icon alt"/>-->
-      </h5>
-    </div>
-  </div>
 
-  <!-- ------------------------ - END VOUCHES - ------------------------ -->
-  <div class="wave4">
-    <img src="/img/wave.png" alt="">
-  </div>
-  <div class="wave5">
-    <img src="/img/wave.png" alt="">
-  </div>
-  <!-- ------------------------ - START FOOTER - ------------------------ -->
-  <div class="footer">
-    <div class="texts">
-      <div class="title">
-        <h3>Copyright © 2024 saturne.lol</h3>
+    <!-- ------------------------ - END HOME - ------------------------ -->
+    <div class="wave1" id="about">
+      <!--    <img src="@/assets/img/wave.png" alt="">-->
+    </div>
+    <!-- ------------------------ - START ABOUT - ------------------------ -->
+    <div class="titleAboutAndVouch">
+      <h1>Why choose Saturne</h1>
+    </div>
+    <div class="about">
+      <div class="box">
+        <Icon name="mdi:wand" class="icon"/>
+        <h3>FULLY CUSTOMIZABLE</h3>
+        <h5>
+          Express yourself in a unique way and create a modern,
+          personalized e-profile effortlessly with our many options.
+        </h5>
       </div>
-      <div class="links">
-        <a href="">Privacy</a>
-        <a href="">PolicyTerms of Service</a>
-        <a href="">Discord</a>
+      <div class="box">
+        <Icon name="material-symbols:shield" class="icon"/>
+        <h3>INSURED PROTECTION</h3>
+        <h5>
+          Enjoy peace of mind with Saturne.lol's insured protection.
+          Your data and profile are safeguarded, ensuring a secure and worry-free experience.
+        </h5>
+      </div>
+      <div class="box">
+        <Icon name="pepicons-pop:code" class="icon"/>
+        <h3>DEVELOPMENT</h3>
+        <h5>
+          Explore Saturne.lol and experience tShe result of meticulous development.
+          Our platform is crafted with precision, ensuring a seamless and efficient user experience for you.
+        </h5>
+      </div>
+      <div class="box">
+        <Icon name="icon-park-outline:code-laptop" class="icon"/>
+        <h3>RESPONSIVE</h3>
+        <h5>
+          Experience seamless accessibility on any device with Saturne.lol's responsive design.
+          Your profile adapts effortlessly, providing an optimal viewing experience for everyone.
+        </h5>
+      </div>
+      <div class="box">
+        <Icon name="material-symbols:globe" class="icon"/>
+        <h3>COMMUNITY APPROVAL</h3>
+        <h5>
+          Find out why Saturn.lol is so popular with our community.
+          Join us and experience the positive feedback and approval that sets us apart.
+        </h5>
+      </div>
+      <div class="box">
+        <Icon name="bi:phone" class="icon"/>
+        <h3>SUPPORT 24/7</h3>
+        <h5>
+          Saturne provides 24/7 support to ensure that our customers receive
+          timely assistance wherever and whenever they need it.
+        </h5>
       </div>
     </div>
-  </div>
+
+
+    <!-- ------------------------ - END ABOUT - ------------------------ -->
+    <div class="wave2" id="premium">
+      <img src="/img/wave.png" alt="">
+    </div>
+    <!-- ------------------------ - START PLAN - ------------------------ -->
+    <div class="titlePlan">
+      <h1>Choose your plan</h1><br>
+    </div>
+    <div class="plan">
+      <div class="box">
+        <div class="flex">
+          <i class="fa-solid fa-seedling"></i>
+          <div class="texts">
+            <h1>Classic Plan</h1>
+            <h3>0.00€ - Lifetime</h3>
+          </div>
+        </div>
+        <h5>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Host 24/7<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Static images and bio<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Static images and bio<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          3 Linked Social Network<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Number of box available: 2<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Show amount of profil viewer<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Special Discord role on our serveur<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Image Background<br>
+          <!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
+          Premium Badge<br>
+          <!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
+          Cursor Effect <br>
+          <!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
+          Customizable font<br>
+          <!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
+          Video background<br>
+        </h5>
+        <a href="/login" id="btnPlan1">Get Started</a>
+      </div>
+      <div class="box">
+        <div class="flex">
+          <i class="fa-solid fa-star"></i>
+          <div class="texts">
+            <h1>Advanced Plan</h1>
+            <h3>1.00€/month</h3>
+          </div>
+        </div>
+        <h5>
+          <!--        <font-awesome-icon :icon="['solid', 'info']" class="icon" id="info"/>-->
+          All previous functions<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Dynamique images and bio<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Number of box available: 4<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Premium Badge<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Cursor Effect <br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Customizable font<br>
+          <!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
+          4K Video background<br>
+        </h5>
+        <a href="" id="btnPlan2">Buy Now</a>
+      </div>
+      <div class="box">
+        <div class="flex">
+          <i class="fa-solid fa-gem"></i>
+          <div class="texts">
+            <h1>Premium Plan</h1>
+            <h3>2.50€/month</h3>
+          </div>
+        </div>
+        <h5>
+          <!--        <font-awesome-icon :icon="['solid', 'info']" class="icon" id="info"/>-->
+          All previous functions<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Dynamique images and bio<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Number of box available: 6<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Premium Badge<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Cursor Effect <br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          Customizable font<br>
+          <!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
+          4K Video background<br>
+        </h5>
+        <a href="" id="btnPlan3">Buy Now</a>
+      </div>
+    </div>
+    <!-- ------------------------ - END PLAN - ------------------------ -->
+    <div class="wave3" id="vouches">
+      <img src="/img/wave.png" alt="">
+    </div>
+    <!-- ------------------------ - START VOUCHES - ------------------------ -->
+    <div class="titleAboutAndVouch">
+      <h1>Trusted by the community</h1>
+    </div>
+    <div class="vouches">
+      <div class="box">
+        <div class="flex">
+          <img src="/img/LL123.gif" alt="">
+          <div class="texts">
+            <h1>!"' LL123™</h1>
+            <h3>Owner du serveur NTM</h3>
+          </div>
+        </div>
+        <h5>
+          <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+          at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+          Libero, accusamus.
+          <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
+        </h5>
+      </div>
+      <div class="box">
+        <div class="flex">
+          <img src="/img/LL123.gif" alt="">
+          <div class="texts">
+            <h1>!"' LL123™</h1>
+            <h3>Owner du serveur NTM</h3>
+          </div>
+        </div>
+        <h5>
+          <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+          at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+          Libero, accusamus.
+          <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
+        </h5>
+      </div>
+      <div class="box">
+        <div class="flex">
+          <img src="/img/LL123.gif" alt="">
+          <div class="texts">
+            <h1>!"' LL123™</h1>
+            <h3>Owner du serveur NTM</h3>
+          </div>
+        </div>
+        <h5>
+          <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
+          <!--        <font-awesome-icon icon="fa-sold fa-quote-left" class="icon" id="quote-left"/>-->
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+          at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+          Libero, accusamus.
+          <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
+          <!--        <font-awesome-icon icon="fa-sold fa-quote-right" class="icon" id="quote-left"/>-->
+          <!--        <font-awesome-icon :icon="['fas', 'quote-left']" />-->
+          <!--        <font-awesome-icon :icon="['fas', 'quote-left']"/>-->
+          <!--        <font-awesome-icon :icon="['fab', 'twitter']" class="icon alt"/>-->
+        </h5>
+      </div>
+    </div>
+
+    <!-- ------------------------ - END VOUCHES - ------------------------ -->
+    <div class="wave4">
+      <img src="/img/wave.png" alt="">
+    </div>
+    <div class="wave5">
+      <img src="/img/wave.png" alt="">
+    </div>
+    <!-- ------------------------ - START FOOTER - ------------------------ -->
+    <div class="footer">
+      <div class="texts">
+        <div class="title">
+          <h3>Copyright © 2024 saturne.lol</h3>
+        </div>
+        <div class="links">
+          <a href="">Privacy</a>
+          <a href="">PolicyTerms of Service</a>
+          <a href="">Discord</a>
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  user-select: none
-}
-
-body {
+main {
   background-color: #fac9ff;
   font-family: Peoppins, sans-serif;
   color: #000;

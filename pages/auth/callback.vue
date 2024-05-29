@@ -16,7 +16,7 @@ if (process.client) {
 
         console.log("token :", res?.token)
         document.cookie = `token=${token}; path=/`
-        window.location.href = '/dashboard/home'
+        window.location.href = '/dashboard/customize'
       });
 }
 </script>

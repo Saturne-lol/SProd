@@ -95,49 +95,55 @@ function clickToEnter(): any {
 </script>
 
 <template>
-  <div id="tempBackground" v-if="!isEnter">
-    <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
-  </div>
-  <!--  <video id="background" loop ref="videoElement">-->
-  <!--    <source src="/video/background.mp4" type="video/mp4">-->
-  <!--  </video>-->
-  <img src="/img/background.jpg" alt="background" id="background">
-  <!--  <div class="volume">-->
-  <!--        <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
-  <!--        <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
-  <!--    <button id="mute">-->
-  <!--      <Icon name="ph:speaker-simple-slash-fill" />-->
-  <!--    </button>-->
-  <!--  </div>-->
-  <div class="center" v-if="isEnter">
-    <div class="content" id="content">
-      <Profile :profile="profileData" :badges="badgesData"/>
+  <main>
+    <div id="tempBackground" v-if="!isEnter">
+      <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
+    </div>
+    <!--  <video id="background" loop ref="videoElement">-->
+    <!--    <source src="/video/background.mp4" type="video/mp4">-->
+    <!--  </video>-->
+    <img src="/img/background.jpg" alt="background" id="background">
+    <!--  <div class="volume">-->
+    <!--        <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
+    <!--        <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
+    <!--    <button id="mute">-->
+    <!--      <Icon name="ph:speaker-simple-slash-fill" />-->
+    <!--    </button>-->
+    <!--  </div>-->
+    <div class="center" v-if="isEnter">
+      <div class="content" id="content">
+        <Profile :profile="profileData" :badges="badgesData"/>
 
-      <UserBox :discord="dcProfileData"/>
-      <DiscordBox :discord="discordData" :pending="discordPending"/>
+        <UserBox :discord="dcProfileData"/>
+        <DiscordBox :discord="discordData" :pending="discordPending"/>
 
-      <div class="view">
-        <h3>
-          <Icon name="ic:sharp-remove-red-eye"/>
-          - In development
-        </h3>
-        <h5>views</h5>
+        <div class="view">
+          <h3>
+            <Icon name="ic:sharp-remove-red-eye"/>
+            - In development
+          </h3>
+          <h5>views</h5>
+        </div>
       </div>
     </div>
-  </div>
-  <!--  <div class="icons" id="icons" v-if="isEnter">-->
-  <!--    <div class="icon" v-for="social in profileData.socials">-->
-  <!--      <a :href="social.link" target="_blank"><img :src="'/img/social/'+social.type+'.png'" alt=""></a>-->
-  <!--      <h5>{{social.url}}</h5>-->
-  <!--    </div>-->
-  <!--  </div>-->
+    <!--  <div class="icons" id="icons" v-if="isEnter">-->
+    <!--    <div class="icon" v-for="social in profileData.socials">-->
+    <!--      <a :href="social.link" target="_blank"><img :src="'/img/social/'+social.type+'.png'" alt=""></a>-->
+    <!--      <h5>{{social.url}}</h5>-->
+    <!--    </div>-->
+    <!--  </div>-->
+  </main>
 </template>
 
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
-* {
+main {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  cursor: url(/img/cursor/cursor.png) 16 16, auto;
+
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -145,13 +151,6 @@ function clickToEnter(): any {
   user-select: none;
   color: #fff;
   font-family: 'Fira Code', monospace;
-}
-
-
-body {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  cursor: url(/img/cursor/cursor.png) 16 16, auto;
 }
 
 #tempBackground {

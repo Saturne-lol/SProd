@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "prisma generate && nuxt build",
-    "dev": "prisma generate && nuxt dev",
+    "dev": "prisma generate && nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -17,7 +17,8 @@
     "postgres": "^3.4.4",
     "url": "^0.11.3",
     "vue": "^3.4.27",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "stripe": "15.8.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.17.3",

@@ -17,6 +17,7 @@ model Account {
   last_ip     String?
   expires     DateTime  @default(now())
   beta        Boolean   @default(false)
+  admin       Boolean   @default(false)
   Setting     Setting[]
   Discord     Discord[]
   Social      Social[]
