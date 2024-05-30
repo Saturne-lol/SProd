@@ -24,7 +24,7 @@
 </template>
 
 <style scoped>
-.mainContainer .nav2 {
+.nav2 {
   display: none;
 }
 
@@ -34,30 +34,18 @@
   }
 
   @media screen and (max-width: 1300px) {
-    .mainContainer .nav {
-      display: none;
-    }
-
-    .mainContainer {
-      width: 100%;
-      height: 100%;
-      grid-template-columns: 1fr;
-      grid-template-rows: 30fr 1fr;
-      padding: 0px;
-    }
-
-    .mainContainer .nav2 {
+    .nav2 {
       display: block;
       margin-bottom: 20px;
     }
 
-    .mainContainer .nav2 .links ul {
+    .nav2 .links ul {
       display: flex;
       justify-content: space-between;
       text-align: center;
     }
 
-    .mainContainer .nav2 .links ul li {
+    .nav2 .links ul li {
       background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.4);
       padding: 5px;

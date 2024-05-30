@@ -43,8 +43,9 @@ const {data} = await useFetch("/api/account/get-user")
         <div class="profilSaturne">
           <img src="/img/404.png" alt="pp" width="80px">
           <div class="infoProfilSaturne">
-            <h4>{{data.username}}</h4>
-            <Icon name="basil:diamond-solid" class="Icon"/> PREMIUM
+            <h4>{{ data.username }}</h4>
+            <Icon name="basil:diamond-solid" class="Icon"/>
+            PREMIUM
           </div>
           <div class="menuProfilSaturne">
             <Icon name="ci:log-out" class="Icon"/>
@@ -56,32 +57,32 @@ const {data} = await useFetch("/api/account/get-user")
 </template>
 
 <style scoped>
-.mainContainer .nav {
+.nav {
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.041);
 }
 
-.mainContainer .nav .background {
+.nav .background {
   padding: 20px;
 }
 
-.mainContainer .nav .background {
+.nav .background {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.mainContainer .nav .background .title h1 {
+.nav .background .title h1 {
   font-size: 250%;
   padding: 30px;
 }
 
-.mainContainer .nav .background .links {
+.nav .background .links {
   flex-grow: 1;
 }
 
-.mainContainer .nav .background .links li{
+.nav .background .links li {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 10px 45px 10px 45px;
@@ -90,24 +91,24 @@ const {data} = await useFetch("/api/account/get-user")
   cursor: pointer;
 }
 
-.mainContainer .nav .background .links .Icon{
+.nav .background .links .Icon {
   margin-right: 20px;
 }
 
-.mainContainer .nav .background .profil {
+.nav .background .profil {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 20px;
   border-radius: 40px;
 }
 
-.mainContainer .nav .background .profil .profilSaturne {
+.nav .background .profil .profilSaturne {
   display: flex;
   align-items: center;
   white-space: nowrap;
 }
 
-.mainContainer .nav .background .profil .profilSaturne img {
+.nav .background .profil .profilSaturne img {
   width: 64px;
   height: auto;
   border-radius: 50%;
@@ -115,14 +116,20 @@ const {data} = await useFetch("/api/account/get-user")
   margin-right: 10px;
 }
 
-.mainContainer .nav .background .profil .infoProfilSaturne .Icon {
+.nav .background .profil .infoProfilSaturne .Icon {
   font-size: 18px;
   margin-right: 5px;
 }
 
-.mainContainer .nav .background .profil .menuProfilSaturne .Icon {
+.nav .background .profil .menuProfilSaturne .Icon {
   font-size: 20px;
   margin-left: 15px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1300px) {
+  .nav {
+    display: none;
+  }
 }
 </style>

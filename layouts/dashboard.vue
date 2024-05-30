@@ -20,7 +20,7 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
   </main>
 </template>
 
-<style>
+<style scoped>
 
 /* --------------------------------------- HOME --------------------------------------- */
 
@@ -39,8 +39,7 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
 }
 
 main {
-  overflow-y: hidden;
-  overflow-x: hidden;
+  overflow: hidden;
   height: 100%;
 }
 
@@ -52,6 +51,8 @@ main {
   grid-template-rows: 1fr;
   gap: 20px;
   padding: 20px;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .mainContainer .contentAndFooter {
@@ -66,6 +67,16 @@ main {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 1300px) {
+  .mainContainer {
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30fr 1fr;
+    padding: 0;
+  }
 }
 
 </style>
