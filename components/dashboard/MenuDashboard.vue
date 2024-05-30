@@ -44,10 +44,10 @@ const {data} = await useFetch("/api/account/get-user")
           <img src="/img/404.png" alt="pp" width="80px">
           <div class="infoProfilSaturne">
             <h4>{{data.username}}</h4>
-            <i class="fa-solid fa-gem"></i> PREMIUM
+            <Icon name="basil:diamond-solid" class="Icon"/> PREMIUM
           </div>
           <div class="menuProfilSaturne">
-            <i class="fa-solid fa-right-from-bracket"></i>
+            <Icon name="ci:log-out" class="Icon"/>
           </div>
         </div>
       </div>
@@ -115,11 +115,13 @@ const {data} = await useFetch("/api/account/get-user")
   margin-right: 10px;
 }
 
-.mainContainer .nav .background .profil .infoProfilSaturne i{
+.mainContainer .nav .background .profil .infoProfilSaturne .Icon {
+  font-size: 18px;
   margin-right: 5px;
 }
 
-.mainContainer .nav .background .profil .menuProfilSaturne i {
+.mainContainer .nav .background .profil .menuProfilSaturne .Icon {
+  font-size: 20px;
   margin-left: 15px;
   cursor: pointer;
 }

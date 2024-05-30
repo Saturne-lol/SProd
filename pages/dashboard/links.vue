@@ -22,77 +22,74 @@ definePageMeta({
   <div class="content">
     <div class="title">
       <div class="title1">
-        <i class="fa-solid fa-link"></i>
+        <Icon name="ph:link-simple-bold" class="Icon"/>
         <h2>Link your social media profiles.</h2>
       </div>
       <h4>Pick a social media to add to your profile.</h4>
     </div>
     <div class="links">
       <div class="box">
-        <h1><i class="fa-brands fa-snapchat"></i></h1>
+        <h1><Icon name="ph:snapchat-logo-fill" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-youtube"></i></h1>
+        <h1><Icon name="fa6-brands:youtube" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-discord"></i></h1>
+        <h1><Icon name="bi:discord" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-spotify"></i></h1>
+        <h1><Icon name="bi:spotify" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-instagram"></i></h1>
+        <h1><Icon name="bi:instagram" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-x-twitter"></i></h1>
+        <h1><Icon name="bi:twitter" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-tiktok"></i></h1>
+        <h1><Icon name="ic:twotone-tiktok" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-solid fa-paper-plane"></i></h1>
+        <h1><Icon name="mingcute:telegram-fill" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-paypal"></i></h1>
+        <h1><Icon name="bi:paypal" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-github"></i></h1>
+        <h1><Icon name="bi:github" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-linkedin-in"></i></h1>
+        <h1><Icon name="ci:linkedin" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-paypal"></i></h1>
+        <h1><Icon name="bi:steam" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-steam-symbol"></i></h1>
+        <h1><Icon name="bi:pinterest" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-pinterest-p"></i></h1>
+        <h1><Icon name="simple-icons:buymeacoffee" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-solid fa-mug-hot"></i></h1>
+        <h1><Icon name="cib:btc" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-btc"></i></h1>
+        <h1><Icon name="simple-icons:ethereum" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-ethereum"></i></h1>
+        <h1><Icon name="fa6-solid:litecoin-sign" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-solid fa-litecoin-sign"></i></h1>
+        <h1><Icon name="ph:threads-logo-bold" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-threads"></i></h1>
+        <h1><Icon name="simple-icons:deezer" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-deezer"></i></h1>
+        <h1><Icon name="bi:twitch" class="Icon"/></h1>
       </div>
       <div class="box">
-        <h1><i class="fa-brands fa-twitch"></i></h1>
-      </div>
-      <div class="box">
-        <h1><i class="fa-brands fa-facebook-f"></i></h1>
+        <h1><Icon name="bi:facebook" class="Icon"/></h1>
       </div>
     </div>
     <div class="inputs">
@@ -102,54 +99,54 @@ definePageMeta({
           PAREILLE POUR LES ADRESSES CRYPTO, ELLES UTILISE UN COPY PASTE ET NON UN LIEN.
       -->
       <div class="box">
-        <i class="fa-brands fa-snapchat"></i>
+        <Icon name="material-symbols:emoticon" class="Icon"/>
         <input type="text" value="snapchat.com/add/" readonly>
         <div class="switch">
           <input class="input" id="snapchat" type="checkbox">
           <label class="label" for="snapchat"></label>
         </div>
-        <a href=""><i class="fa-solid fa-pen" id="modif"></i></a>
-        <a href=""><i class="fa-solid fa-trash" id="suppr"></i></a>
+        <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
+        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
       <div class="box">
-        <i class="fa-brands fa-youtube"></i>
+        <Icon name="material-symbols:emoticon" class="Icon"/>
         <input type="text" value="youtube.com/channel/" readonly>
         <div class="switch">
           <input class="input" id="youtube" type="checkbox">
           <label class="label" for="youtube"></label>
         </div>
-        <a href=""><i class="fa-solid fa-pen" id="modif"></i></a>
-        <a href=""><i class="fa-solid fa-trash" id="suppr"></i></a>
+        <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
+        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
       <div class="box">
-        <i class="fa-brands fa-discord"></i>
+        <Icon name="material-symbols:emoticon" class="Icon"/>
         <input type="text" value=".inaudible" readonly>
         <div class="switch">
           <input class="input" id="discord" type="checkbox">
           <label class="label" for="discord"></label>
         </div>
-        <a href=""><i class="fa-solid fa-pen" id="modif"></i></a>
-        <a href=""><i class="fa-solid fa-trash" id="suppr"></i></a>
+        <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
+        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
       <div class="box">
-        <i class="fa-brands fa-btc"></i>
+        <Icon name="material-symbols:emoticon" class="Icon"/>
         <input type="text" value="ADRESSE BTC DE L'UTILISATEUR" readonly>
         <div class="switch">
           <input class="input" id="btc" type="checkbox">
           <label class="label" for="btc"></label>
         </div>
-        <a href=""><i class="fa-solid fa-pen" id="modif"></i></a>
-        <a href=""><i class="fa-solid fa-trash" id="suppr"></i></a>
+        <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
+        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
       <div class="box">
-        <i class="fa-brands fa-ethereum"></i>
+        <Icon name="material-symbols:emoticon" class="Icon"/>
         <input type="text" value="ADRESSE BTC DE L'UTILISATEUR" readonly>
         <div class="switch">
           <input class="input" id="ethereum" type="checkbox">
           <label class="label" for="ethereum"></label>
         </div>
-        <a href=""><i class="fa-solid fa-pen" id="modif"></i></a>
-        <a href=""><i class="fa-solid fa-trash" id="suppr"></i></a>
+        <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
+        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
     </div>
   </div>
@@ -169,7 +166,7 @@ definePageMeta({
   align-items: center;
 }
 
-.content .title .title1 i {
+.content .title .title1 .Icon {
   font-size: 130%;
   margin-right: 15px;
 }
@@ -211,16 +208,15 @@ definePageMeta({
   border-radius: 15px;
 }
 
-.content .inputs .box i {
+.content .inputs .box .Icon {
   font-size: 150%;
   margin-left: 10px;
 }
 
 .content .inputs .box #modif,
 .content .inputs .box #suppr {
-  font-size: 100%;
-  margin-left: 0px;
-  margin-right: 0px;
+  font-size: 18px;
+  padding: px;
 }
 
 .content .inputs .box input[type='text'] {
@@ -355,7 +351,7 @@ definePageMeta({
 }
 
 @media screen and (max-width: 450px) {
-  .content .title .title1 i {
+  .content .title .title1 .Icon {
     font-size: 100%;
   }
   .content .title .title1 h2 {
