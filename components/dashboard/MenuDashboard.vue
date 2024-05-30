@@ -1,5 +1,13 @@
 <script setup lang="ts">
-const {data} = await useFetch("/api/account/get-user")
+import type {Ref} from "vue";
+
+const {data} = await useFetch("/api/account/get-nav") as {
+  data: Ref<[{
+    username: string,
+    avatar: string,
+    plan: string
+  }]>
+}
 </script>
 
 <template>
@@ -41,14 +49,14 @@ const {data} = await useFetch("/api/account/get-user")
       <!-- 3 -->
       <div class="profil">
         <div class="profilSaturne">
-          <img src="/img/404.png" alt="pp" width="80px">
+          <img :src="data.avatar" alt="pp" width="80px">
           <div class="infoProfilSaturne">
             <h4>{{ data.username }}</h4>
             <Icon name="basil:diamond-solid" class="Icon"/>
             PREMIUM
           </div>
           <div class="menuProfilSaturne">
-            <Icon name="ci:log-out" class="Icon"/>
+            <a href="/auth/logout"><Icon name="ci:log-out" class="Icon"/></a>
           </div>
         </div>
       </div>

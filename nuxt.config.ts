@@ -11,5 +11,5 @@ export default defineNuxtConfig({
         excludeClassNames: [/^nuxt-.*$/, /^vue-.*$/, /^.*?(-enter.*|-leave.*)$/],
         dev: false,
     },
-    components: true
+    components: true,
 })
