@@ -14,25 +14,25 @@ const {data} = await useFetch("/api/account/get-user")
         <ul>
           <a href="/dashboard/customize">
             <li>
-              <Icon name="fa6-solid:paintbrush"/>
+              <Icon name="fa6-solid:paintbrush" class="Icon"/>
               CUSTOMIZE
             </li>
           </a>
           <a href="/dashboard/links">
             <li>
-              <Icon name="ph:link-simple-bold"/>
+              <Icon name="ph:link-simple-bold" class="Icon"/>
               YOUR LINKS
             </li>
           </a>
           <a href="/dashboard/stats">
             <li>
-              <Icon name="ion:stats-chart"/>
+              <Icon name="ion:stats-chart" class="Icon"/>
               YOUR STATS
             </li>
           </a>
           <a href="/dashboard/contact">
             <li>
-              <Icon name="material-symbols:alternate-email-rounded"/>
+              <Icon name="material-symbols:alternate-email-rounded" class="Icon"/>
               CONTACT US
             </li>
           </a>
@@ -90,7 +90,7 @@ const {data} = await useFetch("/api/account/get-user")
   cursor: pointer;
 }
 
-.mainContainer .nav .background .links i{
+.mainContainer .nav .background .links .Icon{
   margin-right: 20px;
 }
 

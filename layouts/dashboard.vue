@@ -55,7 +55,6 @@ main {
 }
 
 .mainContainer .contentAndFooter {
-  /* border-radius: 40px; */
   overflow-y: auto;
   overflow-x: auto;
 }

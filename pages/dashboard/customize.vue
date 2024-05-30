@@ -22,62 +22,63 @@ definePageMeta({
     <div class="box" id="customizeBox1">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-globe"></i>
+          <Icon name="ph:planet-fill" class="Icon"/>
           <h3>DOMAINE AND PSEUDO</h3>
         </div>
         <div class="info">
           <h4>saturne.lol/ad</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox2">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-user"></i>
+          <Icon name="ph:person-arms-spread-fill" class="Icon"/>
           <h3>DISPLAY NAME</h3>
         </div>
         <div class="info">
           <h4>AD</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox3">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-question"></i>
+          <Icon name="fa6-solid:quote-left" class="Icon"/>
           <h3>QUOTES</h3>
         </div>
         <div class="info">
           <h4>[QUOTES SATURNE]</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox4">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-question"></i>
+          <Icon name="pajamas:information" class="Icon"/>
           <h3>DESCRIPTION</h3>
         </div>
         <div class="info">
           <h4>[DESCRIPTION SATURNE]</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox5">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-question"></i>
+          <Icon name="ic:baseline-insert-photo" class="Icon"/>
           <h3>PROFIL PICTURE</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="filePP">
-            <a href=""><i class="fa-solid fa-xmark" id="boxClose"></i></a>
+            
+            <a href=""><Icon name="maki:cross" id="boxClose"/></a>
             <div class="icon">
-              <i class="fa-solid fa-image"></i>
+              <Icon name="ic:baseline-insert-photo" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload image</span>
@@ -90,14 +91,14 @@ definePageMeta({
     <div class="box" id="customizeBox6">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-arrow-pointer"></i>
+          <Icon name="iconamoon:cursor-light" class="Icon"/>
           <h3>CURSOR</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="fileCursor">
-            <a href=""><i class="fa-solid fa-xmark" id="boxClose"></i></a>
+            <a href=""><Icon name="maki:cross" id="boxClose"/></a>
             <div class="icon">
-              <i class="fa-solid fa-image"></i>
+              <Icon name="iconamoon:cursor-light" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload image</span>
@@ -110,15 +111,15 @@ definePageMeta({
     <div class="box" id="customizeBox7">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-music"></i>
+          <Icon name="fluent:speaker-24-filled" class="Icon"/>
           <h3>AUDIO</h3>
         </div>
         <!-- J'AI PAS FAIS DE LECTEUR MP3 ENCORE, JE VAIS LE FAIRE, DONC PASSE A AUTRE CHOSE LE TEMPS QUE JE LE FASSE -->
         <div class="dragDrop">
           <label class="uploadFile" for="audio">
-            <a href=""><i class="fa-solid fa-xmark" id="boxClose"></i></a>
+            <a href=""><Icon name="maki:cross" id="boxClose"/></a>
             <div class="icon">
-              <i class="fa-solid fa-volume-high"></i>
+              <Icon name="fluent:speaker-24-filled" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload audio</span>
@@ -131,14 +132,14 @@ definePageMeta({
     <div class="box" id="customizeBox8">
       <div class="padding">
         <div class="title">
-          <i class="fa-regular fa-image"></i>
+          <Icon name="ic:baseline-insert-photo" class="Icon"/>
           <h3>BACKGROUND</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="fileBackground">
-            <a href=""><i class="fa-solid fa-xmark" id="boxClose"></i></a>
+            <a href=""><Icon name="maki:cross" id="boxClose"/></a>
             <div class="icon">
-              <i class="fa-solid fa-image"></i>
+              <Icon name="ic:baseline-insert-photo" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload image</span>
@@ -151,71 +152,71 @@ definePageMeta({
     <div class="box" id="customizeBox9">
       <div class="padding">
         <div class="title">
-          <i class="fa-brands fa-discord"></i>
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°1 (PROFIL)</h3>
         </div>
         <div class="connexion">
-          <h4>.inaudible (123171317456306177) <i class="fa-solid fa-check"></i></h4>
+          <h4>.inaudible (123171317456306177) <Icon name="bi:check-circle" id="check"/></h4>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox10">
       <div class="padding">
         <div class="title">
-          <i class="fa-brands fa-discord"></i>
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°2 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/campement</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox11">
       <div class="padding">
         <div class="title">
-          <i class="fa-brands fa-discord"></i>
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°3 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox12">
       <div class="padding">
         <div class="title">
-          <i class="fa-brands fa-discord"></i>
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°4 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox13">
       <div class="padding">
         <div class="title">
-          <i class="fa-brands fa-discord"></i>
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°5 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox14">
       <div class="padding">
         <div class="title">
-          <i class="fa-brands fa-discord"></i>
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°6 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
@@ -223,19 +224,19 @@ definePageMeta({
     <div class="box" id="customizeBox15">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-question"></i>
+          <Icon name="streamline:emergency-exit-solid" class="Icon"/>
           <h3>ENTRY MESSAGE</h3>
         </div>
         <div class="info">
           <h4>Click to enter ...</h4>
-          <i class="fa-solid fa-pen" id="modif"></i>
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
     </div>
     <div class="box" id="customizeBox16">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-eye"></i>
+          <Icon name="mdi:eye" class="Icon"/>
           <h3>VIEWS</h3>
         </div>
         <div class="info">
@@ -251,15 +252,12 @@ definePageMeta({
       <div class="soon">
         <div class="padding">
           <div class="title">
-            <i class="fa-brands fa-spotify"></i>
+            <Icon name="bi:spotify" class="Icon"/>
             <h3>SPOTIFY</h3>
           </div>
           <div class="dragDrop">
             <div class="connexion">
-              <!--
-              <a href=""><i class="fa-brands fa-spotify"></i> LINK ACCOUNT</a>
-              -->
-              <h4>AD.sglt <i class="fa-solid fa-check"></i></h4>
+              <h4>AD.sglt <Icon name="bi:check-circle" id="check"/></h4>
             </div>
           </div>
         </div>
@@ -268,14 +266,14 @@ definePageMeta({
     <div class="box" id="customizeBox18">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-font"></i>
+          <Icon name="mingcute:font-fill" class="Icon"/>
           <h2>FONT</h2>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="font">
-            <a href=""><i class="fa-solid fa-xmark" id="boxClose"></i></a>
+            <a href=""><Icon name="maki:cross" id="boxClose"/></a>
             <div class="icon">
-              <i class="fa-solid fa-font"></i>
+              <Icon name="nimbus:font" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload font</span>
@@ -288,7 +286,7 @@ definePageMeta({
     <div class="box" id="customizeBox19">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-palette"></i>
+          <Icon name="iconoir:fill-color-solid" class="Icon"/>
           <h2>COLOR</h2>
         </div>
         <div class="color">
@@ -334,13 +332,13 @@ definePageMeta({
     <div class="box" id="customizeBox20">
       <div class="padding">
         <div class="title">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <Icon name="ph:magic-wand-fill" class="Icon"/>
           <h2>GLOW EFFECT</h2>
         </div>
         <div class="effect">
           <label for="ProfilPictureOutlineColor">Display Name Glow :</label>
           <div class="info">
-            <i class="fa-solid fa-user"></i>
+            <Icon name="ph:person-arms-spread-fill" class="Icon"/>
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
@@ -353,7 +351,7 @@ definePageMeta({
           </div>
           <label for="ProfilPictureOutlineColor">Quote Glow :</label>
           <div class="info">
-            <i class="fa-solid fa-question"></i>
+            <Icon name="fa6-solid:quote-left" class="Icon"/>
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
@@ -366,7 +364,7 @@ definePageMeta({
           </div>
           <label for="ProfilPictureOutlineColor">Description Glow :</label>
           <div class="info">
-            <i class="fa-solid fa-question"></i>
+            <Icon name="pajamas:information" class="Icon"/> 
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
@@ -379,7 +377,7 @@ definePageMeta({
           </div>
           <label for="ProfilPictureOutlineColor">Box Glow :</label>
           <div class="info">
-            <i class="fa-brands fa-discord"></i>
+            <Icon name="akar-icons:discord-fill" class="Icon"/>
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
@@ -433,7 +431,7 @@ definePageMeta({
   margin-bottom: 20px;
 }
 
-.content .box .padding .title i {
+.content .box .padding .title .Icon {
   margin-right: 10px;
 }
 
@@ -453,7 +451,8 @@ definePageMeta({
 }
 
 .content .box .padding .info #modif {
-  padding: 7px;
+  font-size: 30px;
+  padding: 4px;
   border-radius: 10px;
   margin-left: 5px;
   transition: 0.3s ease;
@@ -577,7 +576,7 @@ definePageMeta({
   justify-content: center;
 }
 
-.content .box .padding .dragDrop .uploadFile .icon i {
+.content .box .padding .dragDrop .uploadFile .icon .Icon {
   font-size: 500%;
   fill: #fff;
 }
@@ -607,7 +606,7 @@ definePageMeta({
   border-radius: 10px;
 }
 
-.content .box .padding .connexion i {
+.content .box .padding .connexion #check{
   color: #bc6bff;
   margin-right: 5px;
   margin-left: 6px;
@@ -665,7 +664,7 @@ definePageMeta({
   border-radius: 10px;
 }
 
-.content .box .padding .effect .info i {
+.content .box .padding .effect .info .Icon {
   margin-left: 6px;
   margin-right: 12px;
 }
