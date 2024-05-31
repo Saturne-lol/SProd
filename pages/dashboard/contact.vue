@@ -12,7 +12,7 @@ import MenuPhoneDashboard from "~/components/dashboard/MenuPhoneDashboard.vue";
 </template>
 
 <style scoped>
-.mainContainer .contentAndFooter .background .content {
+.content {
   flex-grow: 1;
 }
 </style>

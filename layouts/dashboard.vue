@@ -5,8 +5,9 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
 </script>
 
 <template>
-  <main>
     <video src="/public/video/dashboard.mp4" id="background" autoplay loop muted></video>
+
+
     <div class="mainContainer">
       <MenuDashboard/>
       <div class="contentAndFooter">
@@ -17,12 +18,21 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
       </div>
       <MenuPhoneDashboard/>
     </div>
-  </main>
+
+    
 </template>
 
 <style scoped>
 
-/* --------------------------------------- HOME --------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    box-sizing : border-box;
+}
 
 #background {
   width: 100vw;
@@ -35,11 +45,11 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
   bottom: 0;
   z-index: -1;
   filter: brightness(0.30);
-
 }
 
-main {
-  overflow: hidden;
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
   height: 100%;
 }
 
@@ -51,8 +61,6 @@ main {
   grid-template-rows: 1fr;
   gap: 20px;
   padding: 20px;
-  overflow-y: hidden;
-  overflow-x: hidden;
 }
 
 .mainContainer .contentAndFooter {
@@ -61,9 +69,7 @@ main {
 }
 
 .mainContainer .contentAndFooter .background {
-  /* padding: 40px; */
   padding: 10px;
-  /* PERMET flex-grow: 1 */
   height: 100%;
   display: flex;
   flex-direction: column;
