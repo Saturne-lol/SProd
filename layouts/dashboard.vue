@@ -7,17 +7,19 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
 <template>
     <video src="/public/video/dashboard.mp4" id="background" autoplay loop muted></video>
 
-
-    <div class="mainContainer">
-      <MenuDashboard/>
-      <div class="contentAndFooter">
-        <div class="background">
-          <NuxtPage/>
-          <FooterDashboard/>
+    <div id="body">
+      <div class="mainContainer">
+        <MenuDashboard/>
+        <div class="contentAndFooter">
+          <div class="background">
+            <NuxtPage/>
+            <FooterDashboard/>
+          </div>
         </div>
+        <MenuPhoneDashboard/>
       </div>
-      <MenuPhoneDashboard/>
     </div>
+
 
     
 </template>
@@ -47,10 +49,13 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
   filter: brightness(0.30);
 }
 
-body {
-  overflow-y: hidden;
-  overflow-x: hidden;
-  height: 100%;
+#body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mainContainer {

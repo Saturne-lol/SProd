@@ -52,11 +52,13 @@ const {data} = await useFetch("/api/account/get-nav") as {
           <img :src="data.avatar" alt="pp" width="80px">
           <div class="infoProfilSaturne">
             <h4>{{ data.username }}</h4>
-            <Icon name="basil:diamond-solid" class="Icon"/>
-            PREMIUM
+            <div class="infoProfilSaturneAbonement">
+              <Icon name="basil:diamond-solid" class="Icon"/>
+              <h4>PREMIUM</h4>
+            </div>
           </div>
           <div class="menuProfilSaturne">
-            <a href="/auth/logout"><Icon name="ci:log-out" class="Icon"/></a>
+            <a href="/auth/logout"><Icon name="lucide:log-out" class="Icon"/></a>
           </div>
         </div>
       </div>
@@ -124,9 +126,19 @@ const {data} = await useFetch("/api/account/get-nav") as {
   margin-right: 10px;
 }
 
-.nav .background .profil .infoProfilSaturne .Icon {
+.nav .background .profil .infoProfilSaturne .infoProfilSaturneAbonement {
+  display: flex;
+  align-items: center;
+}
+
+.nav .background .profil .infoProfilSaturne .infoProfilSaturneAbonement .Icon {
   font-size: 18px;
   margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+.nav .background .profil .infoProfilSaturne .infoProfilSaturneAbonement h4 {
+  font-weight: 300;
 }
 
 .nav .background .profil .menuProfilSaturne .Icon {

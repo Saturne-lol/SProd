@@ -6,17 +6,29 @@
   <div class="nav2">
     <div class="links">
       <ul>
-        <a href="customize.html">
-          <li><i class="fa-solid fa-paintbrush"></i></li>
+        <a href="/dashboard/customize">
+          <li>
+            <Icon name="fa6-solid:paintbrush" class="Icon" />
+            <h5>CUSTOMIZE</h5>
+          </li>
         </a>
-        <a href="links.html">
-          <li><i class="fa-solid fa-link"></i></li>
+        <a href="/dashboard/links">
+          <li>
+            <Icon name="ph:link-simple-bold" class="Icon" />
+            <h5>YOUR LINKS</h5>
+          </li>
         </a>
-        <a href="stats.html">
-          <li><i class="fa-solid fa-chart-simple"></i></li>
+        <a href="/dashboard/stats">
+          <li>
+            <Icon name="ion:stats-chart" class="Icon" />
+            <h5>YOUR STATS</h5>
+          </li>
         </a>
-        <a href="contact.html">
-          <li><i class="fa-solid fa-at"></i></li>
+        <a href="/dashboard/contact">
+          <li>
+            <Icon name="material-symbols:alternate-email-rounded" class="Icon" />
+            <h5>CONTACT US</h5>
+          </li>
         </a>
       </ul>
     </div>
@@ -37,22 +49,48 @@
     .nav2 {
       display: block;
       margin-bottom: 20px;
+      border-radius: 40px;
+      background-color: rgba(255, 255, 255, 0.041);
+      margin-left: 10px;
+      margin-right: 10px;
     }
 
     .nav2 .links ul {
       display: flex;
-      justify-content: space-between;
-      text-align: center;
+      justify-content: space-around;
+      align-items: center;
     }
 
     .nav2 .links ul li {
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      padding: 5px;
-      border-radius: 15px;
-      cursor: pointer;
-      margin-left: 30px;
-      margin-right: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .nav2 .links ul li:hover {
+      background-color: rgba(255, 255, 255, 0.041);
+      border-radius: 20px;
+    }
+
+    .nav2 .links ul li .Icon {
+      font-size: 200%;
+      margin-bottom: 10px;
+    }
+
+    .nav2 .links ul li h5 {
+      font-size: 70%;
+      font-weight: 500;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .nav2 .links ul li .Icon {
+      font-size: 150%;
+    }
+
+    .nav2 .links ul li h5 {
+      font-size: 60%;
     }
   }
 }
