@@ -28,6 +28,7 @@ export async function checkToken(event: H3Event): Promise<{
             await prisma.account.create({
                 data: {
                     id: resDsc.data.id,
+                    username: resDsc.data.global_name,
                 }
             })
             await prisma.setting.create({
