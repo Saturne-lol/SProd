@@ -134,7 +134,7 @@ function clickToEnter(): any {
   </main>
 </template>
 
-<style>
+<style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
