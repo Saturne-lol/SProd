@@ -2,6 +2,19 @@
 import MenuPhoneDashboard from "~/components/dashboard/MenuPhoneDashboard.vue";
 import FooterDashboard from "~/components/dashboard/FooterDashboard.vue";
 import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
+
+useSeoMeta({
+  title: "Dashboard - Saturne.lol",
+  description: 'Saturne.lol dashboard, manage your profile and settings !',
+  ogTitle: "Dashboard - Saturne.lol",
+  ogDescription: 'Saturne.lol dashboard, manage your profile and settings !',
+  ogImage: '[og:image]',
+  ogUrl: '[og:url]',
+  twitterTitle: '[twitter:title]',
+  twitterDescription: '[twitter:description]',
+  twitterImage: '[twitter:image]',
+  twitterCard: 'summary'
+})
 </script>
 
 <template>
@@ -19,9 +32,6 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
         <MenuPhoneDashboard/>
       </div>
     </div>
-
-
-    
 </template>
 
 <style scoped>
