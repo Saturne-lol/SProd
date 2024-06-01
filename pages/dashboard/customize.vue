@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
+import type {Ref} from "vue";
+import {$fetch} from "ofetch";
 
-const { data } = await useFetch("/api/account/get-customize") as {
+interface Customize {
   data: Ref<{
     url: string,
     username: string,
@@ -10,13 +11,76 @@ const { data } = await useFetch("/api/account/get-customize") as {
     discord: {
       invite: string,
       index: number,
-    }[]
+    }[],
+    linked: string | null,
+    enter: string,
+    views: boolean,
   }>
 }
+
+let {data} = await useFetch("/api/account/get-customize") as Customize
 
 definePageMeta({
   layout: 'dashboard',
 })
+
+const activeModal = ref("") as Ref<string>
+
+function openModal(modal: string) {
+  activeModal.value = modal
+}
+
+function closeModal() {
+  activeModal.value = ""
+}
+
+function singleModalAction() {
+  const dataIn = document.getElementById("singleModalInput").value
+  $fetch(`/api/account/update-${activeModal.value}`, {
+    method: "POST",
+    body: JSON.stringify({data: dataIn})
+  }).then((res) => {
+    if (res) {
+      data.value[activeModal.value] = dataIn
+    } else {
+      alert("An error occurred")
+    }
+    closeModal()
+  })
+}
+
+function viewState() {
+  const view = document.getElementById("view").checked
+  $fetch("/api/account/update-view", {
+    method: "POST",
+    body: JSON.stringify({view})
+  })
+}
+
+function placeHolderText() {
+  switch (activeModal.value) {
+    case "url":
+      return "Enter a url"
+    case "username":
+      return "Enter a username"
+    case "bio":
+      return "Enter a bio"
+    case "enter":
+      return "Enter a welcome message"
+  }
+}
+
+if (process.client) {
+  if (singleModalAction) {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") return singleModalAction()
+      if (e.key === "Escape") return closeModal()
+    })
+    document.addEventListener("click", (e) => {
+      if (e.target === document.querySelector(".modal")) return closeModal()
+    })
+  }
+}
 </script>
 
 <template>
@@ -24,65 +88,65 @@ definePageMeta({
     <div class="box" id="customizeBox1">
       <div class="padding">
         <div class="title">
-          <Icon name="ph:planet-fill" class="Icon" />
+          <Icon name="ph:planet-fill" class="Icon"/>
           <h3>DOMAINE AND PSEUDO</h3>
         </div>
         <div class="info">
           <h4>saturne.lol/{{ data.url }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('url')"/>
         </div>
       </div>
-    </div>
+    </div> <!-- Domaine and Pseudo -->
     <div class="box" id="customizeBox2">
       <div class="padding">
         <div class="title">
-          <Icon name="ph:person-arms-spread-fill" class="Icon" />
+          <Icon name="ph:person-arms-spread-fill" class="Icon"/>
           <h3>DISPLAY NAME</h3>
         </div>
         <div class="info">
           <h4>{{ data.username }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('username')"/>
         </div>
       </div>
-    </div>
+    </div> <!-- Display Name -->
     <div class="box" id="customizeBox3">
       <div class="padding">
         <div class="title">
-          <Icon name="fa6-solid:quote-left" class="Icon" />
+          <Icon name="fa6-solid:quote-left" class="Icon"/>
           <h3>QUOTES</h3>
         </div>
         <div class="info">
           <h4>[QUOTES SATURNE]</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('quotes')"/>
         </div>
       </div>
-    </div>
-    <div class="box" id="customizeBox4">
+    </div> <!-- Quotes -->
+    <div class="box" id="customizeBox4"> <!-- Bio -->
       <div class="padding">
         <div class="title">
-          <Icon name="pajamas:information" class="Icon" />
+          <Icon name="pajamas:information" class="Icon"/>
           <h3>DESCRIPTION</h3>
         </div>
         <div class="info">
           <h4>{{ data.bio }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('bio')"/>
         </div>
       </div>
-    </div>
+    </div> <!-- Description -->
     <div class="box" id="customizeBox5">
       <div class="padding">
         <div class="title">
-          <Icon name="ic:baseline-insert-photo" class="Icon" />
+          <Icon name="ic:baseline-insert-photo" class="Icon"/>
           <h3>PROFIL PICTURE</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="filePP">
 
             <a href="">
-              <Icon name="maki:cross" id="boxClose" />
+              <Icon name="maki:cross" id="boxClose"/>
             </a>
             <div class="icon">
-              <Icon name="ic:baseline-insert-photo" class="Icon" />
+              <Icon name="ic:baseline-insert-photo" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload image</span>
@@ -91,20 +155,20 @@ definePageMeta({
           </label>
         </div>
       </div>
-    </div>
+    </div> <!-- Profil Picture -->
     <div class="box" id="customizeBox6">
       <div class="padding">
         <div class="title">
-          <Icon name="iconamoon:cursor-light" class="Icon" />
+          <Icon name="iconamoon:cursor-light" class="Icon"/>
           <h3>CURSOR</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="fileCursor">
             <a href="">
-              <Icon name="maki:cross" id="boxClose" />
+              <Icon name="maki:cross" id="boxClose"/>
             </a>
             <div class="icon">
-              <Icon name="iconamoon:cursor-light" class="Icon" />
+              <Icon name="iconamoon:cursor-light" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload image</span>
@@ -113,21 +177,21 @@ definePageMeta({
           </label>
         </div>
       </div>
-    </div>
+    </div> <!-- Cursor -->
     <div class="box" id="customizeBox7">
       <div class="padding">
         <div class="title">
-          <Icon name="fluent:speaker-24-filled" class="Icon" />
+          <Icon name="fluent:speaker-24-filled" class="Icon"/>
           <h3>AUDIO</h3>
         </div>
         <!-- J'AI PAS FAIS DE LECTEUR MP3 ENCORE, JE VAIS LE FAIRE, DONC PASSE A AUTRE CHOSE LE TEMPS QUE JE LE FASSE -->
         <div class="dragDrop">
           <label class="uploadFile" for="audio">
             <a href="">
-              <Icon name="maki:cross" id="boxClose" />
+              <Icon name="maki:cross" id="boxClose"/>
             </a>
             <div class="icon">
-              <Icon name="fluent:speaker-24-filled" class="Icon" />
+              <Icon name="fluent:speaker-24-filled" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload audio</span>
@@ -136,20 +200,20 @@ definePageMeta({
           </label>
         </div>
       </div>
-    </div>
+    </div> <!-- Audio (pas fonctionnel avant beta@0.2.0) -->
     <div class="box" id="customizeBox8">
       <div class="padding">
         <div class="title">
-          <Icon name="ic:baseline-insert-photo" class="Icon" />
+          <Icon name="ic:baseline-insert-photo" class="Icon"/>
           <h3>BACKGROUND</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="fileBackground">
             <a href="">
-              <Icon name="maki:cross" id="boxClose" />
+              <Icon name="maki:cross" id="boxClose"/>
             </a>
             <div class="icon">
-              <Icon name="ic:baseline-insert-photo" class="Icon" />
+              <Icon name="ic:baseline-insert-photo" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload image</span>
@@ -158,137 +222,137 @@ definePageMeta({
           </label>
         </div>
       </div>
-    </div>
+    </div> <!-- Background -->
     <div class="box" id="customizeBox9">
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°1 (PROFIL)</h3>
         </div>
-        <div class="connexion">
-          <h4>.inaudible (123171317456306177)
-            <Icon name="bi:check-circle" id="check" />
+        <div class="connexion" v-if="data.linked">
+          <h4>{{ data.linked }}
+            <Icon name="bi:check-circle" id="check"/>
           </h4>
         </div>
       </div>
-    </div>
+    </div> <!-- Box 1 Profil -->
     <div class="box" id="customizeBox10">
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°2 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/{{ data?.discord[0]?.invite || "" }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
-    </div>
-    <div class="box" id="customizeBox11" v-if="data.plan >= 1">
+    </div> <!-- Box 2 Server -->
+    <div class="box" id="customizeBox11" v-bind:aria-disabled="data.plan >= 1">
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°3 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
-    </div>
-    <div class="box" id="customizeBox12" v-if="data.plan >= 1">
+    </div> <!-- Box 3 Server -->
+    <div class="box" id="customizeBox12" v-bind:aria-disabled="data.plan >= 1">
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°4 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
-    </div>
-    <div class="box" id="customizeBox13" v-if="data.plan >= 2">
+    </div> <!-- Box 4 Server -->
+    <div class="box" id="customizeBox13" v-bind:aria-disabled="data.plan >= 2">
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°5 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
-    </div>
-    <div class="box" id="customizeBox14" v-if="data.plan >= 2">
+    </div> <!-- Box 5 Server -->
+    <div class="box" id="customizeBox14" v-bind:aria-disabled="data.plan >= 2">
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°6 (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
-    </div>
+    </div> <!-- Box 6 Server -->
     <div class="box" id="customizeBox15">
       <div class="padding">
         <div class="title">
-          <Icon name="streamline:emergency-exit-solid" class="Icon" />
+          <Icon name="streamline:emergency-exit-solid" class="Icon"/>
           <h3>ENTRY MESSAGE</h3>
         </div>
         <div class="info">
-          <h4>Click to enter ...</h4>
-          <Icon name="ic:baseline-edit" id="modif" />
+          <h4>{{ data.enter }}</h4>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('enter')"/>
         </div>
       </div>
-    </div>
+    </div> <!-- Entry Message -->
     <div class="box" id="customizeBox16">
       <div class="padding">
         <div class="title">
-          <Icon name="mdi:eye" class="Icon" />
+          <Icon name="mdi:eye" class="Icon"/>
           <h3>VIEWS</h3>
         </div>
         <div class="info">
           <h4>SHOW PROFILE VIEWS</h4>
           <div class="switch">
-            <input class="input" id="view" type="checkbox" checked>
+            <input class="input" id="view" type="checkbox" :checked="data.views" @change="viewState"/>
             <label class="label" for="view"></label>
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- Views -->
     <div class="box" id="customizeBox17">
       <div class="soon">
         <div class="padding">
           <div class="title">
-            <Icon name="bi:spotify" class="Icon" />
+            <Icon name="bi:spotify" class="Icon"/>
             <h3>SPOTIFY</h3>
           </div>
           <div class="dragDrop">
             <div class="connexion">
               <h4>AD.sglt
-                <Icon name="bi:check-circle" id="check" />
+                <Icon name="bi:check-circle" id="check"/>
               </h4>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- Spotify -->
     <div class="box" id="customizeBox18">
       <div class="padding">
         <div class="title">
-          <Icon name="mingcute:font-fill" class="Icon" />
+          <Icon name="mingcute:font-fill" class="Icon"/>
           <h2>FONT</h2>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="font">
             <a href="">
-              <Icon name="maki:cross" id="boxClose" />
+              <Icon name="maki:cross" id="boxClose"/>
             </a>
             <div class="icon">
-              <Icon name="nimbus:font" class="Icon" />
+              <Icon name="nimbus:font" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload font</span>
@@ -297,11 +361,11 @@ definePageMeta({
           </label>
         </div>
       </div>
-    </div>
+    </div> <!-- Font -->
     <div class="box" id="customizeBox19">
       <div class="padding">
         <div class="title">
-          <Icon name="iconoir:fill-color-solid" class="Icon" />
+          <Icon name="iconoir:fill-color-solid" class="Icon"/>
           <h2>COLOR</h2>
         </div>
         <div class="color">
@@ -313,7 +377,7 @@ definePageMeta({
           <div class="info">
             <input type="color" id="BoxColor" name="BoxColor">
             <input type="text" id="BoxHexColor" name="BoxHexColor" pattern="#[0-9A-Fa-f]{6}"
-              title="Entrez une couleur valide au format #RRGGBB" value="#000000">
+                   title="Entrez une couleur valide au format #RRGGBB" value="#000000">
           </div>
 
           <label for="BoxOutlineColor">Box outline colors :</label>
@@ -321,7 +385,7 @@ definePageMeta({
           <div class="info">
             <input type="color" id="BoxOutlineColor" name="BoxOutlineColor">
             <input type="text" id="BoxOutlineHexColor" name="BoxOutlineHexColor" pattern="#[0-9A-Fa-f]{6}"
-              title="Entrez une couleur valide au format #RRGGBB" value="#000000">
+                   title="Entrez une couleur valide au format #RRGGBB" value="#000000">
           </div>
 
           <label for="ProfilPictureOutlineColor">Profile outline color :</label>
@@ -329,7 +393,7 @@ definePageMeta({
           <div class="info">
             <input type="color" id="ProfilPictureOutlineColor" name="ProfilPictureOutlineColor">
             <input type="text" id="ProfilPictureOutlineHexColor" name="ProfilPictureOutlineHexColor"
-              pattern="#[0-9A-Fa-f]{6}" title="Entrez une couleur valide au format #RRGGBB" value="#000000">
+                   pattern="#[0-9A-Fa-f]{6}" title="Entrez une couleur valide au format #RRGGBB" value="#000000">
           </div>
 
           <label for="IconColor">Icon color :</label>
@@ -337,25 +401,25 @@ definePageMeta({
           <div class="info">
             <input type="color" id="IconColor" name="IconColor">
             <input type="text" id="IconHexColor" name="IconHexColor" pattern="#[0-9A-Fa-f]{6}"
-              title="Entrez une couleur valide au format #RRGGBB" value="#000000">
+                   title="Entrez une couleur valide au format #RRGGBB" value="#000000">
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- Color -->
     <div class="box" id="customizeBox20">
       <div class="padding">
         <div class="title">
-          <Icon name="ph:magic-wand-fill" class="Icon" />
+          <Icon name="ph:magic-wand-fill" class="Icon"/>
           <h2>GLOW EFFECT</h2>
         </div>
         <div class="effect">
           <label for="ProfilPictureOutlineColor">Display Name Glow :</label>
           <div class="info">
-            <Icon name="ph:person-arms-spread-fill" class="Icon" />
+            <Icon name="ph:person-arms-spread-fill" class="Icon"/>
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
-                title="Entrez une couleur valide au format #RRGGBB">
+                     title="Entrez une couleur valide au format #RRGGBB">
             </div>
             <div class="switch">
               <input class="input" id="IconSwitch" type="checkbox">
@@ -364,11 +428,11 @@ definePageMeta({
           </div>
           <label for="ProfilPictureOutlineColor">Quote Glow :</label>
           <div class="info">
-            <Icon name="fa6-solid:quote-left" class="Icon" />
+            <Icon name="fa6-solid:quote-left" class="Icon"/>
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
-                title="Entrez une couleur valide au format #RRGGBB">
+                     title="Entrez une couleur valide au format #RRGGBB">
             </div>
             <div class="switch">
               <input class="input" id="QuoteSwitch" type="checkbox">
@@ -377,11 +441,11 @@ definePageMeta({
           </div>
           <label for="ProfilPictureOutlineColor">Description Glow :</label>
           <div class="info">
-            <Icon name="pajamas:information" class="Icon" />
+            <Icon name="pajamas:information" class="Icon"/>
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
-                title="Entrez une couleur valide au format #RRGGBB">
+                     title="Entrez une couleur valide au format #RRGGBB">
             </div>
             <div class="switch">
               <input class="input" id="DescriptionSwitch" type="checkbox">
@@ -390,11 +454,11 @@ definePageMeta({
           </div>
           <label for="ProfilPictureOutlineColor">Box Glow :</label>
           <div class="info">
-            <Icon name="akar-icons:discord-fill" class="Icon" />
+            <Icon name="akar-icons:discord-fill" class="Icon"/>
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
-                title="Entrez une couleur valide au format #RRGGBB">
+                     title="Entrez une couleur valide au format #RRGGBB">
             </div>
             <div class="switch">
               <input class="input" id="BoxSwitch" type="checkbox">
@@ -403,18 +467,18 @@ definePageMeta({
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- Glow Effect -->
   </div>
 
-  <div class="modal" style="display: none;">
+  <div class="modal" v-if="['url','username','bio','enter'].includes(activeModal)">
     <div class="center">
       <div class="content">
-        <Icon name="maki:cross" id="closeModal" />
-        <Icon name="ph:planet-fill" class="Icon" />
+        <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
+        <Icon name="ph:planet-fill" class="Icon"/>
         <h5>-</h5>
-        <input type="text" value="https://saturne.lol/">
-        <button>
-          <Icon name="material-symbols:check" id="save" />
+        <input type="text" :placeholder="placeHolderText()" id="singleModalInput" maxlength="60"/>
+        <button @click="singleModalAction">
+          <Icon name="material-symbols:check" id="save"/>
         </button>
       </div>
     </div>
@@ -423,85 +487,43 @@ definePageMeta({
   <div class="modal" style="display: none;">
     <div class="center">
       <div class="content">
-        <Icon name="maki:cross" id="closeModal" />
-        <Icon name="ph:person-arms-spread-fill" class="Icon" />
-        <h5>-</h5>
-        <input type="text" placeholder="Enter a display name">
-        <button>
-          <Icon name="material-symbols:check" id="save" />
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" style="display: none;">
-    <div class="center">
-      <div class="content">
-        <Icon name="maki:cross" id="closeModal" />
-        <Icon name="fa6-solid:quote-left" class="Icon" />
+        <Icon name="maki:cross" id="closeModal"/>
+        <Icon name="fa6-solid:quote-left" class="Icon"/>
         <h5>-</h5>
         <input type="text" placeholder="Enter a quote">
         <button>
-          <Icon name="material-symbols:check" id="save" />
+          <Icon name="material-symbols:check" id="save"/>
         </button>
-        <Icon name="fa6-solid:quote-left" class="Icon" />
+        <Icon name="fa6-solid:quote-left" class="Icon"/>
         <h5>-</h5>
         <input type="text" placeholder="Enter a quote">
         <button>
-          <Icon name="material-symbols:check" id="save" />
+          <Icon name="material-symbols:check" id="save"/>
         </button>
-        <Icon name="fa6-solid:quote-left" class="Icon" />
+        <Icon name="fa6-solid:quote-left" class="Icon"/>
         <h5>-</h5>
         <input type="text" placeholder="Enter a quote">
         <button>
-          <Icon name="material-symbols:check" id="save" />
+          <Icon name="material-symbols:check" id="save"/>
         </button>
       </div>
     </div>
   </div>
 
-  <div class="modal" style="display: none;">
-    <div class="center">
-      <div class="content">
-        <Icon name="maki:cross" id="closeModal" />
-        <Icon name="pajamas:information" class="Icon" />
-        <h5>-</h5>
-        <input type="text" placeholder="Enter a description">
-        <button>
-          <Icon name="material-symbols:check" id="save" />
-        </button>
-      </div>
-    </div>
-  </div>
 
   <div class="modal" style="display: none;">
     <div class="center">
       <div class="content">
-        <Icon name="maki:cross" id="closeModal" />
-        <Icon name="akar-icons:discord-fill" class="Icon" />
+        <Icon name="maki:cross" id="closeModal"/>
+        <Icon name="akar-icons:discord-fill" class="Icon"/>
         <h5>-</h5>
         <input type="text" value="https://discord.gg/">
         <button>
-          <Icon name="material-symbols:check" id="save" />
+          <Icon name="material-symbols:check" id="save"/>
         </button>
       </div>
     </div>
   </div>
-
-  <div class="modal" style="display: none;">
-    <div class="center">
-      <div class="content">
-        <Icon name="maki:cross" id="closeModal" />
-        <Icon name="streamline:emergency-exit-solid" class="Icon" />
-        <h5>-</h5>
-        <input type="text" placeholder="Enter a welcome message">
-        <button>
-          <Icon name="material-symbols:check" id="save" />
-        </button>
-      </div>
-    </div>
-  </div>
-
 </template>
 
 <style scoped>
@@ -610,11 +632,11 @@ definePageMeta({
   transition: transform 0.3s;
 }
 
-.content .box .padding .switch .input:checked+.label {
+.content .box .padding .switch .input:checked + .label {
   background-color: #7f4caf;
 }
 
-.content .box .padding .switch .input:checked+.label::before {
+.content .box .padding .switch .input:checked + .label::before {
   transform: translateX(16px);
 }
 
@@ -622,11 +644,11 @@ definePageMeta({
   background-color: #BEBEBE;
 }
 
-.content .box .padding .switch.light .input:checked+.label {
+.content .box .padding .switch.light .input:checked + .label {
   background-color: #9B9B9B;
 }
 
-.content .box .padding .switch.light .input:checked+.label::before {
+.content .box .padding .switch.light .input:checked + .label::before {
   transform: translateX(6px);
 }
 
@@ -634,11 +656,11 @@ definePageMeta({
   background-color: #4B4B4B;
 }
 
-.content .box .padding .switch.dark .input:checked+.label {
+.content .box .padding .switch.dark .input:checked + .label {
   background-color: #717171;
 }
 
-.content .box .padding .switch.dark .input:checked+.label::before {
+.content .box .padding .switch.dark .input:checked + .label::before {
   transform: translateX(16px);
 }
 

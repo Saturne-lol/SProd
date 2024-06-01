@@ -19,6 +19,7 @@ export default defineEventHandler(async (event) => {
             id: true
         }
     });
+    if (!user) return {error: "Invalid username"}
     const member = (await (await discordClient.guilds.fetch("1129015826410901556")).members.fetch(user?.id as string))
     discordClient.destroy()
 
