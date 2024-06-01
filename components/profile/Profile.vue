@@ -6,7 +6,7 @@ const data = defineProps<{
     username: string,
     bio: string,
     avatar: string,
-    quotes: Array<string>,
+    quotes: Array<string> | null
   },
   badges: Array<{
     name: string,
@@ -49,9 +49,12 @@ function smoothNewQuote() {
   }, 150);
 }
 
-if (data.profile.quotes.length > 0) {
-  smoothNewQuote()
+if (data.profile.quotes !== null) {
+  if (data.profile.quotes.length > 0) {
+    smoothNewQuote()
+  }
 }
+
 
 const { gtag } = useGtag()
 gtag('config', 'G-YKC5TQ8C98', {
@@ -74,7 +77,7 @@ gtag('config', 'G-YKC5TQ8C98', {
         <!-- BADGES -->
         <Badges :badges="data.badges"/>
       </div>
-      <div class="quote" v-if="data.profile.quotes.length > 0">
+      <div class="quote" v-if="data.profile.quotes.length > 0 || !data.profile.quotes">
         <h3>{{ quote }}</h3>
       </div>
       <div class="description">
