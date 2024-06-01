@@ -3,40 +3,45 @@ import type {Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 
+const { gtag } = useGtag()
+
 definePageMeta({
   middleware: async (to) => {
-    const url = to.params.username
-    const {data: isExist} = await useFetch(`/api/profile/is-exist`, {query: {username: url}}) as {
-      data: Ref<{ code: number }>
+    const {data: isExist} = await useFetch('/api/profile/is-exist', {query: {username: to.params.username}}) as {
+      data: Ref<{ code: string }>
     };
-    if (!isExist?.value.code) {
-      return '/404profile'
-    }
-    // useFetch(`/api/profile/view`, {body: {username: url}, method: 'POST'})
+    if (isExist?.value?.code === "bl") return "/blacklist?type=profile&username=" + to.params.username;
+    if (isExist?.value?.code === "ne") return "/errors/404?type=profile";
+    useFetch('/api/profile/view', {body: {username: to.params.username}, method: 'POST'});
   }
-})
+});
+
+gtag('event', 'page_view', {
+  page_title: 'Profile',
+  page_location: window.location.href,
+  page_path: window.location.pathname,
+});
 
 const url = useRoute().params.username
-useSeoMeta({
-  title: url + " - Saturne.lol",
-  description: 'Saturne.lol makes it easy to create a modern online profile !',
-  ogTitle: url + " - Saturne.lol",
-  ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
-  ogImage: '[og:image]',
-  ogUrl: '[og:url]',
-  twitterTitle: '[twitter:title]',
-  twitterDescription: '[twitter:description]',
-  twitterImage: '[twitter:image]',
-  twitterCard: 'summary'
-})
+if (typeof url === "string") {
+  useSeoMeta({
+    title: url.charAt(0).toUpperCase() + url.slice(1) + " - Saturne.lol",
+    description: 'Saturne.lol makes it easy to create a modern online profile !',
+    ogTitle: url + " - Saturne.lol",
+    ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
+    ogImage: '[og:image]',
+    ogUrl: '[og:url]',
+    twitterTitle: '[twitter:title]',
+    twitterDescription: '[twitter:description]',
+    twitterImage: '[twitter:image]',
+    twitterCard: 'summary'
+  })
+}
 
-// const videoMuted = ref(false)
-// const videoElement = ref<HTMLVideoElement | null>(null)
 const isEnter = ref(false)
 
-const {pending: discordPending, data: discordData} = useFetch(`/api/profile/get-box-discord`, {
+const {data: discordData} = useFetch(`/api/profile/get-box-discord`, {
   query: {username: url},
-  // lazy: true,
   server: true
 }) as {
   pending: Ref<boolean>,
@@ -49,9 +54,8 @@ const {pending: discordPending, data: discordData} = useFetch(`/api/profile/get-
   }]>
 }
 
-const {pending: profilePending, data: profileData} = useFetch(`/api/profile/get-profile`, {
+const {data: profileData} = useFetch(`/api/profile/get-profile`, {
   query: {username: url},
-  // lazy: true,
   server: true
 }) as {
   pending: Ref<boolean>,
@@ -63,9 +67,8 @@ const {pending: profilePending, data: profileData} = useFetch(`/api/profile/get-
   }>
 }
 
-const {pending: badgesPending, data: badgesData} = useFetch(`/api/profile/get-badges`, {
+const {data: badgesData} = useFetch(`/api/profile/get-badges`, {
   query: {username: url},
-  // lazy: true,
   server: true
 }) as {
   pending: Ref<boolean>,
@@ -75,9 +78,8 @@ const {pending: badgesPending, data: badgesData} = useFetch(`/api/profile/get-ba
   }]>
 }
 
-const {pending: dcProfilePending, data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
+const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
   query: {username: url},
-  // lazy: true,
   server: true
 }) as {
   pending: Ref<boolean>,
@@ -89,7 +91,6 @@ const {pending: dcProfilePending, data: dcProfileData} = await useFetch(`/api/pr
 }
 
 function clickToEnter(): any {
-  if (profilePending.value || badgesPending.value || discordPending.value, dcProfilePending.value) return setTimeout(clickToEnter, 100)
   isEnter.value = true
 }
 </script>
@@ -113,10 +114,8 @@ function clickToEnter(): any {
     <div class="center" v-if="isEnter">
       <div class="content" id="content">
         <Profile :profile="profileData" :badges="badgesData"/>
-
         <UserBox :discord="dcProfileData"/>
         <DiscordBox :discord="discordData" :pending="discordPending"/>
-
         <div class="view">
           <h3>
             <Icon name="ic:sharp-remove-red-eye"/>
@@ -135,7 +134,7 @@ function clickToEnter(): any {
   </main>
 </template>
 
-<style scoped>
+<style>
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
