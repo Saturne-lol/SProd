@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     const discordBox = await prisma.discord.findMany({
         where: {
             account: {
-                Setting: {
+                setting: {
                     url: getQuery(event).username as string
                 }
             }

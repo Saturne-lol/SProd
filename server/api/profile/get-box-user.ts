@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     // const settings = (await bdd`SELECT username, description, account FROM settings WHERE url = ${url}`)[0]
     const user = await prisma.account.findFirst({
         where: {
-            Setting: {
+            setting: {
                 url: getQuery(event).username as string
             }
         },

@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
     const plan = await prisma.account.findFirst({
         where: {
-            Setting: {
+            setting: {
                 url: getQuery(event).username as string
             }
         },
