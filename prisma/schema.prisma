@@ -10,6 +10,7 @@ datasource db {
 
 model Account {
   id          String    @id
+  username    String?   @default("No username")
   create_date DateTime  @default(now())
   plan        PlanEnum  @default(FREE)
   blacklisted Boolean   @default(false)
@@ -67,7 +68,7 @@ model Quotes {
 }
 
 model View {
-  id         String   @id @default(dbgenerated("uuid()"))
+  id         String   @id @default(uuid())
   ip         String
   date       DateTime @default(now())
   profile_id String
