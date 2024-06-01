@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Account {
-  id          String    @id @default(cuid())
+  id          String    @id
   create_date DateTime  @default(now())
   plan        PlanEnum  @default(FREE)
   blacklisted Boolean   @default(false)
@@ -18,7 +18,7 @@ model Account {
   expires     DateTime  @default(now())
   beta        Boolean   @default(false)
   admin       Boolean   @default(false)
-  Setting     Setting[]
+  Setting     Setting?
   Discord     Discord[]
   Social      Social[]
   Quotes      Quotes[]
@@ -27,37 +27,39 @@ model Account {
 }
 
 model Setting {
-  id         String  @id @default(cuid())
-  account_id String
+  account_id String  @id @unique
   account    Account @relation(fields: [account_id], references: [id])
   url        String  @unique @default(cuid())
-  username   String  @unique @default(cuid())
+  username   String  @default(cuid())
   bio        String  @default("No bio")
   avatar     Boolean @default(false)
   background String  @default("https://i.imgur.com/3v3J9v6.jpg")
+  views      Boolean @default(true)
   View       View[]
 }
 
 model Discord {
-  id         String  @id @default(cuid())
-  account_id String
+  account_id String  @id
   account    Account @relation(fields: [account_id], references: [id])
   invite     String
   index      Int     @default(0)
+
+  @@unique([account_id, invite])
+  @@unique([account_id, index])
 }
 
 model Social {
-  id         String  @id @default(cuid())
-  account_id String
+  account_id String  @id
   account    Account @relation(fields: [account_id], references: [id])
   type       String
   url        String
   index      Int     @default(0)
+
+  @@unique([account_id, index])
 }
 
 model Quotes {
-  id         String  @id @default(cuid())
-  account_id String
+  account_id String  @id
   account    Account @relation(fields: [account_id], references: [id])
   text       String
 
@@ -69,14 +71,15 @@ model View {
   ip         String
   date       DateTime @default(now())
   profile_id String
-  profile    Setting  @relation(fields: [profile_id], references: [url])
+  profile    Setting  @relation(fields: [profile_id], references: [account_id])
   account_id String
-  account    Account  @relation(fields: [account_id], references: [id])
+  account    Account? @relation(fields: [account_id], references: [id])
+
+  @@unique([ip, profile_id])
 }
 
 model Badges {
-  id         String  @id @default(cuid())
-  account_id String
+  account_id String  @id
   account    Account @relation(fields: [account_id], references: [id])
   badge      String
 }
