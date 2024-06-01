@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import formatNumber from "~/utils/formatNumber";
+
 const data = defineProps<{
   pending: boolean,
   discord: {
@@ -9,18 +11,6 @@ const data = defineProps<{
     invite: string
   }[] | null
 }>()
-
-function formatNumber(value: number) {
-  if (value >= 1000000000) {
-    return (value / 1000000000).toFixed(2) + 'MD';
-  } else if (value >= 1000000) {
-    return (value / 1000000).toFixed(2) + 'M';
-  } else if (value >= 1000) {
-    return (value / 1000).toFixed(2) + 'K';
-  } else {
-    return value.toString();
-  }
-}
 </script>
 
 <template>
