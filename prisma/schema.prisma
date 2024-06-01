@@ -78,7 +78,7 @@ model Social {
 }
 
 model View {
-  id         String   @id
+  id         String   @id @default(cuid())
   ip         String
   date       DateTime @default(now())
   profile_id String
