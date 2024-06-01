@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
             ip: ip as string,
             profile_id: profile.account_id
         }
-    }) > 0) return new Response("Already viewed", {status: 400});
+    }) > 0) return new Response("Already viewed", {status: 200});
 
     const user = await checkToken(event)
     const view = await prisma.view.create({
