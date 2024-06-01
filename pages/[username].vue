@@ -162,6 +162,7 @@ main {
   right: 0;
   top: 0;
   bottom: 0;
+  backdrop-filter: blur(8px);
   z-index: 80;
 }
 
