@@ -16,19 +16,19 @@ export default defineEventHandler(async (event) => {
 
     const profile = await prisma.setting.findFirst({where: {url: username}, select: {account_id: true}});
     if (!profile) return new Response("User not found", {status: 404});
-    if (await prisma.view.findFirst({
+    if (await prisma.view.count({
         where: {
             ip: ip as string,
             profile_id: profile.account_id
         }
-    })) return new Response("You have already viewed this profile", {status: 400});
+    }) > 0) return new Response("Already viewed", {status: 400});
 
     const user = await checkToken(event)
-    await prisma.view.create({
+    const view = await prisma.view.create({
         data: {
             ip: ip as string,
             profile_id: profile.account_id as string,
-            ...(user ? {profile_id: user.id} : {})
+            ...(user ? {account_id: user.id} : {})
         }
     })
     return new Response("OK", {status: 200});
