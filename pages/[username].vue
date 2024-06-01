@@ -3,7 +3,7 @@ import type {Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 
-const { gtag } = useGtag()
+// const { gtag } = useGtag()
 
 definePageMeta({
   middleware: async (to) => {
@@ -16,11 +16,11 @@ definePageMeta({
   }
 });
 
-gtag('event', 'page_view', {
-  page_title: 'Profile',
-  page_location: window.location.href,
-  page_path: window.location.pathname,
-});
+// gtag('event', 'page_view', {
+//   page_title: 'Profile',
+//   page_location: window.location.href,
+//   page_path: window.location.pathname,
+// });
 
 const url = useRoute().params.username
 if (typeof url === "string") {
@@ -63,7 +63,7 @@ const {data: profileData} = useFetch(`/api/profile/get-profile`, {
     username: string,
     bio: string,
     avatar: string,
-    quotes: Array<string>,
+    quotes: Array<string> | null,
   }>
 }
 
