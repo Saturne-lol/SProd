@@ -53,6 +53,10 @@ if (data.profile.quotes.length > 0) {
   smoothNewQuote()
 }
 
+const { gtag } = useGtag()
+gtag('config', 'G-YKC5TQ8C98', {
+  'user_id': "coucou c'est moi"
+})
 </script>
 
 <template>
