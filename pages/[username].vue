@@ -3,27 +3,26 @@ import type {Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 
-if (process.client) {
-  const {gtag} = useGtag()
-  gtag('event', 'page_view', {
-    page_title: 'Profile',
-    page_location: window.location.href,
-    page_path: window.location.pathname,
-  });
-}
+const { gtag } = useGtag()
 
+definePageMeta({
+  middleware: async (to) => {
+    const {data: isExist} = await useFetch('/api/profile/is-exist', {query: {username: to.params.username}}) as {
+      data: Ref<{ code: string }>
+    };
+    if (isExist?.value?.code === "bl") return "/blacklist?type=profile&username=" + to.params.username;
+    if (isExist?.value?.code === "ne") return "/errors/404?type=profile";
+    useFetch('/api/profile/view', {body: {username: to.params.username}, method: 'POST'});
+  }
+});
+
+gtag('event', 'page_view', {
+  page_title: 'Profile',
+  page_location: window.location.href,
+  page_path: window.location.pathname,
+});
 
 const url = useRoute().params.username
-const {data: isExist} = await useFetch('/api/profile/is-exist', {query: {username: url}}) as {
-  data: Ref<{ code: string }>
-};
-
-const code = ref(isExist?.value?.code)
-if (code.value !== "no" && code.value !== "bl") {
-  useFetch('/api/profile/view', {body: {username: url}, method: 'POST'});
-}
-
-
 if (typeof url === "string") {
   useSeoMeta({
     title: url.charAt(0).toUpperCase() + url.slice(1) + " - Saturne.lol",
@@ -97,7 +96,7 @@ function clickToEnter(): any {
 </script>
 
 <template>
-  <main v-if="isExist">
+  <main>
     <div id="tempBackground" v-if="!isEnter">
       <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
     </div>
@@ -135,7 +134,7 @@ function clickToEnter(): any {
   </main>
 </template>
 
-<style scoped>
+<style>
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
