@@ -67,19 +67,20 @@ model Quotes {
 }
 
 model View {
-  id         String   @id @default(cuid())
+  id         String   @id @default(dbgenerated("uuid()"))
   ip         String
   date       DateTime @default(now())
   profile_id String
   profile    Setting  @relation(fields: [profile_id], references: [account_id])
-  account_id String
+  account_id String?
   account    Account? @relation(fields: [account_id], references: [id])
 
   @@unique([ip, profile_id])
 }
 
 model Badges {
-  account_id String  @id
+  id         String  @id @default(dbgenerated("uuid()"))
+  account_id String
   account    Account @relation(fields: [account_id], references: [id])
   badge      String
 }
