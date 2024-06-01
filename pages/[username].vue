@@ -12,7 +12,7 @@ definePageMeta({
     if (!isExist?.value.code) {
       return '/404profile'
     }
-    useFetch(`/api/profile/view`, {body: {username: url}, method: 'POST'})
+    // useFetch(`/api/profile/view`, {body: {username: url}, method: 'POST'})
   }
 })
 
@@ -36,8 +36,8 @@ const isEnter = ref(false)
 
 const {pending: discordPending, data: discordData} = useFetch(`/api/profile/get-box-discord`, {
   query: {username: url},
-  lazy: true,
-  server: false
+  // lazy: true,
+  server: true
 }) as {
   pending: Ref<boolean>,
   data: Ref<[{
@@ -51,8 +51,8 @@ const {pending: discordPending, data: discordData} = useFetch(`/api/profile/get-
 
 const {pending: profilePending, data: profileData} = useFetch(`/api/profile/get-profile`, {
   query: {username: url},
-  lazy: true,
-  server: false
+  // lazy: true,
+  server: true
 }) as {
   pending: Ref<boolean>,
   data: Ref<{
@@ -65,8 +65,8 @@ const {pending: profilePending, data: profileData} = useFetch(`/api/profile/get-
 
 const {pending: badgesPending, data: badgesData} = useFetch(`/api/profile/get-badges`, {
   query: {username: url},
-  lazy: true,
-  server: false
+  // lazy: true,
+  server: true
 }) as {
   pending: Ref<boolean>,
   data: Ref<[{
@@ -77,8 +77,8 @@ const {pending: badgesPending, data: badgesData} = useFetch(`/api/profile/get-ba
 
 const {pending: dcProfilePending, data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
   query: {username: url},
-  lazy: true,
-  server: false
+  // lazy: true,
+  server: true
 }) as {
   pending: Ref<boolean>,
   data: Ref<{
