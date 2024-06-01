@@ -49,14 +49,17 @@ function smoothNewQuote() {
   }, 150);
 }
 
-smoothNewQuote()
+if (data.profile.quotes.length > 0) {
+  smoothNewQuote()
+}
+
 </script>
 
 <template>
   <div class="profil">
     <div class="ppUser">
       <img :src="data.profile.avatar" alt="" id="ppDisc">
-      <img src="~/public/img/avatardeco2.png" alt="" id="ppDeco" style="display: none;">
+      <img src="/img/avatardeco2.png" alt="" id="ppDeco" v-if="data.profile.username == 'Cleboost'">
     </div>
     <div class="infoUser">
       <div class="nameBadges">
@@ -67,7 +70,7 @@ smoothNewQuote()
         <!-- BADGES -->
         <Badges :badges="data.badges"/>
       </div>
-      <div class="quote">
+      <div class="quote" v-if="data.profile.quotes.length > 0">
         <h3>{{ quote }}</h3>
       </div>
       <div class="description">
