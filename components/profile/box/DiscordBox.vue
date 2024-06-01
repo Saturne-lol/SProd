@@ -2,7 +2,6 @@
 import formatNumber from "~/utils/formatNumber";
 
 const data = defineProps<{
-  pending: boolean,
   discord: {
     name: string,
     image: string | null,
