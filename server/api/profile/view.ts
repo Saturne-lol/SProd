@@ -24,12 +24,11 @@ export default defineEventHandler(async (event) => {
     })) return new Response("You have already viewed this profile", {status: 400});
 
     const user = await checkToken(event)
-
     await prisma.view.create({
         data: {
             ip: ip as string,
             profile_id: profile.account_id as string,
-            ...(user ? {logged_id: user.id} : {})
+            ...(user ? {profile_id: user.id} : {})
         }
     })
     return new Response("OK", {status: 200});
