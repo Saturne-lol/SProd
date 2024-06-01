@@ -231,7 +231,7 @@ definePageMeta({
           <Icon name="ic:baseline-edit" id="modif"/>
         </div>
       </div>
-    </
+    </div>
     <div class="box" id="customizeBox15">
       <div class="padding">
         <div class="title">
