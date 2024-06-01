@@ -9,81 +9,86 @@ datasource db {
 }
 
 model Account {
-  id          String    @id
-  username    String?   @default("No username")
-  create_date DateTime  @default(now())
-  plan        PlanEnum  @default(FREE)
-  blacklisted Boolean   @default(false)
-  last_login  DateTime  @default(now())
+  id          String   @id
+  create_date DateTime @default(now())
+  plan        PlanEnum @default(FREE)
+  blacklisted Boolean  @default(false)
+  last_login  DateTime @default(now())
   last_ip     String?
-  expires     DateTime  @default(now())
-  beta        Boolean   @default(false)
-  admin       Boolean   @default(false)
-  Setting     Setting?
-  Discord     Discord[]
-  Social      Social[]
-  Quotes      Quotes[]
-  View        View[]
+  expires     DateTime @default(now())
+  beta        Boolean  @default(false)
+  admin       Boolean  @default(false)
+  username    String?  @default("No username")
   Badges      Badges[]
+  Discord     Discord?
+  Quotes      Quotes?
+  Setting     Setting?
+  Social      Social?
+  View        View[]
 }
 
-model Setting {
-  account_id String  @id @unique
-  account    Account @relation(fields: [account_id], references: [id])
-  url        String  @unique @default(cuid())
-  username   String  @default(cuid())
-  bio        String  @default("No bio")
-  avatar     Boolean @default(false)
-  background String  @default("https://i.imgur.com/3v3J9v6.jpg")
-  views      Boolean @default(true)
-  View       View[]
+model Badges {
+  id         String  @id @default(dbgenerated("(uuid())"))
+  account_id String
+  badge      String
+  Account    Account @relation(fields: [account_id], references: [id])
+
+  @@index([account_id], map: "Badges_account_id_fkey")
 }
 
 model Discord {
   account_id String  @id
-  account    Account @relation(fields: [account_id], references: [id])
   invite     String
   index      Int     @default(0)
+  Account    Account @relation(fields: [account_id], references: [id])
 
+  @@unique([account_id, index])
   @@unique([account_id, invite])
-  @@unique([account_id, index])
-}
-
-model Social {
-  account_id String  @id
-  account    Account @relation(fields: [account_id], references: [id])
-  type       String
-  url        String
-  index      Int     @default(0)
-
-  @@unique([account_id, index])
 }
 
 model Quotes {
   account_id String  @id
-  account    Account @relation(fields: [account_id], references: [id])
   text       String
+  Account    Account @relation(fields: [account_id], references: [id])
 
   @@unique([account_id, text])
 }
 
+model Setting {
+  account_id    String  @id @unique
+  url           String  @unique
+  username      String
+  bio           String  @default("No bio")
+  enter_message String  @default("Click to enter...")
+  avatar        Boolean @default(false)
+  background    String  @default("https://i.imgur.com/3v3J9v6.jpg")
+  views         Boolean @default(true)
+  Account       Account @relation(fields: [account_id], references: [id])
+  View          View[]
+}
+
+model Social {
+  account_id String  @id
+  type       String
+  url        String
+  index      Int     @default(0)
+  Account    Account @relation(fields: [account_id], references: [id])
+
+  @@unique([account_id, index])
+}
+
 model View {
-  id         String   @id @default(uuid())
+  id         String   @id
   ip         String
   date       DateTime @default(now())
   profile_id String
-  profile    Setting  @relation(fields: [profile_id], references: [account_id])
   account_id String?
-  account    Account? @relation(fields: [account_id], references: [id])
+  Account    Account? @relation(fields: [account_id], references: [id])
+  Setting    Setting  @relation(fields: [profile_id], references: [account_id])
 
   @@unique([ip, profile_id])
-}
-
-model Badges {
-  id         String  @id @default(dbgenerated("uuid()"))
-  account_id String
-  account    Account @relation(fields: [account_id], references: [id])
-  badge      String
+  @@index([account_id], map: "View_account_id_fkey")
+  @@index([profile_id], map: "View_profile_id_fkey")
 }
 
 enum PlanEnum {
