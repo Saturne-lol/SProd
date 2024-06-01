@@ -19,7 +19,7 @@
     "stripe": "15.8.0",
     "url": "^0.11.3",
     "vue": "^3.4.27",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.17.3",
