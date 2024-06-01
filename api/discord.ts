@@ -38,5 +38,23 @@ export async function checkToken(event: H3Event): Promise<{
         }
     }
 
+    if (typeof resDsc !== "boolean") {
+        lastSee(resDsc.data.id as string, event.req.headers['x-real-ip'] || event.req.headers['x-forwarded-for'] || event.req.connection.remoteAddress)
+    }
+
     return typeof resDsc !== "boolean" ? resDsc?.data : false
+}
+
+async function lastSee(account_id: string, ip: string | string[] | undefined) {
+    const lastIp = ip instanceof Array ? ip[0] : ip
+    return prisma.account.update({
+        where: {
+            id: account_id,
+            // last_login: {lt: new Date(Date.now() - 30000)}
+        },
+        data: {
+            ...lastIp ? {last_ip: lastIp} : {},
+            last_login: new Date(),
+        }
+    })
 }
