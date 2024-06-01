@@ -19,5 +19,6 @@
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   user-select: none;
+  scroll-behavior: smooth;
 }
 </style>

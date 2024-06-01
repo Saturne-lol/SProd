@@ -53,14 +53,14 @@ useSeoMeta({
       </video>
     </div>
 
-    <div class="waveTop"></div>
+    <div class="waveTop" id="about"></div>
 
     <div class="background">
-      <div class="about" id="about">
+      <div class="about">
         <h1>Why choose Saturne</h1>
         <div class="info">
           <div class="box">
-            <Icon name="ph:magic-wand-fill" class="Icon" />
+            <Icon name="ph:magic-wand-fill" class="Icon"/>
             <h3>FULLY CUSTOMIZABLE</h3>
             <h5>
               Express yourself in a unique way and create a modern,
@@ -68,7 +68,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:shield-lock" class="Icon" />
+            <Icon name="material-symbols:shield-lock" class="Icon"/>
             <h3>INSURED PROTECTION</h3>
             <h5>
               Enjoy peace of mind with Saturne.lol's insured protection.
@@ -76,7 +76,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="ph:code-bold" class="Icon" />
+            <Icon name="ph:code-bold" class="Icon"/>
             <h3>DEVELOPMENT</h3>
             <h5>
               Explore Saturne.lol and experience the result of meticulous development.
@@ -84,7 +84,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon" />
+            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon"/>
             <h3>RESPONSIVE</h3>
             <h5>
               Experience seamless accessibility on any device with Saturne.lol's responsive design.
@@ -92,7 +92,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="ph:globe" class="Icon" />
+            <Icon name="ph:globe" class="Icon"/>
             <h3>COMMUNITY APPROVAL</h3>
             <h5>
               Find out why Saturn.lol is so popular with our community.
@@ -100,7 +100,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:contact-support-rounded" class="Icon" />
+            <Icon name="material-symbols:contact-support-rounded" class="Icon"/>
             <h3>SUPPORT 24/7</h3>
             <h5>
               Saturne provides 24/7 support to ensure that our customers receive
@@ -112,68 +112,92 @@ useSeoMeta({
     </div>
 
 
-    <div class="waveBottom"></div>
+    <div class="waveBottom" id="premium"></div>
 
-    <div class="premium" id="premium">
+    <div class="premium">
       <h1>Choose your plan</h1>
       <div class="grid">
         <div class="box">
           <div class="info">
-            <Icon name="material-symbols:grass" class="Icon" />
+            <Icon name="material-symbols:grass" class="Icon"/>
             <div class="text">
               <h1>Classic Plan</h1>
               <h3>0.00€ - Lifetime</h3>
             </div>
           </div>
           <p>
-            <Icon name="material-symbols:check" id="check" /> - Host 24/7<br>
-            <Icon name="material-symbols:check" id="check" /> - Static images and bio<br>
-            <Icon name="material-symbols:check" id="check" /> - 3 Linked Social Network<br>
-            <Icon name="material-symbols:check" id="check" /> - Number of box available: 2<br>
-            <Icon name="material-symbols:check" id="check" /> - Show amount of profil viewer<br>
-            <Icon name="material-symbols:check" id="check" /> - Special Discord role on our serveur<br>
-            <Icon name="maki:cross" id="uncheck" /> - Premium Badge<br>
-            <Icon name="maki:cross" id="uncheck" /> - Cursor Effect <br>
-            <Icon name="maki:cross" id="uncheck" /> - Customizable font<br>
-            <Icon name="maki:cross" id="uncheck" /> - Host on your own domain<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Host 24/7<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Static images and bio<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - 3 Linked Social Network<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Number of box available: 2<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Show amount of profil viewer<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Special Discord role on our serveur<br>
+            <Icon name="maki:cross" id="uncheck"/>
+            - Premium Badge<br>
+            <Icon name="maki:cross" id="uncheck"/>
+            - Cursor Effect <br>
+            <Icon name="maki:cross" id="uncheck"/>
+            - Customizable font<br>
+            <Icon name="maki:cross" id="uncheck"/>
+            - Host on your own domain<br>
           </p>
           <button>Get Started</button>
         </div>
         <div class="box">
           <div class="info">
-            <Icon name="solar:stars-minimalistic-broken" class="Icon" />
+            <Icon name="solar:stars-minimalistic-broken" class="Icon"/>
             <div class="text">
               <h1>Advanced Plan</h1>
               <h3>5.00€/Lifetime</h3>
             </div>
           </div>
           <p>
-            <Icon name="ion:information" id="info" /> - All previous functions<br>
-            <Icon name="material-symbols:check" id="check" /> - Dynamique images and bio<br>
-            <Icon name="material-symbols:check" id="check" /> - Number of box available: 4<br>
-            <Icon name="material-symbols:check" id="check" /> - Premium Badge<br>
-            <Icon name="material-symbols:check" id="check" /> - Cursor Effect <br>
-            <Icon name="material-symbols:check" id="check" /> - Customizable font<br>
-            <Icon name="maki:cross" id="uncheck" /> - Host on your own domain<br>
+            <Icon name="ion:information" id="info"/>
+            - All previous functions<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Dynamique images and bio<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Number of box available: 4<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Premium Badge<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Cursor Effect <br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Customizable font<br>
+            <Icon name="maki:cross" id="uncheck"/>
+            - Host on your own domain<br>
           </p>
           <button>Buy Now</button>
         </div>
         <div class="box">
           <div class="info">
-            <Icon name="basil:diamond-solid" class="Icon" />
+            <Icon name="basil:diamond-solid" class="Icon"/>
             <div class="text">
               <h1>Premium Plan</h1>
               <h3>2.00€/month</h3>
             </div>
           </div>
           <p>
-            <Icon name="ion:information" id="info" /> - All previous functions<br>
-            <Icon name="material-symbols:check" id="check" /> - Dynamique images and bio<br>
-            <Icon name="material-symbols:check" id="check" /> - Number of box available: 6<br>
-            <Icon name="material-symbols:check" id="check" /> - Premium Badge<br>
-            <Icon name="material-symbols:check" id="check" /> - Cursor Effect <br>
-            <Icon name="material-symbols:check" id="check" /> - Customizable font<br>
-            <Icon name="material-symbols:check" id="check" /> - Host on your own domain<br>
+            <Icon name="ion:information" id="info"/>
+            - All previous functions<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Dynamique images and bio<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Number of box available: 6<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Premium Badge<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Cursor Effect <br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Customizable font<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Host on your own domain<br>
           </p>
           <button>Buy Now</button>
         </div>
