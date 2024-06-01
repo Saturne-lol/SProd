@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/robots": "^3.0.0",
+    "@nuxtjs/sitemap": "^5.2.0",
     "@prisma/client": "^5.14.0",
     "axios": "^1.7.2",
     "discord.js": "^14.15.2",
