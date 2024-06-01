@@ -36,8 +36,6 @@ export default defineEventHandler(async (event) => {
         return {index: d.index, invite: d.invite}
     }) as {index: number, invite: string}[]
 
-    console.log(discord)
-
     let plan: number = 0
     if (account?.plan === PlanEnum.FREE) plan = 0
     if (account?.plan === PlanEnum.PREMIUM) plan = 1
