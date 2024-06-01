@@ -53,7 +53,21 @@
 
   .mainContainer .contentAndFooter .background .footer a{
     font-size: 80%;
-    margin-right: 5px;
+    margin-right: 20px;
   }
 }
+
+  @media screen and (max-width: 600px) {
+    .mainContainer .contentAndFooter .background .footer {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+      .mainContainer .contentAndFooter .background .footer a{
+      font-size: 80%;
+      margin-right: 10px;
+    }
+  }
 </style>

@@ -29,67 +29,67 @@ definePageMeta({
     </div>
     <div class="links">
       <div class="box">
-        <h1><Icon name="ph:snapchat-logo-fill" class="Icon"/></h1>
+        <Icon name="ph:snapchat-logo-fill" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="fa6-brands:youtube" class="Icon"/></h1>
+        <Icon name="fa6-brands:youtube" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:discord" class="Icon"/></h1>
+        <Icon name="bi:discord" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:spotify" class="Icon"/></h1>
+        <Icon name="bi:spotify" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:instagram" class="Icon"/></h1>
+        <Icon name="bi:instagram" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:twitter" class="Icon"/></h1>
+        <Icon name="bi:twitter" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="ic:twotone-tiktok" class="Icon"/></h1>
+        <Icon name="ic:twotone-tiktok" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="mingcute:telegram-fill" class="Icon"/></h1>
+        <Icon name="mingcute:telegram-fill" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:paypal" class="Icon"/></h1>
+        <Icon name="bi:paypal" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:github" class="Icon"/></h1>
+        <Icon name="bi:github" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="ci:linkedin" class="Icon"/></h1>
+        <Icon name="ci:linkedin" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:steam" class="Icon"/></h1>
+        <Icon name="bi:steam" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:pinterest" class="Icon"/></h1>
+        <Icon name="bi:pinterest" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="simple-icons:buymeacoffee" class="Icon"/></h1>
+        <Icon name="simple-icons:buymeacoffee" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="cib:btc" class="Icon"/></h1>
+        <Icon name="cib:btc" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="simple-icons:ethereum" class="Icon"/></h1>
+        <Icon name="simple-icons:ethereum" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="fa6-solid:litecoin-sign" class="Icon"/></h1>
+        <Icon name="fa6-solid:litecoin-sign" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="ph:threads-logo-bold" class="Icon"/></h1>
+        <Icon name="ph:threads-logo-bold" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="simple-icons:deezer" class="Icon"/></h1>
+        <Icon name="simple-icons:deezer" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:twitch" class="Icon"/></h1>
+        <Icon name="bi:twitch" class="Icon"/>
       </div>
       <div class="box">
-        <h1><Icon name="bi:facebook" class="Icon"/></h1>
+        <Icon name="bi:facebook" class="Icon"/>
       </div>
     </div>
     <div class="inputs">
@@ -181,11 +181,15 @@ definePageMeta({
 }
 
 .content .links .box {
-  padding: 5px;
+  padding: 15px;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 20px;
   cursor: pointer;
+}
+
+.content .links .box .Icon {
+  font-size: 30px;
 }
 
 .content .inputs {
@@ -328,7 +332,8 @@ definePageMeta({
 
 @media screen and (max-width: 730px) {
   .content .inputs {
-    grid-template-columns: repeat(1, 1fr);
+    display: flex;
+    flex-direction: column;
   }
 }
 

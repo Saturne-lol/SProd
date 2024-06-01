@@ -52,7 +52,8 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
 #body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +71,7 @@ import MenuDashboard from "~/components/dashboard/MenuDashboard.vue";
 
 .mainContainer .contentAndFooter {
   overflow-y: auto;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .mainContainer .contentAndFooter .background {

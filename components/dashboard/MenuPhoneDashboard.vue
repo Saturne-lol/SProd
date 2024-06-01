@@ -49,8 +49,9 @@
     .nav2 {
       display: block;
       margin-bottom: 20px;
-      border-radius: 40px;
-      background-color: rgba(255, 255, 255, 0.041);
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 5px;
       margin-left: 10px;
       margin-right: 10px;
     }
