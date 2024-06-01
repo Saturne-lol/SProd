@@ -9,9 +9,7 @@ export default defineEventHandler(async (event) => {
     const plan = await prisma.account.findFirst({
         where: {
             Setting: {
-                some: {
-                    url: getQuery(event).username as string
-                }
+                url: getQuery(event).username as string
             }
         },
         select: {
@@ -36,5 +34,8 @@ export default defineEventHandler(async (event) => {
     badges.sort((a, b) => badgesData.findIndex(badge => badge.id === a) - badgesData.findIndex(badge => badge.id === b))
     badges.filter(badges => badges !== undefined)
 
-    return badges.map(badge => ({image: badge + ".png", name: badgesData.find(b => b.id === badge)?.name})).filter(badges => badges.image !== undefined && badges.name !== undefined)
+    return badges.map(badge => ({
+        image: badge + ".png",
+        name: badgesData.find(b => b.id === badge)?.name
+    })).filter(badges => badges.image !== undefined && badges.name !== undefined)
 })
