@@ -2,11 +2,11 @@
 import type {Ref} from "vue";
 
 const {data} = await useFetch("/api/account/get-nav") as {
-  data: Ref<[{
+  data: Ref<{
     username: string,
     avatar: string,
     plan: string
-  }]>
+  }>
 }
 </script>
 
@@ -53,8 +53,8 @@ const {data} = await useFetch("/api/account/get-nav") as {
           <div class="infoProfilSaturne">
             <h4>{{ data.username }}</h4>
             <div class="infoProfilSaturneAbonement">
-              <Icon name="basil:diamond-solid" class="Icon"/>
-              <h4>PREMIUM</h4>
+              <Icon name="basil:diamond-solid" class="Icon" v-if="data.plan.includes('PREMIUM')"/>
+              <h4>{{ data.plan.replaceAll("_PLUS"," +")}}</h4>
             </div>
           </div>
           <div class="menuProfilSaturne">
