@@ -11,7 +11,6 @@ export default defineEventHandler(async (event) => {
     if (!user) return new Response("Unauthorized", {status: 401})
 
     const url = (await readBody(event)).data
-    console.log(url)
     if (!url) return false
     if (getBlUrl().includes(url)) return false
 
