@@ -29,6 +29,6 @@ export default defineEventHandler(async (event) => {
         username: settings?.username || "Invalid username",
         bio: settings?.bio || "No bio",
         avatar: `https://cdn.saturne.lol/${settings?.avatar ? settings.account.id : "default"}.png`,
-        quotes: quote.map(({text}) => text).sort(() => Math.random() - 0.5),
+        quotes: quote.map(({text}) => text).sort(() => Math.random() - 0.5) || []
     }
 })
