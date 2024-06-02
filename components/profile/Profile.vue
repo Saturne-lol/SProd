@@ -6,12 +6,12 @@ const data = defineProps<{
     username: string,
     bio: string,
     avatar: string,
-    quotes: Array<string> | null
+    quotes: Array<string>
   },
-  badges: Array<{
+  badges: {
     name: string,
     image: string
-  }>
+  }[]
 }>()
 
 const quote = ref("")
@@ -49,14 +49,13 @@ function smoothNewQuote() {
   }, 150);
 }
 
-if (data.profile.quotes !== null) {
-  if (data.profile.quotes.length > 0) {
-    smoothNewQuote()
-  }
+
+if (data.profile.quotes.length > 0) {
+  smoothNewQuote()
 }
 
 
-const { gtag } = useGtag()
+const {gtag} = useGtag()
 gtag('config', 'G-YKC5TQ8C98', {
   'user_id': "coucou c'est moi"
 })
@@ -88,5 +87,80 @@ gtag('config', 'G-YKC5TQ8C98', {
 </template>
 
 <style scoped>
+.profil {
+  grid-column: 1 / -1;
+}
 
+.content .profil,
+.content .profil .nameBadges {
+  display: flex;
+  align-items: center;
+}
+
+.profil .ppUser #ppDisc {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.50);
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.profil .ppUser #ppDeco {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 185px;
+  height: 185px;
+}
+
+.infoUser .nameBadges {
+  position: relative;
+}
+
+.profil .infoUser .nameBadges h1 {
+  font-size: 200%;
+  text-shadow: 0 0 10px #c9c9c9;
+  letter-spacing: 3px;
+  margin-right: 10px;
+}
+
+.profil .infoUser .quote {
+  min-height: 30px;
+}
+
+/* TEXT TYPING */
+.profil .infoUser .quote h3::after {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 2px;
+  background: #fff;
+  box-shadow: 0 0 10px #c9c9c9;
+  animation: blink 0.7s infinite;
+  margin-top: 5px;
+}
+
+.profil .infoUser .quote h3.stop-blinking::before {
+  animation: none;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0
+  }
+}
+
+.profil .infoUser .quote h3,
+.profil .infoUser .description h5 {
+  font-weight: 500;
+}
+
+.profil .infoUser .quote h3 {
+  text-shadow: 0 0 10px #c9c9c9;
+}
+
+.profil .infoUser .description h5 {
+  color: rgb(255, 255, 255, 0.6);
+}
 </style>

@@ -63,7 +63,7 @@ const {data: profileData} = useFetch(`/api/profile/get-profile`, {
     username: string,
     bio: string,
     avatar: string,
-    quotes: Array<string> | null,
+    quotes: Array<string>
   }>
 }
 
@@ -90,12 +90,17 @@ const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
   }>
 }
 
+const audio = ref<HTMLAudioElement | null>(null)
 function clickToEnter(): any {
   isEnter.value = true
+  if (audio.value) {
+    audio.value.play()
+  }
 }
 </script>
 
 <template>
+  <audio src="https://cdn.discordapp.com/attachments/1246580858757054556/1246731743172759572/Best_Dramatic_music_ever.mp3?ex=665d74ea&is=665c236a&hm=602ff7416a488b4c8af89d20302d7f1cfef1182baf8fceeeb47c9c6ab9267bf7&" loop ref="audio" v-if="profileData.username === 'Cleboost'"/>
   <main>
     <div id="tempBackground" v-if="!isEnter">
       <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
@@ -235,125 +240,6 @@ main {
   padding: 30px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-/* ---------------------------------------------------------------- */
-
-.content .profil {
-  grid-column: 1 / -1;
-}
-
-.content .profil,
-.content .profil .nameBadges,
-.content .profil .nameBadges .badges {
-  display: flex;
-  align-items: center;
-}
-
-.content .profil .ppUser #ppDisc {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.50);
-  object-fit: cover;
-  margin-right: 20px;
-}
-
-.content .profil .ppUser #ppDeco {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 185px;
-  height: 185px;
-}
-
-.content .profil .infoUser .nameBadges {
-  position: relative;
-}
-
-.content .profil .infoUser .nameBadges h1 {
-  font-size: 200%;
-  text-shadow: 0 0 10px #c9c9c9;
-  letter-spacing: 3px;
-  margin-right: 10px;
-}
-
-.content .profil .infoUser .nameBadges .badges {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 0.5px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-}
-
-.content .profil .infoUser .nameBadges .badges img {
-  width: 24px;
-  height: 24px;
-  padding: 4px;
-}
-
-.content .profil .infoUser .nameBadges .badges .badge {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.content .profil .infoUser .nameBadges .badges h5 {
-  font-weight: 300;
-  text-shadow: 0 0 10px #c9c9c9;
-  white-space: nowrap;
-  opacity: 0;
-  position: absolute;
-  top: -40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.5s ease;
-}
-
-.content .profil .infoUser .nameBadges .badges .badge:hover h5 {
-  opacity: 1;
-}
-
-.content .profil .infoUser .nameBadges .badges h5:hover {
-  opacity: 0;
-}
-
-
-.content .profil .infoUser .quote {
-  min-height: 30px;
-}
-
-/* TEXT TYPING */
-.content .profil .infoUser .quote h3::after {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 2px;
-  background: #fff;
-  box-shadow: 0 0 10px #c9c9c9;
-  animation: blink 0.7s infinite;
-  margin-top: 5px;
-}
-
-.content .profil .infoUser .quote h3.stop-blinking::before {
-  animation: none;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0
-  }
-}
-
-.content .profil .infoUser .quote h3,
-.content .profil .infoUser .description h5 {
-  font-weight: 500;
-}
-
-.content .profil .infoUser .quote h3 {
-  text-shadow: 0 0 10px #c9c9c9;
-}
-
-.content .profil .infoUser .description h5 {
-  color: rgb(255, 255, 255, 0.6);
 }
 
 /* ---------------------------------------------------------------- */
