@@ -21,7 +21,7 @@ model Account {
   username    String?  @default("No username")
   badges      Badges[]
   discord     Discord?
-  quotes      Quotes?
+  quotes      Quotes[]
   setting     Setting?
   social      Social?
   view        View[]
@@ -47,7 +47,7 @@ model Discord {
 }
 
 model Quotes {
-  account_id String  @id
+  account_id String
   text       String
   account    Account @relation(fields: [account_id], references: [id])
 
@@ -56,8 +56,8 @@ model Quotes {
 
 model Setting {
   account_id    String  @id @unique
-  url           String  @unique
-  username      String
+  url           String  @unique @default(dbgenerated("(uuid())"))
+  username      String  @default(dbgenerated("(uuid())"))
   bio           String  @default("No bio")
   enter_message String  @default("Click to enter...")
   avatar        Boolean @default(false)
@@ -78,7 +78,7 @@ model Social {
 }
 
 model View {
-  id         String   @id @default(cuid())
+  id         String   @id @default(dbgenerated("(uuid())"))
   ip         String
   date       DateTime @default(now())
   profile_id String
