@@ -44,7 +44,18 @@ export default defineEventHandler(async (event) => {
     if (account?.plan === PlanEnum.PREMIUM) plan = 1
     if (account?.plan === PlanEnum.PREMIUM_PLUS) plan = 2
 
-    const member = await (await getBot()?.guilds.fetch("1129015826410901556")).members.fetch(user.id)
+    const bot = getBot()
+    if (!bot) return new Response("The bot is not ready", {status: 500})
+    const member = await (await bot?.guilds.fetch("1129015826410901556")).members.fetch(user.id)
+
+    const quotes = await prisma.quotes.findMany({
+        where: {
+            account_id: user.id
+        },
+        select: {
+            text: true
+        }
+    })
 
     return {
         url: settings?.url,
@@ -54,6 +65,7 @@ export default defineEventHandler(async (event) => {
         discord,
         linked: member ? `${member.user.displayName} (${member.user.id})` : null,
         enter: settings?.enter_message || "Click to enter...",
-        views: settings?.views || 0
+        views: settings?.views || 0,
+        quotes: quotes.map((q: any) => q.text) || []
     }
 })
