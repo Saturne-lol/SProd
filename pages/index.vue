@@ -121,7 +121,7 @@ useSeoMeta({
           <div class="info">
             <Icon name="material-symbols:grass" class="Icon" />
             <div class="text">
-              <h1>Classic Plan</h1>
+              <h2>Classic Plan</h2>
               <h3>0.00€ - Lifetime</h3>
             </div>
           </div>
@@ -129,23 +129,15 @@ useSeoMeta({
             <Icon name="material-symbols:check" id="check" />
             - Host 24/7<br>
             <Icon name="material-symbols:check" id="check" />
-            - Static images and bio<br>
+            - Static images<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Static bio<br>
             <Icon name="material-symbols:check" id="check" />
             - 3 Linked Social Network<br>
             <Icon name="material-symbols:check" id="check" />
-            - Number of box available: 2<br>
+            - Number of box : 2<br>
             <Icon name="material-symbols:check" id="check" />
-            - Show amount of profil viewer<br>
-            <Icon name="maki:cross" id="uncheck" />
-            - Special Discord role on our serveur<br>
-            <Icon name="maki:cross" id="uncheck" />
-            - Premium Badge<br>
-            <Icon name="maki:cross" id="uncheck" />
-            - Cursor Effect <br>
-            <Icon name="maki:cross" id="uncheck" />
-            - Customizable font<br>
-            <Icon name="maki:cross" id="uncheck" />
-            - Host on your own domain<br>
+            - Amount of profil viewer<br>
           </p>
           <button>Get Started</button>
         </div>
@@ -153,7 +145,7 @@ useSeoMeta({
           <div class="info">
             <Icon name="solar:stars-minimalistic-broken" class="Icon" />
             <div class="text">
-              <h1>Advanced Plan</h1>
+              <h2>Advanced Plan</h2>
               <h3>5.00€ - Lifetime</h3>
             </div>
           </div>
@@ -161,17 +153,17 @@ useSeoMeta({
             <Icon name="ion:information" id="info" />
             - All previous functions<br>
             <Icon name="material-symbols:check" id="check" />
-            - Dynamique images and bio<br>
+            - Dynamique images<br>
             <Icon name="material-symbols:check" id="check" />
-            - Number of box available: 4<br>
+            - Dynamique bio<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Number of box : 4<br>
             <Icon name="material-symbols:check" id="check" />
             - Premium Badge<br>
             <Icon name="material-symbols:check" id="check" />
             - Cursor Effect <br>
             <Icon name="material-symbols:check" id="check" />
             - Customizable font<br>
-            <Icon name="maki:cross" id="uncheck" />
-            - Host on your own domain<br>
           </p>
           <button>Buy Now</button>
         </div>
@@ -179,7 +171,7 @@ useSeoMeta({
           <div class="info">
             <Icon name="basil:diamond-solid" class="Icon" />
             <div class="text">
-              <h1>Premium Plan</h1>
+              <h2>Premium Plan</h2>
               <h3>2.00€/month</h3>
             </div>
           </div>
@@ -204,7 +196,7 @@ useSeoMeta({
             <div class="info">
               <img src="/public/img/AD.gif" alt="">
               <div class="text">
-                <h1>AD</h1>
+                <h2>AD</h2>
                 <h3>Owner du serveur saturne</h3>
               </div>
             </div>
@@ -220,7 +212,7 @@ useSeoMeta({
             <div class="info">
               <img src="/public/img/Cleboost.png" alt="">
               <div class="text">
-                <h1>Cleboost</h1>
+                <h2>Cleboost</h2>
                 <h3>Owner du serveur saturne</h3>
               </div>
             </div>
@@ -236,7 +228,7 @@ useSeoMeta({
             <div class="info">
               <img src="/public/img/BF.png" alt="">
               <div class="text">
-                <h1>BF</h1>
+                <h2>BF</h2>
                 <h3>Owner du serveur saturne</h3>
               </div>
             </div>
@@ -429,6 +421,12 @@ useSeoMeta({
   text-align: center;
 }
 
+.about h1 {
+  font-size: 250%;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
 .about .info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -460,6 +458,12 @@ useSeoMeta({
   margin-bottom: 100px;
 }
 
+.premium h1 {
+  font-size: 250%;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
 .premium .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -485,6 +489,28 @@ useSeoMeta({
   margin-bottom: 40px;
 }
 
+.premium .grid .box .info .Icon {
+  font-size: 400%;
+  margin-right: 20px;
+}
+
+.premium .grid .box .info h2 {
+  font-size: 160%;
+  font-weight: 700;
+}
+
+.premium .grid .box .info h3 {
+  font-size: 150%;
+  font-weight: 300;
+}
+
+.premium .grid .box p {
+  font-weight: 300;
+  font-size: 100%;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
 .premium .grid .box button {
   position: relative;
   background-color: rgba(255, 255, 255, 0.05);
@@ -503,24 +529,18 @@ useSeoMeta({
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.premium .grid .box p {
-  font-weight: 300;
-  font-size: 100%;
-  text-align: left;
-  margin-bottom: 30px;
-}
-
-.premium .grid .box .info .Icon {
-  font-size: 400%;
-  margin-right: 20px;
-}
-
 
 /* ----- VOUCHES ----- */
 .vouches {
   width: 90%;
   margin: 0 auto;
   text-align: center;
+}
+
+.vouches h1 {
+  font-size: 250%;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .vouches .grid {
@@ -551,7 +571,12 @@ useSeoMeta({
   margin-right: 20px;
 }
 
-.vouches .grid .box .info h1,
+.vouches .grid .box .info h2 {
+  font-size: 200%;
+  font-weight: 700;
+}
+
+.vouches .grid .box .info h2,
 .vouches .grid .box .info h3 {
   text-align: left;
 }
@@ -596,9 +621,55 @@ useSeoMeta({
 }
 
 /* ----- RESPONSIVE ----- */
+@media screen and (max-width: 1600px) {
+  .premium .grid .box .info .Icon {
+    font-size: 300%;
+  }
+
+  .premium .grid .box .info h2 {
+    font-size: 130%;
+  }
+
+  .premium .grid .box .info h3 {
+    font-size: 120%;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   .nav {
     width: 60%;
+  }
+
+  .premium .grid .box .info .Icon {
+    font-size: 220%;
+  }
+
+  .premium .grid .box .info h2 {
+    font-size: 110%;
+  }
+
+  .premium .grid .box .info h3 {
+    font-size: 100%;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .premium .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+
+  .premium .grid .box .info .Icon {
+    font-size: 400%;
+  }
+
+  .premium .grid .box .info h2 {
+    font-size: 200%;
+  }
+
+  .premium .grid .box .info h3 {
+    font-size: 150%;
   }
 }
 
@@ -641,6 +712,15 @@ useSeoMeta({
   .about .info {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .footer h3 {
+    font-size: 90%;
+  }
+
+  .footer .links a {
+    font-size: 80%;
+    margin: 10px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -651,5 +731,36 @@ useSeoMeta({
   .home .text h3 {
     font-size: 100%;
   }
+
+  .about .info .Icon {
+    font-size: 300%;
+  }
+
+  .premium .grid .box .info .Icon {
+    font-size: 250%;
+  }
+
+  .premium .grid .box .info h2 {
+    font-size: 120%;
+  }
+
+  .premium .grid .box .info h3 {
+    font-size: 110%;
+  }
+
+  .footer {
+    width: 100%;
+    text-align: center;
+  flex-direction: column;
+}
+
+.footer h3 {
+  font-size: 90%;
+}
+
+.footer .links a {
+  font-size: 80%;
+  margin: 10px;
+}
 }
 </style>
