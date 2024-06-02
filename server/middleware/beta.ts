@@ -7,6 +7,6 @@ export default defineEventHandler(async (event) => {
         const user = await checkToken(event)
         if (!user) return sendRedirect(event, "/auth/login")
         const beta = await prisma.account.findFirst({where: {id: user?.id}, select: {beta: true}})
-        if (!beta?.beta) return "nb"
+        if (!beta?.beta) return new Response("You are not a beta tester", {status: 403})
     }
 })

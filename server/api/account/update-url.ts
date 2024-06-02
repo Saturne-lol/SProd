@@ -5,14 +5,14 @@ import {getBlUrl} from "~/api/blacklist";
 const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-    if (event.method !== 'POST') return false
+    if (event.method !== 'POST') return new Response("Method not allowed", {status: 405})
 
     const user = await checkToken(event)
     if (!user) return new Response("Unauthorized", {status: 401})
 
     const url = (await readBody(event)).data
     if (!url) return false
-    if (getBlUrl().includes(url)) return false
+    if (getBlUrl().includes(url)) return new Response("URL is blacklisted", {status: 403})
 
     if (await prisma.setting.count({
         where: {

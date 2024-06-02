@@ -4,14 +4,13 @@ import {PrismaClient} from "@prisma/client";
 const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-    if (event.method !== 'POST') return false
+    if (event.method !== 'POST') return new Response("Method not allowed", {status: 405})
 
     const user = await checkToken(event)
     if (!user) return new Response("Unauthorized", {status: 401})
 
     const quotes = (await readBody(event))
-    if (!quotes) return false
-    // if (getBlUrl().includes(quotes)) return false
+    if (!quotes) return new Response("No quotes", {status: 400})
 
     await prisma.quotes.deleteMany({
         where: {
@@ -35,5 +34,5 @@ export default defineEventHandler(async (event) => {
             }
         })
     })
-    return true
+    return new Response("Quotes updated", {status: 200})
 })

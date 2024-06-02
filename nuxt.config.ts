@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {enabled: true},
-    modules: ['nuxt-icon', 'nuxt-obfuscator', "nuxt-gtag", "@nuxtjs/sitemap"],
+    modules: ['nuxt-icon', 'nuxt-obfuscator', "nuxt-gtag", "@nuxtjs/sitemap", "@nuxt/ui"],
     obfuscator: {
         // default config:
         mapFile: 'obfuscation.map.json',

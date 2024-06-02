@@ -48,46 +48,79 @@ function singleModalAction() {
   $fetch(`/api/account/update-${dataType}`, {
     method: "POST",
     body: JSON.stringify({data: dataIn})
-  }).then((res) => {
-    if (res === "nb") {
-      //@ts-ignore
-      data.value[dataType] = lastValue
-      alert("You are not in the beta program")
-    }
-    if (!res) {
-      //@ts-ignore
-      data.value[dataType] = lastValue
-      alert("An error occurred:"+res)
-    }
+  }).then(() => {
+    useToast().add({
+      title: "Success",
+      description: "Your data has been updated",
+      color: "green",
+      icon: "i-material-symbols-check", //@TODO fix icon
+    })
+  }).catch((e) => {
+    //@ts-ignore
+    data.value[dataType] = lastValue
+    useToast().add({
+      title: e.response.statusText,
+      description: e.response._data,
+      color: "red",
+      icon: "mdi:alert-circle", //@TODO fix icon
+    })
   })
 }
 
 function actionModalQuotes() {
-  // const q1 = (document.getElementById("q1") as HTMLInputElement)?.value;
-  // const q2 = (document.getElementById("q2") as HTMLInputElement)?.value;
-  // const q3 = (document.getElementById("q3") as HTMLInputElement)?.value;
   closeModal()
-  const quotes = []
+  const quotes = [] as string[]
   for (let i = 1; i < 4; i++) {
-    const q = (document.getElementById("q"+i) as HTMLInputElement)?.value;
+    const q = (document.getElementById("q" + i) as HTMLInputElement)?.value;
     if (q) quotes.push(q)
   }
   $fetch("/api/account/update-quotes", {
     method: "POST",
     body: JSON.stringify(quotes)
+  }).then(() => {
+    data.value.quotes = quotes
+    useToast().add({
+      title: "Success",
+      description: "Your quotes have been updated",
+      color: "green",
+      icon: "i-material-symbols-check", //@TODO fix icon
+    })
+  }).catch((e) => {
+    useToast().add({
+      title: e.response.statusText,
+      description: e.response._data,
+      color: "red",
+      icon: "mdi:alert-circle", //@TODO fix icon
+    })
+  })
+}
+
+function actionModalDiscord() {
+  const index = parseInt(activeModal?.value.split("_")[0] as string) || 0
+  console.log(index)
+  if (index < 0 || index > 5) return
+
+  const invite = (document.getElementById("discordModalInput") as HTMLInputElement)?.value;
+  const lastValue = data.value?.discord[index]?.invite || ""
+  closeModal()
+
+  data.value.discord[index] = {invite, index}
+  $fetch("/api/account/update-discord", {
+    method: "POST",
+    body: JSON.stringify({index, invite})
   }).then(res => {
     if (res === "nb") {
+      data.value.discord[index] = {invite: lastValue, index}
       alert("You are not in the beta program")
     }
     if (!res) {
-      alert("An error occurred:"+res)
+      data.value.discord[index] = {invite: lastValue, index}
+      alert("An error occurred:" + res)
     }
-    data.value.quotes = quotes
   })
 }
 
 function viewState() {
-  //@ts-ignore
   const view = (document.getElementById("view") as HTMLInputElement)?.checked;
   $fetch("/api/account/update-view", {
     method: "POST",
@@ -112,13 +145,10 @@ if (process.client) {
   if (singleModalAction) {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
-        if (["url","username","bio","enter"].includes(activeModal.value)) return singleModalAction()
+        if (["url", "username", "bio", "enter"].includes(activeModal.value)) return singleModalAction()
         if (activeModal.value === "quotes") return actionModalQuotes()
       }
       if (e.key === "Escape") return closeModal()
-    })
-    document.addEventListener("click", (e) => {
-      if (e.target === document.querySelector(".modal")) return closeModal()
     })
   }
 }
@@ -285,7 +315,7 @@ if (process.client) {
         </div>
         <div class="info">
           <h4>discord.gg/{{ data?.discord[0]?.invite || "" }}</h4>
-          <Icon name="ic:baseline-edit" id="modif"/>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('0_discord')"/>
         </div>
       </div>
     </div> <!-- Box 2 Server -->
@@ -524,7 +554,6 @@ if (process.client) {
       </div>
     </div>
   </div>
-
   <div class="modal" v-if="activeModal==='quotes'">
     <div class="center">
       <div class="content">
@@ -542,15 +571,15 @@ if (process.client) {
       </div>
     </div>
   </div>
-
-  <div class="modal" style="display: none;">
+  <div class="modal" v-if="activeModal.includes('discord')">
     <div class="center">
       <div class="content">
-        <Icon name="maki:cross" id="closeModal"/>
+        <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
         <Icon name="akar-icons:discord-fill" class="Icon"/>
         <h5>-</h5>
-        <input type="text" value="https://discord.gg/">
-        <button>
+        <input type="text" placeholder="https://discord.gg/" value="https://discord.gg/" id="discordModalInput"
+               maxlength="60"/>
+        <button @click="actionModalDiscord">
           <Icon name="material-symbols:check" id="save"/>
         </button>
       </div>
