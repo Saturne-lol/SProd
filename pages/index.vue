@@ -136,7 +136,7 @@ useSeoMeta({
             - Number of box available: 2<br>
             <Icon name="material-symbols:check" id="check" />
             - Show amount of profil viewer<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="maki:cross" id="uncheck" />
             - Special Discord role on our serveur<br>
             <Icon name="maki:cross" id="uncheck" />
             - Premium Badge<br>
@@ -154,7 +154,7 @@ useSeoMeta({
             <Icon name="solar:stars-minimalistic-broken" class="Icon" />
             <div class="text">
               <h1>Advanced Plan</h1>
-              <h3>5.00€/Lifetime</h3>
+              <h3>5.00€ - Lifetime</h3>
             </div>
           </div>
           <p>
@@ -187,16 +187,6 @@ useSeoMeta({
             <Icon name="ion:information" id="info" />
             - All previous functions<br>
             <Icon name="material-symbols:check" id="check" />
-            - Dynamique images and bio<br>
-            <Icon name="material-symbols:check" id="check" />
-            - Number of box available: 6<br>
-            <Icon name="material-symbols:check" id="check" />
-            - Premium Badge<br>
-            <Icon name="material-symbols:check" id="check" />
-            - Cursor Effect <br>
-            <Icon name="material-symbols:check" id="check" />
-            - Customizable font<br>
-            <Icon name="material-symbols:check" id="check" />
             - Host on your own domain<br>
           </p>
           <button>Buy Now</button>
@@ -208,11 +198,11 @@ useSeoMeta({
 
     <div class="background">
       <div class="vouches">
-        <h1>Choose your plan</h1>
+        <h1>Trusted by the community</h1>
         <div class="grid">
           <div class="box">
             <div class="info">
-              <img src="/public/img/pp2.gif" alt="">
+              <img src="/public/img/AD.gif" alt="">
               <div class="text">
                 <h1>AD</h1>
                 <h3>Owner du serveur saturne</h3>
@@ -228,7 +218,7 @@ useSeoMeta({
           </div>
           <div class="box">
             <div class="info">
-              <img src="/public/img/pp2.gif" alt="">
+              <img src="/public/img/Cleboost.png" alt="">
               <div class="text">
                 <h1>Cleboost</h1>
                 <h3>Owner du serveur saturne</h3>
@@ -244,7 +234,7 @@ useSeoMeta({
           </div>
           <div class="box">
             <div class="info">
-              <img src="/public/img/pp2.gif" alt="">
+              <img src="/public/img/BF.png" alt="">
               <div class="text">
                 <h1>BF</h1>
                 <h3>Owner du serveur saturne</h3>
@@ -262,8 +252,8 @@ useSeoMeta({
       </div>
     </div>
 
-
     <div class="waveBottom"></div>
+
     <div class="waveTop"></div>
 
     <div class="background">
@@ -312,7 +302,6 @@ useSeoMeta({
   height: 120px;
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255, 255, 255, 0.05)" d="M0,64 C120,80 240,32 360,64 C480,96 600,128 720,64 C840,0 960,32 1080,64 C1200,96 1320,32 1440,64 L1440,320 L0,320 Z"></path></svg>') repeat-x;
   background-size: contain;
-  margin-top: 30px;
 }
 
 .waveBottom {
@@ -322,12 +311,13 @@ useSeoMeta({
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255, 255, 255, 0.05)" d="M0,64 C120,80 240,32 360,64 C480,96 600,128 720,64 C840,0 960,32 1080,64 C1200,96 1320,32 1440,64 L1440,320 L0,320 Z"></path></svg>') repeat-x;
   background-size: contain;
   rotate: 180deg;
-  margin: 0px;
 }
 
 .background {
   background-color: rgba(255, 255, 255, 0.05);
 }
+
+/* ----- NAV ----- */
 
 .nav {
   width: 50%;
@@ -375,8 +365,7 @@ useSeoMeta({
   width: 100%;
 }
 
-.nav button,
-.home button {
+.nav button {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 5px 10px 5px 10px;
@@ -386,11 +375,12 @@ useSeoMeta({
   margin: 10px;
 }
 
-.home button:hover,
 .nav button:hover {
   background-color: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
+
+/* ----- HOME ----- */
 
 .home {
   width: 50%;
@@ -399,7 +389,6 @@ useSeoMeta({
 
 .home .text {
   text-align: center;
-  margin-top: 30px;
 }
 
 .home .text span {
@@ -409,16 +398,32 @@ useSeoMeta({
 .home .buttons {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.home .buttons button {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.home .buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .home video {
   width: 100%;
-  margin-top: 30px;
 }
 
-.about,
-.vouches {
+/* ----- ABOUT ----- */
+
+.about {
   width: 90%;
   margin: 0 auto;
   text-align: center;
@@ -429,7 +434,6 @@ useSeoMeta({
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   text-align: center;
-  margin-top: 40px;
 }
 
 .about .info .Icon {
@@ -447,11 +451,12 @@ useSeoMeta({
   font-weight: 200;
 }
 
+/* ----- PREMIUM ----- */
+
 .premium {
   width: 90%;
   margin: 0 auto;
   text-align: center;
-  margin-top: 40px;
   margin-bottom: 100px;
 }
 
@@ -459,13 +464,10 @@ useSeoMeta({
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-top: 40px;
 }
 
-.premium .grid .box,
-.vouches .grid .box {
+.premium .grid .box {
   position: relative;
-  display: inline-block;
   width: 80%;
   border-radius: 20px;
   padding: 30px;
@@ -476,42 +478,11 @@ useSeoMeta({
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.vouches .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.premium .grid .box .info,
-.vouches .grid .box .info {
+.premium .grid .box .info {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 40px;
-}
-
-.premium .grid .box .info .Icon,
-.vouches .grid .box .info img {
-  font-size: 400%;
-  margin-right: 20px;
-}
-
-.vouches .grid .box .info img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-.vouches .grid .box .info h1,
-.vouches .grid .box .info h3 {
-  text-align: left;
-}
-
-.premium .grid .box p,
-.vouches .grid .box p {
-  text-align: left;
-  margin-bottom: 30px;
 }
 
 .premium .grid .box button {
@@ -531,6 +502,66 @@ useSeoMeta({
   background-color: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
+
+.premium .grid .box p {
+  font-weight: 300;
+  font-size: 100%;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.premium .grid .box .info .Icon {
+  font-size: 400%;
+  margin-right: 20px;
+}
+
+
+/* ----- VOUCHES ----- */
+.vouches {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.vouches .grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vouches .grid .box {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.vouches .grid .box .info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.vouches .grid .box .info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.vouches .grid .box .info h1,
+.vouches .grid .box .info h3 {
+  text-align: left;
+}
+
+.vouches .grid .box p {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+/* ----- FOOTER ----- */
 
 .footer {
   width: 95%;
@@ -562,5 +593,63 @@ useSeoMeta({
 
 .footer .links a:hover::after {
   width: 100%;
+}
+
+/* ----- RESPONSIVE ----- */
+@media screen and (max-width: 1300px) {
+  .nav {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .nav {
+    width: 70%;
+  }
+
+  .about .info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .nav {
+    width: 80%;
+  }
+
+  .home {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .nav {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+
+  .nav img {
+    margin-right: 0px;
+  }
+
+  .nav ul {
+    display: none;
+  }
+
+  .about .info {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .home .text h1 {
+    font-size: 150%;
+  }
+
+  .home .text h3 {
+    font-size: 100%;
+  }
 }
 </style>
