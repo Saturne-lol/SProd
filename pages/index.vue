@@ -60,7 +60,7 @@ useSeoMeta({
         <h1>Why choose Saturne</h1>
         <div class="info">
           <div class="box">
-            <Icon name="ph:magic-wand-fill" class="Icon"/>
+            <Icon name="ph:magic-wand-fill" class="Icon" />
             <h3>FULLY CUSTOMIZABLE</h3>
             <h5>
               Express yourself in a unique way and create a modern,
@@ -68,7 +68,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:shield-lock" class="Icon"/>
+            <Icon name="material-symbols:shield-lock" class="Icon" />
             <h3>INSURED PROTECTION</h3>
             <h5>
               Enjoy peace of mind with Saturne.lol's insured protection.
@@ -76,7 +76,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="ph:code-bold" class="Icon"/>
+            <Icon name="ph:code-bold" class="Icon" />
             <h3>DEVELOPMENT</h3>
             <h5>
               Explore Saturne.lol and experience the result of meticulous development.
@@ -84,7 +84,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon"/>
+            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon" />
             <h3>RESPONSIVE</h3>
             <h5>
               Experience seamless accessibility on any device with Saturne.lol's responsive design.
@@ -92,7 +92,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="ph:globe" class="Icon"/>
+            <Icon name="ph:globe" class="Icon" />
             <h3>COMMUNITY APPROVAL</h3>
             <h5>
               Find out why Saturn.lol is so popular with our community.
@@ -100,7 +100,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:contact-support-rounded" class="Icon"/>
+            <Icon name="material-symbols:contact-support-rounded" class="Icon" />
             <h3>SUPPORT 24/7</h3>
             <h5>
               Saturne provides 24/7 support to ensure that our customers receive
@@ -119,90 +119,164 @@ useSeoMeta({
       <div class="grid">
         <div class="box">
           <div class="info">
-            <Icon name="material-symbols:grass" class="Icon"/>
+            <Icon name="material-symbols:grass" class="Icon" />
             <div class="text">
               <h1>Classic Plan</h1>
               <h3>0.00€ - Lifetime</h3>
             </div>
           </div>
           <p>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Host 24/7<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Static images and bio<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - 3 Linked Social Network<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Number of box available: 2<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Show amount of profil viewer<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Special Discord role on our serveur<br>
-            <Icon name="maki:cross" id="uncheck"/>
+            <Icon name="maki:cross" id="uncheck" />
             - Premium Badge<br>
-            <Icon name="maki:cross" id="uncheck"/>
+            <Icon name="maki:cross" id="uncheck" />
             - Cursor Effect <br>
-            <Icon name="maki:cross" id="uncheck"/>
+            <Icon name="maki:cross" id="uncheck" />
             - Customizable font<br>
-            <Icon name="maki:cross" id="uncheck"/>
+            <Icon name="maki:cross" id="uncheck" />
             - Host on your own domain<br>
           </p>
           <button>Get Started</button>
         </div>
         <div class="box">
           <div class="info">
-            <Icon name="solar:stars-minimalistic-broken" class="Icon"/>
+            <Icon name="solar:stars-minimalistic-broken" class="Icon" />
             <div class="text">
               <h1>Advanced Plan</h1>
               <h3>5.00€/Lifetime</h3>
             </div>
           </div>
           <p>
-            <Icon name="ion:information" id="info"/>
+            <Icon name="ion:information" id="info" />
             - All previous functions<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Dynamique images and bio<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Number of box available: 4<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Premium Badge<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Cursor Effect <br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Customizable font<br>
-            <Icon name="maki:cross" id="uncheck"/>
+            <Icon name="maki:cross" id="uncheck" />
             - Host on your own domain<br>
           </p>
           <button>Buy Now</button>
         </div>
         <div class="box">
           <div class="info">
-            <Icon name="basil:diamond-solid" class="Icon"/>
+            <Icon name="basil:diamond-solid" class="Icon" />
             <div class="text">
               <h1>Premium Plan</h1>
               <h3>2.00€/month</h3>
             </div>
           </div>
           <p>
-            <Icon name="ion:information" id="info"/>
+            <Icon name="ion:information" id="info" />
             - All previous functions<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Dynamique images and bio<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Number of box available: 6<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Premium Badge<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Cursor Effect <br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Customizable font<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Host on your own domain<br>
           </p>
           <button>Buy Now</button>
         </div>
       </div>
     </div>
+
+    <div class="waveTop" id="vouches"></div>
+
+    <div class="background">
+      <div class="vouches">
+        <h1>Choose your plan</h1>
+        <div class="grid">
+          <div class="box">
+            <div class="info">
+              <img src="/public/img/pp2.gif" alt="">
+              <div class="text">
+                <h1>AD</h1>
+                <h3>Owner du serveur saturne</h3>
+              </div>
+            </div>
+            <p>
+              <Icon name="bxs:quote-alt-left" />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+              Libero, accusamus.
+              <Icon name="bxs:quote-alt-right" />
+            </p>
+          </div>
+          <div class="box">
+            <div class="info">
+              <img src="/public/img/pp2.gif" alt="">
+              <div class="text">
+                <h1>Cleboost</h1>
+                <h3>Owner du serveur saturne</h3>
+              </div>
+            </div>
+            <p>
+              <Icon name="bxs:quote-alt-left" />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+              Libero, accusamus.
+              <Icon name="bxs:quote-alt-right" />
+            </p>
+          </div>
+          <div class="box">
+            <div class="info">
+              <img src="/public/img/pp2.gif" alt="">
+              <div class="text">
+                <h1>BF</h1>
+                <h3>Owner du serveur saturne</h3>
+              </div>
+            </div>
+            <p>
+              <Icon name="bxs:quote-alt-left" />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+              Libero, accusamus.
+              <Icon name="bxs:quote-alt-right" />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="waveBottom"></div>
+    <div class="waveTop"></div>
+
+    <div class="background">
+      <div class="footer">
+        <h3>Copyright © 2024 saturne.lol</h3>
+        <div class="links">
+          <a href="">Privacy</a>
+          <a href="">PolicyTerms of Service</a>
+          <a href="">Discord</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -249,7 +323,10 @@ useSeoMeta({
   background-size: contain;
   rotate: 180deg;
   margin: 0px;
-  margin-top: -20px;
+}
+
+.background {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .nav {
@@ -340,20 +417,16 @@ useSeoMeta({
   margin-top: 30px;
 }
 
-.about {
+.about,
+.vouches {
   width: 90%;
   margin: 0 auto;
   text-align: center;
 }
 
-.background {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
 .about .info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 20px;
   gap: 20px;
   text-align: center;
   margin-top: 40px;
@@ -389,33 +462,54 @@ useSeoMeta({
   margin-top: 40px;
 }
 
-.premium .grid .box {
+.premium .grid .box,
+.vouches .grid .box {
   position: relative;
+  display: inline-block;
   width: 80%;
-  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
-  text-align: center;
   padding: 30px;
+  margin: 0 auto;
 }
 
-.premium .grid .box .info {
+.premium .grid .box {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.vouches .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.premium .grid .box .info,
+.vouches .grid .box .info {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 40px;
 }
 
-.premium .grid .box .info h3,
-.premium .grid .box .info h5 {
-  white-space: nowrap;
-}
-
-.premium .grid .box .info .Icon {
+.premium .grid .box .info .Icon,
+.vouches .grid .box .info img {
   font-size: 400%;
   margin-right: 20px;
 }
 
-.premium .grid .box p {
+.vouches .grid .box .info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.vouches .grid .box .info h1,
+.vouches .grid .box .info h3 {
+  text-align: left;
+}
+
+.premium .grid .box p,
+.vouches .grid .box p {
   text-align: left;
   margin-bottom: 30px;
 }
@@ -436,5 +530,37 @@ useSeoMeta({
 .premium .grid .box button:hover {
   background-color: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.footer {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.footer h3 {
+  font-weight: 500;
+}
+
+.footer .links a {
+  position: relative;
+  margin: 20px;
+}
+
+.footer .links a::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  transition: 0.5s;
+}
+
+.footer .links a:hover::after {
+  width: 100%;
 }
 </style>
