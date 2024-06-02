@@ -15,6 +15,7 @@ interface Customize {
     linked: string | null,
     enter: string,
     views: boolean,
+    quotes: string[],
   }>
 }
 
@@ -35,22 +36,59 @@ function closeModal() {
 }
 
 function singleModalAction() {
-  const dataIn = document.getElementById("singleModalInput").value
-  $fetch(`/api/account/update-${activeModal.value}`, {
+  const dataType = activeModal.value as string
+  //@ts-ignore
+  if (!dataType || !data.value || !data.value[dataType]) return
+  closeModal()
+  const dataIn = (document.getElementById("singleModalInput") as HTMLInputElement)?.value;
+  //@ts-ignore
+  const lastValue = data.value[dataType] as string
+  //@ts-ignore
+  data.value[dataType] = dataIn
+  $fetch(`/api/account/update-${dataType}`, {
     method: "POST",
     body: JSON.stringify({data: dataIn})
   }).then((res) => {
-    if (res) {
-      data.value[activeModal.value] = dataIn
-    } else {
-      alert("An error occurred")
+    if (res === "nb") {
+      //@ts-ignore
+      data.value[dataType] = lastValue
+      alert("You are not in the beta program")
     }
-    closeModal()
+    if (!res) {
+      //@ts-ignore
+      data.value[dataType] = lastValue
+      alert("An error occurred:"+res)
+    }
+  })
+}
+
+function actionModalQuotes() {
+  // const q1 = (document.getElementById("q1") as HTMLInputElement)?.value;
+  // const q2 = (document.getElementById("q2") as HTMLInputElement)?.value;
+  // const q3 = (document.getElementById("q3") as HTMLInputElement)?.value;
+  closeModal()
+  const quotes = []
+  for (let i = 1; i < 4; i++) {
+    const q = (document.getElementById("q"+i) as HTMLInputElement)?.value;
+    if (q) quotes.push(q)
+  }
+  $fetch("/api/account/update-quotes", {
+    method: "POST",
+    body: JSON.stringify(quotes)
+  }).then(res => {
+    if (res === "nb") {
+      alert("You are not in the beta program")
+    }
+    if (!res) {
+      alert("An error occurred:"+res)
+    }
+    data.value.quotes = quotes
   })
 }
 
 function viewState() {
-  const view = document.getElementById("view").checked
+  //@ts-ignore
+  const view = (document.getElementById("view") as HTMLInputElement)?.checked;
   $fetch("/api/account/update-view", {
     method: "POST",
     body: JSON.stringify({view})
@@ -73,7 +111,10 @@ function placeHolderText() {
 if (process.client) {
   if (singleModalAction) {
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") return singleModalAction()
+      if (e.key === "Enter") {
+        if (["url","username","bio","enter"].includes(activeModal.value)) return singleModalAction()
+        if (activeModal.value === "quotes") return actionModalQuotes()
+      }
       if (e.key === "Escape") return closeModal()
     })
     document.addEventListener("click", (e) => {
@@ -484,32 +525,23 @@ if (process.client) {
     </div>
   </div>
 
-  <div class="modal" style="display: none;">
+  <div class="modal" v-if="activeModal==='quotes'">
     <div class="center">
       <div class="content">
-        <Icon name="maki:cross" id="closeModal"/>
+        <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
         <Icon name="fa6-solid:quote-left" class="Icon"/>
         <h5>-</h5>
-        <input type="text" placeholder="Enter a quote">
+        <div v-for="i in 3">
+          <Icon name="fa6-solid:quote-left" class="Icon" v-if="data.quotes[i-1]"/>
+          <h5 v-if="data.quotes[i-1]">-</h5>
+          <input type="text" placeholder="Enter a quote" :id="'q'+i" :value="data.quotes[i-1] ? data.quotes[i-1] : ''"/>
+        </div>
         <button>
-          <Icon name="material-symbols:check" id="save"/>
-        </button>
-        <Icon name="fa6-solid:quote-left" class="Icon"/>
-        <h5>-</h5>
-        <input type="text" placeholder="Enter a quote">
-        <button>
-          <Icon name="material-symbols:check" id="save"/>
-        </button>
-        <Icon name="fa6-solid:quote-left" class="Icon"/>
-        <h5>-</h5>
-        <input type="text" placeholder="Enter a quote">
-        <button>
-          <Icon name="material-symbols:check" id="save"/>
+          <Icon name="material-symbols:check" id="save" @click="actionModalQuotes"/>
         </button>
       </div>
     </div>
   </div>
-
 
   <div class="modal" style="display: none;">
     <div class="center">
