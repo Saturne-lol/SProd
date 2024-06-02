@@ -22,5 +22,40 @@ const data = defineProps<{
 </template>
 
 <style scoped>
+.boxUser {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.08);
+  border: 1px solid rgb(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 10px;
+  transition: 0.5s, transform 0.5s;
+}
 
+.boxUser:hover {
+  box-shadow: 0px 0px 3px 1px #00000044;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.boxUser #ppDiscord {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.boxUser #discordPresence {
+  display: none;
+}
+
+.boxUser .info h3 {
+  font-weight: 500;
+}
+
+.boxUser .info h4 {
+  font-weight: 300;
+}
 </style>

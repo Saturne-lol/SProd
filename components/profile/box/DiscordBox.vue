@@ -36,5 +36,51 @@ const data = defineProps<{
 </template>
 
 <style scoped>
+.boxServer {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.08);
+  border: 1px solid rgb(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 10px;
+  transition: 0.5s, transform 0.5s;
+}
 
+.boxServer:hover {
+  box-shadow: 0px 0px 3px 1px #00000044;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.boxServer .ppServ img {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 20%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.boxServer .infoServ .memberServ {
+  display: flex;
+  align-items: center;
+}
+
+.boxServer .infoServ .memberServ i {
+  font-size: 7px;
+  margin-right: 5px;
+}
+
+.boxServer .infoServ .memberServ p {
+  font-size: 80%;
+  margin-right: 10px;
+}
+
+.boxServer .infoServ a {
+  background-color: #1a6334;
+  font-size: 70%;
+  padding: 2px 8px 2px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
 </style>
