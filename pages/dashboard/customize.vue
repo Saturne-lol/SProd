@@ -20,6 +20,12 @@ interface Customize {
 }
 
 let {data} = await useFetch("/api/account/get-customize") as Customize
+for (let i = 0; i < 5; i++) {
+  if (!data.value.discord[i]) data.value.discord[i] = {invite: "", index: i}
+}
+data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
+
+console.log(data.value.discord)
 
 definePageMeta({
   layout: 'dashboard',
@@ -100,7 +106,17 @@ function actionModalDiscord() {
   console.log(index)
   if (index < 0 || index > 5) return
 
-  const invite = (document.getElementById("discordModalInput") as HTMLInputElement)?.value;
+  let invite = (document.getElementById("discordModalInput") as HTMLInputElement)?.value;
+  if (invite.split("/").length > 4) {
+    closeModal()
+    return useToast().add({
+      title: "Error",
+      description: "Invalid discord invite",
+      color: "red",
+      icon: "mdi:alert-circle", //@TODO fix icon
+    })
+  }
+  invite = invite.split("/")[invite.split("/").length - 1]
   const lastValue = data.value?.discord[index]?.invite || ""
   closeModal()
 
@@ -108,15 +124,21 @@ function actionModalDiscord() {
   $fetch("/api/account/update-discord", {
     method: "POST",
     body: JSON.stringify({index, invite})
-  }).then(res => {
-    if (res === "nb") {
-      data.value.discord[index] = {invite: lastValue, index}
-      alert("You are not in the beta program")
-    }
-    if (!res) {
-      data.value.discord[index] = {invite: lastValue, index}
-      alert("An error occurred:" + res)
-    }
+  }).then(() => {
+    useToast().add({
+      title: "Success",
+      description: "Your discord invite has been updated",
+      color: "green",
+      icon: "i-material-symbols-check", //@TODO fix icon
+    })
+  }).catch((e) => {
+    data.value.discord[index] = {invite: lastValue, index}
+    useToast().add({
+      title: e.response.statusText,
+      description: e.response._data,
+      color: "red",
+      icon: "mdi:alert-circle", //@TODO fix icon
+    })
   })
 }
 
@@ -307,66 +329,82 @@ if (process.client) {
         </div>
       </div>
     </div> <!-- Box 1 Profil -->
-    <div class="box" id="customizeBox10">
+
+    <div class="box" v-for="i in 5" :key="i" :id="'customizeBox'+(i+9)"> <!-- Box 2 to 6 Server -->
       <div class="padding">
         <div class="title">
           <Icon name="akar-icons:discord-fill" class="Icon"/>
-          <h3>BOX N°2 (SERVER)</h3>
+          <h3>BOX N°{{ i+1 }} (SERVER)</h3>
         </div>
         <div class="info">
-          <h4>discord.gg/{{ data?.discord[0]?.invite || "" }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('0_discord')"/>
+          <h4>discord.gg/{{ data?.discord[i-1]?.invite || "" }}</h4>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal(i-1+'_discord')"/>
         </div>
       </div>
-    </div> <!-- Box 2 Server -->
-    <div class="box" id="customizeBox11" v-bind:aria-disabled="data.plan >= 1">
-      <div class="padding">
-        <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon"/>
-          <h3>BOX N°3 (SERVER)</h3>
-        </div>
-        <div class="info">
-          <h4>discord.gg/</h4>
-          <Icon name="ic:baseline-edit" id="modif"/>
-        </div>
-      </div>
-    </div> <!-- Box 3 Server -->
-    <div class="box" id="customizeBox12" v-bind:aria-disabled="data.plan >= 1">
-      <div class="padding">
-        <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon"/>
-          <h3>BOX N°4 (SERVER)</h3>
-        </div>
-        <div class="info">
-          <h4>discord.gg/</h4>
-          <Icon name="ic:baseline-edit" id="modif"/>
-        </div>
-      </div>
-    </div> <!-- Box 4 Server -->
-    <div class="box" id="customizeBox13" v-bind:aria-disabled="data.plan >= 2">
-      <div class="padding">
-        <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon"/>
-          <h3>BOX N°5 (SERVER)</h3>
-        </div>
-        <div class="info">
-          <h4>discord.gg/</h4>
-          <Icon name="ic:baseline-edit" id="modif"/>
-        </div>
-      </div>
-    </div> <!-- Box 5 Server -->
-    <div class="box" id="customizeBox14" v-bind:aria-disabled="data.plan >= 2">
-      <div class="padding">
-        <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon"/>
-          <h3>BOX N°6 (SERVER)</h3>
-        </div>
-        <div class="info">
-          <h4>discord.gg/</h4>
-          <Icon name="ic:baseline-edit" id="modif"/>
-        </div>
-      </div>
-    </div> <!-- Box 6 Server -->
+    </div>
+
+
+
+<!--    <div class="box" id="customizeBox10">-->
+<!--      <div class="padding">-->
+<!--        <div class="title">-->
+<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
+<!--          <h3>BOX N°2 (SERVER)</h3>-->
+<!--        </div>-->
+<!--        <div class="info">-->
+<!--          <h4>discord.gg/{{ data?.discord[0]?.invite || "" }}</h4>-->
+<!--          <Icon name="ic:baseline-edit" id="modif" @click="openModal('0_discord')"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div> &lt;!&ndash; Box 2 Server &ndash;&gt;-->
+<!--    <div class="box" id="customizeBox11" v-bind:aria-disabled="data.plan >= 1">-->
+<!--      <div class="padding">-->
+<!--        <div class="title">-->
+<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
+<!--          <h3>BOX N°3 (SERVER)</h3>-->
+<!--        </div>-->
+<!--        <div class="info">-->
+<!--          <h4>discord.gg/</h4>-->
+<!--          <Icon name="ic:baseline-edit" id="modif"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div> &lt;!&ndash; Box 3 Server &ndash;&gt;-->
+<!--    <div class="box" id="customizeBox12" v-bind:aria-disabled="data.plan >= 1">-->
+<!--      <div class="padding">-->
+<!--        <div class="title">-->
+<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
+<!--          <h3>BOX N°4 (SERVER)</h3>-->
+<!--        </div>-->
+<!--        <div class="info">-->
+<!--          <h4>discord.gg/</h4>-->
+<!--          <Icon name="ic:baseline-edit" id="modif"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div> &lt;!&ndash; Box 4 Server &ndash;&gt;-->
+<!--    <div class="box" id="customizeBox13" v-bind:aria-disabled="data.plan >= 2">-->
+<!--      <div class="padding">-->
+<!--        <div class="title">-->
+<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
+<!--          <h3>BOX N°5 (SERVER)</h3>-->
+<!--        </div>-->
+<!--        <div class="info">-->
+<!--          <h4>discord.gg/</h4>-->
+<!--          <Icon name="ic:baseline-edit" id="modif"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div> &lt;!&ndash; Box 5 Server &ndash;&gt;-->
+<!--    <div class="box" id="customizeBox14" v-bind:aria-disabled="data.plan >= 2">-->
+<!--      <div class="padding">-->
+<!--        <div class="title">-->
+<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
+<!--          <h3>BOX N°6 (SERVER)</h3>-->
+<!--        </div>-->
+<!--        <div class="info">-->
+<!--          <h4>discord.gg/</h4>-->
+<!--          <Icon name="ic:baseline-edit" id="modif"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div> &lt;!&ndash; Box 6 Server &ndash;&gt;-->
     <div class="box" id="customizeBox15">
       <div class="padding">
         <div class="title">
@@ -577,7 +615,7 @@ if (process.client) {
         <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
         <Icon name="akar-icons:discord-fill" class="Icon"/>
         <h5>-</h5>
-        <input type="text" placeholder="https://discord.gg/" value="https://discord.gg/" id="discordModalInput"
+        <input type="text" placeholder="discord.gg/" value="discord.gg/" id="discordModalInput"
                maxlength="60"/>
         <button @click="actionModalDiscord">
           <Icon name="material-symbols:check" id="save"/>

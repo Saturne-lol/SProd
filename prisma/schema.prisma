@@ -9,18 +9,18 @@ datasource db {
 }
 
 model Account {
-  id          String   @id
-  create_date DateTime @default(now())
-  plan        PlanEnum @default(FREE)
-  blacklisted Boolean  @default(false)
-  last_login  DateTime @default(now())
+  id          String    @id
+  create_date DateTime  @default(now())
+  plan        PlanEnum  @default(FREE)
+  blacklisted Boolean   @default(false)
+  last_login  DateTime  @default(now())
   last_ip     String?
-  expires     DateTime @default(now())
-  beta        Boolean  @default(false)
-  admin       Boolean  @default(false)
-  username    String?  @default("No username")
+  expires     DateTime  @default(now())
+  beta        Boolean   @default(false)
+  admin       Boolean   @default(false)
+  username    String?   @default("No username")
   badges      Badges[]
-  discord     Discord?
+  discord     Discord[]
   quotes      Quotes[]
   setting     Setting?
   social      Social?
@@ -37,7 +37,7 @@ model Badges {
 }
 
 model Discord {
-  account_id String  @id
+  account_id String
   invite     String
   index      Int     @default(0)
   account    Account @relation(fields: [account_id], references: [id])
