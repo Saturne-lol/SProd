@@ -80,11 +80,16 @@ jobs:
         with:
           name: build
 
-      - name: Upload to SFTP
-        uses: atmoz/sftp@v1
+      - name: Extract build artifact
+        run: unzip build.zip -d ./dist
+        shell: bash
+
+      - name: Upload via SFTP
+        uses: danhendrickson/sftp-transfer-action@v1.23
         with:
-          args: "upload -i /path/to/private-key build.zip remote/path/"
-        env:
-          SFTP_HOST: ${{ secrets.SFTP_HOST }}
-          SFTP_USER: ${{ secrets.SFTP_USER }}
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          server: 212.227.179.23
+          user: root
+          pass: hzS62wNC
+          port: 22
+          local-path: './dist/'
+          remote-path: '/root/saturne'
