@@ -3,7 +3,7 @@ import type {Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 
-// const { gtag } = useGtag()
+
 
 definePageMeta({
   middleware: async (to) => {
@@ -15,12 +15,6 @@ definePageMeta({
     useFetch('/api/profile/view', {body: {username: to.params.username}, method: 'POST'});
   }
 });
-
-// gtag('event', 'page_view', {
-//   page_title: 'Profile',
-//   page_location: window.location.href,
-//   page_path: window.location.pathname,
-// });
 
 const url = useRoute().params.username
 if (typeof url === "string") {
