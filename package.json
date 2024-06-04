@@ -15,11 +15,11 @@
     "@nuxtjs/sitemap": "^5.2.0",
     "@prisma/client": "^5.14.0",
     "axios": "^1.7.2",
-    "discord.js": "^14.15.2",
+    "discord.js": "^14.15.3",
     "nuxt": "^3.11.2",
     "nuxt-gtag": "^2.0.6",
     "postgres": "^3.4.4",
-    "stripe": "15.8.0",
+    "stripe": "15.9.0",
     "url": "^0.11.3",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
