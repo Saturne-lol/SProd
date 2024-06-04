@@ -84,15 +84,21 @@ jobs:
         run: unzip build.zip -d ./dist
         shell: bash
 
-      - name: List extracted files
-        run: ls -la ./dist
+      - name: Clean remote directory
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+          sshpass -p "hzS62wNC" ssh -o StrictHostKeyChecking=no -p 22 root@212.227.179.23 'rm -rf /root/saturne/*'
         shell: bash
 
       - name: Upload via rsync
         run: |
-          sudo apt-get update
-          sudo apt-get install -y rsync sshpass
           rsync -avz --delete ./dist/ root@212.227.179.23:/root/saturne/
         env:
           RSYNC_RSH: 'sshpass -p hzS62wNC ssh -o StrictHostKeyChecking=no -p 22'
+        shell: bash
+
+      - name: Clean remote directory
+        run: |
+          sshpass -p "hzS62wNC" ssh -o StrictHostKeyChecking=no -p 22 root@212.227.179.23 'pm2 restart all'
         shell: bash
