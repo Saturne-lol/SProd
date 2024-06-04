@@ -100,5 +100,5 @@ jobs:
 
       - name: Restart pm2
         run: |
-          sshpass -p "hzS62wNC" ssh -o StrictHostKeyChecking=no -p 22 root@212.227.179.23 'PATH=$PATH:/usr/local/bin pm2 restart all'
+          sshpass -p "hzS62wNC" ssh -o StrictHostKeyChecking=no -p 22 root@212.227.179.23 '/root/.nvm/versions/node/v21.6.1/bin/pm2 restart all'
         shell: bash
