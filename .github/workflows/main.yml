@@ -89,11 +89,12 @@ jobs:
         shell: bash
 
       - name: Upload via SFTP
-        uses: danhendrickson/sftp-transfer-action@v1.23
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: '212.227.179.23'
-          user: 'root'
-          pass: 'hzS62wNC'
+          host: '212.227.179.23'
+          username: 'root'
+          password: 'hzS62wNC'
           port: 22
-          local-path: './dist/'
-          remote-path: '/root/saturne/'
+          source: './dist/'
+          target: '/root/saturne/'
+          strip_components: 1
