@@ -67,17 +67,21 @@ const {data} = await useFetch("/api/account/get-nav") as {
 </template>
 
 <style scoped>
+
 .nav {
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.041);
+  width: max-content; /* Set a fixed width for the navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .nav .background {
   padding: 20px;
-}
-
-.nav .background {
-  height: 100%;
+  width: 100%; /* Ensure background takes the full width of the navbar */
+  height: 100%; /* Ensure background takes the full height of the navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,13 +96,22 @@ const {data} = await useFetch("/api/account/get-nav") as {
   flex-grow: 1;
 }
 
+.nav .background .links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
 .nav .background .links li {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 10px 45px 10px 45px;
+  padding: 10px 45px;
   border-radius: 15px;
   margin-bottom: 25px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .nav .background .links .Icon {

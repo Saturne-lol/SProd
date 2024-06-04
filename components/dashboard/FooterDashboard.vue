@@ -16,7 +16,8 @@
 </template>
 
 <style scoped>
-.mainContainer .contentAndFooter .background .footer {
+
+.footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,16 +28,16 @@
   margin-top: 30px;
 }
 
-.mainContainer .contentAndFooter .background .footer h3{
+.footer h3{
   font-weight: 500;
 }
 
-.mainContainer .contentAndFooter .background .footer a{
+.footer a{
   margin-right: 30px;
 }
 
 @media screen and (max-width: 750px) {
-  .mainContainer .contentAndFooter .background .footer {
+  .footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,25 +48,25 @@
     margin-top: 30px;
   }
 
-  .mainContainer .contentAndFooter .background .footer h3{
+  .footer h3{
     font-size: 90%;
   }
 
-  .mainContainer .contentAndFooter .background .footer a{
+  .footer a{
     font-size: 80%;
     margin-right: 20px;
   }
 }
 
   @media screen and (max-width: 600px) {
-    .mainContainer .contentAndFooter .background .footer {
+    .footer {
       display: flex;
       flex-direction: column;
     }
   }
 
   @media screen and (max-width: 350px) {
-      .mainContainer .contentAndFooter .background .footer a{
+    .footer a{
       font-size: 80%;
       margin-right: 10px;
     }

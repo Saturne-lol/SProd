@@ -36,16 +36,6 @@ useSeoMeta({
 
 <style scoped>
 
-* {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    box-sizing : border-box;
-}
-
 #background {
   width: 100vw;
   height: 100vh;

@@ -42,57 +42,52 @@
 
 @media screen and (max-width: 1300px) {
   .nav2 {
-    display: none;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
-  @media screen and (max-width: 1300px) {
-    .nav2 {
-      display: block;
-      margin-bottom: 20px;
-      border-radius: 20px;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 5px;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-
-    .nav2 .links ul {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-
-    .nav2 .links ul li {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-    }
-
-    .nav2 .links ul li:hover {
-      background-color: rgba(255, 255, 255, 0.041);
-      border-radius: 20px;
-    }
-
-    .nav2 .links ul li .Icon {
-      font-size: 200%;
-      margin-bottom: 10px;
-    }
-
-    .nav2 .links ul li h5 {
-      font-size: 70%;
-      font-weight: 500;
-    }
+  .nav2 .links ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 
-  @media screen and (max-width: 380px) {
-    .nav2 .links ul li .Icon {
-      font-size: 150%;
-    }
+  .nav2 .links ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
 
-    .nav2 .links ul li h5 {
-      font-size: 60%;
-    }
+  .nav2 .links ul li:hover {
+    background-color: rgba(255, 255, 255, 0.041);
+    border-radius: 20px;
+  }
+
+  .nav2 .links ul li .Icon {
+    font-size: 200%;
+    margin-bottom: 10px;
+  }
+
+  .nav2 .links ul li h5 {
+    font-size: 70%;
+    font-weight: 500;
   }
 }
+
+@media screen and (max-width: 380px) {
+  .nav2 .links ul li .Icon {
+    font-size: 150%;
+  }
+
+  .nav2 .links ul li h5 {
+    font-size: 60%;
+  }
+}
+
 </style>

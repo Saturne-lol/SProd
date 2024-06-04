@@ -153,6 +153,7 @@ definePageMeta({
 </template>
 
 <style scoped>
+
 .content {
   flex-grow: 1;
 }
