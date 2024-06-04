@@ -84,6 +84,10 @@ jobs:
         run: unzip build.zip -d ./dist
         shell: bash
 
+      - name: List extracted files
+        run: ls -la ./dist
+        shell: bash
+
       - name: Upload via SFTP
         uses: danhendrickson/sftp-transfer-action@v1.23
         with:
