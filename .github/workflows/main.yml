@@ -88,13 +88,11 @@ jobs:
         run: ls -la ./dist
         shell: bash
 
-      - name: Upload via SFTP
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: '212.227.179.23'
-          username: 'root'
-          password: 'hzS62wNC'
-          port: 22
-          source: './dist/'
-          target: '/root/saturne/'
-          strip_components: 1
+      - name: Upload via rsync
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rsync sshpass
+          rsync -avz --delete ./dist/ root@212.227.179.23:/root/saturne/
+        env:
+          RSYNC_RSH: 'sshpass -p hzS62wNC ssh -o StrictHostKeyChecking=no -p 22'
+        shell: bash
