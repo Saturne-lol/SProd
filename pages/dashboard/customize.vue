@@ -627,6 +627,7 @@ if (process.client) {
 </template>
 
 <style scoped>
+
 .content {
   flex-grow: 1;
   display: grid;
