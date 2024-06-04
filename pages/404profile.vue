@@ -42,7 +42,7 @@ useSeoMeta({
 
     <div class="home">
       <h1>404</h1>
-      <h2>You're lost in this immense galaxy...</h2>
+      <h2>Mmmh ... this user doesn't seem to be part of our solar system</h2>
       <button>Back to Saturn</button>
     </div>
 
@@ -175,14 +175,15 @@ useSeoMeta({
   transform: translate(-50%, -50%);
 }
 
-.home h1{
-  font-size: 250px;
+.home h1, 
+.home h2{
+  font-size: 600%;
   font-weight: 500;
-  text-shadow: 
-    -5px -5px 0 #000,  
-     5px -5px 0 #000,
-    -5px  5px 0 #000,
-     5px  5px 0 rgba(255, 255, 255, 0.4);; /* Black stroke effect */
+  text-shadow: 0 0 10px #ffffff;
+}
+
+.home h2{
+  font-size: 300%;
 }
 
 .home button{
