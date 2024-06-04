@@ -383,6 +383,16 @@ useSeoMeta({
   text-align: center;
 }
 
+.home .text h1{
+  font-size: 180%;
+  font-weight: 700;
+}
+
+.home .text h3{
+  font-size: 130%;
+  font-weight: 300;
+}
+
 .home .text span {
   color: rgba(233, 159, 255, 0.6);
 }
@@ -751,16 +761,16 @@ useSeoMeta({
   .footer {
     width: 100%;
     text-align: center;
-  flex-direction: column;
-}
+    flex-direction: column;
+  }
 
-.footer h3 {
-  font-size: 90%;
-}
+  .footer h3 {
+    font-size: 90%;
+  }
 
-.footer .links a {
-  font-size: 80%;
-  margin: 10px;
-}
+  .footer .links a {
+    font-size: 80%;
+    margin: 10px;
+  }
 }
 </style>

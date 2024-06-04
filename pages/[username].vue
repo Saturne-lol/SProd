@@ -230,10 +230,11 @@ main {
   grid-auto-rows: max-content;
   gap: 10px;
   white-space: nowrap;
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); 
+  border: 1px solid rgba(255, 255, 255, 0.4); */
   padding: 30px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  
 }
 
 /* ---------------------------------------------------------------- */

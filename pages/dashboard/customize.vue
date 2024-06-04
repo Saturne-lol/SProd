@@ -579,9 +579,14 @@ if (process.client) {
 
   <div class="modal" v-if="['url','username','bio','enter'].includes(activeModal)">
     <div class="center">
-      <div class="content">
+      <div class="content1input">
         <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
         <Icon name="ph:planet-fill" class="Icon"/>
+        <!--
+        <Icon name="ph:person-arms-spread-fill" class="Icon"/> POUR LA BOX DISPLAY NAME
+        <Icon name="pajamas:information" class="Icon"/> POUR LA BOX DESCRIPTION
+        <Icon name="streamline:emergency-exit-solid" class="Icon"/> POUR LA BOX ENTRY MESSAGE
+        -->
         <h5>-</h5>
         <input type="text" :placeholder="placeHolderText()" id="singleModalInput" maxlength="60"/>
         <button @click="singleModalAction">
@@ -592,10 +597,8 @@ if (process.client) {
   </div>
   <div class="modal" v-if="activeModal==='quotes'">
     <div class="center">
-      <div class="content">
+      <div class="content3inputs">
         <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
-        <Icon name="fa6-solid:quote-left" class="Icon"/>
-        <h5>-</h5>
         <div v-for="i in 3">
           <Icon name="fa6-solid:quote-left" class="Icon" v-if="data.quotes[i-1]"/>
           <h5 v-if="data.quotes[i-1]">-</h5>
@@ -609,7 +612,7 @@ if (process.client) {
   </div>
   <div class="modal" v-if="activeModal.includes('discord')">
     <div class="center">
-      <div class="content">
+      <div class="content1input">
         <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
         <Icon name="akar-icons:discord-fill" class="Icon"/>
         <h5>-</h5>
@@ -1171,24 +1174,39 @@ if (process.client) {
   margin: 0 auto;
 }
 
-.modal .content {
+.modal .content1input {
   display: grid;
   grid-template-columns: 1fr 1fr 8fr 1fr;
   justify-content: center;
   align-items: center;
 }
 
-.modal .content h5 {
+.modal .content3inputs div {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.modal .content3inputs .Icon {
+  margin-right: 20px;
+}
+
+.modal .content3inputs h5 {
+  margin-right: 20px;
+
+}
+
+.modal h5 {
   font-size: 100%;
   font-weight: 500;
 }
 
-.modal .content .Icon {
+.modal .Icon {
   font-size: 200%;
 
 }
 
-.modal .content input {
+.modal input {
   width: 100%;
   font-size: 120%;
   font-weight: 400;
@@ -1199,22 +1217,37 @@ if (process.client) {
   outline: none;
 }
 
-.modal .content button {
+.modal button {
   width: 25px;
   height: 25px;
   background-color: rgb(31, 112, 66);
   border: none;
   border-radius: 5px;
-  margin-left: 20px;
   transition: 0.3s ease;
   cursor: pointer;
 }
 
-.modal .content button:hover {
+.modal .content1input button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.modal .content3inputs button {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal button:hover {
   background-color: green;
 }
 
-.modal .content button #save {
+.modal button #save {
   font-size: 180%;
 }
 </style>
