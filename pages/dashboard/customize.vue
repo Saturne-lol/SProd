@@ -25,7 +25,6 @@ for (let i = 0; i < 5; i++) {
 }
 data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
 
-console.log(data.value.discord)
 
 definePageMeta({
   layout: 'dashboard',
@@ -103,7 +102,6 @@ function actionModalQuotes() {
 
 function actionModalDiscord() {
   const index = parseInt(activeModal?.value.split("_")[0] as string) || 0
-  console.log(index)
   if (index < 0 || index > 5) return
 
   let invite = (document.getElementById("discordModalInput") as HTMLInputElement)?.value;
