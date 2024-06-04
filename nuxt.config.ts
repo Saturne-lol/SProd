@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {enabled: true},
-    modules: ['nuxt-icon', 'nuxt-obfuscator'],
+    modules: ['nuxt-icon', 'nuxt-obfuscator', "nuxt-gtag", "@nuxtjs/sitemap", "@nuxt/ui"],
     obfuscator: {
         // default config:
         mapFile: 'obfuscation.map.json',
@@ -11,4 +11,8 @@ export default defineNuxtConfig({
         excludeClassNames: [/^nuxt-.*$/, /^vue-.*$/, /^.*?(-enter.*|-leave.*)$/],
         dev: false,
     },
-})
+    components: true,
+    gtag: {
+        id: 'G-YKC5TQ8C98'
+    },
+} as any)

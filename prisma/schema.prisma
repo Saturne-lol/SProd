@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -8,74 +9,86 @@ datasource db {
 }
 
 model Account {
-  id          String    @id @default(cuid())
+  id          String    @id
   create_date DateTime  @default(now())
   plan        PlanEnum  @default(FREE)
   blacklisted Boolean   @default(false)
   last_login  DateTime  @default(now())
   last_ip     String?
   expires     DateTime  @default(now())
-  Setting     Setting[]
-  Discord     Discord[]
-  Social      Social[]
-  Quotes      Quotes[]
-  View        View[]
-  Badges      Badges[]
+  beta        Boolean   @default(false)
+  admin       Boolean   @default(false)
+  username    String?   @default("No username")
+  badges      Badges[]
+  discord     Discord[]
+  quotes      Quotes[]
+  setting     Setting?
+  social      Social?
+  view        View[]
 }
 
-model Setting {
-  id         String  @id @default(cuid())
+model Badges {
+  id         String  @id @default(dbgenerated("(uuid())"))
   account_id String
+  badge      String
   account    Account @relation(fields: [account_id], references: [id])
-  url        String  @unique @default(cuid())
-  username   String  @unique @default(cuid())
-  bio        String  @default("No bio")
-  avatar     Boolean @default(false)
-  background String  @default("https://i.imgur.com/3v3J9v6.jpg")
-  View       View[]
+
+  @@index([account_id], map: "Badges_account_id_fkey")
 }
 
 model Discord {
-  id         String  @id @default(cuid())
   account_id String
-  account    Account @relation(fields: [account_id], references: [id])
   invite     String
   index      Int     @default(0)
-}
-
-model Social {
-  id         String  @id @default(cuid())
-  account_id String
   account    Account @relation(fields: [account_id], references: [id])
-  type       String
-  url        String
-  index      Int     @default(0)
+
+  @@unique([account_id, index])
+  @@unique([account_id, invite])
 }
 
 model Quotes {
-  id         String  @id @default(cuid())
   account_id String
-  account    Account @relation(fields: [account_id], references: [id])
   text       String
+  account    Account @relation(fields: [account_id], references: [id])
 
   @@unique([account_id, text])
 }
 
+model Setting {
+  account_id    String  @id @unique
+  url           String  @unique @default(dbgenerated("(uuid())"))
+  username      String  @default(dbgenerated("(uuid())"))
+  bio           String  @default("No bio")
+  enter_message String  @default("Click to enter...")
+  avatar        Boolean @default(false)
+  background    String  @default("https://i.imgur.com/3v3J9v6.jpg")
+  views         Boolean @default(true)
+  account       Account @relation(fields: [account_id], references: [id])
+  view          View[]
+}
+
+model Social {
+  account_id String  @id
+  type       String
+  url        String
+  index      Int     @default(0)
+  account    Account @relation(fields: [account_id], references: [id])
+
+  @@unique([account_id, index])
+}
+
 model View {
-  id         String   @id @default(cuid())
+  id         String   @id @default(dbgenerated("(uuid())"))
   ip         String
   date       DateTime @default(now())
   profile_id String
-  profile    Setting  @relation(fields: [profile_id], references: [url])
-  account_id String
-  account    Account  @relation(fields: [account_id], references: [id])
-}
+  account_id String?
+  account    Account? @relation(fields: [account_id], references: [id])
+  setting    Setting  @relation(fields: [profile_id], references: [account_id])
 
-model Badges {
-  id         String  @id @default(cuid())
-  account_id String
-  account    Account @relation(fields: [account_id], references: [id])
-  badge      String
+  @@unique([ip, profile_id])
+  @@index([account_id], map: "View_account_id_fkey")
+  @@index([profile_id], map: "View_profile_id_fkey")
 }
 
 enum PlanEnum {

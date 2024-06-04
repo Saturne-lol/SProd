@@ -1,6 +1,5 @@
-import bdd from "~/api/bdd";
 import axios from "axios";
-import {PlanEnum, PrismaClient} from "@prisma/client";
+import {PrismaClient} from "@prisma/client";
 
 const prisma = new PrismaClient()
 
@@ -10,10 +9,8 @@ export default defineEventHandler(async (event) => {
     const discordBox = await prisma.discord.findMany({
         where: {
             account: {
-                Setting: {
-                    some: {
-                        url: getQuery(event).username as string
-                    }
+                setting: {
+                    url: getQuery(event).username as string
                 }
             }
         }

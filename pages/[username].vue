@@ -1,90 +1,147 @@
 <script setup lang="ts">
 import type {Ref} from "vue";
-import Profile from "~/components/profile/Profile.vue";
-import UserBox from "~/components/profile/box/UserBox.vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
+import UserBox from "~/components/profile/box/UserBox.vue";
+
+
 
 definePageMeta({
   middleware: async (to) => {
-    const url = to.params.username
-    const {data: isExist} = await useFetch(`/api/profile/is-exist`, {query: {username: url}}) as {
-      data: Ref<{ code: number }>
+    const {data: isExist} = await useFetch('/api/profile/is-exist', {query: {username: to.params.username}}) as {
+      data: Ref<{ code: string }>
     };
-    if (!isExist?.value.code) {
-      return '/404profile'
-    }
-    useFetch(`/api/profile/view`, {body: {username: url}, method: 'POST'})
+    if (isExist?.value?.code === "bl") return "/blacklist?type=profile&username=" + to.params.username;
+    if (isExist?.value?.code === "ne") return "/errors/404?type=profile";
+    useFetch('/api/profile/view', {body: {username: to.params.username}, method: 'POST'});
   }
-})
+});
 
 const url = useRoute().params.username
-useSeoMeta({
-  title: url + " - Saturne.lol",
-  description: 'Saturne.lol makes it easy to create a modern online profile !',
-  ogTitle: url + " - Saturne.lol",
-  ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
-  ogImage: '[og:image]',
-  ogUrl: '[og:url]',
-  twitterTitle: '[twitter:title]',
-  twitterDescription: '[twitter:description]',
-  twitterImage: '[twitter:image]',
-  twitterCard: 'summary'
-})
+if (typeof url === "string") {
+  useSeoMeta({
+    title: url.charAt(0).toUpperCase() + url.slice(1) + " - Saturne.lol",
+    description: 'Saturne.lol makes it easy to create a modern online profile !',
+    ogTitle: url + " - Saturne.lol",
+    ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
+    ogImage: '[og:image]',
+    ogUrl: '[og:url]',
+    twitterTitle: '[twitter:title]',
+    twitterDescription: '[twitter:description]',
+    twitterImage: '[twitter:image]',
+    twitterCard: 'summary'
+  })
+}
 
-// const videoMuted = ref(false)
-// const videoElement = ref<HTMLVideoElement | null>(null)
 const isEnter = ref(false)
 
+const {data: discordData} = useFetch(`/api/profile/get-box-discord`, {
+  query: {username: url},
+  server: true
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<[{
+    name: string,
+    total: number,
+    online: number,
+    image: string | null,
+    invite: string,
+  }]>
+}
 
-function clickToEnter() {
+const {data: profileData} = useFetch(`/api/profile/get-profile`, {
+  query: {username: url},
+  server: true
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<{
+    username: string,
+    bio: string,
+    avatar: string,
+    quotes: Array<string>
+  }>
+}
+
+const {data: badgesData} = useFetch(`/api/profile/get-badges`, {
+  query: {username: url},
+  server: true
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<[{
+    name: string,
+    image: string
+  }]>
+}
+
+const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
+  query: {username: url},
+  server: true
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<{
+    username: string,
+    avatar: string,
+    status: string,
+  }>
+}
+
+const audio = ref<HTMLAudioElement | null>(null)
+function clickToEnter(): any {
   isEnter.value = true
-  // if (videoElement.value) {
-  //   videoElement.value.play()
-  // }
+  if (audio.value) {
+    audio.value.play()
+  }
 }
 </script>
 
 <template>
-  <div id="tempBackground" v-if="!isEnter">
-    <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
-  </div>
-<!--  <video id="background" loop ref="videoElement">-->
-<!--    <source src="/video/background.mp4" type="video/mp4">-->
-<!--  </video>-->
-  <img src="/img/background.jpg" alt="background" id="background">
-<!--  <div class="volume">-->
-<!--        <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
-<!--        <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
-<!--    <button id="mute">-->
-<!--      <Icon name="ph:speaker-simple-slash-fill" />-->
-<!--    </button>-->
-<!--  </div>-->
-  <div class="center" v-if="isEnter">
-    <div class="content" id="content">
-      <Profile :username="url"/>
-
-      <UserBox :username="url"/>
-      <DiscordBox :username="url"/>
-
-      <div class="view">
-        <h3><Icon name="ic:sharp-remove-red-eye"/> - 130k</h3>
-        <h5>views</h5>
+  <audio src="https://cdn.discordapp.com/attachments/1246580858757054556/1246731743172759572/Best_Dramatic_music_ever.mp3?ex=665d74ea&is=665c236a&hm=602ff7416a488b4c8af89d20302d7f1cfef1182baf8fceeeb47c9c6ab9267bf7&" loop ref="audio" v-if="profileData.username === 'Cleboost'"/>
+  <main>
+    <div id="tempBackground" v-if="!isEnter">
+      <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
+    </div>
+    <!--  <video id="background" loop ref="videoElement">-->
+    <!--    <source src="/video/background.mp4" type="video/mp4">-->
+    <!--  </video>-->
+    <img src="/img/background.jpg" alt="background" id="background">
+    <!--  <div class="volume">-->
+    <!--        <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
+    <!--        <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
+    <!--    <button id="mute">-->
+    <!--      <Icon name="ph:speaker-simple-slash-fill" />-->
+    <!--    </button>-->
+    <!--  </div>-->
+    <div class="center" v-if="isEnter">
+      <div class="content" id="content">
+        <Profile :profile="profileData" :badges="badgesData"/>
+        <UserBox :discord="dcProfileData"/>
+        <DiscordBox :discord="discordData"/>
+        <div class="view">
+          <h3>
+            <Icon name="ic:sharp-remove-red-eye"/>
+            - In development
+          </h3>
+          <h5>views</h5>
+        </div>
       </div>
     </div>
-  </div>
-  <!--  <div class="icons" id="icons" v-if="isEnter">-->
-  <!--    <div class="icon" v-for="social in profileData.socials">-->
-  <!--      <a :href="social.link" target="_blank"><img :src="'/img/social/'+social.type+'.png'" alt=""></a>-->
-  <!--      <h5>{{social.url}}</h5>-->
-  <!--    </div>-->
-  <!--  </div>-->
+    <!--  <div class="icons" id="icons" v-if="isEnter">-->
+    <!--    <div class="icon" v-for="social in profileData.socials">-->
+    <!--      <a :href="social.link" target="_blank"><img :src="'/img/social/'+social.type+'.png'" alt=""></a>-->
+    <!--      <h5>{{social.url}}</h5>-->
+    <!--    </div>-->
+    <!--  </div>-->
+  </main>
 </template>
 
-<style>
+<style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
-* {
+main {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  cursor: url(/img/cursor/cursor.png) 16 16, auto;
+
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -92,13 +149,6 @@ function clickToEnter() {
   user-select: none;
   color: #fff;
   font-family: 'Fira Code', monospace;
-}
-
-
-body {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  cursor: url(/img/cursor/cursor.png) 16 16, auto;
 }
 
 #tempBackground {
@@ -110,6 +160,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
+  backdrop-filter: blur(8px);
   z-index: 80;
 }
 
@@ -179,203 +230,25 @@ body {
   grid-auto-rows: max-content;
   gap: 10px;
   white-space: nowrap;
+  /* backdrop-filter: blur(5px); 
+  border: 1px solid rgba(255, 255, 255, 0.4); */
+  padding: 30px;
+  border-radius: 20px;
+  
 }
 
 /* ---------------------------------------------------------------- */
-
-.content .profil {
-  grid-column: 1 / -1;
-}
-
-.content .profil,
-.content .profil .nameBadges,
-.content .profil .nameBadges .badges {
-  display: flex;
-  align-items: center;
-}
-
-.content .profil .ppUser img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.50);
-  object-fit: cover;
-  margin-right: 20px;
-}
-
-.content .profil .infoUser .nameBadges {
-  position: relative;
-}
-
-.content .profil .infoUser .nameBadges h1 {
-  font-size: 200%;
-  text-shadow: 0 0 10px #c9c9c9;
-  letter-spacing: 3px;
-  margin-right: 10px;
-}
-
-.content .profil .infoUser .nameBadges .badges {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 0.5px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-}
-
-.content .profil .infoUser .nameBadges .badges img {
-  width: 24px;
-  height: 24px;
-  padding: 4px;
-}
-
-.content .profil .infoUser .nameBadges .badges .badge {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.content .profil .infoUser .nameBadges .badges h5 {
-  font-weight: 300;
-  text-shadow: 0 0 10px #c9c9c9;
-  white-space: nowrap;
-  opacity: 0;
-  position: absolute;
-  top: -40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.5s ease;
-}
-
-.content .profil .infoUser .nameBadges .badges .badge:hover h5 {
-  opacity: 1;
-}
-
-.content .profil .infoUser .nameBadges .badges h5:hover {
-  opacity: 0;
-}
-
-
-.content .profil .infoUser .quote {
-  min-height: 30px;
-}
-
-/* TEXT TYPING */
-.content .profil .infoUser .quote h3::after {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 2px;
-  background: #fff;
-  box-shadow: 0 0 10px #c9c9c9;
-  animation: blink 0.7s infinite;
-  margin-top: 5px;
-}
-
-.content .profil .infoUser .quote h3.stop-blinking::before {
-  animation: none;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0
-  }
-}
-
-.content .profil .infoUser .quote h3,
-.content .profil .infoUser .description h5 {
-  font-weight: 500;
-}
-
-.content .profil .infoUser .quote h3 {
-  text-shadow: 0 0 10px #c9c9c9;
-}
-
-.content .profil .infoUser .description h5 {
-  color: rgb(255, 255, 255, 0.6);
-}
-
-/* ---------------------------------------------------------------- */
-
-.content .boxUser,
-.content .boxServer {
-  display: flex;
-  align-items: center;
-  background-color: rgb(255, 255, 255, 0.08);
-  border: 1px solid rgb(255, 255, 255, 0.4);
-  border-radius: 12px;
-  padding: 10px;
-  transition: 0.5s, transform 0.5s;
-}
-
-.content .boxUser:hover,
-.content .boxServer:hover {
-  box-shadow: 0px 0px 3px 1px #00000044;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-}
-
-.content .boxUser #ppDiscord {
-  position: relative;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.50);
-  object-fit: cover;
-  margin-right: 10px;
-}
-
-.content .boxUser #discordPresence {
-  display: none;
-}
-
-.content .boxUser .info h3 {
-  font-weight: 500;
-}
-
-.content .boxUser .info h4 {
-  font-weight: 300;
-}
-
-.content .boxServer .ppServ img {
-  position: relative;
-  width: 70px;
-  height: 70px;
-  border-radius: 20%;
-  object-fit: cover;
-  margin-right: 10px;
-}
-
-.content .boxServer .infoServ .memberServ {
-  display: flex;
-  align-items: center;
-}
-
-.content .boxServer .infoServ .memberServ i {
-  font-size: 7px;
-  margin-right: 5px;
-}
-
-.content .boxServer .infoServ .memberServ p {
-  font-size: 80%;
-  margin-right: 10px;
-}
-
-.content .boxServer .infoServ a {
-  background-color: #1a6334;
-  font-size: 70%;
-  padding: 2px 8px 2px 8px;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-}
 
 .content .view {
   grid-column: 1 / 2;
   position: relative;
   font-size: 80%;
-  
+
 }
 
-.content .view h3{
+.content .view h3 {
   font-weight: 300;
-  
+
 }
 
 .content .view h5 {

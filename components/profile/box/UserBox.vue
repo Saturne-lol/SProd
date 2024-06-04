@@ -1,32 +1,61 @@
 <script setup lang="ts">
-import type {Ref} from "vue";
-import Badges from "~/components/profile/saturne/Badges.vue";
 
-const username = defineProps<{
-  username: string | string[]
+const data = defineProps<{
+  discord: {
+    username: string;
+    avatar: string;
+    status: string;
+  },
 }>()
 
-const {pending, data: discord} = await useFetch(`/api/profile/get-box-user`, {query: {username: username.username}, lazy: true}) as {
-  pending: Ref<boolean>,
-  data: Ref<{
-    username: string,
-    avatar: string,
-    status: string,
-  }>
-}
 </script>
 
 <template>
   <div class="boxUser">
-    <img :src="pending ? '/img/404.png' : discord.avatar" alt="" id="ppDiscord">
-<!--    <img src="/img/presence/dnd.png" alt="" id="discordPresence">-->
+    <img :src="data.discord.avatar" alt="" id="ppDiscord">
+    <!--    <img src="/img/presence/dnd.png" alt="" id="discordPresence">-->
     <div class="info">
-      <h3>{{ pending ? 'Loading...' : discord.username.slice(0, 20) }}</h3>
-      <h4>{{ pending ? 'Loading...' : (discord.status ? discord.status.slice(0, 24) : '') }}</h4>
+      <h3>{{ data.discord.username.slice(0, 20) }}</h3>
+      <h4>{{ (data.discord.status ? data.discord.status.slice(0, 24) : '') }}</h4>
     </div>
   </div>
 </template>
 
 <style scoped>
+.boxUser {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.08);
+  border: 1px solid rgb(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 10px;
+  transition: 0.5s, transform 0.5s;
+}
 
+.boxUser:hover {
+  box-shadow: 0px 0px 3px 1px #00000044;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.boxUser #ppDiscord {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.boxUser #discordPresence {
+  display: none;
+}
+
+.boxUser .info h3 {
+  font-weight: 500;
+}
+
+.boxUser .info h4 {
+  font-weight: 300;
+}
 </style>

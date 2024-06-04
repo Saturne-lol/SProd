@@ -14,925 +14,763 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="nav">
-    <div class="sidemenu">
-      <div class="navbar">
-        <img src="/img/saturne.png" alt="">
-        <h1>SATURNE.LOL</h1>
-        <div class="links">
+  <video src="/public/video/dashboard.mp4" id="background" autoplay loop muted></video>
+  <div id="body">
+    <div class="nav">
+      <div class="links">
+        <img src="/public/img/saturne.png" alt="">
+        <ul>
           <a href="#home">
-            <h5>Home</h5>
+            <li>HOME</li>
           </a>
           <a href="#about">
-            <h5>About</h5>
+            <li>ABOUT</li>
           </a>
           <a href="#premium">
-            <h5>Premium</h5>
+            <li>PREMIUM</li>
           </a>
           <a href="#vouches">
-            <h5>Vouches</h5>
+            <li>VOUCHES</li>
           </a>
+        </ul>
+      </div>
+      <div class="buttons">
+        <button>Login</button>
+        <button>Get Started</button>
+      </div>
+    </div>
+    <div class="home" id="home">
+      <div class="text">
+        <h1>Create your e-profile easily !</h1>
+        <h3><span>Saturne.lol</span> makes it easy to create a modern profile</h3>
+      </div>
+      <div class="buttons">
+        <button href="">Get Started</button>
+        <button href="">Read More</button>
+      </div>
+      <video autoplay loop muted>
+        <source src="public/video/adsglt.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="waveTop" id="about"></div>
+
+    <div class="background">
+      <div class="about">
+        <h1>Why choose Saturne</h1>
+        <div class="info">
+          <div class="box">
+            <Icon name="ph:magic-wand-fill" class="Icon" />
+            <h3>FULLY CUSTOMIZABLE</h3>
+            <h5>
+              Express yourself in a unique way and create a modern,
+              personalized e-profile effortlessly with our many options.
+            </h5>
+          </div>
+          <div class="box">
+            <Icon name="material-symbols:shield-lock" class="Icon" />
+            <h3>INSURED PROTECTION</h3>
+            <h5>
+              Enjoy peace of mind with Saturne.lol's insured protection.
+              Your data and profile are safeguarded, ensuring a secure and worry-free experience.
+            </h5>
+          </div>
+          <div class="box">
+            <Icon name="ph:code-bold" class="Icon" />
+            <h3>DEVELOPMENT</h3>
+            <h5>
+              Explore Saturne.lol and experience the result of meticulous development.
+              Our platform is crafted with precision, ensuring a seamless and efficient user experience for you.
+            </h5>
+          </div>
+          <div class="box">
+            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon" />
+            <h3>RESPONSIVE</h3>
+            <h5>
+              Experience seamless accessibility on any device with Saturne.lol's responsive design.
+              Your profile adapts effortlessly, providing an optimal viewing experience for everyone.
+            </h5>
+          </div>
+          <div class="box">
+            <Icon name="ph:globe" class="Icon" />
+            <h3>COMMUNITY APPROVAL</h3>
+            <h5>
+              Find out why Saturn.lol is so popular with our community.
+              Join us and experience the positive feedback and approval that sets us apart.
+            </h5>
+          </div>
+          <div class="box">
+            <Icon name="material-symbols:contact-support-rounded" class="Icon" />
+            <h3>SUPPORT 24/7</h3>
+            <h5>
+              Saturne provides 24/7 support to ensure that our customers receive
+              timely assistance wherever and whenever they need it.
+            </h5>
+          </div>
         </div>
       </div>
-      <div class="btn">
-        <div class="login">
-          <a href="/auth/login">Login</a>
-        </div>
-        <div class="started">
-          <a href="/auth/login">Get Started</a>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <!-- ------------------------ - END NAV BAR - ------------------------ -->
-
-  <!-- ------------------------ - START HOME - ------------------------ -->
-  <div class="home" id="home">
-    <h1>Create your e-profile easily !</h1>
-    <h3><span>Saturne.lol</span> makes it easy to create a modern profile</h3>
-    <div class="btn">
-      <div class="started">
-        <a href="/auth/login">Get Started</a>
-      </div>
-      <div class="ReadMore">
-        <a href="/auth/login">Read More</a>
-      </div>
-    </div>
-    <video autoplay loop muted>
-      <source src="/video/adsglt.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <!-- ------------------------ - END HOME - ------------------------ -->
-  <div class="wave1" id="about">
-    <!--    <img src="@/assets/img/wave.png" alt="">-->
-  </div>
-  <!-- ------------------------ - START ABOUT - ------------------------ -->
-  <div class="titleAboutAndVouch">
-    <h1>Why choose Saturne</h1>
-  </div>
-  <div class="about">
-    <div class="box">
-      <Icon name="mdi:wand" class="icon" />
-      <h3>FULLY CUSTOMIZABLE</h3>
-      <h5>
-        Express yourself in a unique way and create a modern,
-        personalized e-profile effortlessly with our many options.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="material-symbols:shield" class="icon"/>
-      <h3>INSURED PROTECTION</h3>
-      <h5>
-        Enjoy peace of mind with Saturne.lol's insured protection.
-        Your data and profile are safeguarded, ensuring a secure and worry-free experience.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="pepicons-pop:code" class="icon"/>
-      <h3>DEVELOPMENT</h3>
-      <h5>
-        Explore Saturne.lol and experience tShe result of meticulous development.
-        Our platform is crafted with precision, ensuring a seamless and efficient user experience for you.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="icon-park-outline:code-laptop" class="icon"/>
-      <h3>RESPONSIVE</h3>
-      <h5>
-        Experience seamless accessibility on any device with Saturne.lol's responsive design.
-        Your profile adapts effortlessly, providing an optimal viewing experience for everyone.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="material-symbols:globe" class="icon"/>
-      <h3>COMMUNITY APPROVAL</h3>
-      <h5>
-        Find out why Saturn.lol is so popular with our community.
-        Join us and experience the positive feedback and approval that sets us apart.
-      </h5>
-    </div>
-    <div class="box">
-      <Icon name="bi:phone" class="icon"/>
-      <h3>SUPPORT 24/7</h3>
-      <h5>
-        Saturne provides 24/7 support to ensure that our customers receive
-        timely assistance wherever and whenever they need it.
-      </h5>
-    </div>
-  </div>
 
 
-  <!-- ------------------------ - END ABOUT - ------------------------ -->
-  <div class="wave2" id="premium">
-    <img src="/img/wave.png" alt="">
-  </div>
-  <!-- ------------------------ - START PLAN - ------------------------ -->
-  <div class="titlePlan">
-    <h1>Choose your plan</h1><br>
-  </div>
-  <div class="plan">
-    <div class="box">
-      <div class="flex">
-        <i class="fa-solid fa-seedling"></i>
-        <div class="texts">
-          <h1>Classic Plan</h1>
-          <h3>0.00€ - Lifetime</h3>
-        </div>
-      </div>
-      <h5>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Host 24/7<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Static images and bio<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Static images and bio<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        3 Linked Social Network<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Number of box available: 2<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Show amount of profil viewer<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Special Discord role on our serveur<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Image Background<br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        Premium Badge<br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        Cursor Effect <br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        Customizable font<br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        Video background<br>
-      </h5>
-      <a href="/login" id="btnPlan1">Get Started</a>
-    </div>
-    <div class="box">
-      <div class="flex">
-        <i class="fa-solid fa-star"></i>
-        <div class="texts">
-          <h1>Advanced Plan</h1>
-          <h3>1.00€/month</h3>
-        </div>
-      </div>
-      <h5>
-<!--        <font-awesome-icon :icon="['solid', 'info']" class="icon" id="info"/>-->
-        All previous functions<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Dynamique images and bio<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Number of box available: 4<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Premium Badge<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Cursor Effect <br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Customizable font<br>
-<!--        <font-awesome-icon :icon="['solid', 'xmark']" class="icon" id="false"/>-->
-        4K Video background<br>
-      </h5>
-      <a href="" id="btnPlan2">Buy Now</a>
-    </div>
-    <div class="box">
-      <div class="flex">
-        <i class="fa-solid fa-gem"></i>
-        <div class="texts">
-          <h1>Premium Plan</h1>
-          <h3>2.50€/month</h3>
-        </div>
-      </div>
-      <h5>
-<!--        <font-awesome-icon :icon="['solid', 'info']" class="icon" id="info"/>-->
-        All previous functions<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Dynamique images and bio<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Number of box available: 6<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Premium Badge<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Cursor Effect <br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        Customizable font<br>
-<!--        <font-awesome-icon :icon="['solid', 'check']" class="icon" id="true"/>-->
-        4K Video background<br>
-      </h5>
-      <a href="" id="btnPlan3">Buy Now</a>
-    </div>
-  </div>
-  <!-- ------------------------ - END PLAN - ------------------------ -->
-  <div class="wave3" id="vouches">
-    <img src="/img/wave.png" alt="">
-  </div>
-  <!-- ------------------------ - START VOUCHES - ------------------------ -->
-  <div class="titleAboutAndVouch">
-    <h1>Trusted by the community</h1>
-  </div>
-  <div class="vouches">
-    <div class="box">
-      <div class="flex">
-        <img src="/img/LL123.gif" alt="">
-        <div class="texts">
-          <h1>!"' LL123™</h1>
-          <h3>Owner du serveur NTM</h3>
-        </div>
-      </div>
-      <h5>
-        <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-        at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-        Libero, accusamus.
-        <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
-      </h5>
-    </div>
-    <div class="box">
-      <div class="flex">
-        <img src="/img/LL123.gif" alt="">
-        <div class="texts">
-          <h1>!"' LL123™</h1>
-          <h3>Owner du serveur NTM</h3>
-        </div>
-      </div>
-      <h5>
-        <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-        at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-        Libero, accusamus.
-        <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
-      </h5>
-    </div>
-    <div class="box">
-      <div class="flex">
-        <img src="/img/LL123.gif" alt="">
-        <div class="texts">
-          <h1>!"' LL123™</h1>
-          <h3>Owner du serveur NTM</h3>
-        </div>
-      </div>
-      <h5>
-        <!--        <font-awesome-icon :icon="['solid', 'quote-left']" class="icon" id="quote-left"/>-->
-        <!--        <font-awesome-icon icon="fa-sold fa-quote-left" class="icon" id="quote-left"/>-->
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-        at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-        Libero, accusamus.
-        <!--        <font-awesome-icon :icon="['solid', 'quote-right']" class="icon" id="quote-right"/>-->
-        <!--        <font-awesome-icon icon="fa-sold fa-quote-right" class="icon" id="quote-left"/>-->
-        <!--        <font-awesome-icon :icon="['fas', 'quote-left']" />-->
-<!--        <font-awesome-icon :icon="['fas', 'quote-left']"/>-->
-<!--        <font-awesome-icon :icon="['fab', 'twitter']" class="icon alt"/>-->
-      </h5>
-    </div>
-  </div>
+    <div class="waveBottom" id="premium"></div>
 
-  <!-- ------------------------ - END VOUCHES - ------------------------ -->
-  <div class="wave4">
-    <img src="/img/wave.png" alt="">
-  </div>
-  <div class="wave5">
-    <img src="/img/wave.png" alt="">
-  </div>
-  <!-- ------------------------ - START FOOTER - ------------------------ -->
-  <div class="footer">
-    <div class="texts">
-      <div class="title">
+    <div class="premium">
+      <h1>Choose your plan</h1>
+      <div class="grid">
+        <div class="box">
+          <div class="info">
+            <Icon name="material-symbols:grass" class="Icon" />
+            <div class="text">
+              <h2>Classic Plan</h2>
+              <h3>0.00€ - Lifetime</h3>
+            </div>
+          </div>
+          <p>
+            <Icon name="material-symbols:check" id="check" />
+            - Host 24/7<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Static images<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Static bio<br>
+            <Icon name="material-symbols:check" id="check" />
+            - 3 Linked Social Network<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Number of box : 2<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Amount of profil viewer<br>
+          </p>
+          <button>Get Started</button>
+        </div>
+        <div class="box">
+          <div class="info">
+            <Icon name="solar:stars-minimalistic-broken" class="Icon" />
+            <div class="text">
+              <h2>Advanced Plan</h2>
+              <h3>5.00€ - Lifetime</h3>
+            </div>
+          </div>
+          <p>
+            <Icon name="ion:information" id="info" />
+            - All previous functions<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Dynamique images<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Dynamique bio<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Number of box : 4<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Premium Badge<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Cursor Effect <br>
+            <Icon name="material-symbols:check" id="check" />
+            - Customizable font<br>
+          </p>
+          <button>Buy Now</button>
+        </div>
+        <div class="box">
+          <div class="info">
+            <Icon name="basil:diamond-solid" class="Icon" />
+            <div class="text">
+              <h2>Premium Plan</h2>
+              <h3>2.00€/month</h3>
+            </div>
+          </div>
+          <p>
+            <Icon name="ion:information" id="info" />
+            - All previous functions<br>
+            <Icon name="material-symbols:check" id="check" />
+            - Host on your own domain<br>
+          </p>
+          <button>Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="waveTop" id="vouches"></div>
+
+    <div class="background">
+      <div class="vouches">
+        <h1>Trusted by the community</h1>
+        <div class="grid">
+          <div class="box">
+            <div class="info">
+              <img src="/public/img/AD.gif" alt="">
+              <div class="text">
+                <h2>AD</h2>
+                <h3>Owner du serveur saturne</h3>
+              </div>
+            </div>
+            <p>
+              <Icon name="bxs:quote-alt-left" />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+              Libero, accusamus.
+              <Icon name="bxs:quote-alt-right" />
+            </p>
+          </div>
+          <div class="box">
+            <div class="info">
+              <img src="/public/img/Cleboost.png" alt="">
+              <div class="text">
+                <h2>Cleboost</h2>
+                <h3>Owner du serveur saturne</h3>
+              </div>
+            </div>
+            <p>
+              <Icon name="bxs:quote-alt-left" />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+              Libero, accusamus.
+              <Icon name="bxs:quote-alt-right" />
+            </p>
+          </div>
+          <div class="box">
+            <div class="info">
+              <img src="/public/img/BF.png" alt="">
+              <div class="text">
+                <h2>BF</h2>
+                <h3>Owner du serveur saturne</h3>
+              </div>
+            </div>
+            <p>
+              <Icon name="bxs:quote-alt-left" />
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
+              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
+              Libero, accusamus.
+              <Icon name="bxs:quote-alt-right" />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="waveBottom"></div>
+
+    <div class="waveTop"></div>
+
+    <div class="background">
+      <div class="footer">
         <h3>Copyright © 2024 saturne.lol</h3>
-      </div>
-      <div class="links">
-        <a href="">Privacy</a>
-        <a href="">PolicyTerms of Service</a>
-        <a href="">Discord</a>
+        <div class="links">
+          <a href="">Privacy</a>
+          <a href="">PolicyTerms of Service</a>
+          <a href="">Discord</a>
+        </div>
       </div>
     </div>
+
   </div>
 </template>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  user-select: none
+#body {
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
+  overflow-x: hidden;
+  backdrop-filter: blur(3px);
 }
 
-body {
-  background-color: #fac9ff;
-  font-family: Peoppins, sans-serif;
-  color: #000;
-  overflow-x: hidden
+#background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  object-fit: cover;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  filter: brightness(0.30);
 }
 
-::-webkit-scrollbar {
-  width: 10px
+.waveTop {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255, 255, 255, 0.05)" d="M0,64 C120,80 240,32 360,64 C480,96 600,128 720,64 C840,0 960,32 1080,64 C1200,96 1320,32 1440,64 L1440,320 L0,320 Z"></path></svg>') repeat-x;
+  background-size: contain;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1
+.waveBottom {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255, 255, 255, 0.05)" d="M0,64 C120,80 240,32 360,64 C480,96 600,128 720,64 C840,0 960,32 1080,64 C1200,96 1320,32 1440,64 L1440,320 L0,320 Z"></path></svg>') repeat-x;
+  background-size: contain;
+  rotate: 180deg;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #754485;
-  border-radius: 10px
+.background {
+  background-color: rgba(255, 255, 255, 0.05);
 }
+
+/* ----- NAV ----- */
 
 .nav {
-  justify-content: center;
-  margin-left: 20%;
-  margin-right: 20%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  z-index: 100
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
 }
 
-.sidemenu {
-  width: 100%;
+.nav .links {
   display: flex;
   align-items: center;
-  justify-content: space-between
 }
 
-.nav .navbar {
-  display: flex;
-  align-items: center
-}
-
-.nav .navbar img {
+.nav img {
   width: 80px;
-  height: 80px
+  height: 80px;
+  margin-right: 50px;
 }
 
-.nav .navbar h1 {
-  margin-left: 20px
-}
-
-.nav .navbar .links {
+.nav ul {
   display: flex;
-  margin-left: 30px
 }
 
-.nav .navbar .links h5 {
-  color: #000;
+.nav ul li {
   font-size: 95%;
-  font-weight: 700;
+  font-weight: 500;
   position: relative;
-  margin-right: 20px
+  margin: 10px;
 }
 
-.nav .navbar .links h5::after {
+.nav ul li::after {
   content: '';
   width: 0;
   height: 2px;
-  background: #754485;
+  background: rgba(255, 255, 255, 0.8);
   position: absolute;
   left: 0;
-  bottom: 0;
-  transition: .5s
+  bottom: -4px;
+  transition: 0.5s;
 }
 
-.nav .navbar .links h5:hover::after {
-  width: 100%
+.nav ul li:hover::after {
+  width: 100%;
 }
 
-.nav .btn {
-  display: flex
-}
-
-.nav .btn .login a {
-  background-color: #754485;
-  color: #fff;
-  border: #754485 solid 2px;
+.nav button {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
-  transition: .3s ease
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin: 10px;
 }
 
-.nav .btn .login a:hover {
-  background-color: #542d61;
-  border: #542d61 solid 2px
+.nav button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.nav .btn .started a {
-  background-color: #fac9ff;
-  color: #000;
-  border: #754485 solid 2px;
-  padding: 5px 10px 5px 10px;
-  border-radius: 10px;
-  transition: .3s ease
-}
-
-.nav .btn .started a:hover {
-  background-color: #754485;
-  color: #fff
-}
-
-.nav .btn .started {
-  padding-left: 15px
-}
+/* ----- HOME ----- */
 
 .home {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.home .text {
   text-align: center;
-  align-items: center;
-  z-index: 90
 }
 
-.home h1 {
-  font-size: 250%;
-  margin-bottom: 10px
+.home .text h1{
+  font-size: 180%;
+  font-weight: 700;
 }
 
-.home h3 {
-  font-size: 150%;
-  margin-bottom: 20px
+.home .text h3{
+  font-size: 130%;
+  font-weight: 300;
 }
 
-.home h3 span {
-  color: #754485
+.home .text span {
+  color: rgba(233, 159, 255, 0.6);
 }
 
-.home .btn {
+.home .buttons {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.home .btn .started a {
-  background-color: #fac9ff;
-  color: #000;
-  border: #754485 solid 2px;
+.home .buttons button {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
-  transition: .3s ease
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin: 10px;
 }
 
-.home .btn .started a:hover {
-  background-color: #754485;
-  color: #fff
-}
-
-.home .btn .ReadMore a {
-  background-color: #754485;
-  color: #fff;
-  border: #754485 solid 2px;
-  padding: 5px 10px 5px 10px;
-  border-radius: 10px;
-  transition: .3s ease
-}
-
-.home .btn .ReadMore a:hover {
-  background-color: #542d61;
-  border: #542d61 solid 2px
-}
-
-.home .btn .ReadMore {
-  padding-left: 15px
+.home .buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .home video {
-  width: 60%;
-  height: auto;
-  box-shadow: 0 16px 32px rgba(0, 0, 0)
+  width: 100%;
 }
 
-.wave1 img {
-  position: relative;
-  top: 8px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: auto;
-  z-index: -10
-}
+/* ----- ABOUT ----- */
 
 .about {
-  width: 100%;
-  height: 600px;
-  display: grid;
-  grid-template-columns:1fr 1fr 1fr;
-  grid-template-rows:1fr 1fr;
-  color: #fac9ff;
-  background-color: #754485;
+  width: 90%;
+  margin: 0 auto;
   text-align: center;
-  place-items: center;
-  z-index: 80
 }
 
-.box {
-  width: 400px;
-  height: 200px
+.about h1 {
+  font-size: 250%;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-.box .icon {
-  font-size: 300%;
-  padding: 10px
+.about .info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
 }
 
-.box h3 {
-  font-size: 200%;
-  font-weight: 500
+.about .info .Icon {
+  font-size: 400%;
 }
 
-.box h5 {
-  font-size: 90%;
-  font-weight: 500
+.about .info h3 {
+  font-size: 120%;
+  font-weight: 500;
+  margin: 20px;
 }
 
-.wave2 img {
+.about .info h5 {
+  font-size: 100%;
+  font-weight: 200;
+}
+
+/* ----- PREMIUM ----- */
+
+.premium {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.premium h1 {
+  font-size: 250%;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.premium .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.premium .grid .box {
   position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: auto;
-  z-index: -10;
-  transform: rotate(180deg)
+  width: 80%;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 auto;
 }
 
-.plan {
-  width: 100%;
-  height: 500px;
-  gap: 10%;
-  display: flex;
-  justify-content: center
+.premium .grid .box {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.plan .box {
-  width: auto;
-  height: 450px;
-  padding: 20px;
-  border-radius: 25px;
-  background-color: #fac9ff;
-  border: 5px solid #754485;
-  color: #754485;
-  transition: .5s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between
-}
-
-.plan .box:hover {
-  background-color: #754485;
-  color: #fac9ff
-}
-
-.plan .box:hover #info {
-  color: #fac9ff
-}
-
-.plan .box .flex {
+.premium .grid .box .info {
   display: flex;
   align-items: center;
-  text-align: center
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
-.plan .box h5 {
-  text-align: left
+.premium .grid .box .info .Icon {
+  font-size: 400%;
+  margin-right: 20px;
 }
 
-.plan .box h5 .icon {
+.premium .grid .box .info h2 {
+  font-size: 160%;
+  font-weight: 700;
+}
+
+.premium .grid .box .info h3 {
+  font-size: 150%;
+  font-weight: 300;
+}
+
+.premium .grid .box p {
+  font-weight: 300;
   font-size: 100%;
-  line-height: 5px
+  text-align: left;
+  margin-bottom: 30px;
 }
 
-#info {
-  color: #754485;
-  margin-left: 3px;
-  margin-right: 1px;
-  transition: .5s ease
-}
-
-#true {
-  color: #67ce47;
-  margin-right: -3px
-}
-
-#false {
-  color: #e64646
-}
-
-#btnPlan1, #btnPlan2, #btnPlan3 {
-  padding: 5px 10px 5px 10px;
-  border-radius: 10px;
-  background-color: #fac9ff;
-  border: #754485 solid 2px;
-  color: #754485;
-  transition: .5s ease;
-  align-self: flex-end;
-  position: relative
-}
-
-.wave3 img {
+.premium .grid .box button {
   position: relative;
-  top: 8px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: auto;
-  z-index: -10
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 8px 14px 8px 14px;
+  border-radius: 10px;
+  transition: 0.5s ease;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
+.premium .grid .box button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+
+/* ----- VOUCHES ----- */
 .vouches {
-  width: 100%;
-  height: 400px;
-  display: grid;
-  grid-template-columns:1fr 1fr 1fr;
-  grid-template-rows:1fr;
-  color: #fac9ff;
-  background-color: #754485;
-  place-items: center;
-  padding-bottom: 100px;
-  z-index: 80
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.vouches .box .flex {
+.vouches h1 {
+  font-size: 250%;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.vouches .grid {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px
 }
 
-.vouches .box .flex img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
+.vouches .grid .box {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.vouches .grid .box .info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.vouches .grid .box .info img {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, .3);
-  margin-right: 20px
+  margin-right: 20px;
 }
 
-.vouches .box .flex .texts {
-  white-space: nowrap
+.vouches .grid .box .info h2 {
+  font-size: 200%;
+  font-weight: 700;
 }
 
-.vouches .box .flex .texts h1 {
-  font-size: 300%;
-  font-weight: 700
+.vouches .grid .box .info h2,
+.vouches .grid .box .info h3 {
+  text-align: left;
 }
 
-.vouches .box .flex .texts h3 {
-  font-size: 150%;
-  font-weight: 300;
-  margin-top: -20px;
-  margin-left: 3px
+.vouches .grid .box p {
+  text-align: left;
+  margin-bottom: 30px;
 }
 
-.vouches .box .icon {
-  font-size: 150%
-}
-
-.vouches .box h5 {
-  font-size: 100%;
-  font-weight: 500
-}
-
-#quote-left {
-  margin-bottom: -12px
-}
-
-#quote-right {
-  margin-top: -12px
-}
-
-.wave4 img {
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: auto;
-  z-index: -10;
-  transform: rotate(180deg)
-}
-
-.wave5 img {
-  position: relative;
-  top: 8px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: auto;
-  z-index: -10
-}
+/* ----- FOOTER ----- */
 
 .footer {
-  width: 100%;
-  height: auto;
-  padding-bottom: 5px;
-  background-color: #754485
-}
-
-.footer .texts {
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 .footer h3 {
-  color: #fac9ff;
-  margin-left: 15px;
-  white-space: nowrap
+  font-weight: 500;
 }
 
-.footer a {
-  color: #fac9ff;
-  margin-right: 20px;
-  white-space: nowrap;
-  position: relative
+.footer .links a {
+  position: relative;
+  margin: 20px;
 }
 
-.footer a::after {
+.footer .links a::after {
   content: '';
   width: 0;
   height: 2px;
-  background: #fac9ff;
+  background: rgba(255, 255, 255, 0.8);
   position: absolute;
   left: 0;
-  bottom: 0;
-  transition: 1s
+  bottom: -4px;
+  transition: 0.5s;
 }
 
-.footer a:hover::after {
-  width: 100%
+.footer .links a:hover::after {
+  width: 100%;
 }
 
-.titleAboutAndVouch {
-  background-color: #754485;
-  text-align: center;
-  color: #fac9ff;
-  font-size: 150%
-}
-
-.titlePlan {
-  background-color: #fac9ff;
-  text-align: center;
-  color: #754485;
-  font-size: 150%
-}
-
-@media screen and (max-width: 1400px) {
-  .nav .sidemenu .navbar .links {
-    display: none
+/* ----- RESPONSIVE ----- */
+@media screen and (max-width: 1600px) {
+  .premium .grid .box .info .Icon {
+    font-size: 300%;
   }
 
+  .premium .grid .box .info h2 {
+    font-size: 130%;
+  }
+
+  .premium .grid .box .info h3 {
+    font-size: 120%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
   .nav {
-    justify-content: space-between;
-    margin-left: 25px;
-    margin-right: 25px
-  }
-
-  .home video {
-    width: 80%;
-    height: auto
-  }
-
-  .about {
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:1fr
-  }
-
-  .plan {
-    align-items: center;
-    flex-direction: column;
-    height: 1200px;
-    gap: 1%
-  }
-
-  .plan .box {
-    width: 50%;
-    height: 380px
-  }
-
-  .plan .box {
     width: 60%;
-    height: 380px
   }
 
-  .vouches {
-    height: 800px;
-    grid-template-columns:1fr;
-    grid-template-rows:1fr 1fr 1fr;
-    gap: 140px;
-    padding-bottom: 200px
+  .premium .grid .box .info .Icon {
+    font-size: 220%;
   }
 
-  .titleAboutAndVouch {
-    padding-top: 50px;
-    padding-bottom: 50px
+  .premium .grid .box .info h2 {
+    font-size: 110%;
   }
 
-  .titlePlan {
-    padding-bottom: 20px
+  .premium .grid .box .info h3 {
+    font-size: 100%;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .premium .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+
+  .premium .grid .box .info .Icon {
+    font-size: 400%;
+  }
+
+  .premium .grid .box .info h2 {
+    font-size: 200%;
+  }
+
+  .premium .grid .box .info h3 {
+    font-size: 150%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .nav {
+    width: 70%;
+  }
+
+  .about .info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .nav {
+    width: 80%;
+  }
+
+  .home {
+    width: 80%;
   }
 }
 
 @media screen and (max-width: 850px) {
-  .about {
-    display: flex;
-    flex-direction: column;
-    height: 1500px;
-    gap: 50px
+  .nav {
+    width: 90%;
   }
 }
 
-@media screen and (max-width: 685px) {
-  .nav .navbar img {
-    width: 70px;
-    height: 70px
+@media screen and (max-width: 750px) {
+
+  .nav img {
+    margin-right: 0px;
   }
 
-  .navbar h1 {
-    font-size: 150%
+  .nav ul {
+    display: none;
   }
 
-  .home h1 {
-    font-size: 180%;
-    margin-bottom: 10px
+  .about .info {
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  .home h3 {
-    font-size: 110%;
-    margin-bottom: 20px
+  .footer h3 {
+    font-size: 90%;
   }
 
-  .footer .texts {
-    width: 100%;
-    flex-direction: column;
-    text-align: center
+  .footer .links a {
+    font-size: 80%;
+    margin: 10px;
   }
 }
 
-@media screen and (max-width: 550px) {
-  .plan {
-    height: 1500px
+@media screen and (max-width: 600px) {
+  .home .text h1 {
+    font-size: 150%;
   }
 
-  .plan .box {
-    height: 480px
-  }
-
-  .plan .box .texts h1 {
-    font-size: 180%
-  }
-
-  .plan .box .texts h3 {
-    font-size: 180%
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .nav .btn .started {
-    display: none
-  }
-
-  .plan .box .texts h1 {
-    font-size: 150%
-  }
-
-  .plan .box .texts h3 {
-    font-size: 150%
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .nav .navbar img {
-    width: 60px;
-    height: 60px;
-    margin-right: -15px
-  }
-
-  .navbar h1 {
-    font-size: 120%
-  }
-
-  .home h1 {
-    font-size: 120%;
-    margin-bottom: 10px
-  }
-
-  .home h3 {
+  .home .text h3 {
     font-size: 100%;
-    margin-bottom: 20px
   }
 
-  .plan {
-    height: 1800px
+  .about .info .Icon {
+    font-size: 300%;
   }
 
-  .plan .box {
-    height: 500px
+  .premium .grid .box .info .Icon {
+    font-size: 250%;
   }
 
-  .plan .box .texts h1 {
-    font-size: 120%
+  .premium .grid .box .info h2 {
+    font-size: 120%;
   }
 
-  .plan .box .texts h3 {
-    font-size: 120%
+  .premium .grid .box .info h3 {
+    font-size: 110%;
+  }
+
+  .footer {
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .footer h3 {
+    font-size: 90%;
+  }
+
+  .footer .links a {
+    font-size: 80%;
+    margin: 10px;
   }
 }
 </style>

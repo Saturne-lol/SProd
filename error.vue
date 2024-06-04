@@ -1,16 +1,28 @@
 <script setup lang="ts">
-import type { NuxtError } from '#app'
+import type {NuxtError} from '#app'
 
 const props = defineProps({
   error: Object as () => NuxtError
 })
-
-const handleError = () => clearError({ redirect: '/' })
+//
+// if (process.client) {
+//   switch (props?.error?.statusCode) {
+//     case 500:
+//       window.location.href = '/500?error=500'
+//       break
+//     case 404:
+//       window.location.href = '/404?type=404'
+//       break
+//     default:
+//       window.location.href = `/${props?.error?.statusCode}`
+//       break
+//   }
+// }
 </script>
 
 <template>
   <div>
-    <h2>{{ error.statusCode }}</h2>
-    <button @click="handleError">Clear errors</button>
+    <h1>Error</h1>
+    <h3>{{error}}</h3>
   </div>
 </template>

@@ -1,4 +1,4 @@
-name: Saturne Build
+name: Saturne Update
 on:
   push:
     branches:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -50,6 +50,16 @@ jobs:
           name: build
           path: build.zip
 
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+
       - name: Create Release
         uses: ncipollo/release-action@v1
         env:
@@ -59,3 +69,36 @@ jobs:
           name: Deployment ${{ github.run_id }}
           tag: deployment-${{ github.run_id }}
           token: ${{ secrets.TOKEN }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+
+      - name: Extract build artifact
+        run: unzip build.zip -d ./dist
+        shell: bash
+
+      - name: Clean remote directory
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+          sshpass -p "hzS62wNC" ssh -o StrictHostKeyChecking=no -p 22 root@212.227.179.23 'rm -rf /root/saturne/*'
+        shell: bash
+
+      - name: Upload via rsync
+        run: |
+          rsync -avz --delete ./dist/ root@212.227.179.23:/root/saturne/
+        env:
+          RSYNC_RSH: 'sshpass -p hzS62wNC ssh -o StrictHostKeyChecking=no -p 22'
+        shell: bash
+
+      - name: Restart pm2
+        run: |
+          sshpass -p "hzS62wNC" ssh -o StrictHostKeyChecking=no -p 22 root@212.227.179.23 'source ~/.nvm/nvm.sh && ~/.nvm/versions/node/v21.6.1/bin/pm2 restart all'
+        shell: bash
