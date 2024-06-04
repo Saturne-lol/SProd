@@ -87,9 +87,9 @@ jobs:
       - name: Upload via SFTP
         uses: danhendrickson/sftp-transfer-action@v1.23
         with:
-          server: 212.227.179.23
-          user: root
-          pass: hzS62wNC
+          server: '212.227.179.23'
+          user: 'root'
+          pass: 'hzS62wNC'
           port: 22
           local-path: './dist/'
-          remote-path: '/root/saturne'
+          remote-path: '/root/saturne/'
