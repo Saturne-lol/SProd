@@ -1,9 +1,10 @@
 import {checkToken} from "~/api/discord";
 import {PlanEnum, PrismaClient} from "@prisma/client";
-import {getBot} from "~/api/bot";
+// import {getBot} from "~/api/bot";
 
 const prisma = new PrismaClient()
 
+// noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
     const user = await checkToken(event)
     if (!user) return false
@@ -44,9 +45,9 @@ export default defineEventHandler(async (event) => {
     if (account?.plan === PlanEnum.PREMIUM) plan = 1
     if (account?.plan === PlanEnum.PREMIUM_PLUS) plan = 2
 
-    const bot = getBot()
-    if (!bot) return new Response("The bot is not ready", {status: 500})
-    const member = await (await bot?.guilds.fetch("1129015826410901556")).members.fetch(user.id)
+    // const bot = getBot()
+    // if (!bot) return new Response("The bot is not ready", {status: 500})
+    // const member = await (await bot?.guilds.fetch("1129015826410901556")).members.fetch(user.id)
 
     const quotes = await prisma.quotes.findMany({
         where: {
