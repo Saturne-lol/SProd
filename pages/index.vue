@@ -462,9 +462,8 @@ onMounted(() => {
 
 .premium {
   width: 90%;
-  margin: 0 auto;
   text-align: center;
-  margin-bottom: 100px;
+  margin: 0 auto 100px;
 }
 
 .premium h1 {
@@ -521,7 +520,6 @@ onMounted(() => {
 }
 
 .premium .grid .box button {
-  position: relative;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 8px 14px 8px 14px;
@@ -711,7 +709,7 @@ onMounted(() => {
 @media screen and (max-width: 750px) {
 
   .nav img {
-    margin-right: 0px;
+    margin-right: 0;
   }
 
   .nav ul {
