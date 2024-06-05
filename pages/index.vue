@@ -22,23 +22,15 @@ useSeoMeta({
       <div class="links">
         <img src="/public/img/saturne.png" alt="">
         <ul>
-          <a href="#home">
-            <li>HOME</li>
-          </a>
-          <a href="#about">
-            <li>ABOUT</li>
-          </a>
-          <a href="#premium">
-            <li>PREMIUM</li>
-          </a>
-          <a href="#vouches">
-            <li>VOUCHES</li>
-          </a>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#premium">PREMIUM</a></li>
+          <li><a href="#vouches">VOUCHES</a></li>
         </ul>
       </div>
       <div class="buttons">
-        <button>Login</button>
-        <button>Get Started</button>
+        <a href="/auth/login"><button>Login</button></a>
+        <a href="/auth/login"><button>Get Started</button></a>
       </div>
     </div>
     <div class="home" id="home">
@@ -47,8 +39,8 @@ useSeoMeta({
         <h3><span>Saturne.lol</span> makes it easy to create a modern profile</h3>
       </div>
       <div class="buttons">
-        <button href="">Get Started</button>
-        <button href="">Read More</button>
+        <a href="/auth/login"><button>Get Started</button></a>
+        <a href="#about"><button>Read More</button></a>
       </div>
       <video autoplay loop muted>
         <source src="public/video/adsglt.mp4" type="video/mp4">
@@ -383,12 +375,12 @@ useSeoMeta({
   text-align: center;
 }
 
-.home .text h1{
+.home .text h1 {
   font-size: 180%;
   font-weight: 700;
 }
 
-.home .text h3{
+.home .text h3 {
   font-size: 130%;
   font-weight: 300;
 }
