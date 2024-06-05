@@ -340,69 +340,6 @@ if (process.client) {
         </div>
       </div>
     </div>
-
-
-
-<!--    <div class="box" id="customizeBox10">-->
-<!--      <div class="padding">-->
-<!--        <div class="title">-->
-<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
-<!--          <h3>BOX N°2 (SERVER)</h3>-->
-<!--        </div>-->
-<!--        <div class="info">-->
-<!--          <h4>discord.gg/{{ data?.discord[0]?.invite || "" }}</h4>-->
-<!--          <Icon name="ic:baseline-edit" id="modif" @click="openModal('0_discord')"/>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div> &lt;!&ndash; Box 2 Server &ndash;&gt;-->
-<!--    <div class="box" id="customizeBox11" v-bind:aria-disabled="data.plan >= 1">-->
-<!--      <div class="padding">-->
-<!--        <div class="title">-->
-<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
-<!--          <h3>BOX N°3 (SERVER)</h3>-->
-<!--        </div>-->
-<!--        <div class="info">-->
-<!--          <h4>discord.gg/</h4>-->
-<!--          <Icon name="ic:baseline-edit" id="modif"/>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div> &lt;!&ndash; Box 3 Server &ndash;&gt;-->
-<!--    <div class="box" id="customizeBox12" v-bind:aria-disabled="data.plan >= 1">-->
-<!--      <div class="padding">-->
-<!--        <div class="title">-->
-<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
-<!--          <h3>BOX N°4 (SERVER)</h3>-->
-<!--        </div>-->
-<!--        <div class="info">-->
-<!--          <h4>discord.gg/</h4>-->
-<!--          <Icon name="ic:baseline-edit" id="modif"/>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div> &lt;!&ndash; Box 4 Server &ndash;&gt;-->
-<!--    <div class="box" id="customizeBox13" v-bind:aria-disabled="data.plan >= 2">-->
-<!--      <div class="padding">-->
-<!--        <div class="title">-->
-<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
-<!--          <h3>BOX N°5 (SERVER)</h3>-->
-<!--        </div>-->
-<!--        <div class="info">-->
-<!--          <h4>discord.gg/</h4>-->
-<!--          <Icon name="ic:baseline-edit" id="modif"/>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div> &lt;!&ndash; Box 5 Server &ndash;&gt;-->
-<!--    <div class="box" id="customizeBox14" v-bind:aria-disabled="data.plan >= 2">-->
-<!--      <div class="padding">-->
-<!--        <div class="title">-->
-<!--          <Icon name="akar-icons:discord-fill" class="Icon"/>-->
-<!--          <h3>BOX N°6 (SERVER)</h3>-->
-<!--        </div>-->
-<!--        <div class="info">-->
-<!--          <h4>discord.gg/</h4>-->
-<!--          <Icon name="ic:baseline-edit" id="modif"/>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div> &lt;!&ndash; Box 6 Server &ndash;&gt;-->
     <div class="box" id="customizeBox15">
       <div class="padding">
         <div class="title">
@@ -729,7 +666,7 @@ if (process.client) {
   top: 2px;
   left: 2px;
   background-color: #fff;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
   transition: transform 0.3s;
 }
 
@@ -780,7 +717,7 @@ if (process.client) {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 30px 0px 30px 0px;
+  padding: 30px 0 30px 0;
   border-radius: 10px;
   transition: 0.4s ease;
 }
@@ -793,7 +730,7 @@ if (process.client) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  padding: 0px;
+  padding: 0;
   border-radius: 10px;
 }
 
@@ -937,22 +874,27 @@ if (process.client) {
   grid-column: 1 / 21;
 }
 
+/*noinspection CssUnusedSymbol*/
 #customizeBox10 {
   grid-column: 21 / 41;
 }
 
+/*noinspection CssUnusedSymbol*/
 #customizeBox11 {
   grid-column: 41 / 61;
 }
 
+/*noinspection CssUnusedSymbol*/
 #customizeBox12 {
   grid-column: 1 / 21;
 }
 
+/*noinspection CssUnusedSymbol*/
 #customizeBox13 {
   grid-column: 21 / 41;
 }
 
+/*noinspection CssUnusedSymbol*/
 #customizeBox14 {
   grid-column: 41 / 61;
 }
@@ -1046,22 +988,27 @@ if (process.client) {
     grid-column: 1 / 31;
   }
 
+  /*noinspection CssUnusedSymbol*/
   #customizeBox10 {
     grid-column: 31 / 61;
   }
 
+  /*noinspection CssUnusedSymbol*/
   #customizeBox11 {
     grid-column: 1 / 31;
   }
 
+  /*noinspection CssUnusedSymbol*/
   #customizeBox12 {
     grid-column: 31 / 61;
   }
 
+  /*noinspection CssUnusedSymbol*/
   #customizeBox13 {
     grid-column: 1 / 31;
   }
 
+  /*noinspection CssUnusedSymbol*/
   #customizeBox14 {
     grid-column: 31 / 61;
   }
