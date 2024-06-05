@@ -1,9 +1,12 @@
+// noinspection Annotator
+
 import {checkToken} from "~/api/discord";
 import {PrismaClient} from "@prisma/client";
 import {getBlUrl} from "~/api/blacklist";
 
 const prisma = new PrismaClient()
 
+// noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
     if (event.method !== 'POST') return new Response("Method not allowed", {status: 405})
 
