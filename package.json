@@ -18,6 +18,7 @@
     "discord.js": "^14.15.3",
     "nuxt": "^3.11.2",
     "nuxt-gtag": "^2.0.6",
+    "nuxt-typed-router": "^3.6.3",
     "postgres": "^3.4.4",
     "stripe": "15.9.0",
     "url": "^0.11.3",
