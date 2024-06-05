@@ -13,6 +13,34 @@ useSeoMeta({
   twitterImage: '/favicon.ico',
   twitterCard: 'summary',
 })
+
+const vouch = [
+  {
+    username: "AD",
+    avatar: "ad.gif",
+    quote: "Owner du serveur saturne",
+    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+  },
+  {
+    username: "Cleboost",
+    avatar: "cleboost.png",
+    quote: "Owner du serveur saturne",
+    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+  },
+]
+
+const carouselRef = ref()
+onMounted(() => {
+  setInterval(() => {
+    if (!carouselRef.value) return
+
+    if (carouselRef.value.page === carouselRef.value.pages) {
+      return carouselRef.value.select(0)
+    }
+
+    carouselRef.value.next()
+  }, 5000)
+})
 </script>
 
 <template>
@@ -29,8 +57,12 @@ useSeoMeta({
         </ul>
       </div>
       <div class="buttons">
-        <a href="/auth/login"><button>Login</button></a>
-        <a href="/auth/login"><button>Get Started</button></a>
+        <a href="/auth/login">
+          <button>Login</button>
+        </a>
+        <a href="/auth/login">
+          <button>Get Started</button>
+        </a>
       </div>
     </div>
     <div class="home" id="home">
@@ -39,8 +71,12 @@ useSeoMeta({
         <h3><span>Saturne.lol</span> makes it easy to create a modern profile</h3>
       </div>
       <div class="buttons">
-        <a href="/auth/login"><button>Get Started</button></a>
-        <a href="#about"><button>Read More</button></a>
+        <a href="/auth/login">
+          <button>Get Started</button>
+        </a>
+        <a href="#about">
+          <button>Read More</button>
+        </a>
       </div>
       <video autoplay loop muted>
         <source src="public/video/adsglt.mp4" type="video/mp4">
@@ -54,7 +90,7 @@ useSeoMeta({
         <h1>Why choose Saturne</h1>
         <div class="info">
           <div class="box">
-            <Icon name="ph:magic-wand-fill" class="Icon" />
+            <Icon name="ph:magic-wand-fill" class="Icon"/>
             <h3>FULLY CUSTOMIZABLE</h3>
             <h5>
               Express yourself in a unique way and create a modern,
@@ -62,7 +98,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:shield-lock" class="Icon" />
+            <Icon name="material-symbols:shield-lock" class="Icon"/>
             <h3>INSURED PROTECTION</h3>
             <h5>
               Enjoy peace of mind with Saturne.lol's insured protection.
@@ -70,7 +106,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="ph:code-bold" class="Icon" />
+            <Icon name="ph:code-bold" class="Icon"/>
             <h3>DEVELOPMENT</h3>
             <h5>
               Explore Saturne.lol and experience the result of meticulous development.
@@ -78,7 +114,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon" />
+            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon"/>
             <h3>RESPONSIVE</h3>
             <h5>
               Experience seamless accessibility on any device with Saturne.lol's responsive design.
@@ -86,7 +122,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="ph:globe" class="Icon" />
+            <Icon name="ph:globe" class="Icon"/>
             <h3>COMMUNITY APPROVAL</h3>
             <h5>
               Find out why Saturn.lol is so popular with our community.
@@ -94,7 +130,7 @@ useSeoMeta({
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:contact-support-rounded" class="Icon" />
+            <Icon name="material-symbols:contact-support-rounded" class="Icon"/>
             <h3>SUPPORT 24/7</h3>
             <h5>
               Saturne provides 24/7 support to ensure that our customers receive
@@ -113,67 +149,69 @@ useSeoMeta({
       <div class="grid">
         <div class="box">
           <div class="info">
-            <Icon name="material-symbols:grass" class="Icon" />
+            <Icon name="material-symbols:grass" class="Icon"/>
             <div class="text">
               <h2>Classic Plan</h2>
               <h3>0.00€ - Lifetime</h3>
             </div>
           </div>
           <p>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Host 24/7<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Static images<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Static bio<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - 3 Linked Social Network<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Number of box : 2<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Amount of profil viewer<br>
           </p>
           <button>Get Started</button>
         </div>
         <div class="box">
           <div class="info">
-            <Icon name="solar:stars-minimalistic-broken" class="Icon" />
+            <Icon name="solar:stars-minimalistic-broken" class="Icon"/>
             <div class="text">
               <h2>Advanced Plan</h2>
               <h3>5.00€ - Lifetime</h3>
             </div>
           </div>
           <p>
-            <Icon name="ion:information" id="info" />
+            <Icon name="ion:information" id="info"/>
             - All previous functions<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Dynamique images<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Dynamique bio<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Number of box : 4<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Premium Badge<br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Cursor Effect <br>
-            <Icon name="material-symbols:check" id="check" />
+            <Icon name="material-symbols:check" id="check"/>
             - Customizable font<br>
           </p>
           <button>Buy Now</button>
         </div>
         <div class="box">
           <div class="info">
-            <Icon name="basil:diamond-solid" class="Icon" />
+            <Icon name="basil:diamond-solid" class="Icon"/>
             <div class="text">
               <h2>Premium Plan</h2>
               <h3>2.00€/month</h3>
             </div>
           </div>
           <p>
-            <Icon name="ion:information" id="info" />
+            <Icon name="ion:information" id="info"/>
             - All previous functions<br>
-            <Icon name="material-symbols:check" id="check" />
-            - Host on your own domain<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Number of box : 6<br>
+            <Icon name="material-symbols:check" id="check"/>
+            - Host on your own domain (soon)<br>
           </p>
           <button>Buy Now</button>
         </div>
@@ -186,54 +224,23 @@ useSeoMeta({
       <div class="vouches">
         <h1>Trusted by the community</h1>
         <div class="grid">
-          <div class="box">
-            <div class="info">
-              <img src="/public/img/AD.gif" alt="">
-              <div class="text">
-                <h2>AD</h2>
-                <h3>Owner du serveur saturne</h3>
+          <UCarousel v-slot="{ item }" :items="vouch" :ui="{ item: 'basis-full' }"
+                     class="rounded-lg overflow-hidden" ref="carouselRef">
+            <div class="box">
+              <div class="info">
+                <img :src="'/img/landing/'+item.avatar" alt="">
+                <div class="text">
+                  <h2>{{ item.username }}</h2>
+                  <h3>{{ item.quote }}</h3>
+                </div>
               </div>
+              <p>
+                <Icon name="bxs:quote-alt-left"/>
+                {{ item.avis }}
+                <Icon name="bxs:quote-alt-right"/>
+              </p>
             </div>
-            <p>
-              <Icon name="bxs:quote-alt-left" />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-              Libero, accusamus.
-              <Icon name="bxs:quote-alt-right" />
-            </p>
-          </div>
-          <div class="box">
-            <div class="info">
-              <img src="/public/img/cleboost.png" alt="">
-              <div class="text">
-                <h2>Cleboost</h2>
-                <h3>Owner du serveur saturne</h3>
-              </div>
-            </div>
-            <p>
-              <Icon name="bxs:quote-alt-left" />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-              Libero, accusamus.
-              <Icon name="bxs:quote-alt-right" />
-            </p>
-          </div>
-          <div class="box">
-            <div class="info">
-              <img src="/public/img/BF.png" alt="">
-              <div class="text">
-                <h2>BF</h2>
-                <h3>Owner du serveur saturne</h3>
-              </div>
-            </div>
-            <p>
-              <Icon name="bxs:quote-alt-left" />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam
-              at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque!
-              Libero, accusamus.
-              <Icon name="bxs:quote-alt-right" />
-            </p>
-          </div>
+          </UCarousel>
         </div>
       </div>
     </div>
