@@ -2,14 +2,16 @@
 useSeoMeta({
   title: 'Saturne.lol',
   description: 'Saturne.lol makes it easy to create a modern online profile !',
+
   ogTitle: 'Saturne.lol',
   ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
-  ogImage: '/favicon/icon.ico',
+  ogImage: '/favicon.ico',
   ogUrl: 'https://saturne.lol',
+
   twitterTitle: 'Saturne.lol',
   twitterDescription: 'Saturne.lol makes it easy to create a modern online profile !',
-  twitterImage: '/favicon/icon.ico',
-  twitterCard: 'summary'
+  twitterImage: '/favicon.ico',
+  twitterCard: 'summary',
 })
 </script>
 
