@@ -248,7 +248,7 @@ onMounted(() => {
       <div class="vouches">
         <h1>Trusted by the community</h1>
         <div class="grid">
-          <UCarousel v-slot="{ item }" :items="vouch" :ui="{ item: 'basis-full' }"
+          <UCarousel v-slot="{ item }" :items="vouch" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3' }"
                      class="rounded-lg overflow-hidden" ref="carouselRef">
             <div class="box">
               <div class="info">
