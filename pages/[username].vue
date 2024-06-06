@@ -4,8 +4,6 @@ import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 import {useRoute} from "vue-router";
 
-
-
 definePageMeta({
   middleware: async (to) => {
     const {data: isExist} = await useFetch('/api/profile/is-exist', {query: {username: to.params.username}}) as {
