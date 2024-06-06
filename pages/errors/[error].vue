@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import {onMounted, ref} from 'vue';
+import {useRoute} from 'vue-router';
 
 type ErrorType = '404' | '500';
 
@@ -61,8 +61,8 @@ onMounted(() => {
     <div class="home">
       <h1>{{ error }}</h1>
       <h2>{{ quote }}</h2>
-<!--      <h2 v-if="error && data[error]">{{ data[error]() }}</h2>-->
-<!--      <h2 v-else>Unknown error</h2>-->
+      <!--      <h2 v-if="error && data[error]">{{ data[error]() }}</h2>-->
+      <!--      <h2 v-else>Unknown error</h2>-->
       <button><a href="/">Back to Saturn</a></button>
     </div>
 
