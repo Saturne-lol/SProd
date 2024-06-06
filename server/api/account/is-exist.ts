@@ -1,8 +1,11 @@
+// noinspection Annotator
+
 import axios from "axios";
 import {PrismaClient} from "@prisma/client";
 
 const prisma = new PrismaClient()
 
+// noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
     if (!getCookie(event, "token")) {
         return sendRedirect(event, '/auth/login')
