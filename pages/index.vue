@@ -81,10 +81,10 @@ onMounted(() => {
         </ul>
       </div>
       <div class="buttons">
-        <a href="/auth/login">
+        <a href="/login">
           <button>Login</button>
         </a>
-        <a href="/auth/login">
+        <a href="/login">
           <button>Get Started</button>
         </a>
       </div>
@@ -95,7 +95,7 @@ onMounted(() => {
         <h3><span>Saturne.lol</span> makes it easy to create a modern profile</h3>
       </div>
       <div class="buttons">
-        <a href="/auth/login">
+        <a href="/login">
           <button>Get Started</button>
         </a>
         <a href="#about">
