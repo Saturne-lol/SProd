@@ -97,6 +97,11 @@ gtag('config', 'G-YKC5TQ8C98', {
   align-items: center;
 }
 
+#badges {
+  margin-left: 10px;
+
+}
+
 .profil .ppUser #ppDisc {
   width: 120px;
   height: 120px;

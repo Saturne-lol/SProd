@@ -582,7 +582,7 @@ if (process.client) {
 
 .content .box .soon {
   z-index: 10;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(50px);
   border-radius: 20px;
 }
 
@@ -666,7 +666,7 @@ if (process.client) {
   top: 2px;
   left: 2px;
   background-color: #fff;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s;
 }
 
@@ -717,7 +717,7 @@ if (process.client) {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 30px 0 30px 0;
+  padding: 30px 0px 30px 0px;
   border-radius: 10px;
   transition: 0.4s ease;
 }
@@ -730,7 +730,7 @@ if (process.client) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  padding: 0;
+  padding: 0px;
   border-radius: 10px;
 }
 
@@ -874,27 +874,22 @@ if (process.client) {
   grid-column: 1 / 21;
 }
 
-/*noinspection CssUnusedSymbol*/
 #customizeBox10 {
   grid-column: 21 / 41;
 }
 
-/*noinspection CssUnusedSymbol*/
 #customizeBox11 {
   grid-column: 41 / 61;
 }
 
-/*noinspection CssUnusedSymbol*/
 #customizeBox12 {
   grid-column: 1 / 21;
 }
 
-/*noinspection CssUnusedSymbol*/
 #customizeBox13 {
   grid-column: 21 / 41;
 }
 
-/*noinspection CssUnusedSymbol*/
 #customizeBox14 {
   grid-column: 41 / 61;
 }
@@ -988,27 +983,22 @@ if (process.client) {
     grid-column: 1 / 31;
   }
 
-  /*noinspection CssUnusedSymbol*/
   #customizeBox10 {
     grid-column: 31 / 61;
   }
 
-  /*noinspection CssUnusedSymbol*/
   #customizeBox11 {
     grid-column: 1 / 31;
   }
 
-  /*noinspection CssUnusedSymbol*/
   #customizeBox12 {
     grid-column: 31 / 61;
   }
 
-  /*noinspection CssUnusedSymbol*/
   #customizeBox13 {
     grid-column: 1 / 31;
   }
 
-  /*noinspection CssUnusedSymbol*/
   #customizeBox14 {
     grid-column: 31 / 61;
   }
