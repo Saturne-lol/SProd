@@ -38,16 +38,16 @@ onMounted(() => {
       <div class="links">
         <img src="/public/img/saturne.png" alt="">
         <ul>
-          <a href="#home">
+          <a href="/#home">
             <li>HOME</li>
           </a>
-          <a href="#about">
+          <a href="/#about">
             <li>ABOUT</li>
           </a>
-          <a href="#premium">
+          <a href="/#premium">
             <li>PREMIUM</li>
           </a>
-          <a href="#vouches">
+          <a href="/#vouches">
             <li>VOUCHES</li>
           </a>
         </ul>

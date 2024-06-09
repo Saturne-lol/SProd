@@ -193,7 +193,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check"/>
             - Amount of profil viewer<br>
           </p>
-          <button>Get Started</button>
+          <a href="/login"><button>Get Started</button></a>
         </div>
         <div class="box">
           <div class="info">
@@ -219,7 +219,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check"/>
             - Customizable font<br>
           </p>
-          <button>Buy Now</button>
+          <a href=""><button>Buy Now</button></a>
         </div>
         <div class="box">
           <div class="info">
@@ -237,7 +237,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check"/>
             - Host on your own domain (soon)<br>
           </p>
-          <button>Buy Now</button>
+          <a href=""><button>Buy Now</button></a>
         </div>
       </div>
     </div>
