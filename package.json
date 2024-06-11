@@ -16,7 +16,7 @@
     "@prisma/client": "^5.15.0",
     "axios": "^1.7.2",
     "discord.js": "^14.15.3",
-    "nuxt": "^3.11.2",
+    "nuxt": "^3.12.1",
     "nuxt-gtag": "^2.0.6",
     "nuxt-typed-router": "^3.6.3",
     "stripe": "15.10.0",
