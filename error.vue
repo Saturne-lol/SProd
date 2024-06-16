@@ -1,28 +1,24 @@
 <script setup lang="ts">
 import type {NuxtError} from '#app'
+import {useRouter} from 'vue-router'
 
 const props = defineProps({
   error: Object as () => NuxtError
 })
-//
-// if (process.client) {
-//   switch (props?.error?.statusCode) {
-//     case 500:
-//       window.location.href = '/500?error=500'
-//       break
-//     case 404:
-//       window.location.href = '/404?type=404'
-//       break
-//     default:
-//       window.location.href = `/${props?.error?.statusCode}`
-//       break
-//   }
-// }
-</script>
 
-<template>
-  <div>
-    <h1>Error</h1>
-    <h3>{{error}}</h3>
-  </div>
-</template>
+const router = useRouter()
+
+if (process.client) {
+  switch (props?.error?.statusCode) {
+    case 500:
+      router.push('/errors/500?error=500')
+      break
+    case 404:
+      router.push('/errors/404')
+      break
+    default:
+      router.push(`/errors/${props?.error?.statusCode}`)
+      break
+  }
+}
+</script>

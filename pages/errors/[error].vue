@@ -1,16 +1,34 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Saturne.lol',
-  description: 'Saturne.lol makes it easy to create a modern online profile !',
-  ogTitle: 'Saturne.lol',
-  ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
-  ogImage: '/favicon/icon.ico',
-  ogUrl: 'https://saturne.lol',
-  twitterTitle: 'Saturne.lol',
-  twitterDescription: 'Saturne.lol makes it easy to create a modern online profile !',
-  twitterImage: '/favicon/icon.ico',
-  twitterCard: 'summary'
-})
+import {onMounted, ref} from 'vue';
+import {useRoute} from 'vue-router';
+
+type ErrorType = '404' | '500';
+
+const route = useRoute();
+const error = route.params.error as ErrorType | undefined;
+const typeP = route.query.type || 'default';
+
+const data: Record<ErrorType, () => string> = {
+  "404": () => typeP === 'profile' ?
+      "Mmmh ... this user doesn't seem to be part of our solar system" :
+      "You're lost in this immense galaxy...",
+  "500": () => `An error occurred while trying to find this page: ${route.query.error || 'Unknown error'}`
+};
+
+const quote = ref("");
+
+onMounted(() => {
+  if (error && data[error]) {
+    const text = data[error]();
+    text.split('').forEach((char, i) => {
+      setTimeout(() => {
+        quote.value += char;
+      }, i * 20);
+    });
+  } else {
+    quote.value = "Unknown error";
+  }
+});
 </script>
 
 <template>
@@ -20,16 +38,16 @@ useSeoMeta({
       <div class="links">
         <img src="/public/img/saturne.png" alt="">
         <ul>
-          <a href="#home">
+          <a href="/#home">
             <li>HOME</li>
           </a>
-          <a href="#about">
+          <a href="/#about">
             <li>ABOUT</li>
           </a>
-          <a href="#premium">
+          <a href="/#premium">
             <li>PREMIUM</li>
           </a>
-          <a href="#vouches">
+          <a href="/#vouches">
             <li>VOUCHES</li>
           </a>
         </ul>
@@ -41,9 +59,11 @@ useSeoMeta({
     </div>
 
     <div class="home">
-      <h1>404</h1>
-      <h2>Oops ... There seems to be a problem with the Saturne server</h2>
-      <button>Back to Saturn</button>
+      <h1>{{ error }}</h1>
+      <h2>{{ quote }}</h2>
+      <!--      <h2 v-if="error && data[error]">{{ data[error]() }}</h2>-->
+      <!--      <h2 v-else>Unknown error</h2>-->
+      <button><a href="/">Back to Saturn</a></button>
     </div>
 
     <div class="waveTop"></div>
@@ -175,18 +195,18 @@ useSeoMeta({
   transform: translate(-50%, -50%);
 }
 
-.home h1, 
-.home h2{
+.home h1,
+.home h2 {
   font-size: 600%;
   font-weight: 500;
   text-shadow: 0 0 10px #ffffff;
 }
 
-.home h2{
+.home h2 {
   font-size: 300%;
 }
 
-.home button{
+.home button {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 5px 10px 5px 10px;

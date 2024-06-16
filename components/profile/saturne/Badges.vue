@@ -35,8 +35,8 @@ const data = defineProps<{
 }
 
 .badges img {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   padding: 4px;
 }
 

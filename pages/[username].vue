@@ -2,8 +2,7 @@
 import type {Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
-
-
+import {useRoute} from "vue-router";
 
 definePageMeta({
   middleware: async (to) => {
@@ -16,7 +15,7 @@ definePageMeta({
   }
 });
 
-const url = useRoute().params.username
+const url = useRoute()?.params.username
 if (typeof url === "string") {
   useSeoMeta({
     title: url.charAt(0).toUpperCase() + url.slice(1) + " - Saturne.lol",

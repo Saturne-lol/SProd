@@ -18,7 +18,6 @@
   padding: 0;
   text-decoration: none;
   list-style: none;
-  color: #fff;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   user-select: none;

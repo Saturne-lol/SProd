@@ -36,6 +36,11 @@ export async function checkToken(event: H3Event): Promise<{
                     account_id: resDsc.data.id
                 }
             })
+            await prisma.color.create({
+                data: {
+                    account_id: resDsc.data.id
+                }
+            })
         }
     }
 

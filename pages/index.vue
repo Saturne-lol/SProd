@@ -27,6 +27,30 @@ const vouch = [
     quote: "Owner du serveur saturne",
     avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
   },
+  {
+    username: "BF",
+    avatar: "bf.png",
+    quote: "Owner du serveur saturne",
+    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+  },
+  {
+    username: "AD",
+    avatar: "ad.gif",
+    quote: "Owner du serveur saturne",
+    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+  },
+  {
+    username: "Cleboost",
+    avatar: "cleboost.png",
+    quote: "Owner du serveur saturne",
+    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+  },
+  {
+    username: "BF",
+    avatar: "bf.png",
+    quote: "Owner du serveur saturne",
+    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+  },
 ]
 
 const carouselRef = ref()
@@ -57,10 +81,10 @@ onMounted(() => {
         </ul>
       </div>
       <div class="buttons">
-        <a href="/auth/login">
+        <a href="/login">
           <button>Login</button>
         </a>
-        <a href="/auth/login">
+        <a href="/login">
           <button>Get Started</button>
         </a>
       </div>
@@ -71,7 +95,7 @@ onMounted(() => {
         <h3><span>Saturne.lol</span> makes it easy to create a modern profile</h3>
       </div>
       <div class="buttons">
-        <a href="/auth/login">
+        <a href="/login">
           <button>Get Started</button>
         </a>
         <a href="#about">
@@ -169,7 +193,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check"/>
             - Amount of profil viewer<br>
           </p>
-          <button>Get Started</button>
+          <a href="/login"><button>Get Started</button></a>
         </div>
         <div class="box">
           <div class="info">
@@ -195,7 +219,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check"/>
             - Customizable font<br>
           </p>
-          <button>Buy Now</button>
+          <a href=""><button>Buy Now</button></a>
         </div>
         <div class="box">
           <div class="info">
@@ -213,7 +237,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check"/>
             - Host on your own domain (soon)<br>
           </p>
-          <button>Buy Now</button>
+          <a href=""><button>Buy Now</button></a>
         </div>
       </div>
     </div>
@@ -224,7 +248,7 @@ onMounted(() => {
       <div class="vouches">
         <h1>Trusted by the community</h1>
         <div class="grid">
-          <UCarousel v-slot="{ item }" :items="vouch" :ui="{ item: 'basis-full' }"
+          <UCarousel v-slot="{ item }" :items="vouch" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3' }"
                      class="rounded-lg overflow-hidden" ref="carouselRef">
             <div class="box">
               <div class="info">
