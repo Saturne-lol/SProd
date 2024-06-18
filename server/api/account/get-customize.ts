@@ -60,6 +60,12 @@ export default defineEventHandler(async (event) => {
         }
     })
 
+    const color = await prisma.color.findUnique({
+        where: {
+            account_id: user.id
+        }
+    })
+
     return {
         url: settings?.url,
         username: settings?.username,
@@ -69,6 +75,7 @@ export default defineEventHandler(async (event) => {
         linked: member ? `${member.user.displayName} (${member.user.id})` : null,
         enter: settings?.enter_message || "Click to enter...",
         views: settings?.views || 0,
-        quotes: quotes.map((q: any) => q.text) || []
+        quotes: quotes.map((q: any) => q.text) || [],
+        colors: Object.keys(color).map((key) => color[key]).slice(1)
     }
 })

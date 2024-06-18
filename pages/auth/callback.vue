@@ -1,7 +1,7 @@
 <script setup lang="ts">
 if (process.client) {
   const code = new URLSearchParams(window.location.search).get('code');
-  if (!code) window.location.href = '/auth/login';
+  if (!code) window.location.href = '/login';
 
   const redirect_uri = window.location.origin + '/auth/callback'
 

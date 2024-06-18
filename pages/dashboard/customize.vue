@@ -16,19 +16,22 @@ interface Customize {
     enter: string,
     views: boolean,
     quotes: string[],
+    colors: string[]
   }>
 }
 
-let {data} = await useFetch("/api/account/get-customize") as Customize
+const colorList = ["Color box", "Box outline colors", "Profile outline color", "Icon color"]
+
+let {data} = await useFetch("/api/account/get-customize", {server: true}) as Customize
 for (let i = 0; i < 5; i++) {
   if (!data.value.discord[i]) data.value.discord[i] = {invite: "", index: i}
 }
 data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
 
 
-definePageMeta({
-  layout: 'dashboard',
-})
+// definePageMeta({
+//   layout: 'dashboard',
+// })
 
 const activeModal = ref("") as Ref<string>
 
@@ -171,6 +174,31 @@ if (process.client) {
       if (e.key === "Escape") return closeModal()
     })
   }
+}
+
+function updateColor(event: any, i: number) {
+ const lastColor = data.value.colors[i]
+  data.value.colors[i] = event
+  console.log(data.value.colors)
+  $fetch("/api/account/update-colors", {
+    method: "POST",
+    body: JSON.stringify(data.value.colors)
+  }).then(() => {
+    useToast().add({
+      title: "Success",
+      description: "Your color has been updated",
+      color: "green",
+      icon: "i-material-symbols-check", //@TODO fix icon
+    })
+  }).catch((e) => {
+    data.value.colors[i] = lastColor
+    useToast().add({
+      title: e.response.statusText,
+      description: e.response._data,
+      color: "red",
+      icon: "mdi:alert-circle", //@TODO fix icon
+    })
+  })
 }
 </script>
 
@@ -331,14 +359,14 @@ if (process.client) {
       <div class="padding">
         <div class="title">
           <Icon name="akar-icons:discord-fill" class="Icon"/>
-          <h3>BOX N°{{ i+1 }} (SERVER)</h3>
+          <h3>BOX N°{{ i + 1 }} (SERVER)</h3>
         </div>
         <div class="info">
-          <h4>discord.gg/{{ data?.discord[i-1]?.invite || "" }}</h4>
+          <h4>discord.gg/{{ data?.discord[i - 1]?.invite || "" }}</h4>
           <Icon name="ic:baseline-edit" id="modif" @click="openModal(i-1+'_discord')"/>
         </div>
       </div>
-    </div>
+    </div> <!-- Box discord -->
     <div class="box" id="customizeBox15">
       <div class="padding">
         <div class="title">
@@ -412,39 +440,13 @@ if (process.client) {
           <h2>COLOR</h2>
         </div>
         <div class="color">
-          <!-- LES COMMENTAIRES SONT POUR TOI MON PTI CLEMENT -->
-          <!-- FAUDRAIT METTRE UNE COULEUR DE BASE -->
-
-          <label for="BoxColor">Color box :</label>
-          <!-- COULEUR DES BOX (DISCORD PROFIL, SERVEUR DISCORD) MAIS AUSSI DE LA BOX DES INCONS -->
-          <div class="info">
-            <input type="color" id="BoxColor" name="BoxColor">
-            <input type="text" id="BoxHexColor" name="BoxHexColor" pattern="#[0-9A-Fa-f]{6}"
-                   title="Entrez une couleur valide au format #RRGGBB" value="#000000">
-          </div>
-
-          <label for="BoxOutlineColor">Box outline colors :</label>
-          <!-- COULEUR DES CONTOURS DES BOX (DISCORD PROFIL, SERVEUR DISCORD) ET DE LA BOX DES INCONS -->
-          <div class="info">
-            <input type="color" id="BoxOutlineColor" name="BoxOutlineColor">
-            <input type="text" id="BoxOutlineHexColor" name="BoxOutlineHexColor" pattern="#[0-9A-Fa-f]{6}"
-                   title="Entrez une couleur valide au format #RRGGBB" value="#000000">
-          </div>
-
-          <label for="ProfilPictureOutlineColor">Profile outline color :</label>
-          <!-- COULEUR DES CONTOUR DE LA PP -->
-          <div class="info">
-            <input type="color" id="ProfilPictureOutlineColor" name="ProfilPictureOutlineColor">
-            <input type="text" id="ProfilPictureOutlineHexColor" name="ProfilPictureOutlineHexColor"
-                   pattern="#[0-9A-Fa-f]{6}" title="Entrez une couleur valide au format #RRGGBB" value="#000000">
-          </div>
-
-          <label for="IconColor">Icon color :</label>
-          <!-- COULEUR DES ICONS (3 icons en bas a gauche mais aussi de l'icon view) -->
-          <div class="info">
-            <input type="color" id="IconColor" name="IconColor">
-            <input type="text" id="IconHexColor" name="IconHexColor" pattern="#[0-9A-Fa-f]{6}"
-                   title="Entrez une couleur valide au format #RRGGBB" value="#000000">
+          <div v-for="(color, i) in colorList">
+            <label for="BoxColor">{{ color }} :</label>
+            <div class="info">
+              <input type="color" id="BoxColor" name="BoxColor" @change="updateColor($event.target.value, i)" :value="data.colors[i]">
+              <input type="text" id="BoxHexColor" name="BoxHexColor" pattern="#[0-9A-Fa-f]{6}"
+                     title="Entrez une couleur valide au format #RRGGBB" :value="data.colors[i]">
+            </div>
           </div>
         </div>
       </div>
@@ -460,9 +462,9 @@ if (process.client) {
           <div class="info">
             <Icon name="ph:person-arms-spread-fill" class="Icon"/>
             <div class="inputs">
-              <input type="color" id="IconGlow" name="IconGlow">
-              <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
-                     title="Entrez une couleur valide au format #RRGGBB">
+              <input type="color" id="IconGlow" name="IconGlow"/>
+              <!--              <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"-->
+              <!--                     title="Entrez une couleur valide au format #RRGGBB">-->
             </div>
             <div class="switch">
               <input class="input" id="IconSwitch" type="checkbox">
@@ -666,7 +668,7 @@ if (process.client) {
   top: 2px;
   left: 2px;
   background-color: #fff;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
   transition: transform 0.3s;
 }
 
@@ -717,7 +719,7 @@ if (process.client) {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 30px 0px 30px 0px;
+  padding: 30px 0 30px 0;
   border-radius: 10px;
   transition: 0.4s ease;
 }
@@ -730,7 +732,7 @@ if (process.client) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  padding: 0px;
+  padding: 0;
   border-radius: 10px;
 }
 

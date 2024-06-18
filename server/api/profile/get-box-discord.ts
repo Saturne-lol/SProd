@@ -3,6 +3,7 @@ import {PrismaClient} from "@prisma/client";
 
 const prisma = new PrismaClient()
 
+// noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
     if (!getQuery(event).username) return []
 
@@ -13,6 +14,9 @@ export default defineEventHandler(async (event) => {
                     url: getQuery(event).username as string
                 }
             }
+        },
+        orderBy: {
+            index: "asc"
         }
     })
 
