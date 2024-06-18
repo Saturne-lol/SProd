@@ -12,9 +12,9 @@
 
 // createAccountIfNotExists();
 
-definePageMeta({
-  layout: 'dashboard',
-})
+// definePageMeta({
+//   layout: 'dashboard',
+// })
 
 </script>
 
