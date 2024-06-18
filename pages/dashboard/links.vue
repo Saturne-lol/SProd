@@ -221,7 +221,7 @@
 .content .inputs .box #modif,
 .content .inputs .box #suppr {
   font-size: 18px;
-  padding: px;
+  /*padding: px;   J'ai comment car y avait que px sans padding donc ca faisais une erreur*/
 }
 
 .content .inputs .box input[type='text'] {
@@ -279,7 +279,7 @@
   top: 2px;
   left: 2px;
   background-color: #fff;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
   transition: transform 0.3s;
 }
 

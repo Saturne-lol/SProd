@@ -36,7 +36,8 @@ useSeoMeta({
 
 <style scoped>
 
-#background {
+
+/*#background {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -47,7 +48,7 @@ useSeoMeta({
   bottom: 0;
   z-index: -1;
   filter: brightness(0.30);
-}
+}*/
 
 #body {
   width: 100vw;
