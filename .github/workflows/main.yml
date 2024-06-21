@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,52 +33,6 @@ jobs:
         run: npm run build
         shell: bash
 
-      - name: Archive build
-        run: |
-          cd .output
-          zip -r ../build.zip *
-        shell: bash
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: build.zip
-
-  release:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-
-      - name: Create Release
-        uses: ncipollo/release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          artifacts: build.zip
-          name: Deployment ${{ github.run_id }}
-          tag: deployment-${{ github.run_id }}
-          token: ${{ secrets.TOKEN }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-
-      - name: Extract build artifact
-        run: unzip build.zip -d ./dist
-        shell: bash
-
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.5.3
         with:
@@ -95,7 +49,7 @@ jobs:
         env:
           REMOTE_IP: ${{ secrets.REMOTE_IP }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        run: rsync -avz --delete ./dist/ ${{ env.REMOTE_USER }}@${{ env.REMOTE_IP }}:/root/saturne/
+        run: rsync -avz --delete .output/ ${{ env.REMOTE_USER }}@${{ env.REMOTE_IP }}:/root/saturne/
         shell: bash
 
       - name: Restart pm2
@@ -104,13 +58,3 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
         run: ssh -o StrictHostKeyChecking=no -p 22 ${{ env.REMOTE_USER }}@${{ env.REMOTE_IP }} 'source ~/.nvm/nvm.sh && ~/.nvm/versions/node/v22.3.0/bin/pm2 restart all'
         shell: bash
-
-  cleanup:
-    runs-on: ubuntu-latest
-    needs: [release, deploy]
-
-    steps:
-      - name: Clear Artifacts
-        uses: geekyeggo/delete-artifact@v5
-        with:
-          name: build
