@@ -38,6 +38,13 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Install rsync on remote
+        env:
+          REMOTE_IP: ${{ secrets.REMOTE_IP }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        run: ssh -o StrictHostKeyChecking=no -p 22 ${{ env.REMOTE_USER }}@${{ env.REMOTE_IP }} 'sudo apt-get update && sudo apt-get install -y rsync'
+        shell: bash
+
       - name: Clean remote directory
         env:
           REMOTE_IP: ${{ secrets.REMOTE_IP }}
