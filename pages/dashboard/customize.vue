@@ -200,6 +200,32 @@ function updateColor(event: any, i: number) {
     })
   })
 }
+
+async function uploadPdp(event) {
+  const file = event.target.files[0]
+
+  const uplaodUrl = await $fetch("/api/account/update-pp", {
+    method: "GET",
+  })
+
+  const formData = new FormData()
+  formData.append("file", file)
+
+  $fetch(uplaodUrl, {
+    method: "POST",
+    body: formData
+  }).then(() => {
+    useToast().add({
+      title: "Success",
+      description: "Your profile picture has been updated",
+      color: "green",
+      icon: "i-material-symbols-check", //@TODO fix icon
+    })
+  }).catch((e) => {
+    console.log(e)
+  })
+
+}
 </script>
 
 <template>
@@ -270,7 +296,7 @@ function updateColor(event: any, i: number) {
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="filePP" accept=".png, .jpg, .jpeg">
+            <input type="file" id="filePP" accept=".png, .jpg, .jpeg" @change="uploadPdp($event)"/>
           </label>
         </div>
       </div>
@@ -292,7 +318,7 @@ function updateColor(event: any, i: number) {
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="fileCursor" accept=".png, .jpg, .jpeg, .gif">
+            <input type="file" id="fileCursor" accept=".png, .jpg, .jpeg, .gif" />
           </label>
         </div>
       </div>
