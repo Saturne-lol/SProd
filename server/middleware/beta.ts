@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 export default defineEventHandler(async (event) => {
     if (getRequestURL(event).toString().includes('update-')) {
         const user = await checkToken(event)
-        if (!user) return sendRedirect(event, "/auth/login")
+        if (!user) return sendRedirect(event, "/login")
         const beta = await prisma.account.findFirst({where: {id: user?.id}, select: {beta: true}})
         if (!beta?.beta) return new Response("You are not a beta tester", {status: 403})
     }
