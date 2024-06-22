@@ -18,14 +18,5 @@ export default defineEventHandler(async (event) => {
         return null
     })
 
-    await prisma.setting.update({
-        where: {
-            account_id: user.id
-        },
-        data: {
-            avatar: true
-        }
-    })
-
     return new Response(url, {status: 200})
 })
