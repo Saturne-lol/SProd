@@ -16,39 +16,39 @@ useSeoMeta({
 
 const vouch = [
   {
-    username: "AD",
-    avatar: "ad.gif",
-    quote: "Owner du serveur saturne",
+    username: "VOUCHER NAME",
+    avatar: "saturne.png",
+    quote: "Information about the voucher",
     avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
   },
   {
-    username: "Cleboost",
-    avatar: "cleboost.png",
-    quote: "Owner du serveur saturne",
+    username: "VOUCHER NAME",
+    avatar: "saturne.png",
+    quote: "Information about the voucher",
     avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
   },
   {
-    username: "BF",
-    avatar: "bf.png",
-    quote: "Owner du serveur saturne",
+    username: "VOUCHER NAME",
+    avatar: "saturne.png",
+    quote: "Information about the voucher",
     avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
   },
   {
-    username: "AD",
-    avatar: "ad.gif",
-    quote: "Owner du serveur saturne",
+    username: "VOUCHER NAME",
+    avatar: "saturne.png",
+    quote: "Information about the voucher",
     avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
   },
   {
-    username: "Cleboost",
-    avatar: "cleboost.png",
-    quote: "Owner du serveur saturne",
+    username: "VOUCHER NAME",
+    avatar: "saturne.png",
+    quote: "Information about the voucher",
     avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
   },
   {
-    username: "BF",
-    avatar: "bf.png",
-    quote: "Owner du serveur saturne",
+    username: "VOUCHER NAME",
+    avatar: "saturne.png",
+    quote: "Information about the voucher",
     avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
   },
 ]
