@@ -94,7 +94,7 @@ function clickToEnter(): any {
 
 
 const isSingleBox: ComputedRef<boolean> = computed(() => {
-  return dcProfileData.value && (!discordData.value || (Array.isArray(discordData.value) && discordData.value.length === 0));
+  return dcProfileData.value && (!discordData.value || (Array.isArray(discordData.value) && discordData.value.length === 0))
 });
 </script>
 
