@@ -28,11 +28,6 @@ for (let i = 0; i < 5; i++) {
 }
 data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
 
-
-// definePageMeta({
-//   layout: 'dashboard',
-// })
-
 const activeModal = ref("") as Ref<string>
 
 function openModal(modal: string) {
@@ -265,7 +260,7 @@ async function uploadPdp(event: any) {
           <h3>QUOTES</h3>
         </div>
         <div class="info">
-          <h4>[QUOTES SATURNE]</h4>
+          <h4>QUOTES SATURNE</h4>
           <Icon name="ic:baseline-edit" id="modif" @click="openModal('quotes')"/>
         </div>
       </div>
@@ -461,6 +456,10 @@ async function uploadPdp(event: any) {
 
 
     <div class="box" id="customizeBox18">
+      <div class="soon">
+        <img src="/public/img/loading.gif" alt="">
+        <h1>SOON . . .</h1>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="mingcute:font-fill" class="Icon"/>
@@ -502,6 +501,10 @@ async function uploadPdp(event: any) {
       </div>
     </div> <!-- Color -->
     <div class="box" id="customizeBox20">
+      <div class="soon">
+        <img src="/public/img/loading.gif" alt="">
+        <h1>HOTFIX . . .</h1>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="ph:magic-wand-fill" class="Icon"/>
