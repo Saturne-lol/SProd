@@ -17,18 +17,26 @@ function submit() {
             <div class="links">
                 <img src="/public/img/saturne.png" alt="">
                 <ul>
-                    <a href="/#home">
-                        <li>HOME</li>
-                    </a>
-                    <a href="/#about">
-                        <li>ABOUT</li>
-                    </a>
-                    <a href="/#premium">
-                        <li>PREMIUM</li>
-                    </a>
-                    <a href="/#vouches">
-                        <li>VOUCHES</li>
-                    </a>
+                    <li>
+                        <a href="/#home">
+                            HOME
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#about">
+                            ABOUT
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#premium">
+                            PREMIUM
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#vouches">
+                            VOUCHES
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="buttons">

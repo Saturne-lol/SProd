@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type {Ref} from "vue";
+import type { Ref } from "vue";
 
-const {data} = await useFetch("/api/account/get-nav") as {
+const { data } = await useFetch("/api/account/get-nav") as {
   data: Ref<{
     username: string,
     avatar: string,
@@ -20,30 +20,30 @@ const {data} = await useFetch("/api/account/get-nav") as {
       <!-- 2 -->
       <div class="links">
         <ul>
-          <a href="/dashboard/customize">
-            <li>
-              <Icon name="fa6-solid:paintbrush" class="Icon"/>
+          <li>
+            <a href="/dashboard/customize">
+              <Icon name="fa6-solid:paintbrush" class="Icon" />
               CUSTOMIZE
-            </li>
-          </a>
-          <a href="/dashboard/links">
-            <li>
-              <Icon name="ph:link-simple-bold" class="Icon"/>
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard/links">
+              <Icon name="ph:link-simple-bold" class="Icon" />
               YOUR LINKS
-            </li>
-          </a>
-          <a href="/dashboard/stats">
-            <li>
-              <Icon name="ion:stats-chart" class="Icon"/>
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard/stats">
+              <Icon name="ion:stats-chart" class="Icon" />
               YOUR STATS
-            </li>
-          </a>
-          <a href="/dashboard/contact">
-            <li>
-              <Icon name="material-symbols:alternate-email-rounded" class="Icon"/>
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard/contact">
+              <Icon name="material-symbols:alternate-email-rounded" class="Icon" />
               CONTACT US
-            </li>
-          </a>
+            </a>
+          </li>
         </ul>
       </div>
       <!-- 3 -->
@@ -53,12 +53,14 @@ const {data} = await useFetch("/api/account/get-nav") as {
           <div class="infoProfilSaturne">
             <h4>{{ data.username }}</h4>
             <div class="infoProfilSaturneAbonement">
-              <Icon name="basil:diamond-solid" class="Icon" v-if="data.plan.includes('PREMIUM')"/>
-              <h4>{{ data.plan.replaceAll("_PLUS"," +")}}</h4>
+              <Icon name="basil:diamond-solid" class="Icon" v-if="data.plan.includes('PREMIUM')" />
+              <h4>{{ data.plan.replaceAll("_PLUS", " +") }}</h4>
             </div>
           </div>
           <div class="menuProfilSaturne">
-            <a href="/auth/logout"><Icon name="lucide:log-out" class="Icon"/></a>
+            <a href="/auth/logout">
+              <Icon name="lucide:log-out" class="Icon" />
+            </a>
           </div>
         </div>
       </div>
@@ -67,11 +69,11 @@ const {data} = await useFetch("/api/account/get-nav") as {
 </template>
 
 <style scoped>
-
 .nav {
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.041);
-  width: max-content; /* Set a fixed width for the navbar */
+  width: max-content;
+  /* Set a fixed width for the navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,8 +82,10 @@ const {data} = await useFetch("/api/account/get-nav") as {
 
 .nav .background {
   padding: 20px;
-  width: 100%; /* Ensure background takes the full width of the navbar */
-  height: 100%; /* Ensure background takes the full height of the navbar */
+  width: 100%;
+  /* Ensure background takes the full width of the navbar */
+  height: 100%;
+  /* Ensure background takes the full height of the navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
