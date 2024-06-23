@@ -3,6 +3,7 @@ import type {ComputedRef, Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 import {useRoute} from "vue-router";
+import {use} from "h3";
 
 definePageMeta({
   middleware: async (to) => {
@@ -83,6 +84,16 @@ const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
   }>
 }
 
+const {data: view} = await useFetch(`/api/profile/get-view`, {
+  query: {username: url},
+  server: true
+}) as {
+  pending: Ref<boolean>,
+  data: Ref<{
+    view: number
+  }>
+}
+
 const audio = ref<HTMLAudioElement | null>(null)
 
 function clickToEnter(): any {
@@ -126,7 +137,7 @@ const isSingleBox: ComputedRef<boolean> = computed(() => {
         <div class="view">
           <h3>
             <Icon name="ic:sharp-remove-red-eye"/>
-            - In development
+            - {{view.view}}
           </h3>
           <h5>views</h5>
         </div>
