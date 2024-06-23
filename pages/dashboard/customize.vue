@@ -285,7 +285,6 @@ async function uploadPdp(event: any) {
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="filePP">
-
             <a href="">
               <Icon name="maki:cross" id="boxClose"/>
             </a>
@@ -296,6 +295,8 @@ async function uploadPdp(event: any) {
               <span>Click to upload image</span>
             </div>
             <input type="file" id="filePP" accept=".png, .jpg, .jpeg" @change="uploadPdp($event)"/>
+
+            <!-- <img src="/public/img/pinkGalaxy.png" alt="Profil Picture" /> -->
           </label>
         </div>
       </div>
