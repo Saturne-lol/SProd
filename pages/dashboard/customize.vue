@@ -648,6 +648,7 @@ async function uploadPdp(event: any) {
 .content .box .soon h1 {
   font-size: 150%;
   font-weight: 700;
+  text-shadow: 0 0 25px #000000;
 }
 
 .content .box .soon img {
