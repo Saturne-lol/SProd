@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type {Ref} from "vue";
-import {$fetch} from "ofetch";
+import type { Ref } from "vue";
+import { $fetch } from "ofetch";
 
 interface Customize {
   data: Ref<{
@@ -22,9 +22,9 @@ interface Customize {
 
 const colorList = ["Color box", "Box outline colors", "Profile outline color", "Icon color"]
 
-let {data} = await useFetch("/api/account/get-customize", {server: true}) as Customize
+let { data } = await useFetch("/api/account/get-customize", { server: true }) as Customize
 for (let i = 0; i < 5; i++) {
-  if (!data.value.discord[i]) data.value.discord[i] = {invite: "", index: i}
+  if (!data.value.discord[i]) data.value.discord[i] = { invite: "", index: i }
 }
 data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
 
@@ -55,7 +55,7 @@ function singleModalAction() {
   data.value[dataType] = dataIn
   $fetch(`/api/account/update-${dataType}`, {
     method: "POST",
-    body: JSON.stringify({data: dataIn})
+    body: JSON.stringify({ data: dataIn })
   }).then(() => {
     useToast().add({
       title: "Success",
@@ -121,10 +121,10 @@ function actionModalDiscord() {
   const lastValue = data.value?.discord[index]?.invite || ""
   closeModal()
 
-  data.value.discord[index] = {invite, index}
+  data.value.discord[index] = { invite, index }
   $fetch("/api/account/update-discord", {
     method: "POST",
-    body: JSON.stringify({index, invite})
+    body: JSON.stringify({ index, invite })
   }).then(() => {
     useToast().add({
       title: "Success",
@@ -133,7 +133,7 @@ function actionModalDiscord() {
       icon: "i-material-symbols-check", //@TODO fix icon
     })
   }).catch((e) => {
-    data.value.discord[index] = {invite: lastValue, index}
+    data.value.discord[index] = { invite: lastValue, index }
     useToast().add({
       title: e.response.statusText,
       description: e.response._data,
@@ -147,7 +147,7 @@ function viewState() {
   const view = (document.getElementById("view") as HTMLInputElement)?.checked;
   $fetch("/api/account/update-view", {
     method: "POST",
-    body: JSON.stringify({view})
+    body: JSON.stringify({ view })
   })
 }
 
@@ -177,7 +177,7 @@ if (process.client) {
 }
 
 function updateColor(event: any, i: number) {
- const lastColor = data.value.colors[i]
+  const lastColor = data.value.colors[i]
   data.value.colors[i] = event
   console.log(data.value.colors)
   $fetch("/api/account/update-colors", {
@@ -233,70 +233,70 @@ async function uploadPdp(event) {
     <div class="box" id="customizeBox1">
       <div class="padding">
         <div class="title">
-          <Icon name="ph:planet-fill" class="Icon"/>
+          <Icon name="ph:planet-fill" class="Icon" />
           <h3>DOMAINE AND PSEUDO</h3>
         </div>
         <div class="info">
           <h4>saturne.lol/{{ data.url }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('url')"/>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('url')" />
         </div>
       </div>
     </div> <!-- Domaine and Pseudo -->
     <div class="box" id="customizeBox2">
       <div class="padding">
         <div class="title">
-          <Icon name="ph:person-arms-spread-fill" class="Icon"/>
+          <Icon name="ph:person-arms-spread-fill" class="Icon" />
           <h3>DISPLAY NAME</h3>
         </div>
         <div class="info">
           <h4>{{ data.username }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('username')"/>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('username')" />
         </div>
       </div>
     </div> <!-- Display Name -->
     <div class="box" id="customizeBox3">
       <div class="padding">
         <div class="title">
-          <Icon name="fa6-solid:quote-left" class="Icon"/>
+          <Icon name="fa6-solid:quote-left" class="Icon" />
           <h3>QUOTES</h3>
         </div>
         <div class="info">
           <h4>[QUOTES SATURNE]</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('quotes')"/>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('quotes')" />
         </div>
       </div>
     </div> <!-- Quotes -->
     <div class="box" id="customizeBox4"> <!-- Bio -->
       <div class="padding">
         <div class="title">
-          <Icon name="pajamas:information" class="Icon"/>
+          <Icon name="pajamas:information" class="Icon" />
           <h3>DESCRIPTION</h3>
         </div>
         <div class="info">
           <h4>{{ data.bio }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('bio')"/>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('bio')" />
         </div>
       </div>
     </div> <!-- Description -->
     <div class="box" id="customizeBox5">
       <div class="padding">
         <div class="title">
-          <Icon name="ic:baseline-insert-photo" class="Icon"/>
+          <Icon name="ic:baseline-insert-photo" class="Icon" />
           <h3>PROFIL PICTURE</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="filePP">
 
             <a href="">
-              <Icon name="maki:cross" id="boxClose"/>
+              <Icon name="maki:cross" id="boxClose" />
             </a>
             <div class="icon">
-              <Icon name="ic:baseline-insert-photo" class="Icon"/>
+              <Icon name="ic:baseline-insert-photo" class="Icon" />
             </div>
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="filePP" accept=".png, .jpg, .jpeg" @change="uploadPdp($event)"/>
+            <input type="file" id="filePP" accept=".png, .jpg, .jpeg" @change="uploadPdp($event)" />
           </label>
         </div>
       </div>
@@ -304,16 +304,16 @@ async function uploadPdp(event) {
     <div class="box" id="customizeBox6">
       <div class="padding">
         <div class="title">
-          <Icon name="iconamoon:cursor-light" class="Icon"/>
+          <Icon name="iconamoon:cursor-light" class="Icon" />
           <h3>CURSOR</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="fileCursor">
             <a href="">
-              <Icon name="maki:cross" id="boxClose"/>
+              <Icon name="maki:cross" id="boxClose" />
             </a>
             <div class="icon">
-              <Icon name="iconamoon:cursor-light" class="Icon"/>
+              <Icon name="iconamoon:cursor-light" class="Icon" />
             </div>
             <div class="text">
               <span>Click to upload image</span>
@@ -326,17 +326,17 @@ async function uploadPdp(event) {
     <div class="box" id="customizeBox7">
       <div class="padding">
         <div class="title">
-          <Icon name="fluent:speaker-24-filled" class="Icon"/>
+          <Icon name="fluent:speaker-24-filled" class="Icon" />
           <h3>AUDIO</h3>
         </div>
         <!-- J'AI PAS FAIS DE LECTEUR MP3 ENCORE, JE VAIS LE FAIRE, DONC PASSE A AUTRE CHOSE LE TEMPS QUE JE LE FASSE -->
         <div class="dragDrop">
           <label class="uploadFile" for="audio">
             <a href="">
-              <Icon name="maki:cross" id="boxClose"/>
+              <Icon name="maki:cross" id="boxClose" />
             </a>
             <div class="icon">
-              <Icon name="fluent:speaker-24-filled" class="Icon"/>
+              <Icon name="fluent:speaker-24-filled" class="Icon" />
             </div>
             <div class="text">
               <span>Click to upload audio</span>
@@ -349,16 +349,16 @@ async function uploadPdp(event) {
     <div class="box" id="customizeBox8">
       <div class="padding">
         <div class="title">
-          <Icon name="ic:baseline-insert-photo" class="Icon"/>
+          <Icon name="ic:baseline-insert-photo" class="Icon" />
           <h3>BACKGROUND</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="fileBackground">
             <a href="">
-              <Icon name="maki:cross" id="boxClose"/>
+              <Icon name="maki:cross" id="boxClose" />
             </a>
             <div class="icon">
-              <Icon name="ic:baseline-insert-photo" class="Icon"/>
+              <Icon name="ic:baseline-insert-photo" class="Icon" />
             </div>
             <div class="text">
               <span>Click to upload image</span>
@@ -371,85 +371,91 @@ async function uploadPdp(event) {
     <div class="box" id="customizeBox9">
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon"/>
+          <Icon name="akar-icons:discord-fill" class="Icon" />
           <h3>BOX N°1 (PROFIL)</h3>
         </div>
         <div class="connexion" v-if="data.linked">
           <h4>{{ data.linked }}
-            <Icon name="bi:check-circle" id="check"/>
+            <Icon name="bi:check-circle" id="check" />
           </h4>
         </div>
       </div>
     </div>
-    <div class="box" v-for="i in 5" :key="i" :id="'customizeBox'+(i+9)"> <!-- Box 2 to 6 Server -->
+    <div class="box" v-for="i in 5" :key="i" :id="'customizeBox' + (i + 9)"> <!-- Box 2 to 6 Server -->
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon"/>
+          <Icon name="akar-icons:discord-fill" class="Icon" />
           <h3>BOX N°{{ i + 1 }} (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/{{ data?.discord[i - 1]?.invite || "" }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal(i-1+'_discord')"/>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal(i - 1 + '_discord')" />
         </div>
       </div>
     </div> <!-- Box discord -->
     <div class="box" id="customizeBox15">
       <div class="padding">
         <div class="title">
-          <Icon name="streamline:emergency-exit-solid" class="Icon"/>
+          <Icon name="streamline:emergency-exit-solid" class="Icon" />
           <h3>ENTRY MESSAGE</h3>
         </div>
         <div class="info">
           <h4>{{ data.enter }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('enter')"/>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('enter')" />
         </div>
       </div>
     </div> <!-- Entry Message -->
     <div class="box" id="customizeBox16">
       <div class="padding">
         <div class="title">
-          <Icon name="mdi:eye" class="Icon"/>
+          <Icon name="mdi:eye" class="Icon" />
           <h3>VIEWS</h3>
         </div>
         <div class="info">
           <h4>SHOW PROFILE VIEWS</h4>
           <div class="switch">
-            <input class="input" id="view" type="checkbox" :checked="data.views" @change="viewState"/>
+            <input class="input" id="view" type="checkbox" :checked="data.views" @change="viewState" />
             <label class="label" for="view"></label>
           </div>
         </div>
       </div>
     </div> <!-- Views -->
+
     <div class="box" id="customizeBox17">
+      <!-- Overlay "soon" div -->
       <div class="soon">
-        <div class="padding">
-          <div class="title">
-            <Icon name="bi:spotify" class="Icon"/>
-            <h3>SPOTIFY</h3>
-          </div>
-          <div class="dragDrop">
-            <div class="connexion">
-              <h4>AD.sglt
-                <Icon name="bi:check-circle" id="check"/>
-              </h4>
-            </div>
+        <img src="/public/img/loading.gif" alt="">
+        <h1>SOON . . .</h1>
+      </div>
+      <div class="padding">
+        <div class="title">
+          <Icon name="bi:spotify" class="Icon" />
+          <h3>SPOTIFY</h3>
+        </div>
+        <div class="dragDrop">
+          <div class="connexion">
+            <h4>AD.sglt
+              <Icon name="bi:check-circle" id="check" />
+            </h4>
           </div>
         </div>
       </div>
     </div> <!-- Spotify -->
+
+
     <div class="box" id="customizeBox18">
       <div class="padding">
         <div class="title">
-          <Icon name="mingcute:font-fill" class="Icon"/>
+          <Icon name="mingcute:font-fill" class="Icon" />
           <h2>FONT</h2>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="font">
             <a href="">
-              <Icon name="maki:cross" id="boxClose"/>
+              <Icon name="maki:cross" id="boxClose" />
             </a>
             <div class="icon">
-              <Icon name="nimbus:font" class="Icon"/>
+              <Icon name="nimbus:font" class="Icon" />
             </div>
             <div class="text">
               <span>Click to upload font</span>
@@ -462,16 +468,17 @@ async function uploadPdp(event) {
     <div class="box" id="customizeBox19">
       <div class="padding">
         <div class="title">
-          <Icon name="iconoir:fill-color-solid" class="Icon"/>
+          <Icon name="iconoir:fill-color-solid" class="Icon" />
           <h2>COLOR</h2>
         </div>
         <div class="color">
           <div v-for="(color, i) in colorList">
             <label for="BoxColor">{{ color }} :</label>
             <div class="info">
-              <input type="color" id="BoxColor" name="BoxColor" @change="updateColor($event.target.value, i)" :value="data.colors[i]">
+              <input type="color" id="BoxColor" name="BoxColor" @change="updateColor($event.target.value, i)"
+                :value="data.colors[i]">
               <input type="text" id="BoxHexColor" name="BoxHexColor" pattern="#[0-9A-Fa-f]{6}"
-                     title="Entrez une couleur valide au format #RRGGBB" :value="data.colors[i]">
+                title="Entrez une couleur valide au format #RRGGBB" :value="data.colors[i]">
             </div>
           </div>
         </div>
@@ -480,15 +487,15 @@ async function uploadPdp(event) {
     <div class="box" id="customizeBox20">
       <div class="padding">
         <div class="title">
-          <Icon name="ph:magic-wand-fill" class="Icon"/>
+          <Icon name="ph:magic-wand-fill" class="Icon" />
           <h2>GLOW EFFECT</h2>
         </div>
         <div class="effect">
           <label for="ProfilPictureOutlineColor">Display Name Glow :</label>
           <div class="info">
-            <Icon name="ph:person-arms-spread-fill" class="Icon"/>
+            <Icon name="ph:person-arms-spread-fill" class="Icon" />
             <div class="inputs">
-              <input type="color" id="IconGlow" name="IconGlow"/>
+              <input type="color" id="IconGlow" name="IconGlow" />
               <!--              <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"-->
               <!--                     title="Entrez une couleur valide au format #RRGGBB">-->
             </div>
@@ -499,11 +506,11 @@ async function uploadPdp(event) {
           </div>
           <label for="ProfilPictureOutlineColor">Quote Glow :</label>
           <div class="info">
-            <Icon name="fa6-solid:quote-left" class="Icon"/>
+            <Icon name="fa6-solid:quote-left" class="Icon" />
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
-                     title="Entrez une couleur valide au format #RRGGBB">
+                title="Entrez une couleur valide au format #RRGGBB">
             </div>
             <div class="switch">
               <input class="input" id="QuoteSwitch" type="checkbox">
@@ -512,11 +519,11 @@ async function uploadPdp(event) {
           </div>
           <label for="ProfilPictureOutlineColor">Description Glow :</label>
           <div class="info">
-            <Icon name="pajamas:information" class="Icon"/>
+            <Icon name="pajamas:information" class="Icon" />
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
-                     title="Entrez une couleur valide au format #RRGGBB">
+                title="Entrez une couleur valide au format #RRGGBB">
             </div>
             <div class="switch">
               <input class="input" id="DescriptionSwitch" type="checkbox">
@@ -525,11 +532,11 @@ async function uploadPdp(event) {
           </div>
           <label for="ProfilPictureOutlineColor">Box Glow :</label>
           <div class="info">
-            <Icon name="akar-icons:discord-fill" class="Icon"/>
+            <Icon name="akar-icons:discord-fill" class="Icon" />
             <div class="inputs">
               <input type="color" id="IconGlow" name="IconGlow">
               <input type="text" id="IconHexGlow" name="IconHexGlow" pattern="#[0-9A-Fa-f]{6}"
-                     title="Entrez une couleur valide au format #RRGGBB">
+                title="Entrez une couleur valide au format #RRGGBB">
             </div>
             <div class="switch">
               <input class="input" id="BoxSwitch" type="checkbox">
@@ -541,35 +548,36 @@ async function uploadPdp(event) {
     </div> <!-- Glow Effect -->
   </div>
 
-  <div class="modal" v-if="['url','username','bio','enter'].includes(activeModal)">
+  <div class="modal" v-if="['url', 'username', 'bio', 'enter'].includes(activeModal)">
     <div class="center">
       <div class="content1input">
-        <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
-        <Icon name="ph:planet-fill" class="Icon"/>
+        <Icon name="maki:cross" id="closeModal" @click="closeModal" />
+        <Icon name="ph:planet-fill" class="Icon" />
         <!--
         <Icon name="ph:person-arms-spread-fill" class="Icon"/> POUR LA BOX DISPLAY NAME
         <Icon name="pajamas:information" class="Icon"/> POUR LA BOX DESCRIPTION
         <Icon name="streamline:emergency-exit-solid" class="Icon"/> POUR LA BOX ENTRY MESSAGE
         -->
         <h5>-</h5>
-        <input type="text" :placeholder="placeHolderText()" id="singleModalInput" maxlength="60"/>
+        <input type="text" :placeholder="placeHolderText()" id="singleModalInput" maxlength="60" />
         <button @click="singleModalAction">
-          <Icon name="material-symbols:check" id="save"/>
+          <Icon name="material-symbols:check" id="save" />
         </button>
       </div>
     </div>
   </div>
-  <div class="modal" v-if="activeModal==='quotes'">
+  <div class="modal" v-if="activeModal === 'quotes'">
     <div class="center">
       <div class="content3inputs">
-        <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
+        <Icon name="maki:cross" id="closeModal" @click="closeModal" />
         <div v-for="i in 3">
-          <Icon name="fa6-solid:quote-left" class="Icon" v-if="data.quotes[i-1]"/>
-          <h5 v-if="data.quotes[i-1]">-</h5>
-          <input type="text" placeholder="Enter a quote" :id="'q'+i" :value="data.quotes[i-1] ? data.quotes[i-1] : ''"/>
+          <Icon name="fa6-solid:quote-left" class="Icon" v-if="data.quotes[i - 1]" />
+          <h5 v-if="data.quotes[i - 1]">-</h5>
+          <input type="text" placeholder="Enter a quote" :id="'q' + i"
+            :value="data.quotes[i - 1] ? data.quotes[i - 1] : ''" />
         </div>
         <button>
-          <Icon name="material-symbols:check" id="save" @click="actionModalQuotes"/>
+          <Icon name="material-symbols:check" id="save" @click="actionModalQuotes" />
         </button>
       </div>
     </div>
@@ -577,13 +585,12 @@ async function uploadPdp(event) {
   <div class="modal" v-if="activeModal.includes('discord')">
     <div class="center">
       <div class="content1input">
-        <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
-        <Icon name="akar-icons:discord-fill" class="Icon"/>
+        <Icon name="maki:cross" id="closeModal" @click="closeModal" />
+        <Icon name="akar-icons:discord-fill" class="Icon" />
         <h5>-</h5>
-        <input type="text" placeholder="discord.gg/" value="discord.gg/" id="discordModalInput"
-               maxlength="60"/>
+        <input type="text" placeholder="discord.gg/" value="discord.gg/" id="discordModalInput" maxlength="60" />
         <button @click="actionModalDiscord">
-          <Icon name="material-symbols:check" id="save"/>
+          <Icon name="material-symbols:check" id="save" />
         </button>
       </div>
     </div>
@@ -591,7 +598,6 @@ async function uploadPdp(event) {
 </template>
 
 <style scoped>
-
 .content {
   flex-grow: 1;
   display: grid;
@@ -609,9 +615,28 @@ async function uploadPdp(event) {
 }
 
 .content .box .soon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 10;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(3px);
   border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.content .box .soon h1 {
+  font-size: 150%;
+  font-weight: 700;
+}
+
+.content .box .soon img {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
 }
 
 .content .box .padding {
@@ -698,11 +723,11 @@ async function uploadPdp(event) {
   transition: transform 0.3s;
 }
 
-.content .box .padding .switch .input:checked + .label {
+.content .box .padding .switch .input:checked+.label {
   background-color: #7f4caf;
 }
 
-.content .box .padding .switch .input:checked + .label::before {
+.content .box .padding .switch .input:checked+.label::before {
   transform: translateX(16px);
 }
 
@@ -710,11 +735,11 @@ async function uploadPdp(event) {
   background-color: #BEBEBE;
 }
 
-.content .box .padding .switch.light .input:checked + .label {
+.content .box .padding .switch.light .input:checked+.label {
   background-color: #9B9B9B;
 }
 
-.content .box .padding .switch.light .input:checked + .label::before {
+.content .box .padding .switch.light .input:checked+.label::before {
   transform: translateX(6px);
 }
 
@@ -722,11 +747,11 @@ async function uploadPdp(event) {
   background-color: #4B4B4B;
 }
 
-.content .box .padding .switch.dark .input:checked + .label {
+.content .box .padding .switch.dark .input:checked+.label {
   background-color: #717171;
 }
 
-.content .box .padding .switch.dark .input:checked + .label::before {
+.content .box .padding .switch.dark .input:checked+.label::before {
   transform: translateX(16px);
 }
 
