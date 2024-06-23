@@ -66,6 +66,7 @@ gtag('config', 'G-YKC5TQ8C98', {
     <div class="ppUser">
       <img :src="`https://cdn.saturne.lol/file/profile/${data.profile.avatar}`" alt="" id="ppDisc">
       <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="data.profile.username == 'Cleboost'">
+      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="data.profile.username == 'BF'">
     </div>
     <div class="infoUser">
       <div class="nameBadges">
