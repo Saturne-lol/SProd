@@ -22,3 +22,7 @@ if (process.client) {
   }
 }
 </script>
+
+<template>
+
+</template>
