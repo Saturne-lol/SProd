@@ -12,7 +12,6 @@ export default defineEventHandler(async (event) => {
         select: {
             username: true,
             bio: true,
-            avatar: true,
             account: true,
         }
     })
