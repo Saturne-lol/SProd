@@ -60,6 +60,8 @@ function submit() {
                 </div>
                 -->
             </label>
+
+            <button>Envoyer</button>
         </div>
 
         <div class="waveTop"></div>
@@ -244,6 +246,22 @@ textarea:hover {
 
 .uploadFile input {
     display: none;
+}
+
+.home button {
+    display: block;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.home button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 
