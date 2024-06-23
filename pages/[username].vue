@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {Ref} from "vue";
+import type {ComputedRef, Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 import {useRoute} from "vue-router";
@@ -84,6 +84,7 @@ const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
 }
 
 const audio = ref<HTMLAudioElement | null>(null)
+
 function clickToEnter(): any {
   isEnter.value = true
   if (audio.value) {
@@ -92,14 +93,15 @@ function clickToEnter(): any {
 }
 
 
-// j'ai fais ça
-const isSingleBox = computed(() => {
+const isSingleBox: ComputedRef<boolean> = computed(() => {
   return dcProfileData.value && (!discordData.value || (Array.isArray(discordData.value) && discordData.value.length === 0));
 });
 </script>
 
 <template>
-  <audio src="https://cdn.discordapp.com/attachments/1246580858757054556/1246731743172759572/Best_Dramatic_music_ever.mp3?ex=665d74ea&is=665c236a&hm=602ff7416a488b4c8af89d20302d7f1cfef1182baf8fceeeb47c9c6ab9267bf7&" loop ref="audio" v-if="profileData.username === 'Cleboost'"/>
+  <audio
+      src="https://cdn.discordapp.com/attachments/1246580858757054556/1246731743172759572/Best_Dramatic_music_ever.mp3?ex=665d74ea&is=665c236a&hm=602ff7416a488b4c8af89d20302d7f1cfef1182baf8fceeeb47c9c6ab9267bf7&"
+      loop ref="audio" v-if="profileData.username === 'Cleboost'"/>
   <main>
     <div id="tempBackground" v-if="!isEnter">
       <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
