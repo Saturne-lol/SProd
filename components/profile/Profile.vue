@@ -131,8 +131,9 @@ gtag('config', 'G-YKC5TQ8C98', {
 
 .profil .infoUser .nameBadges h1 {
   font-size: 200%;
+  font-weight: 600;
   text-shadow: 0 0 10px #c9c9c9;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   margin-right: 10px;
 }
 
