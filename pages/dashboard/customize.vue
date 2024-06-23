@@ -995,7 +995,7 @@ async function uploadPdp(event: any) {
   padding: 2px 5px 2px 5px;
   border-radius: 6px;
   font-size: 150%;
-  z-index: 10;
+  z-index: 5;
   transition: 0.3s ease;
 }
 
