@@ -15,7 +15,7 @@ const {data} = await useFetch("/api/account/get-nav") as {
     <div class="background">
       <!-- 1 -->
       <div class="title">
-        <h1>SATURNE</h1>
+        <h1>ＳΛＴＵＲＮΞ</h1>
       </div>
       <!-- 2 -->
       <div class="links">
@@ -88,7 +88,7 @@ const {data} = await useFetch("/api/account/get-nav") as {
 }
 
 .nav .background .title h1 {
-  font-size: 250%;
+  font-size: 200%;
   padding: 30px;
 }
 
