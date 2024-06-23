@@ -64,8 +64,8 @@ gtag('config', 'G-YKC5TQ8C98', {
 <template>
   <div class="profil">
     <div class="ppUser">
-      <img :src="data.profile.avatar" alt="" id="ppDisc">
-      <img src="/img/avatardeco2.png" alt="" id="ppDeco" v-if="data.profile.username == 'Cleboost'">
+      <img :src="`https://cdn.saturne.lol/file/profile/${data.profile.avatar}`" alt="" id="ppDisc">
+      <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="data.profile.username == 'Cleboost'">
     </div>
     <div class="infoUser">
       <div class="nameBadges">
@@ -89,34 +89,40 @@ gtag('config', 'G-YKC5TQ8C98', {
 <style scoped>
 .profil {
   grid-column: 1 / -1;
+  position: relative;
 }
 
 .content .profil,
 .content .profil .nameBadges {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 #badges {
   margin-left: 10px;
+}
 
+.profil .ppUser {
+  position: relative;
 }
 
 .profil .ppUser #ppDisc {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.50);
+  /* border: 2px solid rgba(255, 255, 255, 0.50); */
   object-fit: cover;
   margin-right: 20px;
 }
 
 .profil .ppUser #ppDeco {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 185px;
-  height: 185px;
+  top: 0px;
+  left: 0px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
 }
 
 .infoUser .nameBadges {
@@ -125,8 +131,9 @@ gtag('config', 'G-YKC5TQ8C98', {
 
 .profil .infoUser .nameBadges h1 {
   font-size: 200%;
+  font-weight: 600;
   text-shadow: 0 0 10px #c9c9c9;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   margin-right: 10px;
 }
 

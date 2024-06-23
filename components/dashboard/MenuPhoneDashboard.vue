@@ -6,30 +6,30 @@
   <div class="nav2">
     <div class="links">
       <ul>
-        <a href="/dashboard/customize">
-          <li>
+        <li>
+          <a href="/dashboard/customize">
             <Icon name="fa6-solid:paintbrush" class="Icon" />
             <h5>CUSTOMIZE</h5>
-          </li>
-        </a>
-        <a href="/dashboard/links">
-          <li>
+          </a>
+        </li>
+        <li>
+          <a href="/dashboard/links">
             <Icon name="ph:link-simple-bold" class="Icon" />
             <h5>YOUR LINKS</h5>
-          </li>
-        </a>
-        <a href="/dashboard/stats">
-          <li>
+          </a>
+        </li>
+        <li>
+          <a href="/dashboard/stats">
             <Icon name="ion:stats-chart" class="Icon" />
             <h5>YOUR STATS</h5>
-          </li>
-        </a>
-        <a href="/dashboard/contact">
-          <li>
+          </a>
+        </li>
+        <li>
+          <a href="/dashboard/contact">
             <Icon name="material-symbols:alternate-email-rounded" class="Icon" />
             <h5>CONTACT US</h5>
-          </li>
-        </a>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -43,12 +43,9 @@
 @media screen and (max-width: 1300px) {
   .nav2 {
     display: block;
-    margin-bottom: 20px;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.05);
-    padding: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
+    padding: 10px;
   }
 
   .nav2 .links ul {
@@ -61,7 +58,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
   }
 
   .nav2 .links ul li:hover {
@@ -71,7 +67,11 @@
 
   .nav2 .links ul li .Icon {
     font-size: 200%;
-    margin-bottom: 10px;
+    margin: 4px;
+  }
+
+  .nav2 .links ul li a {
+    text-align: center;
   }
 
   .nav2 .links ul li h5 {
@@ -89,5 +89,4 @@
     font-size: 60%;
   }
 }
-
 </style>

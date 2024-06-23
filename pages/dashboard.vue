@@ -66,7 +66,7 @@ useSeoMeta({
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr;
-  gap: 20px;
+  gap: 0px;
   padding: 20px;
 }
 

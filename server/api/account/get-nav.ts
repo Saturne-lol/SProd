@@ -17,5 +17,9 @@ export default defineEventHandler(async (event) => {
             plan: true
         }
     })
-    return {username: user?.global_name, avatar: `https://cdn.discordapp.com/avatars/${user?.id}/${user?.avatar}.png`, plan: plan?.plan}
+    return {
+        username: user?.global_name,
+        avatar: `https://cdn.saturne.lol/file/profile/${user?.id}`,
+        plan: plan?.plan
+    }
 })

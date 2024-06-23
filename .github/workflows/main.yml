@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 21.x
+          node-version: 22.x
 
       - name: Install Dependencies
         run: npm ci
@@ -33,77 +33,35 @@ jobs:
         run: npm run build
         shell: bash
 
-      - name: Archive build
-        run: |
-          cd .output
-          zip -r ../build.zip *
-        shell: bash
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.5.3
         with:
-          name: build
-          path: build.zip
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-  release:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-
-      - name: Create Release
-        uses: ncipollo/release-action@v1
+      - name: Install rsync on remote
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          artifacts: build.zip
-          name: Deployment ${{ github.run_id }}
-          tag: deployment-${{ github.run_id }}
-          token: ${{ secrets.TOKEN }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-
-      - name: Extract build artifact
-        run: unzip build.zip -d ./dist
+          REMOTE_IP: ${{ secrets.REMOTE_IP }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        run: ssh -o StrictHostKeyChecking=no -p 22 ${{ env.REMOTE_USER }}@${{ env.REMOTE_IP }} 'sudo apt-get update && sudo apt-get install -y rsync'
         shell: bash
 
       - name: Clean remote directory
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y sshpass
-          sshpass -p "hzS62wNC" ssh -o StrictHostKeyChecking=no -p 22 root@212.227.179.23 'rm -rf /root/saturne/*'
+        env:
+          REMOTE_IP: ${{ secrets.REMOTE_IP }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        run: ssh -o StrictHostKeyChecking=no -p 22 ${{ env.REMOTE_USER }}@${{ env.REMOTE_IP }} 'rm -rf /root/saturne/*'
         shell: bash
 
       - name: Upload via rsync
-        run: |
-          rsync -avz --delete ./dist/ root@212.227.179.23:/root/saturne/
         env:
-          RSYNC_RSH: 'sshpass -p hzS62wNC ssh -o StrictHostKeyChecking=no -p 22'
+          REMOTE_IP: ${{ secrets.REMOTE_IP }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        run: rsync -avz --delete .output/ ${{ env.REMOTE_USER }}@${{ env.REMOTE_IP }}:/root/saturne/
         shell: bash
 
       - name: Restart pm2
-        run: |
-          sshpass -p "hzS62wNC" ssh -o StrictHostKeyChecking=no -p 22 root@212.227.179.23 'source ~/.nvm/nvm.sh && ~/.nvm/versions/node/v21.6.1/bin/pm2 restart all'
+        env:
+          REMOTE_IP: ${{ secrets.REMOTE_IP }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        run: ssh -o StrictHostKeyChecking=no -p 22 ${{ env.REMOTE_USER }}@${{ env.REMOTE_IP }} 'source ~/.nvm/nvm.sh && ~/.nvm/versions/node/v22.3.0/bin/pm2 restart all'
         shell: bash
-
-  cleanup:
-    runs-on: ubuntu-latest
-    needs: [ release, deploy ]
-
-    steps:
-      - name: Clear Artifacts
-        uses: geekyeggo/delete-artifact@v5
-        with:
-          name: build

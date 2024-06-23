@@ -28,11 +28,6 @@ for (let i = 0; i < 5; i++) {
 }
 data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
 
-
-// definePageMeta({
-//   layout: 'dashboard',
-// })
-
 const activeModal = ref("") as Ref<string>
 
 function openModal(modal: string) {
@@ -177,7 +172,7 @@ if (process.client) {
 }
 
 function updateColor(event: any, i: number) {
- const lastColor = data.value.colors[i]
+  const lastColor = data.value.colors[i]
   data.value.colors[i] = event
   console.log(data.value.colors)
   $fetch("/api/account/update-colors", {
@@ -195,6 +190,36 @@ function updateColor(event: any, i: number) {
     useToast().add({
       title: e.response.statusText,
       description: e.response._data,
+      color: "red",
+      icon: "mdi:alert-circle", //@TODO fix icon
+    })
+  })
+}
+
+async function uploadPdp(event: any) {
+  const file = event.target.files[0]
+
+  const uploadUrl = await $fetch("/api/account/update-pp", {
+    method: "GET",
+  })
+
+  const formData = new FormData()
+  formData.append("file", file)
+
+  $fetch(uploadUrl, {
+    method: "POST",
+    body: formData
+  }).then(() => {
+    useToast().add({
+      title: "Success",
+      description: "Your profile picture has been updated",
+      color: "green",
+      icon: "i-material-symbols-check", //@TODO fix icon
+    })
+  }).catch(() => {
+    useToast().add({
+      title: "Error",
+      description: "An error occurred while updating your profile picture",
       color: "red",
       icon: "mdi:alert-circle", //@TODO fix icon
     })
@@ -235,7 +260,7 @@ function updateColor(event: any, i: number) {
           <h3>QUOTES</h3>
         </div>
         <div class="info">
-          <h4>[QUOTES SATURNE]</h4>
+          <h4>QUOTES SATURNE</h4>
           <Icon name="ic:baseline-edit" id="modif" @click="openModal('quotes')"/>
         </div>
       </div>
@@ -260,7 +285,6 @@ function updateColor(event: any, i: number) {
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="filePP">
-
             <a href="">
               <Icon name="maki:cross" id="boxClose"/>
             </a>
@@ -270,12 +294,18 @@ function updateColor(event: any, i: number) {
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="filePP" accept=".png, .jpg, .jpeg">
+            <input type="file" id="filePP" accept=".png, .jpg, .jpeg;" @change="uploadPdp($event)"/>
+
+            <!-- <img src="/public/img/pinkGalaxy.png" alt="Profil Picture" /> -->
           </label>
         </div>
       </div>
     </div> <!-- Profil Picture -->
     <div class="box" id="customizeBox6">
+      <div class="soon">
+        <img src="/public/img/loading.gif" alt="">
+        <h1>SOON . . .</h1>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="iconamoon:cursor-light" class="Icon"/>
@@ -292,12 +322,16 @@ function updateColor(event: any, i: number) {
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="fileCursor" accept=".png, .jpg, .jpeg, .gif">
+            <input type="file" id="fileCursor" accept=".png, .jpg, .jpeg, .gif"/>
           </label>
         </div>
       </div>
     </div> <!-- Cursor -->
     <div class="box" id="customizeBox7">
+      <div class="soon">
+        <img src="/public/img/loading.gif" alt="">
+        <h1>SOON . . .</h1>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="fluent:speaker-24-filled" class="Icon"/>
@@ -321,6 +355,10 @@ function updateColor(event: any, i: number) {
       </div>
     </div> <!-- Audio (pas fonctionnel avant beta@0.2.0) -->
     <div class="box" id="customizeBox8">
+      <div class="soon">
+        <img src="/public/img/loading.gif" alt="">
+        <h1>HOTFIX . . .</h1>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="ic:baseline-insert-photo" class="Icon"/>
@@ -355,7 +393,7 @@ function updateColor(event: any, i: number) {
         </div>
       </div>
     </div>
-    <div class="box" v-for="i in 5" :key="i" :id="'customizeBox'+(i+9)"> <!-- Box 2 to 6 Server -->
+    <div class="box" v-for="i in 5" :key="i" :id="'customizeBox' + (i + 9)"> <!-- Box 2 to 6 Server -->
       <div class="padding">
         <div class="title">
           <Icon name="akar-icons:discord-fill" class="Icon"/>
@@ -363,7 +401,7 @@ function updateColor(event: any, i: number) {
         </div>
         <div class="info">
           <h4>discord.gg/{{ data?.discord[i - 1]?.invite || "" }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal(i-1+'_discord')"/>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal(i - 1 + '_discord')"/>
         </div>
       </div>
     </div> <!-- Box discord -->
@@ -380,6 +418,7 @@ function updateColor(event: any, i: number) {
       </div>
     </div> <!-- Entry Message -->
     <div class="box" id="customizeBox16">
+
       <div class="padding">
         <div class="title">
           <Icon name="mdi:eye" class="Icon"/>
@@ -394,24 +433,34 @@ function updateColor(event: any, i: number) {
         </div>
       </div>
     </div> <!-- Views -->
+
     <div class="box" id="customizeBox17">
+      <!-- Overlay "soon" div -->
       <div class="soon">
-        <div class="padding">
-          <div class="title">
-            <Icon name="bi:spotify" class="Icon"/>
-            <h3>SPOTIFY</h3>
-          </div>
-          <div class="dragDrop">
-            <div class="connexion">
-              <h4>AD.sglt
-                <Icon name="bi:check-circle" id="check"/>
-              </h4>
-            </div>
+        <img src="/public/img/loading.gif" alt="">
+        <h1>SOON . . .</h1>
+      </div>
+      <div class="padding">
+        <div class="title">
+          <Icon name="bi:spotify" class="Icon"/>
+          <h3>SPOTIFY</h3>
+        </div>
+        <div class="dragDrop">
+          <div class="connexion">
+            <h4>AD.sglt
+              <Icon name="bi:check-circle" id="check"/>
+            </h4>
           </div>
         </div>
       </div>
     </div> <!-- Spotify -->
+
+
     <div class="box" id="customizeBox18">
+      <div class="soon">
+        <img src="/public/img/loading.gif" alt="">
+        <h1>SOON . . .</h1>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="mingcute:font-fill" class="Icon"/>
@@ -443,7 +492,8 @@ function updateColor(event: any, i: number) {
           <div v-for="(color, i) in colorList">
             <label for="BoxColor">{{ color }} :</label>
             <div class="info">
-              <input type="color" id="BoxColor" name="BoxColor" @change="updateColor($event.target.value, i)" :value="data.colors[i]">
+              <input type="color" id="BoxColor" name="BoxColor" @change="updateColor($event.target.value, i)"
+                     :value="data.colors[i]">
               <input type="text" id="BoxHexColor" name="BoxHexColor" pattern="#[0-9A-Fa-f]{6}"
                      title="Entrez une couleur valide au format #RRGGBB" :value="data.colors[i]">
             </div>
@@ -452,6 +502,10 @@ function updateColor(event: any, i: number) {
       </div>
     </div> <!-- Color -->
     <div class="box" id="customizeBox20">
+      <div class="soon">
+        <img src="/public/img/loading.gif" alt="">
+        <h1>HOTFIX . . .</h1>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="ph:magic-wand-fill" class="Icon"/>
@@ -515,7 +569,7 @@ function updateColor(event: any, i: number) {
     </div> <!-- Glow Effect -->
   </div>
 
-  <div class="modal" v-if="['url','username','bio','enter'].includes(activeModal)">
+  <div class="modal" v-if="['url', 'username', 'bio', 'enter'].includes(activeModal)">
     <div class="center">
       <div class="content1input">
         <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
@@ -533,14 +587,15 @@ function updateColor(event: any, i: number) {
       </div>
     </div>
   </div>
-  <div class="modal" v-if="activeModal==='quotes'">
+  <div class="modal" v-if="activeModal === 'quotes'">
     <div class="center">
       <div class="content3inputs">
         <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
         <div v-for="i in 3">
-          <Icon name="fa6-solid:quote-left" class="Icon" v-if="data.quotes[i-1]"/>
-          <h5 v-if="data.quotes[i-1]">-</h5>
-          <input type="text" placeholder="Enter a quote" :id="'q'+i" :value="data.quotes[i-1] ? data.quotes[i-1] : ''"/>
+          <Icon name="fa6-solid:quote-left" class="Icon" v-if="data.quotes[i - 1]"/>
+          <h5 v-if="data.quotes[i - 1]">-</h5>
+          <input type="text" placeholder="Enter a quote" :id="'q' + i"
+                 :value="data.quotes[i - 1] ? data.quotes[i - 1] : ''"/>
         </div>
         <button>
           <Icon name="material-symbols:check" id="save" @click="actionModalQuotes"/>
@@ -554,8 +609,7 @@ function updateColor(event: any, i: number) {
         <Icon name="maki:cross" id="closeModal" @click="closeModal"/>
         <Icon name="akar-icons:discord-fill" class="Icon"/>
         <h5>-</h5>
-        <input type="text" placeholder="discord.gg/" value="discord.gg/" id="discordModalInput"
-               maxlength="60"/>
+        <input type="text" placeholder="discord.gg/" value="discord.gg/" id="discordModalInput" maxlength="60"/>
         <button @click="actionModalDiscord">
           <Icon name="material-symbols:check" id="save"/>
         </button>
@@ -565,7 +619,6 @@ function updateColor(event: any, i: number) {
 </template>
 
 <style scoped>
-
 .content {
   flex-grow: 1;
   display: grid;
@@ -583,9 +636,29 @@ function updateColor(event: any, i: number) {
 }
 
 .content .box .soon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 10;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(3px);
   border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.content .box .soon h1 {
+  font-size: 150%;
+  font-weight: 700;
+  text-shadow: 0 0 25px #000000;
+}
+
+.content .box .soon img {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
 }
 
 .content .box .padding {
@@ -927,7 +1000,7 @@ function updateColor(event: any, i: number) {
   padding: 2px 5px 2px 5px;
   border-radius: 6px;
   font-size: 150%;
-  z-index: 10;
+  z-index: 5;
   transition: 0.3s ease;
 }
 

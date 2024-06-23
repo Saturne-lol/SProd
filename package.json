@@ -13,22 +13,25 @@
     "@nuxt/ui": "^2.17.0",
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/sitemap": "^5.2.0",
-    "@prisma/client": "^5.15.0",
+    "@prisma/client": "^5.15.1",
     "axios": "^1.7.2",
+    "discord-webhook-node": "^1.1.8",
     "discord.js": "^14.15.3",
+    "fs": "^0.0.1-security",
     "nuxt": "^3.12.2",
     "nuxt-gtag": "^2.0.6",
     "nuxt-typed-router": "^3.6.4",
     "stripe": "15.12.0",
     "url": "^0.11.3",
     "vue": "^3.4.29",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.4.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.17.4",
+    "@types/formidable": "^3.4.5",
     "nuxt-icon": "^0.6.10",
-    "prisma": "^5.15.0",
-    "typescript": "^5.4.5",
+    "prisma": "^5.15.1",
+    "typescript": "^5.5.2",
     "vue-tsc": "^2.0.21"
   }
 }

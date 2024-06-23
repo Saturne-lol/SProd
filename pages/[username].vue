@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {Ref} from "vue";
+import type {ComputedRef, Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 import {useRoute} from "vue-router";
@@ -84,16 +84,24 @@ const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
 }
 
 const audio = ref<HTMLAudioElement | null>(null)
+
 function clickToEnter(): any {
   isEnter.value = true
   if (audio.value) {
     audio.value.play()
   }
 }
+
+
+const isSingleBox: ComputedRef<boolean> = computed(() => {
+  return dcProfileData.value && (!discordData.value || (Array.isArray(discordData.value) && discordData.value.length === 0))
+});
 </script>
 
 <template>
-  <audio src="https://cdn.discordapp.com/attachments/1246580858757054556/1246731743172759572/Best_Dramatic_music_ever.mp3?ex=665d74ea&is=665c236a&hm=602ff7416a488b4c8af89d20302d7f1cfef1182baf8fceeeb47c9c6ab9267bf7&" loop ref="audio" v-if="profileData.username === 'Cleboost'"/>
+  <audio
+      src="https://cdn.discordapp.com/attachments/1246580858757054556/1246731743172759572/Best_Dramatic_music_ever.mp3?ex=665d74ea&is=665c236a&hm=602ff7416a488b4c8af89d20302d7f1cfef1182baf8fceeeb47c9c6ab9267bf7&"
+      loop ref="audio" v-if="profileData.username === 'Cleboost'"/>
   <main>
     <div id="tempBackground" v-if="!isEnter">
       <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
@@ -110,7 +118,8 @@ function clickToEnter(): any {
     <!--    </button>-->
     <!--  </div>-->
     <div class="center" v-if="isEnter">
-      <div class="content" id="content">
+      <!--  J'ai ajouter ça aussi : -->
+      <div :class="['content', { 'single-box': isSingleBox }]" id="content">
         <Profile :profile="profileData" :badges="badgesData"/>
         <UserBox :discord="dcProfileData"/>
         <DiscordBox :discord="discordData"/>
@@ -223,17 +232,15 @@ main {
 }
 
 .content {
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: max-content;
   gap: 10px;
-  white-space: nowrap;
-  /* backdrop-filter: blur(5px); 
-  border: 1px solid rgba(255, 255, 255, 0.4); */
   padding: 30px;
   border-radius: 20px;
-  
+}
+
+.single-box {
+  grid-template-columns: 1fr;
 }
 
 /* ---------------------------------------------------------------- */
@@ -328,7 +335,7 @@ main {
   }
 
   .content {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, max-content);
     margin-top: 50px;
     margin-bottom: 50px;
   }

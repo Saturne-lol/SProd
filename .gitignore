@@ -4,3 +4,4 @@ archives/
 .nuxt/
 .output/
 prisma/migrations/
+screenshot.png

@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:heb5HHGBe!4u2N@212.227.179.23:3306/saturne"
+  url      = "mysql://root:th4if%TL%vA9U*@212.227.179.23:3306/saturne"
 }
 
 model Account {
@@ -61,7 +61,6 @@ model Setting {
   username      String  @default(dbgenerated("(uuid())"))
   bio           String  @default("No bio")
   enter_message String  @default("Click to enter...")
-  avatar        Boolean @default(false)
   background    String  @default("https://i.imgur.com/3v3J9v6.jpg")
   views         Boolean @default(true)
   account       Account @relation(fields: [account_id], references: [id], onDelete: Cascade)

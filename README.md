@@ -1,75 +1,24 @@
-# Nuxt 3 Minimal Starter
+# <img src="https://cdn.discordapp.com/emojis/1202910040357601320.webp?size=128&quality=lossless" width="32" height="32"> Saturne.lol
+
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+## Premier démarrage
 
-Make sure to install the dependencies:
+1. Installer des pkg npm :
 
-```bash
-# npm
-npm install
+```npm install```
 
-# pnpm
-pnpm install
+*Refaire en cas de mise a jour du package.json*
 
-# yarn
-yarn install
+## Lancer le serveur de développement
 
-# bun
-bun install
-```
+```npm run dev```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
+*Le développement hors-ligne n'est pas possible à cause de la connexion a la base de donnée obligatoire.*
 
 ## Production
 
-Build the application for production:
+Il suffit juste de push sur la branche main et de faire un pull request de la branche main dans la branche deployment et tout se fera automatiquement.
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Pour les builds locales, ils sont à éviter au max ou demander à Clément pour les faire.

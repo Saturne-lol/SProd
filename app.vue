@@ -4,6 +4,7 @@
 </script>
 
 <template>
+  <NuxtLoadingIndicator color="#000"/>
   <NuxtLayout>
     <NuxtPage/>
   </NuxtLayout>
@@ -24,4 +25,30 @@
   scroll-behavior: smooth;
   outline: none;
 }
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.05);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+}
+
+
 </style>
