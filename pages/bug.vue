@@ -15,7 +15,6 @@ function submit() {
   formData.append('description', description.value)
   if (screen) formData.append('screen', screen)
 
-  console.log(screen)
   $fetch('/api/bug', {
     method: 'POST',
     body: formData
