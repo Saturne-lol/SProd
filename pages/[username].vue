@@ -90,6 +90,12 @@ function clickToEnter(): any {
     audio.value.play()
   }
 }
+
+
+// j'ai fais ça
+const isSingleBox = computed(() => {
+  return dcProfileData.value && (!discordData.value || (Array.isArray(discordData.value) && discordData.value.length === 0));
+});
 </script>
 
 <template>
@@ -110,7 +116,8 @@ function clickToEnter(): any {
     <!--    </button>-->
     <!--  </div>-->
     <div class="center" v-if="isEnter">
-      <div class="content" id="content">
+      <!--  J'ai ajouter ça aussi : -->
+      <div :class="['content', { 'single-box': isSingleBox }]" id="content">
         <Profile :profile="profileData" :badges="badgesData"/>
         <UserBox :discord="dcProfileData"/>
         <DiscordBox :discord="discordData"/>
@@ -223,17 +230,15 @@ main {
 }
 
 .content {
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: max-content;
   gap: 10px;
-  white-space: nowrap;
-  /* backdrop-filter: blur(5px); 
-  border: 1px solid rgba(255, 255, 255, 0.4); */
   padding: 30px;
   border-radius: 20px;
-  
+}
+
+.single-box {
+  grid-template-columns: 1fr;
 }
 
 /* ---------------------------------------------------------------- */

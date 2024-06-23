@@ -294,7 +294,7 @@ async function uploadPdp(event: any) {
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="filePP" accept=".png, .jpg, .jpeg" @change="uploadPdp($event)"/>
+            <input type="file" id="filePP" accept=".png, .jpg, .jpeg;" @change="uploadPdp($event)"/>
 
             <!-- <img src="/public/img/pinkGalaxy.png" alt="Profil Picture" /> -->
           </label>
