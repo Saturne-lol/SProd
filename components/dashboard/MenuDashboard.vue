@@ -119,6 +119,8 @@ const {data} = await useFetch("/api/account/get-nav") as {
 }
 
 .nav .background .profil {
+  width: 100%;
+  position: relative;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 20px;
@@ -128,7 +130,6 @@ const {data} = await useFetch("/api/account/get-nav") as {
 .nav .background .profil .profilSaturne {
   display: flex;
   align-items: center;
-  white-space: nowrap;
 }
 
 .nav .background .profil .profilSaturne img {
@@ -155,8 +156,10 @@ const {data} = await useFetch("/api/account/get-nav") as {
 }
 
 .nav .background .profil .menuProfilSaturne .Icon {
+  position: absolute;
+  right: 20px;
+  margin-top: -10px;
   font-size: 20px;
-  margin-left: 15px;
   cursor: pointer;
 }
 
