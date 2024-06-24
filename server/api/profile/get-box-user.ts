@@ -26,7 +26,13 @@ export default defineEventHandler(async (event) => {
     return {
         avatar: member.avatar || "https://cdn.saturne.lol/file/profile/nooo.png",
         username: member.displayName || "Invalid username",
-        status: null,
-        presence: member.presence
+        status: member?.activity?.text
+            ? (member?.activity?.emoji
+                ? (member.activity.emoji.includes("https")
+                    ? member.activity.text
+                    : member.activity.emoji + " " + member.activity.text)
+                : member.activity.text)
+            : "",
+        emoji: member?.activity?.emoji?.includes("https") ? member.activity.emoji : null,
     }
 })
