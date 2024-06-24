@@ -20,6 +20,7 @@ interface Customize {
   }>
 }
 
+
 const colorList = ["Color box", "Box outline colors", "Profile outline color", "Icon color"]
 
 let {data} = await useFetch("/api/account/get-customize", {server: true}) as Customize
@@ -390,6 +391,9 @@ async function uploadPdp(event: any) {
           <h4>{{ data.linked }}
             <Icon name="bi:check-circle" id="check"/>
           </h4>
+        </div>
+        <div v-else>
+          <h4>discord.gg/saturne for link discord status</h4><Icon name="material-symbols:cancel" id="check"/>
         </div>
       </div>
     </div>
