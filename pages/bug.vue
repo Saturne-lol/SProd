@@ -26,6 +26,22 @@ function submit() {
         }
     })
 }
+
+useSeoMeta({
+  title: 'Saturne.lol - Bug Report',
+  description: 'This page is used to report bugs to the Saturne.lol staff team.',
+
+  ogTitle: 'Saturne.lo - Bug Report',
+  ogDescription: 'This page is used to report bugs to the Saturne.lol staff team.',
+  ogImage: '/favicon.ico',
+  ogUrl: 'https://saturne.lol',
+
+  twitterTitle: 'Saturne.lol - Bug Report',
+  twitterDescription: 'This page is used to report bugs to the Saturne.lol staff team.',
+  twitterImage: '/favicon.ico',
+  twitterCard: 'summary',
+})
+
 </script>
 
 <template>

@@ -28,7 +28,7 @@ export function createBot() {
         partials: [Partials.Channel, Partials.User, Partials.Reaction, Partials.Message, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.ThreadMember],
     });
     client.login("MTE5OTM4NTMyODc4NDUwNjkzMQ.Gero_4.ULTCyXXAUKnYGgwn13bOc695RqFNo_0vzQGJDk");
-    client.once("ready", () => {console.log("Bot is ready")})
+    client.on("ready", () => {console.log("Bot is ready")})
 }
 
 export function getBot() {
