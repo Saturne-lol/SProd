@@ -160,7 +160,7 @@ function placeHolderText() {
   }
 }
 
-if (process.client) {
+if (import.meta.client) {
   if (singleModalAction) {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
@@ -204,6 +204,42 @@ async function uploadPdp(event: any) {
     method: "GET",
   })
 
+  console.log(uploadUrl)
+
+  const formData = new FormData()
+  formData.append("file", file)
+
+  $fetch(uploadUrl, {
+    method: "POST",
+    body: formData
+  }).then((r) => {
+    console.log(r)
+    useToast().add({
+      title: "Success",
+      description: "Your profile picture has been updated",
+      color: "green",
+      icon: "i-material-symbols-check", //@TODO fix icon
+    })
+  }).catch((e) => {
+    console.log(e)
+    useToast().add({
+      title: "Error",
+      description: "An error occurred while updating your profile picture",
+      color: "red",
+      icon: "mdi:alert-circle", //@TODO fix icon
+    })
+  })
+}
+
+async function uploadBackground(event: any) {
+  const file = event.target.files[0]
+
+  const uploadUrl = await $fetch("/api/account/update-background", {
+    method: "GET",
+  })
+
+  console.log(uploadUrl)
+
   const formData = new FormData()
   formData.append("file", file)
 
@@ -213,14 +249,14 @@ async function uploadPdp(event: any) {
   }).then(() => {
     useToast().add({
       title: "Success",
-      description: "Your profile picture has been updated",
+      description: "Your background has been updated",
       color: "green",
       icon: "i-material-symbols-check", //@TODO fix icon
     })
   }).catch(() => {
     useToast().add({
       title: "Error",
-      description: "An error occurred while updating your profile picture",
+      description: "An error occurred while updating your background",
       color: "red",
       icon: "mdi:alert-circle", //@TODO fix icon
     })
@@ -297,7 +333,7 @@ async function uploadPdp(event: any) {
             </div>
             <input type="file" id="filePP" accept=".png, .jpg, .jpeg;" @change="uploadPdp($event)"/>
 
-            <!-- <img src="/public/img/pinkGalaxy.png" alt="Profil Picture" /> -->
+<!--             <img src="/public/img/pinkGalaxy.png" alt="Profil Picture" />-->
           </label>
         </div>
       </div>
@@ -356,10 +392,6 @@ async function uploadPdp(event: any) {
       </div>
     </div> <!-- Audio (pas fonctionnel avant beta@0.2.0) -->
     <div class="box" id="customizeBox8">
-      <div class="soon">
-        <img src="/public/img/loading.gif" alt="">
-        <h1>HOTFIX . . .</h1>
-      </div>
       <div class="padding">
         <div class="title">
           <Icon name="ic:baseline-insert-photo" class="Icon"/>
@@ -376,7 +408,7 @@ async function uploadPdp(event: any) {
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="fileBackground" accept=".png, .jpg, .jpeg, .gif, .mp4">
+            <input type="file" id="fileBackground" accept=".png, .jpg, .jpeg" @change="uploadBackground($event)"/>
           </label>
         </div>
       </div>
@@ -398,6 +430,10 @@ async function uploadPdp(event: any) {
       </div>
     </div>
     <div class="box" v-for="i in 5" :key="i" :id="'customizeBox' + (i + 9)"> <!-- Box 2 to 6 Server -->
+      <div class="soon" v-if="(i > 1 && data.plan < 1) || (i > 3 && data.plan < 2)">
+        <h1>{{ i < 4 ? "Premium" : "Premium +"}}</h1>
+        <h2>Emplacement de serveur</h2>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="akar-icons:discord-fill" class="Icon"/>
