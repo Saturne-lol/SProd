@@ -17,6 +17,7 @@ export async function checkToken(event: H3Event): Promise<{
             Authorization: `Bearer ${getCookie(event, 'token')}`
         }
     }).catch(() => {
+        deleteCookie(event, 'token')
         return false
     })
 
