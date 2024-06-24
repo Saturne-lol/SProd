@@ -119,10 +119,10 @@ gtag('config', 'G-YKC5TQ8C98', {
 
 .profil .ppUser #ppDeco {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 120px;
-  height: 120px;
+  top: -28px;
+  left: -10px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
 }
 
