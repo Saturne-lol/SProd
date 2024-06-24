@@ -39,30 +39,34 @@ onMounted(() => {
         <img src="/public/img/saturne.png" alt="">
         <ul>
           <li>
-            <a href="/#home">
+            <a href="/">
               HOME
             </a>
           </li>
           <li>
-            <a href="/#about">
+            <a href="/">
               ABOUT
             </a>
           </li>
           <li>
-            <a href="/#premium">
+            <a href="/">
               PREMIUM
             </a>
           </li>
           <li>
-            <a href="/#vouches">
+            <a href="/">
               VOUCHES
             </a>
           </li>
         </ul>
       </div>
       <div class="buttons">
-        <button>Login</button>
-        <button>Get Started</button>
+        <a href="/login">
+          <button>Login</button>
+        </a>
+        <a href="/login">
+          <button>Get Started</button>
+        </a>
       </div>
     </div>
 
@@ -81,7 +85,7 @@ onMounted(() => {
         <div class="links">
           <a href="">Privacy</a>
           <a href="">PolicyTerms of Service</a>
-          <a href="">Discord</a>
+          <a href="https://discord.gg/saturne">Discord</a>
         </div>
       </div>
     </div>

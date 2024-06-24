@@ -15,7 +15,9 @@ const { data } = await useFetch("/api/account/get-nav") as {
     <div class="background">
       <!-- 1 -->
       <div class="title">
-        <h1>ＳΛＴＵＲＮΞ</h1>
+        <a href="/">
+          <h1>ＳΛＴＵＲＮＥ</h1>
+        </a>
       </div>
       <!-- 2 -->
       <div class="links">
