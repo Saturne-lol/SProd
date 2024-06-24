@@ -2,7 +2,7 @@
 
 import {checkToken} from "~/api/discord";
 import {PlanEnum, PrismaClient} from "@prisma/client";
-import {getBot} from "~/api/bot";
+import axios from "axios";
 
 const prisma = new PrismaClient()
 
@@ -47,9 +47,10 @@ export default defineEventHandler(async (event) => {
     if (account?.plan === PlanEnum.PREMIUM) plan = 1
     if (account?.plan === PlanEnum.PREMIUM_PLUS) plan = 2
 
-    const bot = getBot()
-    if (!bot) return new Response("The bot is not ready", {status: 500})
-    const member = await (await bot?.guilds.fetch("1129015826410901556")).members.fetch(user.id)
+    const member = await axios.get("https://bot.saturne.lol/member" + user.id).then((res) => {
+        if (res.status === 200) return res.data
+        return false
+    }).catch(() => false)
 
     const quotes = await prisma.quotes.findMany({
         where: {
