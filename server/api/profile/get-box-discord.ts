@@ -1,5 +1,5 @@
 import axios from "axios";
-import {PrismaClient} from "@prisma/client";
+import {PlanEnum, PrismaClient} from "@prisma/client";
 
 const prisma = new PrismaClient()
 
@@ -20,7 +20,20 @@ export default defineEventHandler(async (event) => {
         }
     })
 
-    return await Promise.all(discordBox.map(async ({invite}) => {
+    const plan = (await prisma.account.findFirst({
+        where: {
+            setting: {
+                url: getQuery(event).username as string
+            }
+        },
+        select: {
+            plan: true
+        }
+    }))?.plan
+
+    const maxBox = plan === PlanEnum.FREE ? 1 : (plan === PlanEnum.PREMIUM ? 3 : 5)
+
+    return await Promise.all(discordBox.slice(0,maxBox).map(async ({invite}) => {
         const data = await axios.get(`https://discord.com/api/v9/invites/${invite}?with_counts=true`).then(({data}) => data).catch(() => null)
         return {
             name: data?.guild.name || "Invalid invite",

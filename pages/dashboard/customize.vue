@@ -20,6 +20,7 @@ interface Customize {
   }>
 }
 
+
 const colorList = ["Color box", "Box outline colors", "Profile outline color", "Icon color"]
 
 let {data} = await useFetch("/api/account/get-customize", {server: true}) as Customize
@@ -159,7 +160,7 @@ function placeHolderText() {
   }
 }
 
-if (process.client) {
+if (import.meta.client) {
   if (singleModalAction) {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
@@ -203,6 +204,42 @@ async function uploadPdp(event: any) {
     method: "GET",
   })
 
+  console.log(uploadUrl)
+
+  const formData = new FormData()
+  formData.append("file", file)
+
+  $fetch(uploadUrl, {
+    method: "POST",
+    body: formData
+  }).then((r) => {
+    console.log(r)
+    useToast().add({
+      title: "Success",
+      description: "Your profile picture has been updated",
+      color: "green",
+      icon: "i-material-symbols-check", //@TODO fix icon
+    })
+  }).catch((e) => {
+    console.log(e)
+    useToast().add({
+      title: "Error",
+      description: "An error occurred while updating your profile picture",
+      color: "red",
+      icon: "mdi:alert-circle", //@TODO fix icon
+    })
+  })
+}
+
+async function uploadBackground(event: any) {
+  const file = event.target.files[0]
+
+  const uploadUrl = await $fetch("/api/account/update-background", {
+    method: "GET",
+  })
+
+  console.log(uploadUrl)
+
   const formData = new FormData()
   formData.append("file", file)
 
@@ -212,14 +249,14 @@ async function uploadPdp(event: any) {
   }).then(() => {
     useToast().add({
       title: "Success",
-      description: "Your profile picture has been updated",
+      description: "Your background has been updated",
       color: "green",
       icon: "i-material-symbols-check", //@TODO fix icon
     })
   }).catch(() => {
     useToast().add({
       title: "Error",
-      description: "An error occurred while updating your profile picture",
+      description: "An error occurred while updating your background",
       color: "red",
       icon: "mdi:alert-circle", //@TODO fix icon
     })
@@ -296,7 +333,7 @@ async function uploadPdp(event: any) {
             </div>
             <input type="file" id="filePP" accept=".png, .jpg, .jpeg;" @change="uploadPdp($event)"/>
 
-            <!-- <img src="/public/img/pinkGalaxy.png" alt="Profil Picture" /> -->
+<!--             <img src="/public/img/pinkGalaxy.png" alt="Profil Picture" />-->
           </label>
         </div>
       </div>
@@ -355,10 +392,6 @@ async function uploadPdp(event: any) {
       </div>
     </div> <!-- Audio (pas fonctionnel avant beta@0.2.0) -->
     <div class="box" id="customizeBox8">
-      <div class="soon">
-        <img src="/public/img/loading.gif" alt="">
-        <h1>HOTFIX . . .</h1>
-      </div>
       <div class="padding">
         <div class="title">
           <Icon name="ic:baseline-insert-photo" class="Icon"/>
@@ -375,7 +408,7 @@ async function uploadPdp(event: any) {
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="fileBackground" accept=".png, .jpg, .jpeg, .gif, .mp4">
+            <input type="file" id="fileBackground" accept=".png, .jpg, .jpeg" @change="uploadBackground($event)"/>
           </label>
         </div>
       </div>
@@ -391,9 +424,18 @@ async function uploadPdp(event: any) {
             <Icon name="bi:check-circle" id="check"/>
           </h4>
         </div>
+        <div class="connexion" v-else>
+          <h4>Join our <a href="https://discord.gg/saturne">discord server</a>
+            <Icon name="radix-icons:cross-circled" id="uncheck"/>
+          </h4>
+        </div>
       </div>
     </div>
     <div class="box" v-for="i in 5" :key="i" :id="'customizeBox' + (i + 9)"> <!-- Box 2 to 6 Server -->
+      <div class="premium" v-if="(i > 1 && data.plan < 1) || (i > 3 && data.plan < 2)">
+        <h1>{{ i < 4 ? "Premium" : "Premium +"}}</h1>
+        <h2>Emplacement de serveur</h2>
+      </div>
       <div class="padding">
         <div class="title">
           <Icon name="akar-icons:discord-fill" class="Icon"/>
@@ -435,7 +477,6 @@ async function uploadPdp(event: any) {
     </div> <!-- Views -->
 
     <div class="box" id="customizeBox17">
-      <!-- Overlay "soon" div -->
       <div class="soon">
         <img src="/public/img/loading.gif" alt="">
         <h1>SOON . . .</h1>
@@ -661,6 +702,27 @@ async function uploadPdp(event: any) {
   height: 30px;
 }
 
+.content .box .premium {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  backdrop-filter: blur(3px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content .box .premium h1 {
+  font-size: 150%;
+  font-weight: 700;
+  text-shadow: 0 0 25px #000000;
+}
+
 .content .box .padding {
   height: 100%;
   display: flex;
@@ -849,10 +911,23 @@ async function uploadPdp(event: any) {
   border-radius: 10px;
 }
 
-.content .box .padding .connexion #check {
-  color: #bc6bff;
+.content .box .padding .connexion a {
+  color: rgba(233, 159, 255, 0.6);
+}
+
+.content .box .padding .connexion #check,
+.content .box .padding .connexion #uncheck {
   margin-right: 5px;
   margin-left: 6px;
+}
+
+.content .box .padding .connexion #check {
+  color: #6bc056;
+}
+
+.content .box .padding .connexion #uncheck {
+  color: #e46969;
+  font-size: 120%;
 }
 
 .content .box .padding .color .info,

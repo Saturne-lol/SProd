@@ -110,24 +110,11 @@ const isSingleBox: ComputedRef<boolean> = computed(() => {
 </script>
 
 <template>
-  <audio
-      src="https://cdn.discordapp.com/attachments/1246580858757054556/1246731743172759572/Best_Dramatic_music_ever.mp3?ex=665d74ea&is=665c236a&hm=602ff7416a488b4c8af89d20302d7f1cfef1182baf8fceeeb47c9c6ab9267bf7&"
-      loop ref="audio" v-if="profileData.username === 'Cleboost'"/>
   <main>
     <div id="tempBackground" v-if="!isEnter">
       <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
     </div>
-    <!--  <video id="background" loop ref="videoElement">-->
-    <!--    <source src="/video/background.mp4" type="video/mp4">-->
-    <!--  </video>-->
-    <img src="/img/background.jpg" alt="background" id="background">
-    <!--  <div class="volume">-->
-    <!--        <button id="unmute"><i class="fa-solid fa-volume-high"></i></button>-->
-    <!--        <button id="mute"><i class="fa-solid fa-volume-xmark"></i></button>-->
-    <!--    <button id="mute">-->
-    <!--      <Icon name="ph:speaker-simple-slash-fill" />-->
-    <!--    </button>-->
-    <!--  </div>-->
+    <img :src="'https://cdn.saturne.lol/file/background/'+profileData.avatar" alt="background" id="background">
     <div class="center" v-if="isEnter">
       <!--  J'ai ajouter ça aussi : -->
       <div :class="['content', { 'single-box': isSingleBox }]" id="content">
@@ -259,8 +246,7 @@ main {
 .content .view {
   grid-column: 1 / 2;
   position: relative;
-  font-size: 80%;
-
+  font-size: 100%;
 }
 
 .content .view h3 {
@@ -274,7 +260,7 @@ main {
   white-space: nowrap;
   opacity: 0;
   position: absolute;
-  bottom: -25px;
+  bottom: -35px;
   left: 8px;
   transform: translate(-50%, -50%);
   transition: opacity 0.5s ease;

@@ -32,8 +32,12 @@
                 </ul>
             </div>
             <div class="buttons">
-                <button>Login</button>
-                <button>Get Started</button>
+                <a href="/login">
+                    <button>Login</button>
+                </a>
+                <a href="/login">
+                    <button>Get Started</button>
+                </a>
             </div>
         </div>
 
@@ -74,7 +78,7 @@
                 <div class="links">
                     <a href="">Privacy</a>
                     <a href="">PolicyTerms of Service</a>
-                    <a href="">Discord</a>
+                    <a href="https://discord.gg/saturne">Discord</a>
                 </div>
             </div>
         </div>

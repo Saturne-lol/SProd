@@ -10,9 +10,7 @@ export default defineNuxtConfig({
     modules: [
         'nuxt-icon',
         "nuxt-gtag",
-        "@nuxtjs/sitemap",
         "@nuxt/ui",
-        "nuxt-typed-router"
     ],
     components: true,
     gtag: {

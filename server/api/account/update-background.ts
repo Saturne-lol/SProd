@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
         }
     }))?.plan
 
-    const url = await axios.get(`https://cdn.saturne.lol/upload?type=profile&fileName=${user.id}.png&plan=${plan}`).then(res => res.data.link).catch(e => {
+    const url = await axios.get(`https://cdn.saturne.lol/upload?type=background&fileName=${user.id}.png&plan=${plan}`).then(res => res.data.link).catch(e => {
         console.error(e)
         return null
     })

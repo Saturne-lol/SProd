@@ -5,6 +5,7 @@ const data = defineProps<{
     username: string;
     avatar: string;
     status: string;
+    emoji: string;
   },
 }>()
 
@@ -19,7 +20,7 @@ const data = defineProps<{
     <div class="info">
       <h3>{{ data.discord.username.slice(0, 20) }}</h3>
       <div class="status">
-        <img src="/public/img/saturne.png" alt="">
+        <img v-if="data.discord.emoji" :src="data.discord.emoji" alt="">
         <h4>{{ (data.discord.status ? data.discord.status.slice(0, 24) : '') }}</h4>
       </div>
     </div>
