@@ -112,7 +112,7 @@ gtag('config', 'G-YKC5TQ8C98', {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  /* border: 2px solid rgba(255, 255, 255, 0.50); */
+  border: 2px solid rgba(255, 255, 255, 0.50);
   object-fit: cover;
   margin-right: 20px;
 }

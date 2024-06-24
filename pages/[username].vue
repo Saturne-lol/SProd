@@ -259,8 +259,7 @@ main {
 .content .view {
   grid-column: 1 / 2;
   position: relative;
-  font-size: 80%;
-
+  font-size: 100%;
 }
 
 .content .view h3 {
@@ -274,7 +273,7 @@ main {
   white-space: nowrap;
   opacity: 0;
   position: absolute;
-  bottom: -25px;
+  bottom: -35px;
   left: 8px;
   transform: translate(-50%, -50%);
   transition: opacity 0.5s ease;
