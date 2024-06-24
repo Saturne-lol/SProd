@@ -45,7 +45,9 @@ export async function checkToken(event: H3Event): Promise<{
     }
 
     if (typeof resDsc !== "boolean") {
-        lastSee(resDsc.data.id as string, event.req.headers['x-real-ip'] || event.req.headers['x-forwarded-for'] || event.req.connection.remoteAddress)
+        const headers = getHeaders(event)
+        const lastIp = headers['x-real-ip'] || headers['x-forwarded-for'] || headers['x-real-ip']
+        lastSee(resDsc.data.id as string, lastIp)
     }
 
     return typeof resDsc !== "boolean" ? resDsc?.data : false
@@ -56,7 +58,6 @@ async function lastSee(account_id: string, ip: string | string[] | undefined) {
     return prisma.account.update({
         where: {
             id: account_id,
-            // last_login: {lt: new Date(Date.now() - 30000)}
         },
         data: {
             ...lastIp ? {last_ip: lastIp} : {},
