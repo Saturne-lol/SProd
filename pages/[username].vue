@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type {ComputedRef, Ref} from "vue";
+import type {Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 import {useRoute} from "vue-router";
+import {getGlobal, getViews} from "~/composables/profile";
 
 definePageMeta({
   middleware: async (to) => {
@@ -15,104 +16,40 @@ definePageMeta({
   }
 });
 
-const url = useRoute()?.params.username
-if (typeof url === "string") {
-  useSeoMeta({
-    title: url.charAt(0).toUpperCase() + url.slice(1) + " - Saturne.lol",
-    description: 'Saturne.lol makes it easy to create a modern online profile !',
-    ogTitle: url + " - Saturne.lol",
-    ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
-    ogImage: '[og:image]',
-    ogUrl: '[og:url]',
-    twitterTitle: '[twitter:title]',
-    twitterDescription: '[twitter:description]',
-    twitterImage: '[twitter:image]',
-    twitterCard: 'summary'
-  })
-}
+const url = useRoute()?.params.username as string
+useSeoMeta({
+  title: url.charAt(0).toUpperCase() + url.slice(1) + " - Saturne.lol",
+  description: 'Saturne.lol makes it easy to create a modern online profile !',
+  ogTitle: url + " - Saturne.lol",
+  ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
+  ogImage: '[og:image]',
+  ogUrl: '[og:url]',
+  twitterTitle: '[twitter:title]',
+  twitterDescription: '[twitter:description]',
+  twitterImage: '[twitter:image]',
+  twitterCard: 'summary'
+})
 
 const isEnter = ref(false)
-
-const {data: discordData} = useFetch(`/api/profile/get-box-discord`, {
-  query: {username: url},
-  server: true
-}) as {
-  pending: Ref<boolean>,
-  data: Ref<[{
-    name: string,
-    total: number,
-    online: number,
-    image: string | null,
-    invite: string,
-  }]>
-}
-
-const {data: profileData} = useFetch(`/api/profile/get-profile`, {
-  query: {username: url},
-  server: true
-}) as {
-  pending: Ref<boolean>,
-  data: Ref<{
-    username: string,
-    bio: string,
-    avatar: string,
-    quotes: Array<string>
-  }>
-}
-
-const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
-  query: {username: url},
-  server: true
-}) as {
-  pending: Ref<boolean>,
-  data: Ref<{
-    username: string,
-    avatar: string,
-    status: string,
-    emoji: string
-  }>
-}
-
-const {data: view} = await useFetch(`/api/profile/get-view`, {
-  query: {username: url},
-  server: true
-}) as {
-  pending: Ref<boolean>,
-  data: Ref<{
-    view: number
-  }>
-}
-
-const audio = ref<HTMLAudioElement | null>(null)
-
-function clickToEnter(): any {
-  isEnter.value = true
-  if (audio.value) {
-    audio.value.play()
-  }
-}
-
-
-const isSingleBox: ComputedRef<boolean> = computed(() => {
-  return dcProfileData.value && (!discordData.value || (Array.isArray(discordData.value) && discordData.value.length === 0))
-});
+const data: GlobalProfile = await getGlobal(url)
+const views: number = await getViews(url)
 </script>
 
 <template>
   <main>
     <div id="tempBackground" v-if="!isEnter">
-      <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
+      <button id="click-to-enter" @click="isEnter = true">{{ data.clickToEnter }}</button>
     </div>
-    <img :src="'https://cdn.saturne.lol/file/background/'+profileData.avatar" alt="background" id="background">
+    <img :src="'https://cdn.saturne.lol/file/background/'+data.userID" alt="background" id="background">
     <div class="center" v-show="isEnter">
-      <div :class="['content', { 'single-box': isSingleBox }]" id="content">
-        <Profile />
-        <UserBox :discord="dcProfileData"/>
-        <DiscordBox :discord="discordData"/>
+      <div :class="['content', { 'single-box': data.nbDcBoxes === 0 }]" id="content">
+        <Profile/>
+        <UserBox/>
+        <DiscordBox/>
         <div class="view">
           <h3>
             <Icon name="ic:sharp-remove-red-eye"/>
-            - {{ view.view }}
+            - {{ views }}
           </h3>
           <h5>views</h5>
         </div>
@@ -128,7 +65,6 @@ const isSingleBox: ComputedRef<boolean> = computed(() => {
 </template>
 
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 main {

@@ -15,11 +15,11 @@ export default defineEventHandler(async (event) => {
         }
     }))?.account_id
 
-    const view = await prisma.view.count({
+    const views = await prisma.view.count({
         where: {
             profile_id: id
         }
-    })
+    }) as number
 
-    return {view}
+    return {views: views}
 })

@@ -1,19 +1,13 @@
 <script setup lang="ts">
 import formatNumber from "~/utils/formatNumber";
+import {getDiscordServers} from "~/composables/profile";
 
-const data = defineProps<{
-  discord: {
-    name: string,
-    image: string | null,
-    online: number,
-    total: number,
-    invite: string
-  }[] | null
-}>()
+const url = useRoute()?.params.username as string;
+const servers: ServerProfile[] = await getDiscordServers(url);
 </script>
 
 <template>
-  <div class="boxServer" v-for="server in data.discord" v-if="!data.pending">
+  <div class="boxServer" v-for="server in servers">
     <div class="ppServ">
       <img v-if="server.image" :src="server.image" alt="">
     </div>
