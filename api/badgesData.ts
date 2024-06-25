@@ -8,10 +8,6 @@ export default [
         name: "Beta Tester",
     },
     {
-        id: "priosial",
-        name: "Priosial",
-    },
-    {
         id: "early",
         name: "Early Supporter",
     },
@@ -26,6 +22,10 @@ export default [
     {
         id: "premium1",
         name: "Premium",
+    },
+    {
+        id: "booster",
+        name: "Booster",
     },
     {
         id: "member",
