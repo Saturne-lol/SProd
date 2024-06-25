@@ -133,6 +133,7 @@ main {
   animation: dropDown 1s linear;
 }*/
 
+/* Non utilisé pour le moment
 @keyframes dropDown {
   0% {
     transform: translateY(0px);
@@ -144,6 +145,7 @@ main {
     opacity: 0;
   }
 }
+*/
 
 .center {
   min-height: 100vh;

@@ -33,7 +33,7 @@ const data = await getDiscordProfile(url)
 }
 
 .boxUser:hover {
-  box-shadow: 0px 0px 3px 1px #00000044;
+  box-shadow: 0 0 3px 1px #00000044;
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
