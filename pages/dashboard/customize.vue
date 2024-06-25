@@ -29,6 +29,8 @@ for (let i = 0; i < 5; i++) {
 }
 data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
 
+console.log(data.value.linked)
+
 const activeModal = ref("") as Ref<string>
 
 function openModal(modal: string) {
@@ -204,8 +206,6 @@ async function uploadPdp(event: any) {
     method: "GET",
   })
 
-  console.log(uploadUrl)
-
   const formData = new FormData()
   formData.append("file", file)
 
@@ -237,8 +237,6 @@ async function uploadBackground(event: any) {
   const uploadUrl = await $fetch("/api/account/update-background", {
     method: "GET",
   })
-
-  console.log(uploadUrl)
 
   const formData = new FormData()
   formData.append("file", file)

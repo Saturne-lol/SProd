@@ -1,27 +1,21 @@
 <script setup lang="ts">
+import {getDiscordProfile} from "~/composables/profile";
 
-const data = defineProps<{
-  discord: {
-    username: string;
-    avatar: string;
-    status: string;
-    emoji: string;
-  },
-}>()
-
+const url = useRoute()?.params.username as string
+const data = await getDiscordProfile(url)
 </script>
 
 <template>
   <div class="boxUser">
     <div class="DiscPresence">
-      <img :src="data.discord.avatar" alt="" id="ppDiscord">
+      <img :src="data.avatar" alt="" id="ppDiscord">
       <img src="/public/img/presence/idle.png" alt="" id="discordPresence">
     </div>
     <div class="info">
-      <h3>{{ data.discord.username.slice(0, 20) }}</h3>
+      <h3>{{ data.username.slice(0, 20) }}</h3>
       <div class="status">
-        <img v-if="data.discord.emoji" :src="data.discord.emoji" alt="">
-        <h4>{{ (data.discord.status ? data.discord.status.slice(0, 24) : '') }}</h4>
+        <img v-if="data.emoji" :src="data.emoji" alt="">
+        <h4>{{ (data.status ? data.status.slice(0, 24) : '') }}</h4>
       </div>
     </div>
   </div>
@@ -39,7 +33,7 @@ const data = defineProps<{
 }
 
 .boxUser:hover {
-  box-shadow: 0px 0px 3px 1px #00000044;
+  box-shadow: 0 0 3px 1px #00000044;
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 

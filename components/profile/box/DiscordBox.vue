@@ -1,19 +1,13 @@
 <script setup lang="ts">
 import formatNumber from "~/utils/formatNumber";
+import {getDiscordServers} from "~/composables/profile";
 
-const data = defineProps<{
-  discord: {
-    name: string,
-    image: string | null,
-    online: number,
-    total: number,
-    invite: string
-  }[] | null
-}>()
+const url = useRoute()?.params.username as string;
+const servers: ServerProfile[] = await getDiscordServers(url);
 </script>
 
 <template>
-  <div class="boxServer" v-for="server in data.discord" v-if="!data.pending">
+  <div class="boxServer" v-for="server in servers">
     <div class="ppServ">
       <img v-if="server.image" :src="server.image" alt="">
     </div>
@@ -47,7 +41,7 @@ const data = defineProps<{
 }
 
 .boxServer:hover {
-  box-shadow: 0px 0px 3px 1px #00000044;
+  box-shadow: 0 0 3px 1px #00000044;
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 

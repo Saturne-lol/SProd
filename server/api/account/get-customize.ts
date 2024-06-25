@@ -47,10 +47,11 @@ export default defineEventHandler(async (event) => {
     if (account?.plan === PlanEnum.PREMIUM) plan = 1
     if (account?.plan === PlanEnum.PREMIUM_PLUS) plan = 2
 
-    const member = await axios.get("https://bot.saturne.lol/member" + user.id).then((res) => {
+    const member = await axios.get("https://bot.saturne.lol/member/" + user.id).then((res) => {
         if (res.status === 200) return res.data
         return false
     }).catch(() => false)
+
 
     const quotes = await prisma.quotes.findMany({
         where: {
@@ -65,7 +66,7 @@ export default defineEventHandler(async (event) => {
         where: {
             account_id: user.id
         }
-    })
+    }) as any
 
     return {
         url: settings?.url,
@@ -73,7 +74,7 @@ export default defineEventHandler(async (event) => {
         bio: settings?.bio,
         plan,
         discord,
-        linked: member ? `${member.user.displayName} (${member.user.id})` : null,
+        linked: member ? `${member.displayName} (${member.id})` : null,
         enter: settings?.enter_message || "Click to enter...",
         views: settings?.views || 0,
         quotes: quotes.map((q: any) => q.text) || [],

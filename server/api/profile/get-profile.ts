@@ -2,6 +2,7 @@ import {PrismaClient} from "@prisma/client";
 
 const prisma = new PrismaClient()
 
+// noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
     if (!getQuery(event).username) return {error: "No username provided"}
     
@@ -28,6 +29,7 @@ export default defineEventHandler(async (event) => {
         username: settings?.username || "Invalid username",
         bio: settings?.bio || "No bio",
         avatar: settings?.account.id,
+        userID: settings?.account.id,
         quotes: quote.map(({text}) => text).sort(() => Math.random() - 0.5) || []
-    }
+    } as Profile
 })
