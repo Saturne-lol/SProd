@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import Badges from "~/components/profile/saturne/Badges.vue";
+import {getProfile} from "~/composables/profile";
 
-const data = defineProps<{
-  profile: {
-    username: string,
-    bio: string,
-    avatar: string,
-    quotes: Array<string>
-  },
-  badges: {
-    name: string,
-    image: string
-  }[]
-}>()
+
+const url = useRoute().params.username as string
+const profile = await getProfile(url)
 
 const quote = ref("")
 const currentQuoteIndex = ref(0)
@@ -26,7 +18,7 @@ function smoothClearQuote() {
     } else {
       clearInterval(interval);
       setTimeout(() => {
-        currentQuoteIndex.value = (currentQuoteIndex.value + 1) % data.profile.quotes.length;
+        currentQuoteIndex.value = (currentQuoteIndex.value + 1) % profile.quotes.length;
         smoothNewQuote();
       }, 400);
     }
@@ -34,7 +26,7 @@ function smoothClearQuote() {
 }
 
 function smoothNewQuote() {
-  const quoteToWrite = data.profile.quotes[currentQuoteIndex.value];
+  const quoteToWrite = profile.quotes[currentQuoteIndex.value];
   let index = 0;
   const interval = setInterval(() => {
     if (index < quoteToWrite.length) {
@@ -49,39 +41,34 @@ function smoothNewQuote() {
   }, 150);
 }
 
-
-if (data.profile.quotes.length > 0) {
-  smoothNewQuote()
+if (import.meta.client) {
+  if (profile.quotes.length > 0) {
+    smoothNewQuote()
+  }
 }
-
-
-const {gtag} = useGtag()
-gtag('config', 'G-YKC5TQ8C98', {
-  'user_id': "coucou c'est moi"
-})
 </script>
 
 <template>
   <div class="profil">
     <div class="ppUser">
-      <img :src="`https://cdn.saturne.lol/file/profile/${data.profile.avatar}`" alt="" id="ppDisc">
-      <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="data.profile.username == 'Cleboost'">
-      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="data.profile.username == 'BF'">
+      <img :src="`https://cdn.saturne.lol/file/profile/${profile.avatar}`" alt="" id="ppDisc">
+      <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="profile.username == 'Cleboost'">
+      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="profile.username == 'BF'">
     </div>
     <div class="infoUser">
       <div class="nameBadges">
         <!-- NAME SATURNE -->
         <div class="name">
-          <h1>{{ data.profile.username }}</h1>
+          <h1>{{ profile.username }}</h1>
         </div>
         <!-- BADGES -->
-        <Badges :badges="data.badges"/>
+        <Badges />
       </div>
-      <div class="quote" v-if="data.profile.quotes.length > 0 || !data.profile.quotes">
+      <div class="quote" v-if="profile.quotes.length > 0 || !profile.quotes">
         <h3>{{ quote }}</h3>
       </div>
       <div class="description">
-        <h5>{{ data.profile.bio }}</h5>
+        <h5>{{ profile.bio }}</h5>
       </div>
     </div>
   </div>

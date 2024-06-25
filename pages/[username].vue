@@ -3,7 +3,6 @@ import type {ComputedRef, Ref} from "vue";
 import DiscordBox from "~/components/profile/box/DiscordBox.vue";
 import UserBox from "~/components/profile/box/UserBox.vue";
 import {useRoute} from "vue-router";
-import {use} from "h3";
 
 definePageMeta({
   middleware: async (to) => {
@@ -61,17 +60,6 @@ const {data: profileData} = useFetch(`/api/profile/get-profile`, {
   }>
 }
 
-const {data: badgesData} = useFetch(`/api/profile/get-badges`, {
-  query: {username: url},
-  server: true
-}) as {
-  pending: Ref<boolean>,
-  data: Ref<[{
-    name: string,
-    image: string
-  }]>
-}
-
 const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
   query: {username: url},
   server: true
@@ -81,6 +69,7 @@ const {data: dcProfileData} = await useFetch(`/api/profile/get-box-user`, {
     username: string,
     avatar: string,
     status: string,
+    emoji: string
   }>
 }
 
@@ -115,16 +104,15 @@ const isSingleBox: ComputedRef<boolean> = computed(() => {
       <button id="click-to-enter" @click="clickToEnter">Click to enter</button>
     </div>
     <img :src="'https://cdn.saturne.lol/file/background/'+profileData.avatar" alt="background" id="background">
-    <div class="center" v-if="isEnter">
-      <!--  J'ai ajouter ça aussi : -->
+    <div class="center" v-show="isEnter">
       <div :class="['content', { 'single-box': isSingleBox }]" id="content">
-        <Profile :profile="profileData" :badges="badgesData"/>
+        <Profile />
         <UserBox :discord="dcProfileData"/>
         <DiscordBox :discord="discordData"/>
         <div class="view">
           <h3>
             <Icon name="ic:sharp-remove-red-eye"/>
-            - {{view.view}}
+            - {{ view.view }}
           </h3>
           <h5>views</h5>
         </div>

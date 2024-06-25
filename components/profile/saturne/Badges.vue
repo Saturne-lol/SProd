@@ -1,17 +1,13 @@
 <script setup lang="ts">
+import {getBadges} from "~/composables/profile";
 
-const data = defineProps<{
-  badges: Array<{
-    name: string,
-    image: string
-  }>
-}>()
-
+const url = useRoute().params.username as string
+const badges = await getBadges(url)
 </script>
 
 <template>
   <div class="badges">
-    <div class="badge" v-for="badge in data.badges">
+    <div class="badge" v-for="badge in badges">
       <h5>{{ badge.name }}</h5>
       <img :src="'/img/badges/'+badge.image" alt="">
     </div>
