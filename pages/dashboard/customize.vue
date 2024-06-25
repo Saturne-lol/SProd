@@ -424,13 +424,15 @@ async function uploadBackground(event: any) {
             <Icon name="bi:check-circle" id="check"/>
           </h4>
         </div>
-        <div v-else>
-          <h4>discord.gg/saturne for link discord status</h4><Icon name="material-symbols:cancel" id="check"/>
+        <div class="connexion" v-else>
+          <h4>Join our <a href="https://discord.gg/saturne">discord server</a>
+            <Icon name="radix-icons:cross-circled" id="uncheck"/>
+          </h4>
         </div>
       </div>
     </div>
     <div class="box" v-for="i in 5" :key="i" :id="'customizeBox' + (i + 9)"> <!-- Box 2 to 6 Server -->
-      <div class="soon" v-if="(i > 1 && data.plan < 1) || (i > 3 && data.plan < 2)">
+      <div class="premium" v-if="(i > 1 && data.plan < 1) || (i > 3 && data.plan < 2)">
         <h1>{{ i < 4 ? "Premium" : "Premium +"}}</h1>
         <h2>Emplacement de serveur</h2>
       </div>
@@ -475,7 +477,6 @@ async function uploadBackground(event: any) {
     </div> <!-- Views -->
 
     <div class="box" id="customizeBox17">
-      <!-- Overlay "soon" div -->
       <div class="soon">
         <img src="/public/img/loading.gif" alt="">
         <h1>SOON . . .</h1>
@@ -701,6 +702,27 @@ async function uploadBackground(event: any) {
   height: 30px;
 }
 
+.content .box .premium {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  backdrop-filter: blur(3px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content .box .premium h1 {
+  font-size: 150%;
+  font-weight: 700;
+  text-shadow: 0 0 25px #000000;
+}
+
 .content .box .padding {
   height: 100%;
   display: flex;
@@ -889,10 +911,23 @@ async function uploadBackground(event: any) {
   border-radius: 10px;
 }
 
-.content .box .padding .connexion #check {
-  color: #bc6bff;
+.content .box .padding .connexion a {
+  color: rgba(233, 159, 255, 0.6);
+}
+
+.content .box .padding .connexion #check,
+.content .box .padding .connexion #uncheck {
   margin-right: 5px;
   margin-left: 6px;
+}
+
+.content .box .padding .connexion #check {
+  color: #6bc056;
+}
+
+.content .box .padding .connexion #uncheck {
+  color: #e46969;
+  font-size: 120%;
 }
 
 .content .box .padding .color .info,
