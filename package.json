@@ -27,7 +27,7 @@
   "devDependencies": {
     "@nuxt/types": "^2.17.4",
     "nuxt-icon": "^0.6.10",
-    "prisma": "^5.15.1",
+    "prisma": "^5.16.0",
     "typescript": "^5.5.2",
     "vue-tsc": "^2.0.22"
   }
