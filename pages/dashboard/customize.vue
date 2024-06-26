@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type {Ref} from "vue";
 import {$fetch} from "ofetch";
+import UrlCustomize from "~/components/customize/UrlCustomize.vue";
 
 interface Customize {
   data: Ref<{
@@ -264,18 +265,19 @@ async function uploadBackground(event: any) {
 
 <template>
   <div class="content">
-    <div class="box" id="customizeBox1">
-      <div class="padding">
-        <div class="title">
-          <Icon name="ph:planet-fill" class="Icon"/>
-          <h3>DOMAINE AND PSEUDO</h3>
-        </div>
-        <div class="info">
-          <h4>saturne.lol/{{ data.url }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('url')"/>
-        </div>
-      </div>
-    </div> <!-- Domaine and Pseudo -->
+<!--    <div class="box" id="customizeBox1">-->
+<!--      <div class="padding">-->
+<!--        <div class="title">-->
+<!--          <Icon name="ph:planet-fill" class="Icon"/>-->
+<!--          <h3>DOMAINE AND PSEUDO</h3>-->
+<!--        </div>-->
+<!--        <div class="info">-->
+<!--          <h4>saturne.lol/{{ data.url }}</h4>-->
+<!--          <Icon name="ic:baseline-edit" id="modif" @click="openModal('url')"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div> &lt;!&ndash; Domaine and Pseudo &ndash;&gt;-->
+    <UrlCustomize />
     <div class="box" id="customizeBox2">
       <div class="padding">
         <div class="title">
@@ -311,7 +313,7 @@ async function uploadBackground(event: any) {
           <Icon name="ic:baseline-edit" id="modif" @click="openModal('bio')"/>
         </div>
       </div>
-    </div> <!-- Description -->
+    </div><!-- Description -->
     <div class="box" id="customizeBox5">
       <div class="padding">
         <div class="title">
