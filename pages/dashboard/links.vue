@@ -44,6 +44,9 @@
         <Icon name="bi:instagram" class="Icon"/>
       </div>
       <div class="box">
+        <Icon name="bi:twitch" class="Icon"/>
+      </div>
+      <div class="box">
         <Icon name="bi:twitter" class="Icon"/>
       </div>
       <div class="box">
@@ -86,9 +89,6 @@
         <Icon name="simple-icons:deezer" class="Icon"/>
       </div>
       <div class="box">
-        <Icon name="bi:twitch" class="Icon"/>
-      </div>
-      <div class="box">
         <Icon name="bi:facebook" class="Icon"/>
       </div>
     </div>
@@ -106,7 +106,6 @@
           <label class="label" for="snapchat"></label>
         </div>
         <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
-        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
       <div class="box">
         <Icon name="material-symbols:emoticon" class="Icon"/>
@@ -116,7 +115,6 @@
           <label class="label" for="youtube"></label>
         </div>
         <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
-        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
       <div class="box">
         <Icon name="material-symbols:emoticon" class="Icon"/>
@@ -126,7 +124,6 @@
           <label class="label" for="discord"></label>
         </div>
         <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
-        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
       <div class="box">
         <Icon name="material-symbols:emoticon" class="Icon"/>
@@ -136,7 +133,6 @@
           <label class="label" for="btc"></label>
         </div>
         <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
-        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
       <div class="box">
         <Icon name="material-symbols:emoticon" class="Icon"/>
@@ -146,7 +142,6 @@
           <label class="label" for="ethereum"></label>
         </div>
         <a href=""><Icon name="mingcute:delete-3-fill" id="suppr"/></a>
-        <a href=""><Icon name="ic:baseline-edit" id="modif"/></a>
       </div>
     </div>
   </div>
@@ -175,9 +170,9 @@
 .content .links {
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   grid-template-rows: auto;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 80px;
 }
 
@@ -187,6 +182,11 @@
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 20px;
   cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.content .links .box:hover {
+  background-color: var(--spotify);
 }
 
 .content .links .box .Icon {
@@ -218,10 +218,8 @@
   margin-left: 10px;
 }
 
-.content .inputs .box #modif,
 .content .inputs .box #suppr {
   font-size: 18px;
-  /*padding: px;   J'ai comment car y avait que px sans padding donc ca faisais une erreur*/
 }
 
 .content .inputs .box input[type='text'] {
@@ -236,7 +234,7 @@
 }
 
 .content .inputs .box a {
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 5px 10px 5px 10px;
   transition: 0.3s ease;
 }

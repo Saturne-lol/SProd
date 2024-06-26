@@ -127,18 +127,20 @@ if (import.meta.client) {
 
 .profil .infoUser .quote {
   min-height: 30px;
+  white-space: nowrap;
 }
 
 /* TEXT TYPING */
 .profil .infoUser .quote h3::after {
   position: absolute;
   content: "";
-  height: 18px;
+  height: 16px;
   width: 2px;
   background: #fff;
   box-shadow: 0 0 10px #c9c9c9;
   animation: blink 0.7s infinite;
-  margin-top: 5px;
+  margin-top: 4px;
+  margin-left: 3px;
 }
 
 .profil .infoUser .quote h3.stop-blinking::before {
@@ -157,6 +159,8 @@ if (import.meta.client) {
 }
 
 .profil .infoUser .quote h3 {
+  position: absolute;
+  font-size: 110%;
   text-shadow: 0 0 10px #c9c9c9;
 }
 

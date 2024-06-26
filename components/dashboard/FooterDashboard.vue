@@ -21,8 +21,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: var(--dashboard-box-background);
+  border: 1px solid var(--dashboard-border);
   padding: 10px;
   border-radius: 20px;
   margin-top: 30px;
@@ -41,8 +41,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background-color: var(--dashboard-box-background);
+    border: 1px solid var(--dashboard-border);
     padding: 10px;
     border-radius: 20px;
     margin-top: 30px;

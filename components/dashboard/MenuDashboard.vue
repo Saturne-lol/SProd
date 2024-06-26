@@ -85,9 +85,8 @@ const { data } = await useFetch("/api/account/get-nav") as {
 <style scoped>
 .nav {
   border-radius: 40px;
-  background-color: rgba(255, 255, 255, 0.041);
+  background-color: var(--index-background);
   width: max-content;
-  /* Set a fixed width for the navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,9 +96,7 @@ const { data } = await useFetch("/api/account/get-nav") as {
 .nav .background {
   padding: 20px;
   width: 100%;
-  /* Ensure background takes the full width of the navbar */
   height: 100%;
-  /* Ensure background takes the full height of the navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,8 +120,8 @@ const { data } = await useFetch("/api/account/get-nav") as {
 
 .nav .background .links li {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--dashboard-box-background);
+  border: 1px solid var(--nav-background);
   padding: 10px 45px;
   border-radius: 15px;
   margin-bottom: 25px;
@@ -174,8 +171,8 @@ const { data } = await useFetch("/api/account/get-nav") as {
 .nav .background .profil {
   width: 100%;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--dashboard-box-background);
+  border: 1px solid var(--nav-background);
   padding: 20px;
   border-radius: 40px;
 }
@@ -189,7 +186,7 @@ const { data } = await useFetch("/api/account/get-nav") as {
   width: 64px;
   height: auto;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid var(--nav-background);
   margin-right: 10px;
 }
 

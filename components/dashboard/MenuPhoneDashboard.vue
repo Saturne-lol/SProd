@@ -44,7 +44,7 @@
   .nav2 {
     display: block;
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--index-background);
     padding: 10px;
   }
 
@@ -61,7 +61,7 @@
   }
 
   .nav2 .links ul li:hover {
-    background-color: rgba(255, 255, 255, 0.041);
+    background-color: var(--index-background);
     border-radius: 20px;
   }
 
