@@ -291,7 +291,7 @@ onMounted(() => {
 #body {
   width: 100%;
   height: 100vh;
-  color: #fff;
+  color: var(--font-color);
   font-family: 'Poppins', sans-serif;
   user-select: none;
   overflow-x: hidden;
@@ -329,7 +329,7 @@ onMounted(() => {
 }
 
 .background {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--index-background);
 }
 
 /* ----- NAV ----- */
@@ -369,7 +369,7 @@ onMounted(() => {
   content: '';
   width: 0;
   height: 2px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255);
   position: absolute;
   left: 0;
   bottom: -4px;
@@ -381,8 +381,8 @@ onMounted(() => {
 }
 
 .nav button {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--index-background);
+  border: 1px solid var(--index-button-border);
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
   transition: 0.5s ease;
@@ -391,8 +391,8 @@ onMounted(() => {
 }
 
 .nav button:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: var(--index-button-background-hover);
+  border: 1px solid var(--index-button-border-hover);
 }
 
 /* ----- HOME ----- */
@@ -428,8 +428,8 @@ onMounted(() => {
 }
 
 .home .buttons button {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--index-background);
+  border: 1px solid var(--index-button-border);
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
   transition: 0.5s ease;
@@ -438,8 +438,8 @@ onMounted(() => {
 }
 
 .home .buttons button:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: var(--index-button-background-hover);
+  border: 1px solid var(--index-button-border-hover);
 }
 
 .home video {
@@ -511,7 +511,7 @@ onMounted(() => {
 }
 
 .premium .grid .box {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--index-background);
 }
 
 .premium .grid .box .info {
@@ -544,8 +544,8 @@ onMounted(() => {
 }
 
 .premium .grid .box button {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--index-background);
+  border: 1px solid var(--index-button-border);
   padding: 8px 14px 8px 14px;
   border-radius: 10px;
   transition: 0.5s ease;
@@ -556,8 +556,8 @@ onMounted(() => {
 }
 
 .premium .grid .box button:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: var(--index-button-background-hover);
+  border: 1px solid var(--index-button-border-hover);
 }
 
 

@@ -669,8 +669,8 @@ async function uploadBackground(event: any) {
 
 .content .box {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--dashboard-box-background);
+  border: 1px solid var(--dashboard-border);
   border-radius: 20px;
 }
 
@@ -747,8 +747,8 @@ async function uploadBackground(event: any) {
   flex: 1;
   font-size: 80%;
   font-weight: 400;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--dashboard-input-background);
+  border: 1px solid var(--dashboard-border);
   padding: 4px;
   border-radius: 10px;
 }
@@ -762,7 +762,7 @@ async function uploadBackground(event: any) {
 }
 
 .content .box .padding .info #modif:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--dashboard-box-background);
 }
 
 /* --------------------------------------- SWITCH --------------------------------------- */
@@ -850,8 +850,8 @@ async function uploadBackground(event: any) {
   flex-direction: column;
   position: relative;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--dashboard-input-background);
+  border: 1px solid var(--dashboard-border);
   padding: 30px 0 30px 0;
   border-radius: 10px;
   transition: 0.4s ease;
@@ -870,7 +870,7 @@ async function uploadBackground(event: any) {
 }
 
 .content .box .padding .dragDrop .uploadFile:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--dashboard-box-background);
 }
 
 .content .box .padding .dragDrop .uploadFile .icon {
@@ -920,11 +920,11 @@ async function uploadBackground(event: any) {
 }
 
 .content .box .padding .connexion #check {
-  color: #6bc056;
+  color: var(--check);
 }
 
 .content .box .padding .connexion #uncheck {
-  color: #e46969;
+  color: var(--uncheck);
   font-size: 120%;
 }
 
@@ -974,8 +974,8 @@ async function uploadBackground(event: any) {
   flex: 1;
   font-size: 80%;
   font-weight: 400;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--dashboard-input-background);
+  border: 1px solid var(--dashboard-border);
   padding: 4px;
   border-radius: 10px;
 }
@@ -1078,7 +1078,7 @@ async function uploadBackground(event: any) {
 }
 
 #boxClose:hover {
-  background-color: #ffffff73;
+  background-color: var(--dashboard-button-close);
 }
 
 @media screen and (max-width: 1550px) {
@@ -1248,7 +1248,7 @@ async function uploadBackground(event: any) {
 }
 
 #closeModal:hover {
-  background-color: #ffffff73;
+  background-color: var(--dashboard-button-close);
 }
 
 .modal .center {
@@ -1296,8 +1296,8 @@ async function uploadBackground(event: any) {
   width: 100%;
   font-size: 120%;
   font-weight: 400;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: var(--dashboard-input-background);
+  border: 1px solid var(--dashboard-border);
   padding: 4px 12px 4px 12px;
   border-radius: 10px;
   outline: none;
@@ -1306,7 +1306,7 @@ async function uploadBackground(event: any) {
 .modal button {
   width: 25px;
   height: 25px;
-  background-color: rgb(31, 112, 66);
+  background-color: #46c94c;
   border: none;
   border-radius: 5px;
   transition: 0.3s ease;
@@ -1330,7 +1330,7 @@ async function uploadBackground(event: any) {
 }
 
 .modal button:hover {
-  background-color: green;
+  background-color: #35a13a;
 }
 
 .modal button #save {
