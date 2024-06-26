@@ -9,10 +9,10 @@ const data = await getDiscordProfile(url)
   <div class="boxUser">
     <div class="DiscPresence">
       <img :src="data.avatar" alt="" id="ppDiscord">
-      <img src="/public/img/presence/idle.png" alt="" id="discordPresence">
+      <img :src="'/img/presence/'+data.presence+'.png'" alt="" id="discordPresence">
     </div>
     <div class="info">
-      <h3>{{ data.username.slice(0, 20) }}</h3>
+      <h3>{{ data.username.slice(0, 20)}}</h3>
       <div class="status">
         <img v-if="data.emoji" :src="data.emoji" alt="">
         <h4>{{ (data.status ? data.status.slice(0, 24) : '') }}</h4>

@@ -25,6 +25,7 @@ type GlobalProfile = {
 type DiscordProfile = {
     username: string,
     avatar: string,
+    presence: string,
     status: string,
     emoji?: string
 }
