@@ -119,7 +119,7 @@ main {
   right: 0;
   top: 0;
   bottom: 0;
-  filter: brightness(0.5);
+  filter: brightness(0.6);
   z-index: -10;
 }
 
