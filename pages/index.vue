@@ -308,7 +308,7 @@ onMounted(() => {
   top: 0;
   bottom: 0;
   z-index: -1;
-  filter: brightness(0.30);
+  /* filter: brightness(0.30); */
 }
 
 .waveTop {
