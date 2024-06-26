@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     if (quotes.length > 3) return new Response("Too many quotes", {status: 400})
     const analyzed = [] as string[]
     for (const quote of quotes) {
-        if (quote.length > 20) return new Response("Quote too long", {status: 400})
+        // if (quote.length > 20) return new Response("Quote too long", {status: 400})
         if (analyzed.includes(quote)) return new Response("Duplicate", {status: 400})
         analyzed.push(quote)
     }

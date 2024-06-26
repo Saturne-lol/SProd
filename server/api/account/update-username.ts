@@ -2,6 +2,7 @@
 
 import {checkToken} from "~/api/discord";
 import {PrismaClient} from "@prisma/client";
+import {getBlUsername} from "~/api/blacklist";
 
 const prisma = new PrismaClient()
 
@@ -14,7 +15,7 @@ export default defineEventHandler(async (event) => {
 
     const username = (await readBody(event)).data
     if (!username) return new Response("Username is required", {status: 400})
-    // if (getBlUrl().includes(username)) return false
+    if (getBlUsername().includes(username)) return new Response("Username is blacklisted", {status: 400})
 
     if (await prisma.setting.count({
         where: {
@@ -27,7 +28,7 @@ export default defineEventHandler(async (event) => {
             account_id: user.id
         },
         data: {
-            username: username.charAt(0).toUpperCase() + username.slice(1)
+            username
         }
     })
     return new Response("Username updated", {status: 200})
