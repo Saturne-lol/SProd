@@ -114,7 +114,7 @@ onMounted(() => {
         <h1>Why choose Saturne</h1>
         <div class="info">
           <div class="box">
-            <Icon name="ph:magic-wand-fill" class="Icon"/>
+            <Icon name="ph:magic-wand-fill" class="Icon" />
             <h3>FULLY CUSTOMIZABLE</h3>
             <h5>
               Express yourself in a unique way and create a modern,
@@ -122,7 +122,7 @@ onMounted(() => {
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:shield-lock" class="Icon"/>
+            <Icon name="material-symbols:shield-lock" class="Icon" />
             <h3>INSURED PROTECTION</h3>
             <h5>
               Enjoy peace of mind with Saturne.lol's insured protection.
@@ -130,7 +130,7 @@ onMounted(() => {
             </h5>
           </div>
           <div class="box">
-            <Icon name="ph:code-bold" class="Icon"/>
+            <Icon name="ph:code-bold" class="Icon" />
             <h3>DEVELOPMENT</h3>
             <h5>
               Explore Saturne.lol and experience the result of meticulous development.
@@ -138,7 +138,7 @@ onMounted(() => {
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon"/>
+            <Icon name="material-symbols:responsive-layout-outline-rounded" class="Icon" />
             <h3>RESPONSIVE</h3>
             <h5>
               Experience seamless accessibility on any device with Saturne.lol's responsive design.
@@ -146,7 +146,7 @@ onMounted(() => {
             </h5>
           </div>
           <div class="box">
-            <Icon name="ph:globe" class="Icon"/>
+            <Icon name="ph:globe" class="Icon" />
             <h3>COMMUNITY APPROVAL</h3>
             <h5>
               Find out why Saturn.lol is so popular with our community.
@@ -154,7 +154,7 @@ onMounted(() => {
             </h5>
           </div>
           <div class="box">
-            <Icon name="material-symbols:contact-support-rounded" class="Icon"/>
+            <Icon name="material-symbols:contact-support-rounded" class="Icon" />
             <h3>SUPPORT 24/7</h3>
             <h5>
               Saturne provides 24/7 support to ensure that our customers receive
@@ -173,68 +173,68 @@ onMounted(() => {
       <div class="grid">
         <div class="box">
           <div class="info">
-            <Icon name="material-symbols:grass" class="Icon"/>
+            <Icon name="material-symbols:grass" class="Icon" />
             <div class="text">
               <h2>Classic Plan</h2>
               <h3>0.00€ - Lifetime</h3>
             </div>
           </div>
           <p>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Host 24/7<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Static images<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Static bio<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - 3 Linked Social Network<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Number of box : 2<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Amount of profil viewer<br>
           </p>
           <a href="/login"><button>Get Started</button></a>
         </div>
         <div class="box">
           <div class="info">
-            <Icon name="solar:stars-minimalistic-broken" class="Icon"/>
+            <Icon name="solar:stars-minimalistic-broken" class="Icon" />
             <div class="text">
               <h2>Advanced Plan</h2>
               <h3>5.00€ - Lifetime</h3>
             </div>
           </div>
           <p>
-            <Icon name="ion:information" id="info"/>
+            <Icon name="ion:information" id="info" />
             - All previous functions<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Dynamique images<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Dynamique bio<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Number of box : 4<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Premium Badge<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Cursor Effect <br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Customizable font<br>
           </p>
           <a href=""><button>Buy Now</button></a>
         </div>
         <div class="box">
           <div class="info">
-            <Icon name="basil:diamond-solid" class="Icon"/>
+            <Icon name="basil:diamond-solid" class="Icon" />
             <div class="text">
               <h2>Premium Plan</h2>
               <h3>2.00€/month</h3>
             </div>
           </div>
           <p>
-            <Icon name="ion:information" id="info"/>
+            <Icon name="ion:information" id="info" />
             - All previous functions<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Number of box : 6<br>
-            <Icon name="material-symbols:check" id="check"/>
+            <Icon name="material-symbols:check" id="check" />
             - Host on your own domain (soon)<br>
           </p>
           <a href=""><button>Buy Now</button></a>
@@ -249,19 +249,19 @@ onMounted(() => {
         <h1>Trusted by the community</h1>
         <div class="grid">
           <UCarousel v-slot="{ item }" :items="vouch" :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3' }"
-                     class="rounded-lg overflow-hidden" ref="carouselRef">
+            class="rounded-lg overflow-hidden" ref="carouselRef">
             <div class="box">
               <div class="info">
-                <img :src="'/img/landing/'+item.avatar" alt="">
+                <img :src="'/img/landing/' + item.avatar" alt="">
                 <div class="text">
                   <h2>{{ item.username }}</h2>
                   <h3>{{ item.quote }}</h3>
                 </div>
               </div>
               <p>
-                <Icon name="bxs:quote-alt-left"/>
+                <Icon name="bxs:quote-alt-left" />
                 {{ item.avis }}
-                <Icon name="bxs:quote-alt-right"/>
+                <Icon name="bxs:quote-alt-right" />
               </p>
             </div>
           </UCarousel>
@@ -752,6 +752,11 @@ onMounted(() => {
     font-size: 80%;
     margin: 10px;
   }
+
+  .waveTop,
+  .waveBottom {
+    height: 100px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -792,6 +797,20 @@ onMounted(() => {
   .footer .links a {
     font-size: 80%;
     margin: 10px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .waveTop,
+  .waveBottom {
+    height: 80px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .waveTop,
+  .waveBottom {
+    height: 70px;
   }
 }
 </style>
