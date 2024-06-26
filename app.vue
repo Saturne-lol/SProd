@@ -1,10 +1,8 @@
 <script setup lang="ts">
-//log for all page components
 
 </script>
 
 <template>
-  <NuxtLoadingIndicator color="#000"/>
   <NuxtLayout>
     <NuxtPage/>
   </NuxtLayout>

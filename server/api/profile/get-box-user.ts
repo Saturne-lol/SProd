@@ -26,6 +26,7 @@ export default defineEventHandler(async (event) => {
     return {
         avatar: member.avatar || "https://cdn.saturne.lol/file/profile/nooo.png",
         username: member.displayName || "Invalid username",
+        presence: member.presence || "offline",
         status: member?.activity?.text
             ? (member?.activity?.emoji
                 ? (member.activity.emoji.includes("https")

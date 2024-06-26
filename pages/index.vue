@@ -16,16 +16,16 @@ useSeoMeta({
 
 const vouch = [
   {
-    username: "VOUCHER NAME",
-    avatar: "saturne.png",
-    quote: "Information about the voucher",
-    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+    username: "Lyess",
+    avatar: "lyess.png",
+    quote: "Beta tester",
+    avis: "In writing..."
   },
   {
-    username: "VOUCHER NAME",
-    avatar: "saturne.png",
-    quote: "Information about the voucher",
-    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+    username: "Ace",
+    avatar: "ace.jpg",
+    quote: "Beta tester",
+    avis: "Je recommande vivement Saturne pour la création de portfolios pour Discord. Leurs services sont d'une qualité exceptionnelle, rapides, abordables et entièrement personnalisables selon vos besoins. Si vous cherchez un portfolio unique et personnalisable, Saturne est le choix parfait !"
   },
   {
     username: "VOUCHER NAME",
@@ -252,7 +252,7 @@ onMounted(() => {
             class="rounded-lg overflow-hidden" ref="carouselRef">
             <div class="box">
               <div class="info">
-                <img :src="'/img/landing/' + item.avatar" alt="">
+                <img :src="'/img/landing/vouch/' + item.avatar" alt="">
                 <div class="text">
                   <h2>{{ item.username }}</h2>
                   <h3>{{ item.quote }}</h3>
