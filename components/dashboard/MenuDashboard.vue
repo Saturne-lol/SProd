@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
+import CustomizeSoon from '~/components/customize/CustomizeSoon.vue';
 
 const { data } = await useFetch("/api/account/get-nav") as {
   data: Ref<{
@@ -29,30 +30,21 @@ const { data } = await useFetch("/api/account/get-nav") as {
             </a>
           </li>
           <li>
-            <div class="soon">
-              <img src="/public/img/loading.gif" alt="">
-              <h1>SOON . . .</h1>
-            </div>
+            <CustomizeSoon class="soon"/>
             <a href="/dashboard/links">
               <Icon name="ph:link-simple-bold" class="Icon" />
               YOUR LINKS
             </a>
           </li>
           <li>
-            <div class="soon">
-              <img src="/public/img/loading.gif" alt="">
-              <h1>SOON . . .</h1>
-            </div>
+            <CustomizeSoon class="soon"/>
             <a href="/dashboard/stats">
               <Icon name="ion:stats-chart" class="Icon" />
               YOUR STATS
             </a>
           </li>
           <li>
-            <div class="soon">
-              <img src="/public/img/loading.gif" alt="">
-              <h1>SOON . . .</h1>
-            </div>
+            <CustomizeSoon class="soon"/>
             <a href="/dashboard/contact">
               <Icon name="material-symbols:alternate-email-rounded" class="Icon" />
               CONTACT US
@@ -91,6 +83,11 @@ const { data } = await useFetch("/api/account/get-nav") as {
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+}
+
+.soon {
+  font-size: 80%;
+  
 }
 
 .nav .background {
@@ -133,40 +130,6 @@ const { data } = await useFetch("/api/account/get-nav") as {
 .nav .background .links .Icon {
   margin-right: 20px;
 }
-
-
-
-
-
-
-
-
-.nav .background .links .soon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  backdrop-filter: blur(3px);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center
-}
-
-.nav .background .links .soon h1 {
-  font-size: 120%;
-  font-weight: 700;
-  text-shadow: 0 0 25px #000000;
-}
-
-.nav .background .links .soon img {
-  margin-right: 10px;
-  width: 20px;
-  height: 20px;
-}
-
 
 .nav .background .profil {
   width: 100%;
