@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
-import CustomizeSoon from '~/components/customize/CustomizeSoon.vue';
+import CustomizeSoon from "~/components/dashboard/customize/CustomizeSoon.vue";
 
 const { data } = await useFetch("/api/account/get-nav") as {
   data: Ref<{

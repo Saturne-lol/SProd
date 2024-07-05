@@ -1,6 +1,7 @@
 import badgesData from "~/api/badgesData";
 import {PlanEnum, PrismaClient} from "@prisma/client";
 import axios from "axios";
+import {arrayLengthGreaterThanOrEqual} from "@sapphire/shapeshift";
 
 const prisma = new PrismaClient()
 
@@ -37,10 +38,12 @@ export default defineEventHandler(async (event) => {
         }
     }))?.account_id
     badges.push("member")
-
+    
     await axios.get(`https://bot.saturne.lol/member/${userID}`).then((res) => {
         if (res.status !== 200) return
         if (res.data.roles.includes("1129015872837652521")) badges.push("booster")
+    }).catch(() => {
+        return
     })
 
     if (plan?.plan === PlanEnum.PREMIUM) badges.push("premium1")

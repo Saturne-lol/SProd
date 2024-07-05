@@ -1,11 +1,24 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-  openModal: Function,
-  closeModal: Function,
-  singleModalAction: Function,
-  activeModal: String
-});
+let username = await dashboard.customize.get.username();
+const usernameInput = ref("");
+const usernameVisible = ref(false);
+
+function updateUsername() {
+  if (!usernameVisible.value) return;
+  dashboard.customize.set.username(usernameInput.value).then(async (r) => {
+    usernameVisible.value = false;
+    if (!r) return usernameInput.value = "";
+    username = usernameInput.value;
+    usernameInput.value = "";
+  });
+}
+
+if (import.meta.client) {
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") usernameVisible.value = false;
+    if (e.key === "Enter") updateUsername();
+  });
+}
 </script>
 
 <template>
@@ -13,24 +26,25 @@ defineProps({
     <div class="box">
       <div class="padding">
         <div class="title">
-          <Icon name="ph:planet-fill" class="Icon" />
-          <h3>DOMAINE AND PSEUDO</h3>
+          <Icon name="ph:person-arms-spread-fill" class="Icon"/>
+          <h3>DISPLAY NAME</h3>
         </div>
         <div class="info">
-          <h4>saturne.lol/{{ data.url }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('url')" />
+          <h4>{{ username }}</h4>
+          <Icon name="ic:baseline-edit" id="modif" @click="usernameVisible = true"/>
         </div>
       </div>
     </div>
-    <div class="modal" v-if="activeModal === 'url'">
+    <div class="modal" v-if="usernameVisible">
       <div class="center">
         <div class="content1input">
-          <Icon name="maki:cross" id="closeModal" @click="closeModal" />
-          <Icon name="ph:planet-fill" class="Icon" />
+          <Icon name="maki:cross" id="closeModal" @click="usernameVisible = false"/>
+          <Icon name="ph:person-arms-spread-fill" class="Icon"/>
           <h5>-</h5>
-          <input type="text" placeholder="Enter a url" id="singleModalInput" maxlength="60" />
-          <button @click="singleModalAction">
-            <Icon name="material-symbols:check" id="save" />
+          <input type="text" placeholder="Enter a username" id="singleModalInput" maxlength="60"
+                 v-model="usernameInput"/>
+          <button @click="updateUsername">
+            <Icon name="material-symbols:check" id="save"/>
           </button>
         </div>
       </div>

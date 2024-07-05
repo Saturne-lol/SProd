@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="nav2">
@@ -8,25 +6,25 @@
       <ul>
         <li>
           <a href="/dashboard/customize">
-            <Icon name="fa6-solid:paintbrush" class="Icon" />
+            <Icon name="fa6-solid:paintbrush" class="Icon"/>
             <h5>CUSTOMIZE</h5>
           </a>
         </li>
         <li>
           <a href="/dashboard/links">
-            <Icon name="ph:link-simple-bold" class="Icon" />
+            <Icon name="ph:link-simple-bold" class="Icon"/>
             <h5>YOUR LINKS</h5>
           </a>
         </li>
         <li>
           <a href="/dashboard/stats">
-            <Icon name="ion:stats-chart" class="Icon" />
+            <Icon name="ion:stats-chart" class="Icon"/>
             <h5>YOUR STATS</h5>
           </a>
         </li>
         <li>
           <a href="/dashboard/contact">
-            <Icon name="material-symbols:alternate-email-rounded" class="Icon" />
+            <Icon name="material-symbols:alternate-email-rounded" class="Icon"/>
             <h5>CONTACT US</h5>
           </a>
         </li>

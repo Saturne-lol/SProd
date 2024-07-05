@@ -1,27 +1,32 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
-import { $fetch } from "ofetch";
+import type {Ref} from "vue";
+import {$fetch} from "ofetch";
 
-import CustomizeBox1 from '~/components/customize/CustomizeBox1.vue';
-import CustomizeBox2 from '~/components/customize/CustomizeBox2.vue';
-import CustomizeBox3 from '~/components/customize/CustomizeBox3.vue';
-import CustomizeBox4 from '~/components/customize/CustomizeBox4.vue';
-import CustomizeBox5 from '~/components/customize/CustomizeBox5.vue';
-import CustomizeBox6 from '~/components/customize/CustomizeBox6.vue';
-import CustomizeBox7 from '~/components/customize/CustomizeBox7.vue';
-import CustomizeBox8 from '~/components/customize/CustomizeBox8.vue';
-import CustomizeBox9 from '~/components/customize/CustomizeBox9.vue';
-import CustomizeBox10 from '~/components/customize/CustomizeBox10.vue';
-import CustomizeBox11 from '~/components/customize/CustomizeBox11.vue';
-import CustomizeBox12 from '~/components/customize/CustomizeBox12.vue';
-import CustomizeBox13 from '~/components/customize/CustomizeBox13.vue';
-import CustomizeBox14 from '~/components/customize/CustomizeBox14.vue';
-import CustomizeBox15 from '~/components/customize/CustomizeBox15.vue';
-import CustomizeBox16 from '~/components/customize/CustomizeBox16.vue';
-import CustomizeBox17 from '~/components/customize/CustomizeBox17.vue';
-import CustomizeBox18 from '~/components/customize/CustomizeBox18.vue';
-import CustomizeBox19 from '~/components/customize/CustomizeBox19.vue';
-import CustomizeBox20 from '~/components/customize/CustomizeBox20.vue';
+import CustomizeBox1 from '~/components/dashboard/customize/CustomizeBox1.vue';
+import CustomizeBox2 from '~/components/dashboard/customize/CustomizeBox2.vue';
+import CustomizeBox3 from '~/components/dashboard/customize/CustomizeBox3.vue';
+import CustomizeBox4 from '~/components/dashboard/customize/CustomizeBox4.vue';
+import CustomizeBox5 from '~/components/dashboard/customize/CustomizeBox5.vue';
+import CustomizeBox6 from '~/components/dashboard/customize/CustomizeBox6.vue';
+import CustomizeBox7 from '~/components/dashboard/customize/CustomizeBox7.vue';
+import CustomizeBox8 from '~/components/dashboard/customize/CustomizeBox8.vue';
+import CustomizeBox9 from '~/components/dashboard/customize/CustomizeBox9.vue';
+import CustomizeBox10 from '~/components/dashboard/customize/CustomizeBox10.vue';
+import CustomizeBox11 from '~/components/dashboard/customize/CustomizeBox11.vue';
+import CustomizeBox12 from '~/components/dashboard/customize/CustomizeBox12.vue';
+import CustomizeBox13 from '~/components/dashboard/customize/CustomizeBox13.vue';
+import CustomizeBox14 from '~/components/dashboard/customize/CustomizeBox14.vue';
+import CustomizeBox15 from '~/components/dashboard/customize/CustomizeBox15.vue';
+import CustomizeBox16 from '~/components/dashboard/customize/CustomizeBox16.vue';
+import CustomizeBox17 from '~/components/dashboard/customize/CustomizeBox17.vue';
+import CustomizeBox18 from '~/components/dashboard/customize/CustomizeBox18.vue';
+import CustomizeBox19 from '../../components/dashboard/customize/CustomizeBox19.vue';
+import CustomizeBox20 from '../../components/dashboard/customize/CustomizeBox20.vue';
+
+// const components = {} as Record<string, () => Promise<any>>
+// for (let i = 1; i < 21; i++) {
+//   components[`CustomizeBox${i}`] = defineAsyncComponent(() => import(`~/components/customize/CustomizeBox${i}.vue`))
+// }
 
 interface Customize {
   data: Ref<{
@@ -44,9 +49,9 @@ interface Customize {
 
 const colorList = ["Color box", "Box outline colors", "Profile outline color", "Icon color"]
 
-let { data } = await useFetch("/api/account/get-customize", { server: true }) as Customize
+let {data} = await useFetch("/api/account/get-customize", {server: true}) as Customize
 for (let i = 0; i < 5; i++) {
-  if (!data.value.discord[i]) data.value.discord[i] = { invite: "", index: i }
+  if (!data.value.discord[i]) data.value.discord[i] = {invite: "", index: i}
 }
 data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
 
@@ -74,7 +79,7 @@ function singleModalAction() {
   data.value[dataType] = dataIn
   $fetch(`/api/account/update-${dataType}`, {
     method: "POST",
-    body: JSON.stringify({ data: dataIn })
+    body: JSON.stringify({data: dataIn})
   }).then(() => {
     useToast().add({
       title: "Success",
@@ -140,10 +145,10 @@ function actionModalDiscord() {
   const lastValue = data.value?.discord[index]?.invite || ""
   closeModal()
 
-  data.value.discord[index] = { invite, index }
+  data.value.discord[index] = {invite, index}
   $fetch("/api/account/update-discord", {
     method: "POST",
-    body: JSON.stringify({ index, invite })
+    body: JSON.stringify({index, invite})
   }).then(() => {
     useToast().add({
       title: "Success",
@@ -152,7 +157,7 @@ function actionModalDiscord() {
       icon: "i-material-symbols-check", //@TODO fix icon
     })
   }).catch((e) => {
-    data.value.discord[index] = { invite: lastValue, index }
+    data.value.discord[index] = {invite: lastValue, index}
     useToast().add({
       title: e.response.statusText,
       description: e.response._data,
@@ -166,7 +171,7 @@ function viewState() {
   const view = (document.getElementById("view") as HTMLInputElement)?.checked;
   $fetch("/api/account/update-view", {
     method: "POST",
-    body: JSON.stringify({ view })
+    body: JSON.stringify({view})
   })
 }
 
@@ -187,7 +192,7 @@ if (import.meta.client) {
   if (singleModalAction) {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
-        if (["url", "username", "bio", "enter"].includes(activeModal.value)) return singleModalAction()
+        if (["bio", "enter"].includes(activeModal.value)) return singleModalAction()
         if (activeModal.value === "quotes") return actionModalQuotes()
       }
       if (e.key === "Escape") return closeModal()
@@ -285,26 +290,34 @@ async function uploadBackground(event: any) {
 
 <template>
   <div class="content">
-    <CustomizeBox1 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction" :activeModal="activeModal" id="customizeBox1" />
-    <CustomizeBox2 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction" :activeModal="activeModal" id="customizeBox2" />
-    <CustomizeBox3 :data="data" :openModal="openModal" :closeModal="closeModal" :actionModalQuotes="actionModalQuotes" :activeModal="activeModal" id="customizeBox3" />
-    <CustomizeBox4 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction" :activeModal="activeModal" id="customizeBox4" />
-    <CustomizeBox5 :data="data" :uploadPdp="uploadPdp" id="customizeBox5" />
-    <CustomizeBox6 :uploadCursor="uploadCursor" id="customizeBox6" />
-    <CustomizeBox7 id="customizeBox7" />
-    <CustomizeBox8 :uploadBackground="uploadBackground" id="customizeBox8" />
-    <CustomizeBox9 :data="data" id="customizeBox9" />
-    <CustomizeBox10 :data="data" :openModal="openModal" :closeModal="closeModal" :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox10" />
-    <CustomizeBox11 :data="data" :openModal="openModal" :closeModal="closeModal" :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox11" />
-    <CustomizeBox12 :data="data" :openModal="openModal" :closeModal="closeModal" :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox12" />
-    <CustomizeBox13 :data="data" :openModal="openModal" :closeModal="closeModal" :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox13" />
-    <CustomizeBox14 :data="data" :openModal="openModal" :closeModal="closeModal" :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox14" />
-    <CustomizeBox15 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction" :activeModal="activeModal" id="customizeBox15" />
-    <CustomizeBox16 :data="data" :viewState="viewState" id="customizeBox16" />
-    <CustomizeBox17 id="customizeBox17" />
-    <CustomizeBox18 :data="data" id="customizeBox18" />
-    <CustomizeBox19 :data="data" :updateColor="updateColor" id="customizeBox19" />
-    <CustomizeBox20 id="customizeBox20" />
+    <CustomizeBox1 id="customizeBox1"/>
+    <CustomizeBox2 id="customizeBox2"/>
+    <CustomizeBox3 :data="data" :openModal="openModal" :closeModal="closeModal" :actionModalQuotes="actionModalQuotes"
+                   :activeModal="activeModal" id="customizeBox3"/>
+    <CustomizeBox4 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction"
+                   :activeModal="activeModal" id="customizeBox4"/>
+    <CustomizeBox5 :data="data" :uploadPdp="uploadPdp" id="customizeBox5"/>
+    <CustomizeBox6 :uploadCursor="uploadCursor" id="customizeBox6"/>
+    <CustomizeBox7 id="customizeBox7"/>
+    <CustomizeBox8 :uploadBackground="uploadBackground" id="customizeBox8"/>
+    <CustomizeBox9 :data="data" id="customizeBox9"/>
+    <CustomizeBox10 :data="data" :openModal="openModal" :closeModal="closeModal"
+                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox10"/>
+    <CustomizeBox11 :data="data" :openModal="openModal" :closeModal="closeModal"
+                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox11"/>
+    <CustomizeBox12 :data="data" :openModal="openModal" :closeModal="closeModal"
+                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox12"/>
+    <CustomizeBox13 :data="data" :openModal="openModal" :closeModal="closeModal"
+                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox13"/>
+    <CustomizeBox14 :data="data" :openModal="openModal" :closeModal="closeModal"
+                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox14"/>
+    <CustomizeBox15 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction"
+                    :activeModal="activeModal" id="customizeBox15"/>
+    <CustomizeBox16 :data="data" :viewState="viewState" id="customizeBox16"/>
+    <CustomizeBox17 id="customizeBox17"/>
+    <CustomizeBox18 :data="data" id="customizeBox18"/>
+    <CustomizeBox19 :data="data" :updateColor="updateColor" id="customizeBox19"/>
+    <CustomizeBox20 id="customizeBox20"/>
   </div>
 </template>
 
