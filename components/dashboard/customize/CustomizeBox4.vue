@@ -1,40 +1,45 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-  openModal: Function,
-  closeModal: Function,
-  actionModalDiscord: Function,
-  activeModal: String
-});
+let bio = await dashboard.customize.get.bio();
+const bioVisible = ref(false);
+
+function updateBio() {
+  if (!bioVisible.value) return;
+  dashboard.customize.set.bio(bio).then(async (r) => {
+    bioVisible.value = false;
+  });
+}
+
+if (import.meta.client) {
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") bioVisible.value = false;
+    if (e.key === "Enter") updateBio();
+  });
+}
 </script>
 
 <template>
   <div>
     <div class="box">
-      <div class="premium" v-if="data.plan < 1">
-        <h1>Premium</h1>
-        <h2>Emplacement de serveur</h2>
-      </div>
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon" />
-          <h3>BOX N°2 (SERVER)</h3>
+          <Icon name="pajamas:information" class="Icon"/>
+          <h3>DESCRIPTION</h3>
         </div>
         <div class="info">
-          <h4>discord.gg/{{ data?.discord[1]?.invite || "" }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('1_discord')" />
+          <h4>{{ bio }}</h4>
+          <Icon name="ic:baseline-edit" id="modif" @click="bioVisible = true"/>
         </div>
       </div>
     </div>
-    <div class="modal" v-if="activeModal === '1_discord'">
+    <div class="modal" v-if="bioVisible">
       <div class="center">
         <div class="content1input">
-          <Icon name="maki:cross" id="closeModal" @click="closeModal" />
-          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <Icon name="maki:cross" id="closeModal" @click="bioVisible = false"/>
+          <Icon name="pajamas:information" class="Icon"/>
           <h5>-</h5>
-          <input type="text" placeholder="discord.gg/" id="discordModalInput" maxlength="60" />
-          <button @click="actionModalDiscord">
-            <Icon name="material-symbols:check" id="save" />
+          <input type="text" placeholder="Enter a bio" id="singleModalInput" maxlength="60" v-model="bio"/>
+          <button @click="updateBio">
+            <Icon name="material-symbols:check" id="save"/>
           </button>
         </div>
       </div>
@@ -48,27 +53,6 @@ defineProps({
   background-color: var(--dashboard-box-background);
   border: 1px solid var(--dashboard-border);
   border-radius: 20px;
-}
-
-.premium {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  backdrop-filter: blur(3px);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.premium h1 {
-  font-size: 150%;
-  font-weight: 700;
-  text-shadow: 0 0 25px #000000;
 }
 
 .padding {

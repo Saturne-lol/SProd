@@ -1,11 +1,24 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-  openModal: Function,
-  closeModal: Function,
-  singleModalAction: Function,
-  activeModal: String
-});
+let url = await dashboard.customize.get.url();
+const urlInput = ref("");
+const urlVisible = ref(false);
+
+function updateUrl() {
+  if (!urlVisible.value) return;
+  dashboard.customize.set.url(urlInput.value).then(async (r) => {
+    urlVisible.value = false;
+    if (!r) return urlInput.value = "";
+    url = urlInput.value;
+    urlInput.value = "";
+  });
+}
+
+if (import.meta.client) {
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") urlVisible.value = false;
+    if (e.key === "Enter") updateUrl();
+  });
+}
 </script>
 
 <template>
@@ -13,24 +26,24 @@ defineProps({
     <div class="box">
       <div class="padding">
         <div class="title">
-          <Icon name="pajamas:information" class="Icon" />
-          <h3>DESCRIPTION</h3>
+          <Icon name="ph:planet-fill" class="Icon"/>
+          <h3>DOMAINE AND PSEUDO</h3>
         </div>
         <div class="info">
-          <h4>{{ data.bio }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('bio')" />
+          <h4>saturne.lol/{{ url }}</h4>
+          <Icon name="ic:baseline-edit" id="modif" @click="urlVisible = true"/>
         </div>
       </div>
     </div>
-    <div class="modal" v-if="activeModal === 'bio'">
+    <div class="modal" v-if="urlVisible">
       <div class="center">
         <div class="content1input">
-          <Icon name="maki:cross" id="closeModal" @click="closeModal" />
-          <Icon name="pajamas:information" class="Icon" />
+          <Icon name="maki:cross" id="closeModal" @click="urlVisible = false"/>
+          <Icon name="ph:planet-fill" class="Icon"/>
           <h5>-</h5>
-          <input type="text" placeholder="Enter a bio" id="singleModalInput" maxlength="60" />
-          <button @click="singleModalAction">
-            <Icon name="material-symbols:check" id="save" />
+          <input type="text" placeholder="Enter a url" id="singleModalInput" maxlength="60" v-model="urlInput"/>
+          <button @click="updateUrl">
+            <Icon name="material-symbols:check" id="save"/>
           </button>
         </div>
       </div>

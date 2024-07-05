@@ -1,24 +1,23 @@
 <script setup lang="ts">
-import CustomizeSoon from '~/components/customize/CustomizeSoon.vue';
-
+import CustomizeSoon from '@/components/dashboard/customize/CustomizeSoon.vue';
 </script>
 
 <template>
   <div>
     <div class="box">
-      <CustomizeSoon />
+      <CustomizeSoon title="Soon audio" icon/>
       <div class="padding">
         <div class="title">
-          <Icon name="fluent:speaker-24-filled" class="Icon" />
+          <Icon name="fluent:speaker-24-filled" class="Icon"/>
           <h3>AUDIO</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="audio">
             <a href="">
-              <Icon name="maki:cross" id="boxClose" />
+              <Icon name="maki:cross" id="boxClose"/>
             </a>
             <div class="icon">
-              <Icon name="fluent:speaker-24-filled" class="Icon" />
+              <Icon name="fluent:speaker-24-filled" class="Icon"/>
             </div>
             <div class="text">
               <span>Click to upload audio</span>

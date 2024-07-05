@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CustomizeSoon from '~/components/customize/CustomizeSoon.vue';
+import CustomizeSoon from '@/components/dashboard/customize/CustomizeSoon.vue';
 
 </script>
 

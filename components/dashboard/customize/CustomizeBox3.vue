@@ -1,11 +1,20 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-  openModal: Function,
-  closeModal: Function,
-  actionModalQuotes: Function,
-  activeModal: String
-});
+let quotes = await dashboard.customize.get.quotes();
+const quotesVisible = ref(false);
+
+function updateQuotes() {
+  if (!quotesVisible.value) return;
+  dashboard.customize.set.quotes(quotes).then(async (r) => {
+    quotesVisible.value = false;
+  });
+}
+
+if (import.meta.client) {
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") quotesVisible.value = false;
+    if (e.key === "Enter") updateQuotes();
+  });
+}
 </script>
 
 <template>
@@ -13,27 +22,26 @@ defineProps({
     <div class="box">
       <div class="padding">
         <div class="title">
-          <Icon name="fa6-solid:quote-left" class="Icon" />
+          <Icon name="fa6-solid:quote-left" class="Icon"/>
           <h3>QUOTES</h3>
         </div>
         <div class="info">
           <h4>QUOTES SATURNE</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('quotes')" />
+          <Icon name="ic:baseline-edit" id="modif" @click="quotesVisible = true"/>
         </div>
       </div>
     </div>
-    <div class="modal" v-if="activeModal === 'quotes'">
+    <div class="modal" v-if="quotesVisible">
       <div class="center">
         <div class="content3inputs">
-          <Icon name="maki:cross" id="closeModal" @click="closeModal" />
+          <Icon name="maki:cross" id="closeModal" @click="quotesVisible = false"/>
           <div v-for="i in 3" :key="i">
-            <Icon name="fa6-solid:quote-left" class="Icon" v-if="data.quotes[i - 1]" />
-            <h5 v-if="data.quotes[i - 1]">-</h5>
-            <input type="text" placeholder="Enter a quote" :id="'q' + i"
-              :value="data.quotes[i - 1] ? data.quotes[i - 1] : ''" />
+            <Icon name="fa6-solid:quote-left" class="Icon"/>
+            <h5>-</h5>
+            <input type="text" placeholder="Enter a quote" :id="'q' + i" v-model="quotes[i - 1]"/>
           </div>
           <button>
-            <Icon name="material-symbols:check" id="save" @click="actionModalQuotes" />
+            <Icon name="material-symbols:check" id="save" @click="updateQuotes"/>
           </button>
         </div>
       </div>

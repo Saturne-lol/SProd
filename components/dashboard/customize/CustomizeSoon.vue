@@ -1,14 +1,14 @@
 <script setup lang="ts">
 defineProps({
-  title: String,
-  icon: String
+  title: String || undefined,
+  icon: Boolean || undefined
 });
 </script>
 
 <template>
   <div class="soon">
-    <img src="/public/img/loading.gif" alt="">
-    <h1>SOON . . .</h1>
+    <img src="/img/loading.gif" alt="" v-if="(icon || true)"/>
+    <h1>{{ title || "Soon . . ." }}</h1>
   </div>
 </template>
 

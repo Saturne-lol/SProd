@@ -3,7 +3,7 @@ defineProps({
   data: Object,
   openModal: Function,
   closeModal: Function,
-  singleModalAction: Function,
+  actionModalDiscord: Function,
   activeModal: String
 });
 </script>
@@ -13,23 +13,23 @@ defineProps({
     <div class="box">
       <div class="padding">
         <div class="title">
-          <Icon name="ph:person-arms-spread-fill" class="Icon" />
-          <h3>DISPLAY NAME</h3>
+          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <h3>BOX N°2 (SERVER)</h3>
         </div>
         <div class="info">
-          <h4>{{ data.username }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('username')" />
+          <h4>discord.gg/{{ data?.discord[1]?.invite || "" }}</h4>
+          <Icon name="ic:baseline-edit" id="modif" @click="openModal('1_discord')" />
         </div>
       </div>
     </div>
-    <div class="modal" v-if="activeModal === 'username'">
+    <div class="modal" v-if="activeModal === '1_discord'">
       <div class="center">
         <div class="content1input">
           <Icon name="maki:cross" id="closeModal" @click="closeModal" />
-          <Icon name="ph:person-arms-spread-fill" class="Icon" />
+          <Icon name="akar-icons:discord-fill" class="Icon" />
           <h5>-</h5>
-          <input type="text" placeholder="Enter a username" id="singleModalInput" maxlength="60" />
-          <button @click="singleModalAction">
+          <input type="text" placeholder="discord.gg/" id="discordModalInput" maxlength="60" />
+          <button @click="actionModalDiscord">
             <Icon name="material-symbols:check" id="save" />
           </button>
         </div>
@@ -44,6 +44,27 @@ defineProps({
   background-color: var(--dashboard-box-background);
   border: 1px solid var(--dashboard-border);
   border-radius: 20px;
+}
+
+.premium {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  backdrop-filter: blur(3px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.premium h1 {
+  font-size: 150%;
+  font-weight: 700;
+  text-shadow: 0 0 25px #000000;
 }
 
 .padding {
