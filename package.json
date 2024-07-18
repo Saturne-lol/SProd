@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@nuxt/ui": "^2.17.0",
-    "@nuxtjs/robots": "^3.0.0",
+    "@nuxtjs/robots": "^4.0.1",
     "@prisma/client": "^5.17.0",
     "axios": "^1.7.2",
     "discord-webhook-node": "^1.1.8",
