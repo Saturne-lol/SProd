@@ -22,9 +22,17 @@ export const bio = async (): Promise<string> => {
     })).data.value as { bio: string }).bio
 }
 
+export const invite = async  (i: number): Promise<string> => {
+    return ((await useFetch(`/api/dashboard/customize/get-discord-server`, {
+        query: {index: i},
+        server: true
+    })).data.value as { invite: string }).invite
+}
+
 export default {
     username: () => username(),
     url: () => url(),
     quotes: () => quotes(),
-    bio: () => bio()
+    bio: () => bio(),
+    invite: (i: number) => invite(i)
 }

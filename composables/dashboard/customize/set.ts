@@ -57,10 +57,25 @@ export const bio = async (bio: string): Promise<boolean> => {
     })
 }
 
+export const invite = async (i: number, invite: string): Promise<boolean> => {
+    return await $fetch(`/api/dashboard/customize/set-discord-server`, {
+        method: "POST",
+        body: JSON.stringify({index: i, invite}),
+        server: true
+    }).then(() => {
+        success("Invite set")
+        return true
+    }).catch(e => {
+        error(e)
+        return false
+    })
+}
+
 
 export default {
     url: (urlS: string) => url(urlS),
     username: (usernameS: string) => username(usernameS),
     quotes: (quotesS: string[]) => quotes(quotesS),
-    bio: (bioS: string) => bio(bioS)
+    bio: (bioS: string) => bio(bioS),
+    invite: (i: number, inviteS: string) => invite(i, inviteS)
 }
