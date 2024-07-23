@@ -8,13 +8,11 @@ if (process.client) {
   fetch(`/api/auth/code?code=${code}&redirect_uri=${redirect_uri}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log("code :", res?.code)
         if (!res?.code) return console.log("Erreur discord")
 
         const token = res?.token;
         if (!token) return console.log("Erreur pas de token")
 
-        console.log("token :", res?.token)
         document.cookie = `token=${token}; path=/`
         window.location.href = '/dashboard/customize'
       });
