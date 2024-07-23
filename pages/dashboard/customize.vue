@@ -51,8 +51,6 @@ for (let i = 0; i < 5; i++) {
 }
 data.value.discord = data.value.discord.sort((a, b) => a.index - b.index)
 
-console.log(data.value.linked)
-
 const activeModal = ref("") as Ref<string>
 
 function openModal(modal: string) {
@@ -199,7 +197,6 @@ if (import.meta.client) {
 function updateColor(event: any, i: number) {
   const lastColor = data.value.colors[i]
   data.value.colors[i] = event
-  console.log(data.value.colors)
   $fetch("/api/account/update-colors", {
     method: "POST",
     body: JSON.stringify(data.value.colors)
@@ -234,16 +231,14 @@ async function uploadPdp(event: any) {
   $fetch(uploadUrl, {
     method: "POST",
     body: formData
-  }).then((r) => {
-    console.log(r)
+  }).then(() => {
     useToast().add({
       title: "Success",
       description: "Your profile picture has been updated",
       color: "green",
       icon: "i-material-symbols-check", //@TODO fix icon
     })
-  }).catch((e) => {
-    console.log(e)
+  }).catch(() => {
     useToast().add({
       title: "Error",
       description: "An error occurred while updating your profile picture",
