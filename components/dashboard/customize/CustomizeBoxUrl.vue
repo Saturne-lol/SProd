@@ -8,7 +8,7 @@ function updateUrl() {
   dashboard.customize.set.url(urlInput.value).then(async (r) => {
     urlVisible.value = false;
     if (!r) return urlInput.value = "";
-    url = urlInput.value;
+    url = urlInput.value.toLowerCase();
     urlInput.value = "";
   });
 }

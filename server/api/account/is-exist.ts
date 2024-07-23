@@ -8,7 +8,7 @@ const prisma = new PrismaClient()
 // noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
     if (!getCookie(event, "token")) {
-        return sendRedirect(event, '/auth/login')
+        return sendRedirect(event, '/login')
     }
 
     const resDsc = await axios.get("https://discord.com/api/users/@me", {
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
             Authorization: `Bearer ${getCookie(event, "token")}`
         }
     }).catch(() => {
-        return sendRedirect(event, '/auth/login')
+        return sendRedirect(event, '/login')
     })
 
 

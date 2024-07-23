@@ -2,7 +2,6 @@
 import type {Ref} from "vue";
 import {$fetch} from "ofetch";
 
-import CustomizeBox1 from '~/components/dashboard/customize/CustomizeBox1.vue';
 import CustomizeBox2 from '~/components/dashboard/customize/CustomizeBox2.vue';
 import CustomizeBox3 from '~/components/dashboard/customize/CustomizeBox3.vue';
 import CustomizeBox4 from '~/components/dashboard/customize/CustomizeBox4.vue';
@@ -22,11 +21,8 @@ import CustomizeBox17 from '~/components/dashboard/customize/CustomizeBox17.vue'
 import CustomizeBox18 from '~/components/dashboard/customize/CustomizeBox18.vue';
 import CustomizeBox19 from '../../components/dashboard/customize/CustomizeBox19.vue';
 import CustomizeBox20 from '../../components/dashboard/customize/CustomizeBox20.vue';
-
-// const components = {} as Record<string, () => Promise<any>>
-// for (let i = 1; i < 21; i++) {
-//   components[`CustomizeBox${i}`] = defineAsyncComponent(() => import(`~/components/customize/CustomizeBox${i}.vue`))
-// }
+import CustomizeBoxUrl from "~/components/dashboard/customize/CustomizeBoxUrl.vue";
+import CustomizeBoxDiscord from "~/components/dashboard/customize/CustomizeBoxDiscord.vue";
 
 interface Customize {
   data: Ref<{
@@ -290,27 +286,32 @@ async function uploadBackground(event: any) {
 
 <template>
   <div class="content">
-    <CustomizeBox1 id="customizeBox1"/>
+    <CustomizeBoxUrl id="customizeBox1"/>
     <CustomizeBox2 id="customizeBox2"/>
-    <CustomizeBox3 :data="data" :openModal="openModal" :closeModal="closeModal" :actionModalQuotes="actionModalQuotes"
-                   :activeModal="activeModal" id="customizeBox3"/>
-    <CustomizeBox4 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction"
-                   :activeModal="activeModal" id="customizeBox4"/>
+    <CustomizeBox3 id="customizeBox3"/>
+    <CustomizeBox4 id="customizeBox4"/>
     <CustomizeBox5 :data="data" :uploadPdp="uploadPdp" id="customizeBox5"/>
-    <CustomizeBox6 :uploadCursor="uploadCursor" id="customizeBox6"/>
+    <CustomizeBox6 :uploadCursor="null" id="customizeBox6"/>
     <CustomizeBox7 id="customizeBox7"/>
     <CustomizeBox8 :uploadBackground="uploadBackground" id="customizeBox8"/>
+
     <CustomizeBox9 :data="data" id="customizeBox9"/>
-    <CustomizeBox10 :data="data" :openModal="openModal" :closeModal="closeModal"
-                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox10"/>
-    <CustomizeBox11 :data="data" :openModal="openModal" :closeModal="closeModal"
-                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox11"/>
-    <CustomizeBox12 :data="data" :openModal="openModal" :closeModal="closeModal"
-                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox12"/>
-    <CustomizeBox13 :data="data" :openModal="openModal" :closeModal="closeModal"
-                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox13"/>
-    <CustomizeBox14 :data="data" :openModal="openModal" :closeModal="closeModal"
-                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox14"/>
+
+    <CustomizeBoxDiscord v-for="i in 5" :index="i-1" :id="`customizeBox`+(i+9)"/>
+
+
+<!--    <CustomizeBox10 :data="data" :openModal="openModal" :closeModal="closeModal"-->
+<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox10"/>-->
+<!--    <CustomizeBox11 :data="data" :openModal="openModal" :closeModal="closeModal"-->
+<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox11"/>-->
+<!--    <CustomizeBox12 :data="data" :openModal="openModal" :closeModal="closeModal"-->
+<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox12"/>-->
+<!--    <CustomizeBox13 :data="data" :openModal="openModal" :closeModal="closeModal"-->
+<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox13"/>-->
+<!--    <CustomizeBox14 :data="data" :openModal="openModal" :closeModal="closeModal"-->
+<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox14"/>-->
+
+
     <CustomizeBox15 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction"
                     :activeModal="activeModal" id="customizeBox15"/>
     <CustomizeBox16 :data="data" :viewState="viewState" id="customizeBox16"/>
