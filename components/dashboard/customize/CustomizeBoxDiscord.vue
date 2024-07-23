@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import {PlanEnum} from "@prisma/client";
+const PlanEnum = {
+  FREE: "FREE",
+  PREMIUM: "PREMIUM",
+  PREMIUM_PLUS: "PREMIUM_PLUS",
+}
 
 const props = defineProps({
   index: Number,
