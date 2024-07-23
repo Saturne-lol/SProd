@@ -8,8 +8,9 @@ export default defineEventHandler(async (event) => {
     const user = await checkToken(event)
     if (!user) return new Response("Unauthorized", {status: 401})
 
-    const url = (await readBody(event)).url
+    let url = (await readBody(event)).url
     if (!url) return new Response("No URL provided", {status: 400})
+    url = url.toLowerCase()
 
     if (await prisma.setting.count({where: {url: url}}) !== 0) return new Response("URL already set", {status: 400})
     await prisma.setting.update({
