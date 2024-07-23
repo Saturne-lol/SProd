@@ -17,7 +17,7 @@ function updateInvite() {
   dashboard.customize.set.invite(props.index, inputInvite.value).then(async (r) => {
     visibleModal.value = false;
     if (!r) return inputInvite.value = "";
-    invite = inputInvite.value;
+    invite = inputInvite.value.toLowerCase();
     if (invite === "delete_invite") invite = "";
   });
 }
@@ -28,11 +28,6 @@ if (import.meta.client) {
     if (e.key === "Enter") updateInvite();
   });
 }
-
-// function needPremium() {
-//   if (props.index === undefined) return false;
-//   return (props.index > 1 && plan !== PlanEnum.PREMIUM) || (props.index > 2 && plan !== PlanEnum.PREMIUM_PLUS);
-// }
 
 const needPremium = ((props.index ?? -1) > 0 && plan !== PlanEnum.PREMIUM && plan !== PlanEnum.PREMIUM_PLUS) ||
     ((props.index ?? -1) > 2 && plan !== PlanEnum.PREMIUM_PLUS);
