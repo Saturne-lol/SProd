@@ -43,10 +43,10 @@ const views: number = await getViews(url)
     <img :src="'https://cdn.saturne.lol/file/background/'+data.userID" alt="background" id="background">
     <div class="center" v-show="isEnter">
       <div :class="['content', { 'single-box': data.nbDcBoxes === 0 }]" id="content">
-        <Profile/>
-        <UserBox/>
-        <DiscordBox/>
-        <div class="view">
+        <Profile :is-enter="isEnter"/>
+        <UserBox :is-enter="isEnter"/>
+        <DiscordBox :is-enter="isEnter"/>
+        <div class="view" :class="isEnter ? 'slide-enter-left' : ''">
           <h3>
             <Icon name="ic:sharp-remove-red-eye"/>
             - {{ views }}

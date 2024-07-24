@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import {getDiscordProfile} from "~/composables/profile";
 
+defineProps({
+  isEnter: Boolean
+})
+
 const url = useRoute()?.params.username as string
 const data = await getDiscordProfile(url)
 </script>
 
 <template>
-  <div class="boxUser">
+  <div class="boxUser" :class="isEnter ? 'slide-enter-left' : ''">
     <div class="DiscPresence">
       <img :src="data.avatar" alt="" id="ppDiscord">
       <img :src="'/img/presence/'+data.presence+'.png'" alt="" id="discordPresence">
