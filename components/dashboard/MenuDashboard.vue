@@ -37,7 +37,7 @@ const { data } = await useFetch("/api/account/get-nav") as {
             </a>
           </li>
           <li>
-            <CustomizeSoon class="soon"/>
+<!--            <CustomizeSoon class="soon"/>-->
             <a href="/dashboard/stats">
               <Icon name="ion:stats-chart" class="Icon" />
               YOUR STATS
