@@ -30,7 +30,7 @@ if (import.meta.client) {
 <template>
   <div class="badges">
     <div class="badge" v-for="(badge, index) in badges" v-show="animationState >= index"
-         :class="animationState >= index ? (isPair(index) ? 'slide-enter-right': 'slide-enter-left'): ''">
+         :class="animationState >= index ? 'slice-enter-opac': ''">
       <h5>{{ badge.name }}</h5>
       <img :src="'/img/badges/'+badge.image" alt="">
     </div>
