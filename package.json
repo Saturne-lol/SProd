@@ -14,6 +14,7 @@
     "@nuxtjs/robots": "^4.0.2",
     "@prisma/client": "^5.17.0",
     "axios": "^1.7.2",
+    "chart.js": "^4.4.3",
     "discord-webhook-node": "^1.1.8",
     "discord.js": "^14.15.3",
     "fs": "^0.0.1-security",
@@ -22,6 +23,7 @@
     "stripe": "16.2.0",
     "url": "^0.11.3",
     "vue": "^3.4.33",
+    "vue-chartjs": "^5.3.1",
     "vue-router": "^4.4.0"
   },
   "devDependencies": {
