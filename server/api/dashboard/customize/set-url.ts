@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
     let url = (await readBody(event)).url
     if (!url) return new Response("No URL provided", {status: 400})
     url = url.toLowerCase()
+    if (!/^[a-z0-9]+$/i.test(url)) return new Response("Invalid URL", {status: 400})
 
     if (await prisma.setting.count({where: {url: url}}) !== 0) return new Response("URL already set", {status: 400})
     await prisma.setting.update({
