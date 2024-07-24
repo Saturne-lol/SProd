@@ -2,6 +2,9 @@
 import Badges from "~/components/profile/saturne/Badges.vue";
 import {getProfile} from "~/composables/profile";
 
+defineProps({
+  isEnter: Boolean,
+})
 
 const url = useRoute().params.username as string
 const profile = await getProfile(url)
@@ -50,7 +53,7 @@ if (import.meta.client) {
 
 <template>
   <div class="profil">
-    <div class="ppUser">
+    <div class="ppUser" :class="isEnter ? 'slide-enter-left' : ''">
       <img :src="`https://cdn.saturne.lol/file/profile/${profile.avatar}`" alt="" id="ppDisc">
       <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="profile.username == 'Cleboost'">
       <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="profile.username == 'BF'">
@@ -58,16 +61,16 @@ if (import.meta.client) {
     <div class="infoUser">
       <div class="nameBadges">
         <!-- NAME SATURNE -->
-        <div class="name">
+        <div class="name" :class="isEnter ? 'slide-enter-top ' : ''">
           <h1>{{ profile.username }}</h1>
         </div>
         <!-- BADGES -->
-        <Badges />
+        <Badges :is-enter="isEnter"/>
       </div>
-      <div class="quote" v-if="profile.quotes.length > 0 || !profile.quotes">
+      <div class="quote" v-if="profile.quotes.length > 0 || !profile.quotes" :class="isEnter ? 'slide-enter-right' : ''">
         <h3>{{ quote }}</h3>
       </div>
-      <div class="description">
+      <div class="description" :class="isEnter ? 'slide-enter-left' : ''">
         <h5>{{ profile.bio }}</h5>
       </div>
     </div>
@@ -75,6 +78,7 @@ if (import.meta.client) {
 </template>
 
 <style scoped>
+
 .profil {
   grid-column: 1 / -1;
   position: relative;

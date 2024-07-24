@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import formatNumber from "~/utils/formatNumber";
 import {getDiscordServers} from "~/composables/profile";
+import isPair from "~/utils/isPair";
+
+defineProps({
+  isEnter: Boolean
+})
 
 const url = useRoute()?.params.username as string;
-const servers: ServerProfile[] = await getDiscordServers(url);
+const servers: ServerProfile[] = await getDiscordServers(url)
+
 </script>
 
 <template>
-  <div class="boxServer" v-for="server in servers">
+  <div class="boxServer" v-for="(server, index) in servers" :class="isEnter ? (isPair(index) ? 'slide-enter-right' : 'slide-enter-left') : ''">
     <div class="ppServ">
       <img v-if="server.image" :src="server.image" alt="">
     </div>
