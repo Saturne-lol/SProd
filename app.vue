@@ -102,6 +102,10 @@
   animation: slide-enter-bottom 1s ease;
 }
 
+.slice-enter-opac {
+  animation: slide-enter-opac 1s ease;
+}
+
 @keyframes slide-enter-right {
   0% {
     transform: translateX(100%);
@@ -146,6 +150,15 @@
 
   100% {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-enter-opac {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }
