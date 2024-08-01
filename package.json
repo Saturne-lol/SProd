@@ -13,7 +13,7 @@
     "@nuxt/ui": "^2.18.3",
     "@nuxtjs/robots": "^4.0.2",
     "@prisma/client": "^5.17.0",
-    "axios": "^1.7.2",
+    "axios": "^1.7.3",
     "chart.js": "^4.4.3",
     "discord-webhook-node": "^1.1.8",
     "discord.js": "^14.15.3",
