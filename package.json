@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.18.3",
+    "@nuxt/ui": "^2.18.4",
     "@nuxtjs/robots": "^4.0.2",
     "@prisma/client": "^5.17.0",
     "axios": "^1.7.3",
