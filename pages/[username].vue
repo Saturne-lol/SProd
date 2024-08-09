@@ -46,7 +46,7 @@ const views: number = await getViews(url)
         <Profile :is-enter="isEnter"/>
         <UserBox :is-enter="isEnter"/>
         <DiscordBox :is-enter="isEnter"/>
-        <div class="view" :class="isEnter ? 'slide-enter-left' : ''">
+        <div class="view" :class="isEnter ? 'slide-enter-bottom' : ''">
           <h3>
             <Icon name="ic:sharp-remove-red-eye"/>
             - {{ views }}
