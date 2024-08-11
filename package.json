@@ -10,27 +10,29 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.17.0",
+    "@nuxt/ui": "^2.18.4",
     "@nuxtjs/robots": "^4.0.2",
-    "@prisma/client": "^5.17.0",
-    "axios": "^1.7.2",
+    "@nuxtjs/sitemap": "^6.0.0-beta.1",
+    "@prisma/client": "^5.18.0",
+    "axios": "^1.7.3",
     "chart.js": "^4.4.3",
     "discord-webhook-node": "^1.1.8",
     "discord.js": "^14.15.3",
     "fs": "^0.0.1-security",
     "nuxt": "^3.12.4",
-    "nuxt-gtag": "^2.0.7",
-    "stripe": "16.4.0",
-    "url": "^0.11.3",
-    "vue": "^3.4.34",
+    "nuxt-gtag": "^2.1.0",
+    "stripe": "16.7.0",
+    "url": "^0.11.4",
+    "vue": "^3.4.37",
     "vue-chartjs": "^5.3.1",
-    "vue-router": "^4.4.0"
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
+    "@iconify-json/ic": "^1.1.18",
     "@nuxt/types": "^2.18.1",
     "nuxt-icon": "^0.6.10",
-    "prisma": "^5.17.0",
+    "prisma": "^5.18.0",
     "typescript": "^5.5.4",
-    "vue-tsc": "^2.0.28"
+    "vue-tsc": "^2.0.29"
   }
 }

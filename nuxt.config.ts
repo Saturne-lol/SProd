@@ -1,24 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: {
-      enabled: true,
+    devtools: {
+        enabled: true,
 
-      timeline: {
-          enabled: true,
-      },
-  },
+        timeline: {
+            enabled: true,
+        },
+    },
 
-  modules: [
-      'nuxt-icon',
-      "nuxt-gtag",
-      "@nuxt/ui",
-  ],
+    modules: ['nuxt-icon', "nuxt-gtag", "@nuxt/ui", "@nuxtjs/sitemap"],
 
-  components: true,
+    components: true,
 
-  gtag: {
-      id: 'G-YKC5TQ8C98'
-  },
+    gtag: {
+        id: 'G-YKC5TQ8C98'
+    },
 
-  compatibilityDate: "2024-07-23",
+    site: {
+        url: 'https://saturne.lol',
+        name: "Saturne.lol"
+    },
+
+    compatibilityDate: "2024-07-23",
 } as any)
