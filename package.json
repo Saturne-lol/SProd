@@ -15,7 +15,7 @@
     "@nuxtjs/sitemap": "^6.0.0-beta.2",
     "@prisma/client": "^5.18.0",
     "axios": "^1.7.4",
-    "chart.js": "^4.4.3",
+    "chart.js": "^4.4.4",
     "discord-webhook-node": "^1.1.8",
     "discord.js": "^14.15.3",
     "fs": "^0.0.1-security",
