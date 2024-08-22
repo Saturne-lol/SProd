@@ -1,34 +1,42 @@
 export default [
     {
-        id: "owner",
-        name: "Owner",
+        id: 'owner',
+        name: 'Owner'
     },
     {
-        id: "beta",
-        name: "Beta Tester",
+        id: 'admin',
+        name: 'Admin'
     },
     {
-        id: "early",
-        name: "Early Supporter",
+        id: 'moderator',
+        name: 'Moderator'
     },
     {
-        id: "dev",
-        name: "Developer",
+        id: 'beta',
+        name: 'Beta Tester'
     },
     {
-        id: "premium2",
-        name: "Premium +",
+        id: 'early',
+        name: 'Early Supporter'
     },
     {
-        id: "premium1",
-        name: "Premium",
+        id: 'dev',
+        name: 'Developer'
     },
     {
-        id: "booster",
-        name: "Booster",
+        id: 'premium2',
+        name: 'Premium +'
     },
     {
-        id: "member",
-        name: "Member",
+        id: 'premium1',
+        name: 'Premium'
+    },
+    {
+        id: 'booster',
+        name: 'Booster'
+    },
+    {
+        id: 'member',
+        name: 'Member'
     }
-]
+];
