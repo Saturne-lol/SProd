@@ -1,9 +1,9 @@
 // noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
     return {
-        bio: (await event.context.db.setting.findFirst({
+        entry: (await event.context.db.setting.findFirst({
             where: {account_id: event.context.user.id},
-            select: {bio: true}
-        }))?.bio as string
+            select: {enter_message: true}
+        }))?.enter_message as string
     };
 });
