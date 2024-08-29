@@ -18,7 +18,7 @@ defineProps({
           </h4>
         </div>
         <div class="connexion" v-else>
-          <h4>Join our <a href="https://discord.gg/saturne">discord server</a>
+          <h4>Join our <a href="https://discord.gg/saturne"> discord server</a>
             <Icon name="radix-icons:cross-circled" id="uncheck" />
           </h4>
         </div>
@@ -59,6 +59,8 @@ defineProps({
   background-color: #424242;
   padding: 4px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .connexion a {
