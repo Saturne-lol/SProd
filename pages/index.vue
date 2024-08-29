@@ -252,7 +252,7 @@ onMounted(() => {
             class="rounded-lg overflow-hidden" ref="carouselRef">
             <div class="box">
               <div class="info">
-                <img :src="'/img/landing/vouch/' + item.avatar" alt="">
+                <NuxtImg :src="'/img/landing/vouch/' + item.avatar" alt="" loading="lazy" format="webp"/>
                 <div class="text">
                   <h2>{{ item.username }}</h2>
                   <h3>{{ item.quote }}</h3>
