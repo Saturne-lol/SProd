@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import {Line} from 'vue-chartjs'
-import type {Ref} from "vue";
+import {Line} from 'vue-chartjs';
+import type {Ref} from 'vue';
 
-
-const mode: Ref<"daily" | "monthly" | "yearly"> = ref("daily")
-const vues: Ref<{ labels: string[], data: number[] }> = ref({labels: [], data: []})
-const chartData: Ref<{ labels: string[], datasets: { label: string, data: number[], fill: boolean, borderColor: string, tension: number }[] }> = ref({labels: [], datasets: []})
+const mode: Ref<'daily' | 'monthly' | 'yearly'> = ref('daily');
+const vues: Ref<{ labels: string[], data: number[] }> = ref({labels: [], data: []});
+const chartData: Ref<{
+  labels: string[],
+  datasets: { label: string, data: number[], fill: boolean, borderColor: string, tension: number }[]
+}> = ref({labels: [], datasets: []});
 
 async function getData() {
-  vues.value = await dashboard.stats.get.vues(mode.value)
+  vues.value = await dashboard.stats.get.vues(mode.value);
   chartData.value = {
     labels: vues.value.labels,
     datasets: [{
@@ -23,12 +25,12 @@ async function getData() {
       pointBackgroundColor: 'rgb(255,255,255)',
       pointBorderColor: 'rgb(192,0,255)',
       pointHoverBackgroundColor: 'rgb(192,0,255)',
-      pointHoverBorderColor: 'rgb(255,255,255)',
-    }],
-  }
+      pointHoverBorderColor: 'rgb(255,255,255)'
+    }]
+  };
 }
 
-onMounted(getData)
+onMounted(getData);
 
 const chartOptions = ref({
   scales: {
@@ -43,7 +45,7 @@ const chartOptions = ref({
     legend: {
       display: false
     }
-  },
+  }
 });
 </script>
 
