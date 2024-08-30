@@ -15,9 +15,11 @@ defineProps({
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="filePP">
-            <a href="">
-              <Icon name="maki:cross" id="boxClose" />
-            </a>
+            <div class="IconClose">
+              <a href="">
+                <Icon name="maki:cross" id="boxClose" />
+              </a>
+            </div>
             <div class="icon">
               <Icon name="ic:baseline-insert-photo" class="Icon" />
             </div>
@@ -104,18 +106,17 @@ defineProps({
   display: none;
 }
 
-#boxClose {
+.IconClose {
   position: absolute;
   top: 10px;
   right: 10px;
   padding: 2px 5px;
   border-radius: 6px;
-  font-size: 150%;
   z-index: 5;
   transition: 0.3s ease;
 }
 
-#boxClose:hover {
+.IconClose:hover {
   background-color: var(--dashboard-button-close);
 }
 </style>
