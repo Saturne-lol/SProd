@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import CustomizeSoon from '@/components/dashboard/customize/CustomizeSoon.vue';
-
-defineProps({
-  data: Object,
-});
 </script>
 
 <template>
