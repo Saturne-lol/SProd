@@ -1,5 +1,6 @@
 <script setup lang="ts">
-let entry = await dashboard.customize.get.entry();
+const data = defineProps({ entry: String });
+let entry = data.entry as string;
 const entryVisible = ref(false);
 
 function updateQuotes() {

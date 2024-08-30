@@ -1,5 +1,6 @@
 <script setup lang="ts">
-let quotes = await dashboard.customize.get.quotes();
+const data = defineProps({quotes: Array});
+let quotes = data.quotes;
 const quotesVisible = ref(false);
 
 function updateQuotes() {

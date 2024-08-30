@@ -1,5 +1,6 @@
 <script setup lang="ts">
-let bio = await dashboard.customize.get.bio();
+const data = defineProps({ bio: String });
+let bio = data.bio;
 const bioVisible = ref(false);
 
 function updateBio() {

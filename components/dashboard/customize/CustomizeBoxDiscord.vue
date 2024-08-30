@@ -7,12 +7,15 @@ const PlanEnum = {
 
 const props = defineProps({
   index: Number,
+  invite: String,
+  plan: String,
 });
 
-let invite = props.index !== undefined ? await dashboard.customize.get.invite(props.index) : "";
+// let invite = props.index !== undefined ? await dashboard.customize.get.invite(props.index) : "";
+let invite = props.invite;
 const visibleModal = ref(false);
 const inputInvite = ref("");
-const plan = await dashboard.global.getPlan();
+// const plan = await dashboard.global.getPlan();
 
 function updateInvite() {
   if (!visibleModal.value) return;
@@ -33,8 +36,8 @@ if (import.meta.client) {
   });
 }
 
-const needPremium = ((props.index ?? -1) > 0 && plan !== PlanEnum.PREMIUM && plan !== PlanEnum.PREMIUM_PLUS) ||
-  ((props.index ?? -1) > 2 && plan !== PlanEnum.PREMIUM_PLUS);
+const needPremium = ((props.index ?? -1) > 0 && props.plan !== PlanEnum.PREMIUM && props.plan !== PlanEnum.PREMIUM_PLUS) ||
+  ((props.index ?? -1) > 2 && props.plan !== PlanEnum.PREMIUM_PLUS);
 
 </script>
 

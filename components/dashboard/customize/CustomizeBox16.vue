@@ -1,8 +1,12 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-  viewState: Function
-});
+const data = defineProps({view: Boolean});
+let view = ref(data.view);
+
+function update() {
+  dashboard.customize.set.view(view.value).then(async (r) => {
+    if (!r) view.value = !view.value;
+  });
+}
 </script>
 
 <template>
@@ -16,7 +20,7 @@ defineProps({
         <div class="info">
           <h4>SHOW PROFILE VIEWS</h4>
           <div class="switch">
-            <input class="input" id="view" type="checkbox" :checked="data.views" @change="viewState" />
+            <input class="input" id="view" type="checkbox" v-model="view" @change="update" />
             <label class="label" for="view"></label>
           </div>
         </div>
