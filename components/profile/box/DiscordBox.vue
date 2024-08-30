@@ -13,7 +13,7 @@ const servers: ServerProfile[] = await getDiscordServers(url)
 </script>
 
 <template>
-  <div class="boxServer" v-for="(server, index) in servers" :class="isEnter ? (isPair(index) ? 'slide-enter-right' : 'slide-enter-left') : ''">
+  <div class="boxServer box box_outline" v-for="(server, index) in servers" :class="isEnter ? (isPair(index) ? 'slide-enter-right' : 'slide-enter-left') : ''">
     <div class="ppServ">
       <img v-if="server.image" :src="server.image" alt="">
     </div>
@@ -39,17 +39,17 @@ const servers: ServerProfile[] = await getDiscordServers(url)
 .boxServer {
   display: flex;
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.08);
-  border: 1px solid rgb(255, 255, 255, 0.4);
+  /*background-color: rgb(255, 255, 255, 0.08);
+  border: 1px solid rgb(255, 255, 255, 0.4);*/
   border-radius: 12px;
   padding: 10px;
   transition: 0.5s, transform 0.5s;
 }
 
-.boxServer:hover {
+/*.boxServer:hover { // Fait de truc chelou avec les customs colors
   box-shadow: 0 0 3px 1px #00000044;
   border: 1px solid rgba(255, 255, 255, 0.6);
-}
+}*/
 
 .boxServer .ppServ img {
   position: relative;

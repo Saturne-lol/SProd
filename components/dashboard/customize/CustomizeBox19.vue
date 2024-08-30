@@ -1,26 +1,53 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-  updateColor: Function
+const data = defineProps({
+  colors: {
+    type: Object, // Spécifiez que c'est un objet
+    required: true, // Indiquez si la prop est requise
+    default: () => ({
+      box: '#FFFFFF',
+      box_outline: '#FFFFFF',
+      profile_outline: '#FFFFFF',
+      icon_color: '#FFFFFF'
+    })
+  }
 });
-const colorList = ["Color box", "Box outline colors", "Profile outline color", "Icon color"];
+
+let colors = ref([
+  {key: 'box', name: 'Color box', value: data.colors.box},
+  {key: 'box_outline', name: 'Box outline colors', value: data.colors.box_outline},
+  {key: 'profile_outline', name: 'Profile outline color', value: data.colors.profile_outline},
+  {key: 'icon_color', name: 'Icon color', value: data.colors.icon_color}
+]);
+
+function updateColor(value: string, key: string) {
+  dashboard.customize.set.color(value, key).then((r) => {
+    if (r) return;
+    const colorToUpdate = colors.value.find((c) => c.key === key);
+    if (!colorToUpdate) return;
+    colorToUpdate.value = data.colors[key];
+  });
+}
 </script>
 
 <template>
   <div class="box">
     <div class="padding">
       <div class="title">
-        <Icon name="iconoir:fill-color-solid" class="Icon" />
+        <Icon name="iconoir:fill-color-solid" class="Icon"/>
         <h2>COLOR</h2>
       </div>
       <div class="color">
-        <div v-for="(color, i) in colorList" :key="i">
-          <label for="BoxColor">{{ color }} :</label>
+        <div v-for="color in colors">
+          <label for="BoxColor">{{ color.name }} :</label>
           <div class="info">
-            <input type="color" id="BoxColor" name="BoxColor" @change="updateColor($event.target.value, i)"
-              :value="data.colors[i]" />
-            <input type="text" id="BoxHexColor" name="BoxHexColor" pattern="#[0-9A-Fa-f]{6}"
-              title="Entrez une couleur valide au format #RRGGBB" :value="data.colors[i]" />
+            <input type="color" :id="color.key" :name="color.key"
+                   @change="(e) => color.value = (e?.target as any).value || '#FFFFFF'"
+                   @blur="updateColor(color.value, color.key)"
+                   v-model="color.value"/>
+            <input type="text" :id="color.key + '_hex'" :name="color.key + '_hex'" pattern="#[0-9A-Fa-f]{6}"
+                   title="Entrez une couleur valide au format #RRGGBB"
+                   :value="color.value.toUpperCase()"
+                   @blur="updateColor(color.value, color.key)"/>
           </div>
         </div>
       </div>

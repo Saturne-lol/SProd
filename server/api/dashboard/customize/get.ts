@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
             username: true,
             enter_message: true,
             views: true,
-            account: {select: {quotes: true, discord: true, plan: true}}
+            account: {select: {quotes: true, discord: true, plan: true, color: true}}
         }
     });
 
@@ -32,5 +32,14 @@ export default defineEventHandler(async (event) => {
         }),
         plan: data?.account.plan || 'FREE',
         view: data?.views || false,
+        color: {
+            box: data?.account.color?.box || '#000000',
+            box_outline: data?.account.color?.box_outline || '#ffffff',
+            profile_outline: data?.account.color?.profile_outline || '#ffffff',
+            icon_color: data?.account.color?.icon_color || '#ffffff',
+        },
+        colorEffect: {
+
+        }
     };
 });

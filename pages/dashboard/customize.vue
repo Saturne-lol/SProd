@@ -12,10 +12,12 @@ import CustomizeBox8 from '~/components/dashboard/customize/CustomizeBox8.vue';
 import CustomizeBox9 from '~/components/dashboard/customize/CustomizeBox9.vue';
 import CustomizeBox15 from '~/components/dashboard/customize/CustomizeBox15.vue';
 import CustomizeBox17 from '~/components/dashboard/customize/CustomizeBox17.vue';
-import CustomizeBox20 from '../../components/dashboard/customize/CustomizeBox20.vue';
 import CustomizeBoxUrl from '~/components/dashboard/customize/CustomizeBoxUrl.vue';
 import CustomizeBoxDiscord from '~/components/dashboard/customize/CustomizeBoxDiscord.vue';
 import CustomizeBox16 from '~/components/dashboard/customize/CustomizeBox16.vue';
+import CustomizeBox18 from '~/components/dashboard/customize/CustomizeBox18.vue';
+import CustomizeBox19 from '~/components/dashboard/customize/CustomizeBox19.vue';
+import CustomizeBox20 from '~/components/dashboard/customize/CustomizeBox20.vue';
 
 interface Customize {
   url: string,
@@ -30,7 +32,12 @@ interface Customize {
   entry: string,
   view: boolean,
   quotes: string[],
-  colors: string[]
+  color: {
+    box: string,
+    box_outline: string,
+    profile_outline: string,
+    icon_color: string
+  }
 }
 
 
@@ -158,8 +165,8 @@ async function uploadBackground(event: any) {
     <CustomizeBox15 :entry="data?.entry" id="customizeBox15"/>
     <CustomizeBox16 :view="data?.view" id="customizeBox16"/>
     <CustomizeBox17 id="customizeBox17"/>
-    <!--    <CustomizeBox18 :data="data" id="customizeBox18"/>-->
-    <!--    <CustomizeBox19 :data="data" :updateColor="function(){}" id="customizeBox19"/>-->
+    <CustomizeBox18 id="customizeBox18"/>
+    <CustomizeBox19 :colors="data.color" id="customizeBox19"/>
     <CustomizeBox20 id="customizeBox20"/>
   </div>
 </template>

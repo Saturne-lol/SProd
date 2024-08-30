@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import type {Ref} from "vue";
-import DiscordBox from "~/components/profile/box/DiscordBox.vue";
-import UserBox from "~/components/profile/box/UserBox.vue";
-import {useRoute} from "vue-router";
-import {getGlobal, getViews} from "~/composables/profile";
+import type {Ref} from 'vue';
+import DiscordBox from '~/components/profile/box/DiscordBox.vue';
+import UserBox from '~/components/profile/box/UserBox.vue';
+import {useRoute} from 'vue-router';
+import {getGlobal, getViews} from '~/composables/profile';
 
 definePageMeta({
   middleware: async (to) => {
     const {data: isExist} = await useFetch('/api/profile/is-exist', {query: {username: to.params.username}}) as {
       data: Ref<{ code: string }>
     };
-    if (isExist?.value?.code === "bl") return "/blacklist?type=profile&username=" + to.params.username;
-    if (isExist?.value?.code === "ne") return "/errors/404?type=profile";
+    if (isExist?.value?.code === 'bl') return '/blacklist?type=profile&username=' + to.params.username;
+    if (isExist?.value?.code === 'ne') return '/errors/404?type=profile';
     useFetch('/api/profile/view', {body: {username: to.params.username}, method: 'POST'});
   }
 });
 
-const url = useRoute()?.params.username as string
+const url = useRoute()?.params.username as string;
 useSeoMeta({
-  title: url.charAt(0).toUpperCase() + url.slice(1) + " - Saturne.lol",
+  title: url.charAt(0).toUpperCase() + url.slice(1) + ' - Saturne.lol',
   description: 'Saturne.lol makes it easy to create a modern online profile !',
-  ogTitle: url + " - Saturne.lol",
+  ogTitle: url + ' - Saturne.lol',
   ogDescription: 'Saturne.lol makes it easy to create a modern online profile !',
   ogImage: '[og:image]',
   ogUrl: '[og:url]',
@@ -28,11 +28,31 @@ useSeoMeta({
   twitterDescription: '[twitter:description]',
   twitterImage: '[twitter:image]',
   twitterCard: 'summary'
-})
+});
 
-const isEnter = ref(false)
-const data: GlobalProfile = await getGlobal(url)
-const views: number = await getViews(url)
+const isEnter = ref(false);
+const data: GlobalProfile = await getGlobal(url);
+const views: number = await getViews(url);
+
+
+interface Color {
+  [key: string]: string;
+}
+
+const color = (await useFetch('/api/profile/get-colors', {query: {username: url}})).data.value as unknown as Color;
+
+const css = Object.keys(color).map((key) => {
+  return `
+  .${key} {
+   ${color[key]}
+  }`;
+}).join('\n');
+
+if (import.meta.client) {
+  const style = document.createElement('style');
+  style.innerHTML = css;
+  document.head.appendChild(style);
+}
 </script>
 
 <template>
@@ -55,12 +75,12 @@ const views: number = await getViews(url)
         </div>
       </div>
     </div>
-    <!--  <div class="icons" id="icons" v-if="isEnter">-->
-    <!--    <div class="icon" v-for="social in profileData.socials">-->
-    <!--      <a :href="social.link" target="_blank"><img :src="'/img/social/'+social.type+'.png'" alt=""></a>-->
-    <!--      <h5>{{social.url}}</h5>-->
-    <!--    </div>-->
-    <!--  </div>-->
+    <!--      <div class="icons" id="icons" v-if="isEnter">-->
+    <!--        <div class="icon" v-for="social in profileData.socials">-->
+    <!--          <a :href="social.link" target="_blank"><img :src="'/img/social/'+social.type+'.png'" alt=""></a>-->
+    <!--          <h5>{{social.url}}</h5>-->
+    <!--        </div>-->
+    <!--      </div>-->
   </main>
 </template>
 

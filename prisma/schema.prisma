@@ -6,6 +6,7 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = "mysql://root:th4if%TL%vA9U*@212.227.179.23:3306/saturne"
+  //url      = "mysql://root@localhost:3306/saturne"
 }
 
 model Account {
@@ -25,7 +26,7 @@ model Account {
   setting     Setting?
   social      Social?
   view        View[]
-  Color       Color[]
+  color       Color?
 }
 
 model Badges {
@@ -95,7 +96,7 @@ model View {
 
 model Color {
   account_id      String  @id
-  user            Account @relation(fields: [account_id], references: [id], onDelete: Cascade)
+  account         Account @relation(fields: [account_id], references: [id], onDelete: Cascade)
   box             String  @default("#FFFFFF")
   box_outline     String  @default("#FFFFFF")
   profile_outline String  @default("#FFFFFF")

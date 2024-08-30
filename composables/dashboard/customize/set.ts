@@ -35,5 +35,8 @@ export default {
     },
     view: async (view: boolean) => {
         return await request(`view`, {view});
+    },
+    color: async (color: string, key:string) => {
+        return await request(`color`, {color, key});
     }
 };
