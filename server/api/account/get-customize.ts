@@ -73,7 +73,7 @@ export default defineEventHandler(async (event) => {
         bio: settings?.bio,
         plan,
         discord,
-        linked: member ? `${member.displayName} (${member.id})` : null,
+        linked: member ? `${member.displayName} (${member.id})` : false,
         enter: settings?.enter_message || 'Click to enter...',
         views: settings?.views || 0,
         quotes: quotes.map((q: any) => q.text) || [],

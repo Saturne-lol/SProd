@@ -15,10 +15,25 @@ const request = async (url: string, body: any): Promise<boolean> => {
 };
 
 export default {
-    url: async (url: string) => await request(`url`, {url}),
-    username: async (username: string) => await request(`username`, {username}),
-    quotes: async (quotes: string[]) => await request(`quotes`, {quotes}),
-    bio: async (bio: string) => await request(`bio`, {bio}),
-    invite: async (i: number, invite: string) => await request(`discord-server`, {index: i, invite}),
-    entry: async (entry: string) => await request(`entry`, {entry})
+    url: async (url: string) => {
+        return await request(`url`, {url});
+    },
+    username: async (username: string) => {
+        return await request(`username`, {username});
+    },
+    quotes: async (quotes: string[]) => {
+        return await request(`quotes`, {quotes});
+    },
+    bio: async (bio: string) => {
+        return await request(`bio`, {bio});
+    },
+    invite: async (i: number, invite: string) => {
+        return await request(`discord-server`, {index: i, invite});
+    },
+    entry: async (entry: string) => {
+        return await request(`entry`, {entry});
+    },
+    view: async (view: boolean) => {
+        return await request(`view`, {view});
+    }
 };
