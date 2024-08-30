@@ -219,7 +219,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check" />
             - Customizable font<br>
           </p>
-          <a href=""><button>Buy Now</button></a>
+          <a href="/premium"><button>Buy Now</button></a>
         </div>
         <div class="box">
           <div class="info">
@@ -237,7 +237,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check" />
             - Host on your own domain (soon)<br>
           </p>
-          <a href=""><button>Buy Now</button></a>
+          <a href="/premiump"><button>Buy Now</button></a>
         </div>
       </div>
     </div>
