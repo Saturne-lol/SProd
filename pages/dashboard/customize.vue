@@ -294,19 +294,6 @@ async function uploadBackground(event: any) {
 
     <CustomizeBoxDiscord v-for="i in 5" :index="i-1" :id="`customizeBox`+(i+9)"/>
 
-
-<!--    <CustomizeBox10 :data="data" :openModal="openModal" :closeModal="closeModal"-->
-<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox10"/>-->
-<!--    <CustomizeBox11 :data="data" :openModal="openModal" :closeModal="closeModal"-->
-<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox11"/>-->
-<!--    <CustomizeBox12 :data="data" :openModal="openModal" :closeModal="closeModal"-->
-<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox12"/>-->
-<!--    <CustomizeBox13 :data="data" :openModal="openModal" :closeModal="closeModal"-->
-<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox13"/>-->
-<!--    <CustomizeBox14 :data="data" :openModal="openModal" :closeModal="closeModal"-->
-<!--                    :actionModalDiscord="actionModalDiscord" :activeModal="activeModal" id="customizeBox14"/>-->
-
-
     <CustomizeBox15 :data="data" :openModal="openModal" :closeModal="closeModal" :singleModalAction="singleModalAction"
                     :activeModal="activeModal" id="customizeBox15"/>
     <CustomizeBox16 :data="data" :viewState="viewState" id="customizeBox16"/>
