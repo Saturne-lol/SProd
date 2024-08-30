@@ -5,19 +5,21 @@ import CustomizeSoon from '@/components/dashboard/customize/CustomizeSoon.vue';
 <template>
   <div>
     <div class="box">
-      <CustomizeSoon title="Soon audio" icon/>
+      <CustomizeSoon title="Soon audio" icon />
       <div class="padding">
         <div class="title">
-          <Icon name="fluent:speaker-24-filled" class="Icon"/>
+          <Icon name="fluent:speaker-24-filled" class="Icon" />
           <h3>AUDIO</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="audio">
             <a href="">
-              <Icon name="maki:cross" id="boxClose"/>
+              <div class="IconClose">
+                <Icon name="maki:cross" />
+              </div>
             </a>
             <div class="icon">
-              <Icon name="fluent:speaker-24-filled" class="Icon"/>
+              <Icon name="fluent:speaker-24-filled" class="Icon" />
             </div>
             <div class="text">
               <span>Click to upload audio</span>
@@ -102,18 +104,20 @@ import CustomizeSoon from '@/components/dashboard/customize/CustomizeSoon.vue';
   display: none;
 }
 
-#boxClose {
+.IconClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 2px 5px;
+  padding: 3px;
   border-radius: 6px;
-  font-size: 150%;
   z-index: 5;
   transition: 0.3s ease;
 }
 
-#boxClose:hover {
+.IconClose:hover {
   background-color: var(--dashboard-button-close);
 }
 </style>

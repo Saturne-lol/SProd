@@ -1,5 +1,6 @@
 <script setup lang="ts">
 defineProps({
+  data: Object,
   uploadPdp: Function
 });
 </script>
@@ -9,23 +10,23 @@ defineProps({
     <div class="box">
       <div class="padding">
         <div class="title">
-          <Icon name="ic:baseline-insert-photo" class="Icon"/>
+          <Icon name="ic:baseline-insert-photo" class="Icon" />
           <h3>PROFIL PICTURE</h3>
         </div>
         <div class="dragDrop">
           <label class="uploadFile" for="filePP">
-            <div class="IconClose">
-              <a href="">
-                <Icon name="maki:cross" id="boxClose" />
-              </a>
-            </div>
+            <a href="">
+              <div class="IconClose">
+                <Icon name="maki:cross" />
+              </div>
+            </a>
             <div class="icon">
-              <Icon name="ic:baseline-insert-photo" class="Icon"/>
+              <Icon name="ic:baseline-insert-photo" class="Icon" />
             </div>
             <div class="text">
               <span>Click to upload image</span>
             </div>
-            <input type="file" id="filePP" accept=".png, .jpg, .jpeg;" @change="uploadPdp($event)"/>
+            <input type="file" id="filePP" accept=".png, .jpg, .jpeg;" @change="uploadPdp($event)" />
           </label>
         </div>
       </div>
@@ -106,10 +107,13 @@ defineProps({
 }
 
 .IconClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 2px 5px;
+  padding: 3px;
   border-radius: 6px;
   z-index: 5;
   transition: 0.3s ease;
