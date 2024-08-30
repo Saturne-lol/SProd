@@ -1,5 +1,6 @@
 <script setup lang="ts">
-let username = await dashboard.customize.get.username();
+const data = defineProps({username: String});
+let username = data.username;
 const usernameInput = ref("");
 const usernameVisible = ref(false);
 
