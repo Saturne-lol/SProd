@@ -7,8 +7,12 @@ export default defineNuxtConfig({
         }
     },
 
-    modules: ['nuxt-icon', /*"nuxt-gtag"*/ '@nuxt/ui', '@nuxtjs/sitemap', '@nuxt/image'],
-
+    modules: [
+      'nuxt-icon',
+      /*"nuxt-gtag"*/ '@nuxt/ui',
+      '@nuxtjs/sitemap',
+      '@nuxt/image',
+    ],
     components: true,
 
     // gtag: {
@@ -25,6 +29,5 @@ export default defineNuxtConfig({
             lang: 'en'
         }
     },
-
     compatibilityDate: '2024-07-23'
 } as any);
