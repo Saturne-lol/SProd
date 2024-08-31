@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
     const session = await stripe.checkout.sessions.create({
         line_items: [
             {
-                price: ((process.env.NODE_ENV === 'development') ? 'price_1PLWkx05yQwZajCd5I2MmpWA' : 'price_1PtYB205yQwZajCdmwZoCGaZ'),
+                price: ((process.env.NODE_ENV === 'development') ? 'price_1PLWkx05yQwZajCd5I2MmpWA' : 'price_1PtxdG05yQwZajCd08IzJOnn'),
                 quantity: 1
             }
         ],
