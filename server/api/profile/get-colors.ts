@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     return {
         box: `background-color: ${hexToRgb(colors?.box || '#000000',0.4)}`,
         box_outline: `border: 1px solid ${colors?.box_outline || '#000000'}`,
-        profile_outline: {value: colors?.profile_outline || '#000000', type: 'border: 1px solid'},
+        profile_outline: `border: 2px solid ${hexToRgb(colors?.profile_outline || '#000000',0.5)}`,
         icon_color: {value: colors?.icon_color || '#000000', type: 'color'},
         display_name: {value: colors?.display_name || '#000000', type: 'color'},
         quotes: {value: colors?.quotes || '#000000', type: 'color'},

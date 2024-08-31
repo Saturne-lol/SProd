@@ -54,7 +54,7 @@ if (import.meta.client) {
 <template>
   <div class="profil">
     <div class="ppUser" :class="isEnter ? 'slide-enter-left' : ''">
-      <img :src="`https://cdn.saturne.lol/file/profile/${profile.avatar}`" alt="" id="ppDisc">
+      <img :src="`https://cdn.saturne.lol/file/profile/${profile.avatar}`" alt="" id="ppDisc" class="profile_outline">
       <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="profile.username == 'Cleboost'">
       <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="profile.username == 'BF'">
     </div>
@@ -103,7 +103,7 @@ if (import.meta.client) {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.50);
+  /*border: 2px solid rgba(255, 255, 255, 0.50);*/
   object-fit: cover;
   margin-right: 20px;
 }
