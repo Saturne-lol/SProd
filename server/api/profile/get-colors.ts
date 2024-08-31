@@ -14,14 +14,14 @@ export default defineEventHandler(async (event) => {
 
 
     return {
-        box: `background-color: ${hexToRgb(colors?.box || '#000000',0.4)}`,
-        box_outline: `border: 1px solid ${colors?.box_outline || '#000000'}`,
-        profile_outline: `border: 2px solid ${hexToRgb(colors?.profile_outline || '#000000',0.5)}`,
-        icon_color: {value: colors?.icon_color || '#000000', type: 'color'},
-        display_name: {value: colors?.display_name || '#000000', type: 'color'},
-        quotes: {value: colors?.quotes || '#000000', type: 'color'},
-        description: {value: colors?.description || '#000000', type: 'color'},
-        box_glows: {value: colors?.box_glows || '#000000', type: 'box-shadow'}
+        box: `background-color: ${hexToRgb(colors?.box || '#FFFFFF',0.08)}`,
+        box_outline: `border: 1px solid ${hexToRgb(colors?.box_outline || '#FFFFFF',0.4)}`,
+        profile_outline: `border: 2px solid ${hexToRgb(colors?.profile_outline || '#FFFFFF',0.5)}`,
+        icon_color: {value: colors?.icon_color || '#FFFFFF', type: 'color'},
+        display_name: {value: colors?.display_name || '#FFFFFF', type: 'color'},
+        quotes: {value: colors?.quotes || '#FFFFFF', type: 'color'},
+        description: {value: colors?.description || '#FFFFFF', type: 'color'},
+        box_glows: {value: colors?.box_glows || '#FFFFFF', type: 'box-shadow'}
     };
 });
 
