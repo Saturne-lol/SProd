@@ -11,12 +11,6 @@ export default defineEventHandler(async (event) => {
         email: event.context.user.id + '@saturne.lol',
         limit: 1
     });
-    if (customer?.data.length === 0) {
-        await stripe.customers.create({
-            email: event.context.user.id + '@saturne.lol',
-            name: event.context.user.global_name
-        });
-    }
 
     const session = await stripe.checkout.sessions.create({
         line_items: [
@@ -26,7 +20,7 @@ export default defineEventHandler(async (event) => {
             }
         ],
         mode: 'subscription',
-        customer_email: event.context.user.id + '@saturne.lol',
+        customer: customer.data[0].id,
         success_url: `${getRequestProtocol(event)}://${getHeader(event, 'Host')}/payment/success?type=2'`,
         cancel_url: `${getRequestProtocol(event)}://${getHeader(event, 'Host')}/'`,
         allow_promotion_codes: true,
