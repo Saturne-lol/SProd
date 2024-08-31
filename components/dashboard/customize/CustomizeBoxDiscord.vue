@@ -7,12 +7,15 @@ const PlanEnum = {
 
 const props = defineProps({
   index: Number,
+  invite: String,
+  plan: String,
 });
 
-let invite = props.index !== undefined ? await dashboard.customize.get.invite(props.index) : "";
+// let invite = props.index !== undefined ? await dashboard.customize.get.invite(props.index) : "";
+let invite = props.invite;
 const visibleModal = ref(false);
 const inputInvite = ref("");
-const plan = await dashboard.global.getPlan();
+// const plan = await dashboard.global.getPlan();
 
 function updateInvite() {
   if (!visibleModal.value) return;
@@ -33,8 +36,8 @@ if (import.meta.client) {
   });
 }
 
-const needPremium = ((props.index ?? -1) > 0 && plan !== PlanEnum.PREMIUM && plan !== PlanEnum.PREMIUM_PLUS) ||
-    ((props.index ?? -1) > 2 && plan !== PlanEnum.PREMIUM_PLUS);
+const needPremium = ((props.index ?? -1) > 0 && props.plan !== PlanEnum.PREMIUM && props.plan !== PlanEnum.PREMIUM_PLUS) ||
+  ((props.index ?? -1) > 2 && props.plan !== PlanEnum.PREMIUM_PLUS);
 
 </script>
 
@@ -47,24 +50,26 @@ const needPremium = ((props.index ?? -1) > 0 && plan !== PlanEnum.PREMIUM && pla
       </div>
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon"/>
+          <Icon name="akar-icons:discord-fill" class="Icon" />
           <h3>BOX N°{{ index !== undefined ? index + 1 : "?" }} (SERVER)</h3>
         </div>
         <div class="info">
           <h4>discord.gg/{{ invite || "" }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="visibleModal = true"/>
+          <div class="IconM">
+            <Icon name="ic:baseline-edit" id="modif" @click="visibleModal = true" />
+          </div>
         </div>
       </div>
     </div>
     <div class="modal" v-if="visibleModal">
       <div class="center">
         <div class="content1input">
-          <Icon name="maki:cross" id="closeModal" @click="visibleModal = false"/>
-          <Icon name="akar-icons:discord-fill" class="Icon"/>
+          <Icon name="maki:cross" id="closeModal" @click="visibleModal = false" />
+          <Icon name="akar-icons:discord-fill" class="Icon" />
           <h5>-</h5>
-          <input type="text" placeholder="discord.gg/" id="discordModalInput" maxlength="60" v-model="inputInvite"/>
+          <input type="text" placeholder="discord.gg/" id="discordModalInput" maxlength="60" v-model="inputInvite" />
           <button @click="updateInvite">
-            <Icon name="material-symbols:check" id="save"/>
+            <Icon name="material-symbols:check" id="save" />
           </button>
         </div>
       </div>
@@ -133,15 +138,20 @@ const needPremium = ((props.index ?? -1) > 0 && plan !== PlanEnum.PREMIUM && pla
   border-radius: 10px;
 }
 
-.info #modif {
-  font-size: 30px;
-  padding: 4px;
+.info .IconM {
+  display: flex;
+  align-items: center;
+  padding: 5px;
   border-radius: 10px;
   margin-left: 5px;
   transition: 0.3s ease;
 }
 
-.info #modif:hover {
+.info .IconM #modif {
+  font-size: 18px;
+}
+
+.info .IconM:hover {
   background-color: var(--dashboard-box-background);
 }
 

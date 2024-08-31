@@ -1,5 +1,6 @@
 <script setup lang="ts">
-let bio = await dashboard.customize.get.bio();
+const data = defineProps({ bio: String });
+let bio = data.bio;
 const bioVisible = ref(false);
 
 function updateBio() {
@@ -22,24 +23,26 @@ if (import.meta.client) {
     <div class="box">
       <div class="padding">
         <div class="title">
-          <Icon name="pajamas:information" class="Icon"/>
+          <Icon name="pajamas:information" class="Icon" />
           <h3>DESCRIPTION</h3>
         </div>
         <div class="info">
           <h4>{{ bio }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="bioVisible = true"/>
+          <div class="Icon">
+            <Icon name="ic:baseline-edit" id="modif" @click="bioVisible = true" />
+          </div>
         </div>
       </div>
     </div>
     <div class="modal" v-if="bioVisible">
       <div class="center">
         <div class="content1input">
-          <Icon name="maki:cross" id="closeModal" @click="bioVisible = false"/>
-          <Icon name="pajamas:information" class="Icon"/>
+          <Icon name="maki:cross" id="closeModal" @click="bioVisible = false" />
+          <Icon name="pajamas:information" class="Icon" />
           <h5>-</h5>
-          <input type="text" placeholder="Enter a bio" id="singleModalInput" maxlength="60" v-model="bio"/>
+          <input type="text" placeholder="Enter a bio" id="singleModalInput" maxlength="60" v-model="bio" />
           <button @click="updateBio">
-            <Icon name="material-symbols:check" id="save"/>
+            <Icon name="material-symbols:check" id="save" />
           </button>
         </div>
       </div>
@@ -87,15 +90,20 @@ if (import.meta.client) {
   border-radius: 10px;
 }
 
-.info #modif {
-  font-size: 30px;
-  padding: 4px;
+.info .Icon {
+  display: flex;
+  align-items: center;
+  padding: 5px;
   border-radius: 10px;
   margin-left: 5px;
   transition: 0.3s ease;
 }
 
-.info #modif:hover {
+.info .Icon #modif {
+  font-size: 18px;
+}
+
+.info .Icon:hover {
   background-color: var(--dashboard-box-background);
 }
 

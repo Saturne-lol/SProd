@@ -1,5 +1,6 @@
 <script setup lang="ts">
-let quotes = await dashboard.customize.get.quotes();
+const data = defineProps({quotes: Array});
+let quotes = data.quotes;
 const quotesVisible = ref(false);
 
 function updateQuotes() {
@@ -22,26 +23,28 @@ if (import.meta.client) {
     <div class="box">
       <div class="padding">
         <div class="title">
-          <Icon name="fa6-solid:quote-left" class="Icon"/>
+          <Icon name="fa6-solid:quote-left" class="Icon" />
           <h3>QUOTES</h3>
         </div>
         <div class="info">
           <h4>QUOTES SATURNE</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="quotesVisible = true"/>
+          <div class="Icon">
+            <Icon name="ic:baseline-edit" id="modif" @click="quotesVisible = true" />
+          </div>
         </div>
       </div>
     </div>
     <div class="modal" v-if="quotesVisible">
       <div class="center">
         <div class="content3inputs">
-          <Icon name="maki:cross" id="closeModal" @click="quotesVisible = false"/>
+          <Icon name="maki:cross" id="closeModal" @click="quotesVisible = false" />
           <div v-for="i in 3" :key="i">
-            <Icon name="fa6-solid:quote-left" class="Icon"/>
+            <Icon name="fa6-solid:quote-left" class="Icon" />
             <h5>-</h5>
-            <input type="text" placeholder="Enter a quote" :id="'q' + i" v-model="quotes[i - 1]"/>
+            <input type="text" placeholder="Enter a quote" :id="'q' + i" v-model="quotes[i - 1]" />
           </div>
           <button>
-            <Icon name="material-symbols:check" id="save" @click="updateQuotes"/>
+            <Icon name="material-symbols:check" id="save" @click="updateQuotes" />
           </button>
         </div>
       </div>
@@ -89,15 +92,20 @@ if (import.meta.client) {
   border-radius: 10px;
 }
 
-.info #modif {
-  font-size: 30px;
-  padding: 4px;
+.info .Icon {
+  display: flex;
+  align-items: center;
+  padding: 5px;
   border-radius: 10px;
   margin-left: 5px;
   transition: 0.3s ease;
 }
 
-.info #modif:hover {
+.info .Icon #modif {
+  font-size: 18px;
+}
+
+.info .Icon:hover {
   background-color: var(--dashboard-box-background);
 }
 

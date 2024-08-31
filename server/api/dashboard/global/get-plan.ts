@@ -1,17 +1,11 @@
-import {checkToken} from "~/api/discord";
-import {PrismaClient, PlanEnum} from "@prisma/client";
-
-const prisma = new PrismaClient()
+import {PlanEnum} from '@prisma/client';
 
 // noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
-    const user = await checkToken(event)
-    if (!user) return new Response("Unauthorized", {status: 401})
-    
     return {
-        plan: (await prisma.account.findFirst({
-            where: {id: user.id},
+        plan: (await event.context.db.account.findFirst({
+            where: {id: event.context.user.id},
             select: {plan: true}
         }))?.plan as PlanEnum
-    }
-})
+    };
+});

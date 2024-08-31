@@ -1,7 +1,5 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-});
+const {linked} = defineProps({linked: String});
 </script>
 
 <template>
@@ -9,17 +7,17 @@ defineProps({
     <div class="box">
       <div class="padding">
         <div class="title">
-          <Icon name="akar-icons:discord-fill" class="Icon" />
+          <Icon name="akar-icons:discord-fill" class="Icon"/>
           <h3>BOX N°1 (PROFIL)</h3>
         </div>
-        <div class="connexion" v-if="data.linked">
-          <h4>{{ data.linked }}
-            <Icon name="bi:check-circle" id="check" />
+        <div class="connexion" v-if="linked!=='false'">
+          <h4>{{ linked }}
+            <Icon name="bi:check-circle" id="check"/>
           </h4>
         </div>
         <div class="connexion" v-else>
-          <h4>Join our <a href="https://discord.gg/saturne">discord server</a>
-            <Icon name="radix-icons:cross-circled" id="uncheck" />
+          <h4>Join our <a href="https://discord.gg/saturne"> discord server</a>
+            <Icon name="radix-icons:cross-circled" id="uncheck"/>
           </h4>
         </div>
       </div>
@@ -59,6 +57,8 @@ defineProps({
   background-color: #424242;
   padding: 4px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .connexion a {

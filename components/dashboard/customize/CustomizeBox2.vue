@@ -1,5 +1,6 @@
 <script setup lang="ts">
-let username = await dashboard.customize.get.username();
+const data = defineProps({username: String});
+let username = data.username;
 const usernameInput = ref("");
 const usernameVisible = ref(false);
 
@@ -31,7 +32,9 @@ if (import.meta.client) {
         </div>
         <div class="info">
           <h4>{{ username }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="usernameVisible = true"/>
+          <div class="Icon">
+            <Icon name="ic:baseline-edit" id="modif" @click="usernameVisible = true"/>
+          </div>
         </div>
       </div>
     </div>
@@ -92,15 +95,20 @@ if (import.meta.client) {
   border-radius: 10px;
 }
 
-.info #modif {
-  font-size: 30px;
-  padding: 4px;
+.info .Icon {
+  display: flex;
+  align-items: center;
+  padding: 5px;
   border-radius: 10px;
   margin-left: 5px;
   transition: 0.3s ease;
 }
 
-.info #modif:hover {
+.info .Icon #modif {
+  font-size: 18px;
+}
+
+.info .Icon:hover {
   background-color: var(--dashboard-box-background);
 }
 

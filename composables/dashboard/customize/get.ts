@@ -29,10 +29,17 @@ export const invite = async  (i: number): Promise<string> => {
     })).data.value as { invite: string }).invite
 }
 
+export const entry = async  (): Promise<string> => {
+    return ((await useFetch(`/api/dashboard/customize/get-entry`, {
+        server: true
+    })).data.value as { entry: string }).entry
+}
+
 export default {
     username: () => username(),
     url: () => url(),
     quotes: () => quotes(),
     bio: () => bio(),
-    invite: (i: number) => invite(i)
+    invite: (i: number) => invite(i),
+    entry: () => entry()
 }

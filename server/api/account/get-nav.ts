@@ -1,5 +1,3 @@
-// noinspection Annotator
-
 import {checkToken} from "~/api/discord";
 import {PrismaClient} from "@prisma/client";
 
@@ -20,6 +18,7 @@ export default defineEventHandler(async (event) => {
     return {
         username: user?.global_name,
         avatar: `https://cdn.saturne.lol/file/profile/${user?.id}`,
-        plan: plan?.plan
+        plan: plan?.plan,
+        deprecated: true
     }
 })

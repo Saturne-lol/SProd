@@ -10,7 +10,7 @@ const data = await getDiscordProfile(url)
 </script>
 
 <template>
-  <div class="boxUser" :class="isEnter ? 'slide-enter-left' : ''">
+  <div class="boxUser box box_outline" :class="isEnter ? 'slide-enter-left' : ''">
     <div class="DiscPresence">
       <img :src="data.avatar" alt="" id="ppDiscord">
       <img :src="'/img/presence/'+data.presence+'.png'" alt="" id="discordPresence">
@@ -29,17 +29,17 @@ const data = await getDiscordProfile(url)
 .boxUser {
   display: flex;
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.08);
-  border: 1px solid rgb(255, 255, 255, 0.4);
+  /*background-color: rgb(255, 255, 255, 0.08);
+  border: 1px solid rgb(255, 255, 255, 0.4);*/
   border-radius: 12px;
   padding: 10px;
   transition: 0.5s, transform 0.5s;
 }
 
-.boxUser:hover {
+/*.boxUser:hover {
   box-shadow: 0 0 3px 1px #00000044;
   border: 1px solid rgba(255, 255, 255, 0.6);
-}
+}*/
 
 .DiscPresence {
   position: relative;

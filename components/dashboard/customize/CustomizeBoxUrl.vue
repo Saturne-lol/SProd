@@ -1,22 +1,24 @@
 <script setup lang="ts">
-let url = await dashboard.customize.get.url();
-const urlInput = ref("");
+const data = defineProps({url: String});
+
+let url = data.url;
+const urlInput = ref('');
 const urlVisible = ref(false);
 
 function updateUrl() {
   if (!urlVisible.value) return;
   dashboard.customize.set.url(urlInput.value).then(async (r) => {
     urlVisible.value = false;
-    if (!r) return urlInput.value = "";
+    if (!r) return urlInput.value = '';
     url = urlInput.value.toLowerCase();
-    urlInput.value = "";
+    urlInput.value = '';
   });
 }
 
 if (import.meta.client) {
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") urlVisible.value = false;
-    if (e.key === "Enter") updateUrl();
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') urlVisible.value = false;
+    if (e.key === 'Enter') updateUrl();
   });
 }
 </script>
@@ -31,7 +33,9 @@ if (import.meta.client) {
         </div>
         <div class="info">
           <h4>saturne.lol/{{ url }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="urlVisible = true"/>
+          <div class="Icon">
+            <Icon name="ic:baseline-edit" id="modif" @click="urlVisible = true"/>
+          </div>
         </div>
       </div>
     </div>
@@ -91,15 +95,20 @@ if (import.meta.client) {
   border-radius: 10px;
 }
 
-.info #modif {
-  font-size: 30px;
-  padding: 4px;
+.info .Icon {
+  display: flex;
+  align-items: center;
+  padding: 5px;
   border-radius: 10px;
   margin-left: 5px;
   transition: 0.3s ease;
 }
 
-.info #modif:hover {
+.info .Icon #modif {
+  font-size: 18px;
+}
+
+.info .Icon:hover {
   background-color: var(--dashboard-box-background);
 }
 

@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
-import CustomizeSoon from "~/components/dashboard/customize/CustomizeSoon.vue";
+import CustomizeSoon from '~/components/dashboard/customize/CustomizeSoon.vue';
 
-const { data } = await useFetch("/api/account/get-nav") as {
-  data: Ref<{
-    username: string,
-    avatar: string,
-    plan: string
-  }>
-}
+const {data, status} = await useFetch('/api/dashboard/global/get-nav', {lazy: true, server: false})
 </script>
 
 <template>
@@ -25,28 +18,28 @@ const { data } = await useFetch("/api/account/get-nav") as {
         <ul>
           <li>
             <a href="/dashboard/customize">
-              <Icon name="fa6-solid:paintbrush" class="Icon" />
+              <Icon name="fa6-solid:paintbrush" class="Icon"/>
               CUSTOMIZE
             </a>
           </li>
           <li>
             <CustomizeSoon class="soon"/>
             <a href="/dashboard/links">
-              <Icon name="ph:link-simple-bold" class="Icon" />
+              <Icon name="ph:link-simple-bold" class="Icon"/>
               YOUR LINKS
             </a>
           </li>
           <li>
-<!--            <CustomizeSoon class="soon"/>-->
+            <!--            <CustomizeSoon class="soon"/>-->
             <a href="/dashboard/stats">
-              <Icon name="ion:stats-chart" class="Icon" />
+              <Icon name="ion:stats-chart" class="Icon"/>
               YOUR STATS
             </a>
           </li>
           <li>
             <CustomizeSoon class="soon"/>
             <a href="/dashboard/contact">
-              <Icon name="material-symbols:alternate-email-rounded" class="Icon" />
+              <Icon name="material-symbols:alternate-email-rounded" class="Icon"/>
               CONTACT US
             </a>
           </li>
@@ -55,17 +48,17 @@ const { data } = await useFetch("/api/account/get-nav") as {
       <!-- 3 -->
       <div class="profil">
         <div class="profilSaturne">
-          <img :src="data.avatar" alt="pp" width="80px">
+          <img :src="'https://cdn.saturne.lol/file/profile/'+data?.avatar" alt="pp" width="80px">
           <div class="infoProfilSaturne">
-            <h4>{{ data.username }}</h4>
+            <h4>{{ data?.username || "Loading" }}</h4>
             <div class="infoProfilSaturneAbonement">
-              <Icon name="basil:diamond-solid" class="Icon" v-if="data.plan.includes('PREMIUM')" />
-              <h4>{{ data.plan.replaceAll("_PLUS", " +") }}</h4>
+              <Icon name="basil:diamond-solid" class="Icon" v-if="data?.plan?.includes('PREMIUM')"/>
+              <h4>{{ data?.plan?.replaceAll('_PLUS', ' +') }}</h4>
             </div>
           </div>
           <div class="menuProfilSaturne">
             <a href="/auth/logout">
-              <Icon name="lucide:log-out" class="Icon" />
+              <Icon name="lucide:log-out" class="Icon"/>
             </a>
           </div>
         </div>
@@ -87,7 +80,7 @@ const { data } = await useFetch("/api/account/get-nav") as {
 
 .soon {
   font-size: 80%;
-  
+
 }
 
 .nav .background {

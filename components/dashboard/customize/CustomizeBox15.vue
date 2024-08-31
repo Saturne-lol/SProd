@@ -1,11 +1,21 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-  openModal: Function,
-  closeModal: Function,
-  singleModalAction: Function,
-  activeModal: String
-});
+const data = defineProps({ entry: String });
+let entry = data.entry as string;
+const entryVisible = ref(false);
+
+function updateQuotes() {
+  if (!entryVisible.value) return;
+  dashboard.customize.set.entry(entry).then(async (r) => {
+    entryVisible.value = false;
+  });
+}
+
+if (import.meta.client) {
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") entryVisible.value = false;
+    if (e.key === "Enter") updateQuotes();
+  });
+}
 </script>
 
 <template>
@@ -17,19 +27,21 @@ defineProps({
           <h3>ENTRY MESSAGE</h3>
         </div>
         <div class="info">
-          <h4>{{ data.enter }}</h4>
-          <Icon name="ic:baseline-edit" id="modif" @click="openModal('enter')" />
+          <h4>{{ entry }}</h4>
+          <div class="Icon">
+            <Icon name="ic:baseline-edit" id="modif" @click="entryVisible = true" />
+          </div>
         </div>
       </div>
     </div>
-    <div class="modal" v-if="activeModal === 'enter'">
+    <div class="modal" v-if="entryVisible">
       <div class="center">
         <div class="content1input">
-          <Icon name="maki:cross" id="closeModal" @click="closeModal" />
+          <Icon name="maki:cross" id="closeModal" @click="entryVisible = false" />
           <Icon name="streamline:emergency-exit-solid" class="Icon" />
           <h5>-</h5>
-          <input type="text" placeholder="Enter a welcome message" id="singleModalInput" maxlength="60" />
-          <button @click="singleModalAction">
+          <input type="text" placeholder="Enter a welcome message" id="singleModalInput" maxlength="60" v-model="entry" />
+          <button @click="updateQuotes">
             <Icon name="material-symbols:check" id="save" />
           </button>
         </div>
@@ -78,15 +90,20 @@ defineProps({
   border-radius: 10px;
 }
 
-.info #modif {
-  font-size: 30px;
-  padding: 4px;
+.info .Icon {
+  display: flex;
+  align-items: center;
+  padding: 5px;
   border-radius: 10px;
   margin-left: 5px;
   transition: 0.3s ease;
 }
 
-.info #modif:hover {
+.info .Icon #modif {
+  font-size: 18px;
+}
+
+.info .Icon:hover {
   background-color: var(--dashboard-box-background);
 }
 

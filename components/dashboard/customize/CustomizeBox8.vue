@@ -14,7 +14,9 @@ defineProps({
       <div class="dragDrop">
         <label class="uploadFile" for="fileBackground">
           <a href="">
-            <Icon name="maki:cross" id="boxClose" />
+            <div class="IconClose">
+              <Icon name="maki:cross" />
+            </div>
           </a>
           <div class="icon">
             <Icon name="ic:baseline-insert-photo" class="Icon" />
@@ -37,7 +39,8 @@ defineProps({
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Ajouté pour que la boîte prenne toute la hauteur disponible */
+  height: 100%;
+  /* Ajouté pour que la boîte prenne toute la hauteur disponible */
 }
 
 .padding {
@@ -59,25 +62,20 @@ defineProps({
 
 .dragDrop {
   flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .uploadFile {
-  width: 100%;
   height: 100%;
+  justify-content: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   cursor: pointer;
   background-color: var(--dashboard-input-background);
   border: 1px solid var(--dashboard-border);
   padding: 30px 0;
   border-radius: 10px;
   transition: 0.4s ease;
-  text-align: center;
 }
 
 .uploadFile:hover {
@@ -109,18 +107,20 @@ defineProps({
   display: none;
 }
 
-#boxClose {
+.IconClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 2px 5px;
+  padding: 3px;
   border-radius: 6px;
-  font-size: 150%;
   z-index: 5;
   transition: 0.3s ease;
 }
 
-#boxClose:hover {
+.IconClose:hover {
   background-color: var(--dashboard-button-close);
 }
 </style>
