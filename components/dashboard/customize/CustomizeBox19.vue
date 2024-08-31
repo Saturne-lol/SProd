@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import CustomizeSoon from '~/components/dashboard/customize/CustomizeSoon.vue';
-
 const data = defineProps({
   colors: {
-    type: Object, // Spécifiez que c'est un objet
-    required: true, // Indiquez si la prop est requise
+    type: Object,
+    required: true,
     default: () => ({
       box: '#FFFFFF',
       box_outline: '#FFFFFF',
