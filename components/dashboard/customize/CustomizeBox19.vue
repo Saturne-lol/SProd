@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CustomizeSoon from '~/components/dashboard/customize/CustomizeSoon.vue';
+
 const data = defineProps({
   colors: {
     type: Object, // Spécifiez que c'est un objet
@@ -16,7 +18,7 @@ let colors = ref([
   {key: 'box', name: 'Color box', value: data.colors.box},
   {key: 'box_outline', name: 'Box outline colors', value: data.colors.box_outline},
   {key: 'profile_outline', name: 'Profile outline color', value: data.colors.profile_outline},
-  {key: 'icon_color', name: 'Icon color', value: data.colors.icon_color}
+  {key: 'icon_color', name: 'Icon color (SOON)', value: data.colors.icon_color}
 ]);
 
 function updateColor(value: string, key: string) {
