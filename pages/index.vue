@@ -68,7 +68,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <video src="/public/video/dashboard.mp4" id="background" autoplay loop muted></video>
+  <img src="/img/landing/background.jpg" id="background"></img>
   <div id="body">
     <div class="nav">
       <div class="links">
@@ -295,7 +295,7 @@ onMounted(() => {
   font-family: 'Poppins', sans-serif;
   user-select: none;
   overflow-x: hidden;
-  backdrop-filter: blur(3px);
+  /*backdrop-filter: blur(3px);*/
 }
 
 #background {

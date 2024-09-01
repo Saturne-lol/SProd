@@ -21,6 +21,7 @@ useSeoMeta({
 <!--  <video src="/public/video/dashboard.mp4" id="background" autoplay loop muted></video>-->
 
   <div id="body">
+    <img src="/img/landing/background.jpg" id="background"></img>
     <div class="mainContainer">
       <MenuDashboard/>
       <div class="contentAndFooter">
@@ -35,9 +36,7 @@ useSeoMeta({
 </template>
 
 <style scoped>
-
-
-/*#background {
+#background {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -48,7 +47,7 @@ useSeoMeta({
   bottom: 0;
   z-index: -1;
   filter: brightness(0.30);
-}*/
+}
 
 #body {
   width: 100vw;
