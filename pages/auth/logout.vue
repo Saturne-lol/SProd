@@ -10,7 +10,7 @@ if (process.client) {
 </script>
 
 <template>
-  <video src="/public/video/dashboard.mp4" id="background" autoplay loop muted></video>
+  <img src="/img/landing/background.jpg" id="background"></img>
   <div class="waveTop"></div>
     <div class="home">
       <h1>Logout ...</h1>

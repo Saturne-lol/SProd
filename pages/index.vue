@@ -68,7 +68,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <video src="/public/video/dashboard.mp4" id="background" autoplay loop muted></video>
+  <img src="/img/landing/background.jpg" id="background"></img>
   <div id="body">
     <div class="nav">
       <div class="links">
@@ -219,7 +219,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check" />
             - Customizable font<br>
           </p>
-          <a href=""><button>Buy Now</button></a>
+          <a href="/premium"><button>Buy Now</button></a>
         </div>
         <div class="box">
           <div class="info">
@@ -237,7 +237,7 @@ onMounted(() => {
             <Icon name="material-symbols:check" id="check" />
             - Host on your own domain (soon)<br>
           </p>
-          <a href=""><button>Buy Now</button></a>
+          <a href="/premiump"><button>Buy Now</button></a>
         </div>
       </div>
     </div>
@@ -295,7 +295,7 @@ onMounted(() => {
   font-family: 'Poppins', sans-serif;
   user-select: none;
   overflow-x: hidden;
-  backdrop-filter: blur(3px);
+  /*backdrop-filter: blur(3px);*/
 }
 
 #background {

@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
                     bio: true,
                     username: true,
                     enter_message: true,
-                    view: true
+                    views: true
                 }
             },
             quotes: {
@@ -56,17 +56,9 @@ export default defineEventHandler(async (event) => {
                 }
             },
             color: true
-            // _count: {
-            //     select: {
-            //         view: {
-            //             where: {
-            //                 setting: {url: getQuery(event).username as string}
-            //             }
-            //         }
-            //     }
-            // }
         }
     }).then(async (profile) => {
+        console.log(profile?.setting?.views);
         if (profile?.plan === PlanEnum.PREMIUM) profile?.badges.push({badge: 'premium1'});
         if (profile?.plan === PlanEnum.PREMIUM_PLUS) profile?.badges.push({badge: 'premium2'});
         if (profile?.beta) profile?.badges.push({badge: 'beta'});
@@ -79,7 +71,7 @@ export default defineEventHandler(async (event) => {
             global: {
                 userID: profile?.id || 0,
                 enterMessage: profile?.setting?.enter_message || '',
-                views: profile?.setting?.view ? /*profile._count.view*/views : -1
+                views: profile?.setting?.views ? views : -1
             },
             profile: {
                 username: profile?.setting?.username || '',
