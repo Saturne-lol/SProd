@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     const eventS = stripe.webhooks.constructEvent(
         await readRawBody(event) as string,
         getHeader(event, 'stripe-signature') as string,
-        'whsec_f428fa267f000eb5016802d9b52f9c35e9fb42952831a68cb5c38a08be0eee2b');
+        process.env.NODE_ENV === 'development' ? 'whsec_f428fa267f000eb5016802d9b52f9c35e9fb42952831a68cb5c38a08be0eee2b' : 'whsec_4iv9wqKD80LW6rkeGoqiipySGVCEP7GE');
 
     switch (eventS.type) {
         case 'payment_intent.succeeded':
