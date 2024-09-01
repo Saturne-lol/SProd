@@ -13,13 +13,13 @@ export default defineEventHandler(async (event) => {
     const ip = getHeader(event, "x-real-ip") ||  getRequestIP(event) || event.req.connection.remoteAddress;
     if (!ip) return new Response('IP not found', {status: 400});
 
+    if (ip === '127.0.0.1') return new Response('Localhost not allowed', {status: 403});
+    if (ip === '::1') return new Response('Localhost not allowed', {status: 403});
+
     const res = await axios.get(`https://ip-api.com/json/${ip}?fields=proxy,hosting`).catch(() => null);
     if (!res) return new Response('Failed to check IP', {status: 500});
     if (res.data.proxy) return new Response('Proxy not allowed', {status: 403});
     if (res.data.hosting) return new Response('Hosting not allowed', {status: 403});
-
-    if (ip === '127.0.0.1') return new Response('Localhost not allowed', {status: 403});
-    if (ip === '::1') return new Response('Localhost not allowed', {status: 403});
 
     const profile = await event.context.db.setting.findFirst({where: {url: username}, select: {account_id: true}});
     if (!profile) return new Response('User not found', {status: 404});
