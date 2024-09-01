@@ -9,7 +9,8 @@ export default defineEventHandler(async (event) => {
     const username = body?.username;
     if (!username) return new Response('Username not found in request body', {status: 400});
 
-    const ip = event.req.headers['x-real-ip'] || event.req.headers['x-forwarded-for'] || event.req.connection.remoteAddress;
+
+    const ip = getHeader(event, "x-real-ip") ||  getRequestIP(event) || event.req.connection.remoteAddress;
     if (!ip) return new Response('IP not found', {status: 400});
 
     const res = await axios.get(`https://ip-api.com/json/${ip}?fields=proxy,hosting`).catch(() => null);
