@@ -15,7 +15,6 @@ const props = defineProps({
 let invite = props.invite;
 const visibleModal = ref(false);
 const inputInvite = ref("");
-// const plan = await dashboard.global.getPlan();
 
 function updateInvite() {
   if (!visibleModal.value) return;
@@ -24,8 +23,9 @@ function updateInvite() {
   dashboard.customize.set.invite(props.index, inputInvite.value).then(async (r) => {
     visibleModal.value = false;
     if (!r) return inputInvite.value = "";
-    invite = inputInvite.value.toLowerCase();
-    if (invite === "delete_invite") invite = "";
+    invite = inputInvite.value
+    if (invite === "delete_invite") invite = ""
+    inputInvite.value = "";
   });
 }
 
