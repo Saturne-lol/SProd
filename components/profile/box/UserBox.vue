@@ -1,25 +1,21 @@
 <script setup lang="ts">
-import {getDiscordProfile} from "~/composables/profile";
-
-defineProps({
-  isEnter: Boolean
-})
-
-const url = useRoute()?.params.username as string
-const data = await getDiscordProfile(url)
+const {isEnter, data} = defineProps({
+  isEnter: Boolean,
+  data: Object
+}) as { isEnter: boolean, data: ProfileData };
 </script>
 
 <template>
   <div class="boxUser box box_outline" :class="isEnter ? 'slide-enter-left' : ''">
     <div class="DiscPresence">
-      <img :src="data.avatar" alt="" id="ppDiscord">
-      <img :src="'/img/presence/'+data.presence+'.png'" alt="" id="discordPresence">
+      <img :src="data.discord.profile.avatar" alt="" id="ppDiscord">
+      <img :src="'/img/presence/'+data.discord.profile.presence+'.png'" alt="" id="discordPresence">
     </div>
     <div class="info">
-      <h3>{{ data.username.slice(0, 20)}}</h3>
+      <h3>{{ data.discord.profile.username.slice(0, 20) }}</h3>
       <div class="status">
-        <img v-if="data.emoji" :src="data.emoji" alt="">
-        <h4>{{ (data.status ? data.status.slice(0, 24) : '') }}</h4>
+        <img v-if="data.discord.profile.emoji" :src="data.discord.profile.emoji" alt="">
+        <h4>{{ (data.discord.profile.status ? data.discord.profile.status.slice(0, 24) : '') }}</h4>
       </div>
     </div>
   </div>
@@ -29,17 +25,10 @@ const data = await getDiscordProfile(url)
 .boxUser {
   display: flex;
   align-items: center;
-  /*background-color: rgb(255, 255, 255, 0.08);
-  border: 1px solid rgb(255, 255, 255, 0.4);*/
   border-radius: 12px;
   padding: 10px;
   transition: 0.5s, transform 0.5s;
 }
-
-/*.boxUser:hover {
-  box-shadow: 0 0 3px 1px #00000044;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-}*/
 
 .DiscPresence {
   position: relative;

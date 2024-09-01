@@ -31,20 +31,13 @@ useSeoMeta({
 });
 
 const isEnter = ref(false);
-const data: GlobalProfile = await getGlobal(url);
-const views: number = await getViews(url);
 
+const {data} = await useFetch<ProfileData>('/api/profile/get',{query: {username: url},server:true}) as {data: Ref<ProfileData>};
 
-interface Color {
-  [key: string]: string;
-}
-
-const color = (await useFetch('/api/profile/get-colors', {query: {username: url}})).data.value as unknown as Color;
-
-const css = Object.keys(color).map((key) => {
+const css = Object.keys(data.value.colors).map((key) => {
   return `
   .${key} {
-   ${color[key]}
+   ${data.value.colors[key]}
   }`;
 }).join('\n');
 
@@ -58,18 +51,18 @@ if (import.meta.client) {
 <template>
   <main>
     <div id="tempBackground" v-if="!isEnter">
-      <button id="click-to-enter" @click="isEnter = true">{{ data.clickToEnter }}</button>
+      <button id="click-to-enter" @click="isEnter = true">{{ data.global.enterMessage }}</button>
     </div>
-    <img :src="'https://cdn.saturne.lol/file/background/'+data.userID" alt="background" id="background">
+    <img :src="'https://cdn.saturne.lol/file/background/'+data.global.userID" alt="background" id="background">
     <div class="center" v-show="isEnter">
-      <div :class="['content', { 'single-box': data.nbDcBoxes === 0 }]" id="content">
-        <Profile :is-enter="isEnter"/>
-        <UserBox :is-enter="isEnter"/>
-        <DiscordBox :is-enter="isEnter"/>
-        <div class="view" :class="isEnter ? 'slide-enter-bottom' : ''">
+      <div :class="['content', { 'single-box': data.discord.servers.length === 0 }]" id="content">
+        <Profile :is-enter="isEnter" :data="data"/>
+        <UserBox :is-enter="isEnter" :data="data"/>
+        <DiscordBox :is-enter="isEnter" :data="data"/>
+        <div class="view" :class="isEnter ? 'slide-enter-bottom' : ''" v-if="data.global.views !== -1">
           <h3>
             <Icon name="ic:sharp-remove-red-eye"/>
-            - {{ views }}
+            - {{ data.global.views }}
           </h3>
           <h5>views</h5>
         </div>

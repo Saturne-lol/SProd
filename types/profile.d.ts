@@ -1,14 +1,27 @@
-type discordBox = []
+type ProfileData = {
+    global: GlobalProfile,
+    profile: Profile,
+    discord: Discord
+    colors: Colors
+}
+
+
+type GlobalProfile = {
+    enterMessage: string,
+    views: number,
+    userID: string,
+}
 
 type Profile = {
     username: string,
     bio: string,
-    userID: string,
-    /**
-     * @deprecated This should be replaced with userID
-     */
-    avatar: string,
     quotes: Array<string>
+    badges: Array<Badge>
+}
+
+type Discord = {
+    servers: Array<ServerProfile>
+    profile: DiscordProfile
 }
 
 type Badge = {
@@ -16,11 +29,6 @@ type Badge = {
     image: string
 }
 
-type GlobalProfile = {
-    clickToEnter: string,
-    userID: string,
-    nbDcBoxes: number,
-}
 
 type DiscordProfile = {
     username: string,
@@ -36,4 +44,8 @@ type ServerProfile = {
     online: number,
     image: string | null,
     invite: string,
+}
+
+interface Colors {
+    [key: string]: string;
 }

@@ -1,3 +1,4 @@
+// noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
     const tokenCookie = getCookie(event, 'token')
     const host = getHeader(event, 'host') || ''

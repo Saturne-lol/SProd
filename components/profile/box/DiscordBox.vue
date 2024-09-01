@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import formatNumber from "~/utils/formatNumber";
-import {getDiscordServers} from "~/composables/profile";
-import isPair from "~/utils/isPair";
+import formatNumber from '~/utils/formatNumber';
+import isPair from '~/utils/isPair';
 
-defineProps({
-  isEnter: Boolean
-})
-
-const url = useRoute()?.params.username as string;
-const servers: ServerProfile[] = await getDiscordServers(url)
-
+let {data, isEnter} = defineProps({
+  isEnter: Boolean,
+  data: Object
+}) as { data: ProfileData, isEnter: boolean };
 </script>
 
 <template>
-  <div class="boxServer box box_outline" v-for="(server, index) in servers" :class="isEnter ? (isPair(index) ? 'slide-enter-right' : 'slide-enter-left') : ''">
+  <div class="boxServer box box_outline" v-for="(server, index) in data.discord.servers"
+       :class="isEnter ? (isPair(index) ? 'slide-enter-right' : 'slide-enter-left') : ''">
     <div class="ppServ">
       <img v-if="server.image" :src="server.image" alt="">
     </div>
@@ -39,17 +36,10 @@ const servers: ServerProfile[] = await getDiscordServers(url)
 .boxServer {
   display: flex;
   align-items: center;
-  /*background-color: rgb(255, 255, 255, 0.08);
-  border: 1px solid rgb(255, 255, 255, 0.4);*/
   border-radius: 12px;
   padding: 10px;
   transition: 0.5s, transform 0.5s;
 }
-
-/*.boxServer:hover { // Fait de truc chelou avec les customs colors
-  box-shadow: 0 0 3px 1px #00000044;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-}*/
 
 .boxServer .ppServ img {
   position: relative;

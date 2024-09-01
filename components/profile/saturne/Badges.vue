@@ -1,29 +1,33 @@
 <script setup lang="ts">
-import {getBadges} from "~/composables/profile";
-import isPair from "~/utils/isPair";
-
 let props = defineProps({
   isEnter: Boolean,
-})
+  data: Object
+}) as { data: ProfileData, isEnter: boolean };
 
-const url = useRoute().params.username as string
-const badges = (await getBadges(url)).map((badge: any, index: number) => {
+
+const badges = props.data.profile.badges.map((badge: Badge, index: number) => {
   return {
     ...badge,
     index: index
-  }
-})
+  };
+});
 
-const animationState = ref(-1)
+const animationState = ref(-1);
 if (import.meta.client) {
+  if (props.isEnter) startAnimation();
   watch(() => props.isEnter, async (value) => {
     if (value) {
-      for (let i = 0; i < badges.length; i++) {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        animationState.value = i
-      }
+      await startAnimation();
     }
-  })
+  });
+}
+
+async function startAnimation() {
+  animationState.value = -1;
+  for (let i = 0; i < badges.length; i++) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    animationState.value = i;
+  }
 }
 </script>
 
@@ -43,7 +47,7 @@ if (import.meta.client) {
   align-items: center;
 
   background-color: rgba(255, 255, 255, 0.08);
-  border: 0.5px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 12px;
 }
 

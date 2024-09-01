@@ -16,7 +16,6 @@ export default defineEventHandler(async (event) => {
     }
 
     if (!invite) return new Response('Invite not set', {status: 400});
-    invite = invite.toLowerCase() as string;
 
     if (invite.length > 50) return new Response('Invite too long', {status: 400});
     if (await event.context.db.discord.count({

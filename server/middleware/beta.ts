@@ -1,7 +1,6 @@
-import {checkToken} from "~/api/discord";
-import {PrismaClient} from "@prisma/client";
+import prisma from '~/prisma';
+import {checkToken} from '~/api/discord';
 
-const prisma = new PrismaClient()
 export default defineEventHandler(async (event) => {
     if (getRequestURL(event).toString().includes('update-') ||
         getRequestURL(event).toString().includes('dashboard/customize/set-')

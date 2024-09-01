@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import Badges from "~/components/profile/saturne/Badges.vue";
-import {getProfile} from "~/composables/profile";
+import Badges from '~/components/profile/saturne/Badges.vue';
 
-defineProps({
+const {data, isEnter} = defineProps({
   isEnter: Boolean,
-})
+  data: Object
+}) as { data: ProfileData, isEnter: boolean };
 
-const url = useRoute().params.username as string
-const profile = await getProfile(url)
-
-const quote = ref("")
-const currentQuoteIndex = ref(0)
+const quote = ref('');
+const currentQuoteIndex = ref(0);
 
 function smoothClearQuote() {
   let index = 0;
@@ -21,7 +18,7 @@ function smoothClearQuote() {
     } else {
       clearInterval(interval);
       setTimeout(() => {
-        currentQuoteIndex.value = (currentQuoteIndex.value + 1) % profile.quotes.length;
+        currentQuoteIndex.value = (currentQuoteIndex.value + 1) % data.profile.quotes.length;
         smoothNewQuote();
       }, 400);
     }
@@ -29,7 +26,7 @@ function smoothClearQuote() {
 }
 
 function smoothNewQuote() {
-  const quoteToWrite = profile.quotes[currentQuoteIndex.value];
+  const quoteToWrite = data.profile.quotes[currentQuoteIndex.value];
   let index = 0;
   const interval = setInterval(() => {
     if (index < quoteToWrite.length) {
@@ -45,8 +42,8 @@ function smoothNewQuote() {
 }
 
 if (import.meta.client) {
-  if (profile.quotes.length > 0) {
-    smoothNewQuote()
+  if (data.profile.quotes.length > 0) {
+    smoothNewQuote();
   }
 }
 </script>
@@ -54,24 +51,26 @@ if (import.meta.client) {
 <template>
   <div class="profil">
     <div class="ppUser" :class="isEnter ? 'slide-enter-left' : ''">
-      <img :src="`https://cdn.saturne.lol/file/profile/${profile.avatar}`" alt="" id="ppDisc" class="profile_outline">
-      <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="profile.username == 'Cleboost'">
-      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="profile.username == 'BF'">
+      <img :src="`https://cdn.saturne.lol/file/profile/${data.global.userID}`" alt="" id="ppDisc"
+           class="profile_outline">
+      <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="data.profile.username == 'Cleboost'">
+      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="data.profile.username == 'BF'">
     </div>
     <div class="infoUser">
       <div class="nameBadges">
         <!-- NAME SATURNE -->
         <div class="name" :class="isEnter ? 'slide-enter-top ' : ''">
-          <h1>{{ profile.username }}</h1>
+          <h1>{{ data.profile.username }}</h1>
         </div>
         <!-- BADGES -->
-        <Badges :is-enter="isEnter"/>
+        <Badges :is-enter="isEnter" :data="data"/>
       </div>
-      <div class="quote" v-if="profile.quotes.length > 0 || !profile.quotes" :class="isEnter ? 'slide-enter-right' : ''">
+      <div class="quote" v-if="data.profile.quotes.length > 0 || !data.profile.quotes"
+           :class="isEnter ? 'slide-enter-right' : ''">
         <h3>{{ quote }}</h3>
       </div>
       <div class="description" :class="isEnter ? 'slide-enter-left' : ''">
-        <h5>{{ profile.bio }}</h5>
+        <h5>{{ data.profile.bio }}</h5>
       </div>
     </div>
   </div>
