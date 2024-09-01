@@ -7,10 +7,15 @@ export default defineEventHandler(async (event) => {
         select: {plan: true}
     }))?.plan !== 'FREE') return sendRedirect(event, '/payment/always?try=1');
 
-    const customer = await stripe.customers.create({
+    const customers = await stripe.customers.list({
         email: event.context.user.id + '@saturne.lol',
-        name: event.context.user.global_name
+        limit: 1
     });
+    const customer = customers.data[0] ||
+        await stripe.customers.create({
+            email: event.context.user.id + '@saturne.lol',
+            name: event.context.user.global_name
+        });
 
     const session = await stripe.checkout.sessions.create({
         line_items: [
