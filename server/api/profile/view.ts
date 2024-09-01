@@ -1,4 +1,5 @@
 import {checkToken} from '~/api/discord';
+import axios from 'axios';
 
 // noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
@@ -10,6 +11,11 @@ export default defineEventHandler(async (event) => {
 
     const ip = event.req.headers['x-real-ip'] || event.req.headers['x-forwarded-for'] || event.req.connection.remoteAddress;
     if (!ip) return new Response('IP not found', {status: 400});
+
+    const res = await axios.get(`https://ip-api.com/json/${ip}?fields=proxy,hosting`).catch(() => null);
+    if (!res) return new Response('Failed to check IP', {status: 500});
+    if (res.data.proxy) return new Response('Proxy not allowed', {status: 403});
+    if (res.data.hosting) return new Response('Hosting not allowed', {status: 403});
 
     if (ip === '127.0.0.1') return new Response('Localhost not allowed', {status: 403});
     if (ip === '::1') return new Response('Localhost not allowed', {status: 403});
