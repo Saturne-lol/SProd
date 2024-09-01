@@ -2,10 +2,13 @@ import stripe from '../../../stripe';
 
 // noinspection JSUnusedGlobalSymbols
 export default defineEventHandler(async (event) => {
-    if ((await event.context.db.account.findUnique({
+    const plan = (await event.context.db.account.findUnique({
         where: {id: event.context.user.id},
         select: {plan: true}
-    }))?.plan !== 'PREMIUM') return sendRedirect(event, '/payment/always?try=1');
+    }))?.plan;
+
+    if (plan === "PREMIUM_PLUS") return sendRedirect(event, '/payment/always');
+    if (plan === "FREE") return sendRedirect(event, '/');
 
     const customer = await stripe.customers.list({
         email: event.context.user.id + '@saturne.lol',
