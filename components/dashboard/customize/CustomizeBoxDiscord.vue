@@ -11,7 +11,6 @@ const props = defineProps({
   plan: String,
 });
 
-// let invite = props.index !== undefined ? await dashboard.customize.get.invite(props.index) : "";
 let invite = props.invite;
 const visibleModal = ref(false);
 const inputInvite = ref("");
