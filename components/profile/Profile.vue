@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Badges from '~/components/profile/saturne/Badges.vue';
 
-const {data, isEnter} = defineProps({
+const props = defineProps({
   isEnter: Boolean,
   data: Object
 }) as { data: ProfileData, isEnter: boolean };
@@ -18,7 +18,7 @@ function smoothClearQuote() {
     } else {
       clearInterval(interval);
       setTimeout(() => {
-        currentQuoteIndex.value = (currentQuoteIndex.value + 1) % data.profile.quotes.length;
+        currentQuoteIndex.value = (currentQuoteIndex.value + 1) % props.data.profile.quotes.length;
         smoothNewQuote();
       }, 400);
     }
@@ -26,7 +26,7 @@ function smoothClearQuote() {
 }
 
 function smoothNewQuote() {
-  const quoteToWrite = data.profile.quotes[currentQuoteIndex.value];
+  const quoteToWrite = props.data.profile.quotes[currentQuoteIndex.value];
   let index = 0;
   const interval = setInterval(() => {
     if (index < quoteToWrite.length) {
@@ -42,7 +42,7 @@ function smoothNewQuote() {
 }
 
 if (import.meta.client) {
-  if (data.profile.quotes.length > 0) {
+  if (props.data.profile.quotes.length > 0) {
     smoothNewQuote();
   }
 }
@@ -50,27 +50,27 @@ if (import.meta.client) {
 
 <template>
   <div class="profil">
-    <div class="ppUser" :class="isEnter ? 'slide-enter-left' : ''">
-      <img :src="`https://cdn.saturne.lol/file/profile/${data.global.userID}`" alt="" id="ppDisc"
+    <div class="ppUser" :class="props.isEnter ? 'slide-enter-left' : ''">
+      <img :src="`https://cdn.saturne.lol/file/profile/${props.data.global.userID}`" alt="" id="ppDisc"
            class="profile_outline">
-      <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="data.profile.username == 'Cleboost'">
-      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="data.profile.username == 'BF'">
+      <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="props.data.profile.username == 'Cleboost'">
+      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="props.data.profile.username == 'BF'">
     </div>
     <div class="infoUser">
       <div class="nameBadges">
         <!-- NAME SATURNE -->
         <div class="name" :class="isEnter ? 'slide-enter-top ' : ''">
-          <h1>{{ data.profile.username }}</h1>
+          <h1>{{ props.data.profile.username }}</h1>
         </div>
         <!-- BADGES -->
-        <Badges :is-enter="isEnter" :data="data"/>
+        <Badges :is-enter="props.isEnter" :data="data"/>
       </div>
-      <div class="quote" v-if="data.profile.quotes.length > 0 || !data.profile.quotes"
+      <div class="quote" v-if="props.data.profile.quotes.length > 0 || !props.data.profile.quotes"
            :class="isEnter ? 'slide-enter-right' : ''">
         <h3>{{ quote }}</h3>
       </div>
       <div class="description" :class="isEnter ? 'slide-enter-left' : ''">
-        <h5>{{ data.profile.bio }}</h5>
+        <h5>{{ props.data.profile.bio }}</h5>
       </div>
     </div>
   </div>

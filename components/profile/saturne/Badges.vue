@@ -1,9 +1,8 @@
 <script setup lang="ts">
-let props = defineProps({
+const props = defineProps({
   isEnter: Boolean,
   data: Object
 }) as { data: ProfileData, isEnter: boolean };
-
 
 const badges = props.data.profile.badges.map((badge: Badge, index: number) => {
   return {
