@@ -45,45 +45,6 @@ const data: Customize = (await useFetch('/api/dashboard/customize/get', {server:
 
 const activeModal = ref('') as Ref<string>;
 
-function openModal(modal: string) {
-  activeModal.value = modal;
-}
-
-function closeModal() {
-  activeModal.value = '';
-}
-
-function singleModalAction() {
-  const dataType = activeModal.value as string;
-  //@ts-ignore
-  if (!dataType || !data.value || !data.value[dataType]) return;
-  closeModal();
-  const dataIn = (document.getElementById('singleModalInput') as HTMLInputElement)?.value;
-  //@ts-ignore
-  const lastValue = data.value[dataType] as string;
-  //@ts-ignore
-  data.value[dataType] = dataIn;
-  $fetch(`/api/account/update-${dataType}`, {
-    method: 'POST',
-    body: JSON.stringify({data: dataIn})
-  }).then(() => {
-    useToast().add({
-      title: 'Success',
-      description: 'Your data has been updated',
-      color: 'green',
-      icon: 'i-material-symbols-check' //@TODO fix icon
-    });
-  }).catch((e) => {
-    //@ts-ignore
-    data.value[dataType] = lastValue;
-    useToast().add({
-      title: e.response.statusText,
-      description: e.response._data,
-      color: 'red',
-      icon: 'mdi:alert-circle' //@TODO fix icon
-    });
-  });
-}
 
 async function uploadPdp(event: any) {
   const file = event.target.files[0];
@@ -155,7 +116,7 @@ async function uploadBackground(event: any) {
     <CustomizeBox5 :uploadPdp="uploadPdp" id="customizeBox5"/>
     <CustomizeBox6 :uploadCursor="function(){}" id="customizeBox6"/>
     <CustomizeBox7 id="customizeBox7"/>
-    <CustomizeBox8 :uploadBackground="uploadBackground" id="customizeBox8"/>
+    <CustomizeBox8 id="customizeBox8"/>
     <CustomizeBox9 :linked="data?.linked" id="customizeBox9"/>
 
     <CustomizeBoxDiscord v-for="i in 5" :index="i-1" :plan="data?.plan"

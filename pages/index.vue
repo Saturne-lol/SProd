@@ -18,7 +18,7 @@ const vouch = [
   {
     username: "Lyess",
     avatar: "lyess.png",
-    quote: "Beta tester",
+    quote: "Beta tester & Staff",
     avis: "In writing..."
   },
   {
@@ -28,10 +28,10 @@ const vouch = [
     avis: "Je recommande vivement Saturne pour la création de portfolios pour Discord. Leurs services sont d'une qualité exceptionnelle, rapides, abordables et entièrement personnalisables selon vos besoins. Si vous cherchez un portfolio unique et personnalisable, Saturne est le choix parfait !"
   },
   {
-    username: "VOUCHER NAME",
-    avatar: "saturne.png",
-    quote: "Information about the voucher",
-    avis: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error ipsam cum corporis numquam at unde esse ducimus, vero nam consequuntur nemo iste hic modi laboriosam in, soluta eaque! Libero, accusamus."
+    username: "JK",
+    avatar: "jk.png",
+    quote: "Beta tester & Staff",
+    avis: "J'ai eu une excellente expérience avec la création de mon portfolio sur Discord. Le design est propre, moderne et parfaitement adapté à mes besoins. La navigation est fluide, et les sections sont bien organisées, ce qui permet de mettre en valeur mes projets de manière efficace. De plus, la collaboration avec le créateur a été très professionnelle et réactive. Je recommande vivement à quiconque cherche à présenter ses œuvres ou projets sur Discord !"
   },
   {
     username: "VOUCHER NAME",
