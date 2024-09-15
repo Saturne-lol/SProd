@@ -2,15 +2,15 @@
 import formatNumber from '~/utils/formatNumber';
 import isPair from '~/utils/isPair';
 
-let {data, isEnter} = defineProps({
+const props = defineProps({
   isEnter: Boolean,
   data: Object
-}) as { data: ProfileData, isEnter: boolean };
+});
 </script>
 
 <template>
-  <div class="boxServer box box_outline" v-for="(server, index) in data.discord.servers"
-       :class="isEnter ? (isPair(index) ? 'slide-enter-right' : 'slide-enter-left') : ''">
+  <div class="boxServer box box_outline" v-for="(server, index) in props?.data?.discord.servers"
+       :class="props.isEnter ? (isPair(index) ? 'slide-enter-right' : 'slide-enter-left') : ''">
     <div class="ppServ">
       <img v-if="server.image" :src="server.image" alt="">
     </div>

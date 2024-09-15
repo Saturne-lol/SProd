@@ -63,6 +63,11 @@ if (import.meta.client) {
     isImage.value = res as boolean;
   });
 }
+
+function enter() {
+  isEnter.value = true;
+  console.log(isEnter.value);
+}
 </script>
 
 <template>

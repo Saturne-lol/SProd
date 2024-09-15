@@ -1,21 +1,21 @@
 <script setup lang="ts">
-const {isEnter, data} = defineProps({
+const props = defineProps({
   isEnter: Boolean,
   data: Object
 }) as { isEnter: boolean, data: ProfileData };
 </script>
 
 <template>
-  <div class="boxUser box box_outline" :class="isEnter ? 'slide-enter-left' : ''">
+  <div class="boxUser box box_outline" :class="props.isEnter ? 'slide-enter-left' : ''">
     <div class="DiscPresence">
-      <img :src="data.discord.profile.avatar" alt="" id="ppDiscord">
-      <img :src="'/img/presence/'+data.discord.profile.presence+'.png'" alt="" id="discordPresence">
+      <img :src="props.data.discord.profile.avatar" alt="" id="ppDiscord">
+      <img :src="'/img/presence/'+props.data.discord.profile.presence+'.png'" alt="" id="discordPresence">
     </div>
     <div class="info">
-      <h3>{{ data.discord.profile.username.slice(0, 20) }}</h3>
+      <h3>{{ props.data.discord.profile.username.slice(0, 20) }}</h3>
       <div class="status">
-        <img v-if="data.discord.profile.emoji" :src="data.discord.profile.emoji" alt="">
-        <h4>{{ (data.discord.profile.status ? data.discord.profile.status.slice(0, 24) : '') }}</h4>
+        <img v-if="props.data.discord.profile.emoji" :src="props.data.discord.profile.emoji" alt="">
+        <h4>{{ (props.data.discord.profile.status ? props.data.discord.profile.status.slice(0, 24) : '') }}</h4>
       </div>
     </div>
   </div>
