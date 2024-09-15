@@ -1,8 +1,45 @@
 <script setup lang="ts">
-defineProps({
-  data: Object,
-  uploadPdp: Function
-});
+import {$fetch} from 'ofetch';
+
+async function uploadPdp(event: any) {
+  const file = event.target.files[0];
+
+  const uploadUrl = await $fetch('/api/dashboard/customize/set-profile', {
+    method: 'GET',
+    params: {
+      extension: file?.name.split('.').pop() || ''
+    }
+  });
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  useToast().add({
+    title: 'Start uploading',
+    description: 'Your profile image is being uploaded',
+    color: 'blue',
+    icon: 'i-material-symbols-check' //@TODO fix icon
+  });
+
+  $fetch(uploadUrl, {
+    method: 'POST',
+    body: formData
+  }).then(() => {
+    useToast().add({
+      title: 'Success',
+      description: 'Your profile image has been updated',
+      color: 'green',
+      icon: 'i-material-symbols-check' //@TODO fix icon
+    });
+  }).catch((e) => {
+    useToast().add({
+      title: 'Error',
+      description: e.message,
+      color: 'red',
+      icon: 'mdi:alert-circle' //@TODO fix icon
+    });
+  });
+}
 </script>
 
 <template>

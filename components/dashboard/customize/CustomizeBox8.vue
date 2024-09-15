@@ -1,7 +1,47 @@
 <script setup lang="ts">
-defineProps({
-  uploadBackground: Function
-});
+import {$fetch} from 'ofetch';
+
+async function uploadBackground(event: any) {
+  const file = event.target.files[0];
+
+  const uploadUrl = await $fetch('/api/dashboard/customize/set-background', {
+    method: 'GET',
+    params: {
+      extension: file.name.split('.').pop()
+    }
+  });
+
+  console.log(uploadUrl);
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  useToast().add({
+    title: 'Start uploading',
+    description: 'Your background image is being uploaded',
+    color: 'blue',
+    icon: 'i-material-symbols-check' //@TODO fix icon
+  });
+
+  $fetch(uploadUrl, {
+    method: 'POST',
+    body: formData
+  }).then(() => {
+    useToast().add({
+      title: 'Success',
+      description: 'Your background has been updated',
+      color: 'green',
+      icon: 'i-material-symbols-check' //@TODO fix icon
+    });
+  }).catch((e) => {
+    useToast().add({
+      title: 'Error',
+      description: e.message,
+      color: 'red',
+      icon: 'mdi:alert-circle' //@TODO fix icon
+    });
+  });
+}
 </script>
 
 <template>
@@ -24,7 +64,7 @@ defineProps({
           <div class="text">
             <span>Click to upload image</span>
           </div>
-          <input type="file" id="fileBackground" accept=".png, .jpg, .jpeg" @change="uploadBackground($event)" />
+          <input type="file" id="fileBackground" accept=".png, .mp4" @change="uploadBackground($event) && console.log('coucou')"  />
         </label>
       </div>
     </div>

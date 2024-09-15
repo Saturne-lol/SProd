@@ -46,6 +46,23 @@ if (import.meta.client) {
   style.innerHTML = css;
   document.head.appendChild(style);
 }
+
+const isBackgroundImage = () => {
+  const image = new Image();
+  image.src = 'https://cdn.saturne.lol/file/background/' + data.value.global.userID;
+  return new Promise((resolve) => {
+    image.onload = () => resolve(true);
+    image.onerror = () => resolve(false);
+  });
+};
+
+
+const isImage = ref(true)
+if (import.meta.client) {
+  isBackgroundImage().then((res) => {
+    isImage.value = res as boolean;
+  });
+}
 </script>
 
 <template>
@@ -53,7 +70,8 @@ if (import.meta.client) {
     <div id="tempBackground" v-if="!isEnter">
       <button id="click-to-enter" @click="isEnter = true">{{ data.global.enterMessage }}</button>
     </div>
-    <img :src="'https://cdn.saturne.lol/file/background/'+data.global.userID" alt="background" id="background">
+    <img :src="'https://cdn.saturne.lol/file/background/'+data.global.userID" alt="background" id="background" v-if="isImage">
+    <video :src="'https://cdn.saturne.lol/file/background/'+data.global.userID" id="background" autoplay loop muted playsinline v-else></video>
     <div class="center" v-show="isEnter">
       <div :class="['content', { 'single-box': data.discord.servers.length === 0 }]" id="content">
         <Profile :is-enter="isEnter" :data="data"/>
