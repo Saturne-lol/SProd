@@ -54,7 +54,7 @@ if (import.meta.client) {
       <img :src="`https://cdn.saturne.lol/file/profile/${props.data.global.userID}`" alt="" id="ppDisc"
            class="profile_outline">
       <img src="/public/img/avatardeco2.png" alt="" id="ppDeco" v-if="props.data.profile.username == 'Cleboost'">
-      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="props.data.profile.username == 'BF'">
+<!--      <img src="/public/img/avatardeco1.png" alt="" id="ppDeco" v-if="props.data.profile.username == 'BF'">-->
     </div>
     <div class="infoUser">
       <div class="nameBadges">
