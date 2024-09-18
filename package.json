@@ -20,7 +20,7 @@
     "discord-webhook-node": "^1.1.8",
     "discord.js": "^14.16.2",
     "fs": "^0.0.1-security",
-    "nuxt": "^3.13.1",
+    "nuxt": "^3.13.2",
     "nuxt-gtag": "^3.0.1",
     "stripe": "16.11.0",
     "url": "^0.11.4",
