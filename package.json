@@ -51,7 +51,7 @@
     "@iconify-json/streamline": "^1.2.0",
     "@nuxt/types": "^2.18.1",
     "nuxt-icon": "^0.6.10",
-    "prisma": "^5.19.1",
+    "prisma": "^5.20.0",
     "typescript": "^5.6.2",
     "vue-tsc": "^2.1.6"
   }
